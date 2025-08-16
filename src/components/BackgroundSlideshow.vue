@@ -6,6 +6,8 @@
       :class="['slide', { active: currentIndex === index }]"
       :style="{ backgroundImage: `url(${image})` }"
     ></div>
+    <!-- 添加半透明黑色蒙版 -->
+    <div class="overlay"></div>
   </div>
 </template>
 
@@ -79,11 +81,22 @@ onUnmounted(() => {
   opacity: 1;
 }
 
+/* 添加半透明黑色蒙版 */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* 60%透明度的黑色 */
+  z-index: 1;
+}
+
 /* 确保内容在背景之上，但导航栏在最上层 */
 :deep(header),
 :deep(.router-view) {
   position: relative;
-  z-index: 1;
+  z-index: 2; /* 提高z-index确保在蒙版之上 */
 }
 
 /* 响应式设计 */

@@ -61,7 +61,7 @@ nav a {
   padding: 0 4vw;
   color: white;
   text-decoration: none;
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-size: clamp(0.7rem, 2.5vw, 1.1rem);
   font-weight: 500;
   transition: all 0.3s ease;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
