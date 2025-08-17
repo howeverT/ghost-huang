@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const displayText = ref('')
 const fullText = '我是阿鬼，希望我今晚带你进入了我温暖的星辰大海。别怕别着急，我一直都在。love you!'
 const currentIndex = ref(0)
 const isTypingComplete = ref(false)
+const showButton = ref(false)
+const componentFading = ref(false)
 let typeTimer: any = null
 let pauseTimer: any = null
-let resetTime: any = 10000
-let typeTime: any = 200
+let resetTime: any = 60000
+let typeTime: any = 10
 
 const typeWriter = () => {
   if (currentIndex.value < fullText.length) {
@@ -17,6 +22,10 @@ const typeWriter = () => {
     typeTimer = setTimeout(typeWriter, typeTime) // 每typeTime毫秒显示一个字
   } else {
     isTypingComplete.value = true
+    // 显示按钮
+    setTimeout(() => {
+      showButton.value = true
+    }, 1000)
     // resetTime
     pauseTimer = setTimeout(() => {
       resetTypewriter()
@@ -28,7 +37,17 @@ const resetTypewriter = () => {
   displayText.value = ''
   currentIndex.value = 0
   isTypingComplete.value = false
+  showButton.value = false
   typeWriter()
+}
+
+const handleButtonClick = () => {
+  componentFading.value = true
+
+  // 整个组件渐渐消失后跳转
+  setTimeout(() => {
+    router.push('/about')
+  }, 1000)
 }
 
 onMounted(() => {
@@ -42,30 +61,22 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="welcome-container">
-    <!-- 左侧打字机效果 -->
-    <div class="left-section">
+  <div class="welcome-container" :class="{ 'fading': componentFading }">
+    <!-- 居中显示打字机效果 -->
+    <div class="center-section">
       <div class="typewriter-text">
         {{ displayText }}<span v-if="!isTypingComplete" class="cursor">|</span>
       </div>
-    </div>
 
-    <!-- 右侧拍立得展示框 -->
-    <div class="right-section">
-      <div class="polaroid-frame">
-        <div class="polaroid-image">
-          <!-- 这里可以放置人像图片 -->
-          <div class="placeholder-image">人像图片</div>
-        </div>
-        <div class="polaroid-caption">
-          阿鬼
-        </div>
-      </div>
-
-      <div class="person-description">
-        <h3>关于阿鬼</h3>
-        <p>一个温暖而有趣的人，喜欢分享美好，带给大家温暖和快乐。</p>
-        <p>愿我的星辰大海能成为你心灵的港湾。</p>
+      <!-- 按钮区域 - 始终占位 -->
+      <div class="button-container">
+        <button
+          v-if="showButton"
+          class="magic-button"
+          @click="handleButtonClick"
+        >
+          坠入我的星辰大海
+        </button>
       </div>
     </div>
   </div>
@@ -74,39 +85,36 @@ onUnmounted(() => {
 <style scoped>
 .welcome-container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  min-height: 80vh;
-  padding: 2rem;
-  gap: 3rem;
-}
-
-.left-section {
-  flex: 1;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  width: 80vw;
-  height: 100vh;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
-.right-section {
-  flex: 1;
+.welcome-container.fading {
+  opacity: 0;
+  transform: scale(0.95) translateY(-20px);
+}
+
+.center-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  width: 20vw;
+  justify-content: center;
+  text-align: center;
+  gap: 3rem;
 }
 
 .typewriter-text {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   letter-spacing: 0.1em;
   line-height: 1.5;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 .cursor {
@@ -119,119 +127,90 @@ onUnmounted(() => {
   51%, 100% { opacity: 0; }
 }
 
-/* 拍立得样式 */
-.polaroid-frame {
-  background: #ffffff;
-  padding: 1rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transform: rotate(-2deg);
-  transition: transform 0.3s ease;
-}
-
-.polaroid-frame:hover {
-  transform: rotate(0deg) scale(1.05);
-}
-
-.polaroid-image {
-  width: 250px;
-  height: 300px;
-  background: #f0f0f0;
+/* 按钮样式 */
+.button-container {
+  height: 80px; /* 固定高度，始终占位 */
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ddd;
-}
-
-.placeholder-image {
-  color: #999;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-.polaroid-caption {
   margin-top: 1rem;
-  font-family: 'Courier New', monospace;
-  font-size: 1.1rem;
-  color: #333;
-  text-align: center;
-  font-weight: bold;
 }
 
-/* 人物介绍样式 */
-.person-description {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  text-align: center;
-  max-width: 350px;
-}
-
-.person-description h3 {
-  color: #ffffff;
+.magic-button {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 3rem;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  min-width: 300px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.person-description p {
-  color: #ffffff;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+.magic-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* 响应式设计 */
 @media (max-width: 1024px) {
-  .welcome-container {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .left-section, .right-section {
-    flex: none;
-    width: 100%;
-  }
-
   .typewriter-text {
-    font-size: 1.8rem;
-    text-align: center;
+    font-size: 2.5rem;
+    max-width: 600px;
+  }
+
+  .magic-button {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.3rem;
   }
 }
 
 @media (max-width: 768px) {
-  .welcome-container {
-    padding: 1rem;
-  }
-
   .typewriter-text {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    max-width: 500px;
   }
 
-  .polaroid-image {
-    width: 200px;
-    height: 250px;
-  }
-
-  .person-description {
-    padding: 1.5rem;
+  .magic-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 480px) {
   .typewriter-text {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    max-width: 400px;
   }
 
-  .polaroid-image {
-    width: 180px;
-    height: 220px;
-  }
-
-  .person-description {
-    padding: 1rem;
+  .magic-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
   }
 }
 </style>

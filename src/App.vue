@@ -1,6 +1,25 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import BackgroundSlideshow from './components/BackgroundSlideshow.vue'
+
+const route = useRoute()
+const pageTransitioning = ref(false)
+const pageVisible = ref(true)
+
+// 监听路由变化，添加页面切换动画
+watch(() => route.path, () => {
+  // 页面渐隐
+  pageVisible.value = false
+  pageTransitioning.value = true
+
+  setTimeout(() => {
+    // 页面渐显
+    pageVisible.value = true
+    pageTransitioning.value = false
+  }, 300)
+})
 </script>
 
 <template>
@@ -9,14 +28,17 @@ import BackgroundSlideshow from './components/BackgroundSlideshow.vue'
   <header class="top-navbar">
     <div class="nav-container">
       <nav>
-        <RouterLink to="/">星辰大海</RouterLink>
+        <RouterLink to="/">主页</RouterLink>
         <RouterLink to="/about">宇宙无敌号</RouterLink>
       </nav>
     </div>
   </header>
 
   <main class="main-content">
-    <div class="content-wrapper">
+    <div class="content-wrapper" :class="{
+      'page-transitioning': pageTransitioning,
+      'page-visible': pageVisible
+    }">
       <RouterView />
     </div>
   </main>
@@ -29,9 +51,7 @@ import BackgroundSlideshow from './components/BackgroundSlideshow.vue'
   left: 0;
   width: 100vw;
   height: 6vh;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -64,7 +84,6 @@ nav a {
   font-size: clamp(0.7rem, 2.5vw, 1.1rem);
   font-weight: 500;
   transition: all 0.3s ease;
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
   height: 100%;
   min-width: 15vw;
 }
@@ -74,13 +93,12 @@ nav a:last-child {
 }
 
 nav a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  color: #667eea;
 }
 
 nav a.router-link-exact-active {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: #fff;
+  color: #667eea;
+  font-weight: bold;
 }
 
 .main-content {
@@ -102,6 +120,19 @@ nav a.router-link-exact-active {
   align-items: center;
   justify-content: flex-start;
   padding: 2vh 5vw;
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content-wrapper.page-transitioning {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.content-wrapper.page-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* 响应式设计 */

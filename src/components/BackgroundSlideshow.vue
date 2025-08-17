@@ -62,6 +62,8 @@ onUnmounted(() => {
   height: 100vh;
   z-index: 0;
   overflow: hidden;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
 .slide {
@@ -75,6 +77,8 @@ onUnmounted(() => {
   background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .slide.active {
@@ -99,11 +103,45 @@ onUnmounted(() => {
   z-index: 2; /* 提高z-index确保在蒙版之上 */
 }
 
+/* 全局背景覆盖 */
+:deep(body),
+:deep(html) {
+  background: none !important;
+  overflow-x: hidden;
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+:deep(#app) {
+  background: none !important;
+  overflow-x: hidden;
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+:deep(.main-content) {
+  background: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
   .background-slideshow {
     width: 100vw;
     height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
   }
 }
 
@@ -111,6 +149,18 @@ onUnmounted(() => {
   .background-slideshow {
     width: 100vw;
     height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
   }
 }
 </style>
