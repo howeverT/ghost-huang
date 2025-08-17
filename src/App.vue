@@ -9,17 +9,20 @@ const pageTransitioning = ref(false)
 const pageVisible = ref(true)
 
 // 监听路由变化，添加页面切换动画
-watch(() => route.path, () => {
-  // 页面渐隐
-  pageVisible.value = false
-  pageTransitioning.value = true
+watch(
+  () => route.path,
+  () => {
+    // 页面渐隐
+    pageVisible.value = false
+    pageTransitioning.value = true
 
-  setTimeout(() => {
-    // 页面渐显
-    pageVisible.value = true
-    pageTransitioning.value = false
-  }, 300)
-})
+    setTimeout(() => {
+      // 页面渐显
+      pageVisible.value = true
+      pageTransitioning.value = false
+    }, 300)
+  },
+)
 </script>
 
 <template>
@@ -35,10 +38,13 @@ watch(() => route.path, () => {
   </header>
 
   <main class="main-content">
-    <div class="content-wrapper" :class="{
-      'page-transitioning': pageTransitioning,
-      'page-visible': pageVisible
-    }">
+    <div
+      class="content-wrapper"
+      :class="{
+        'page-transitioning': pageTransitioning,
+        'page-visible': pageVisible,
+      }"
+    >
       <RouterView />
     </div>
   </main>
@@ -120,7 +126,9 @@ nav a.router-link-exact-active {
   align-items: center;
   justify-content: flex-start;
   padding: 2vh 5vw;
-  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  transition:
+    opacity 0.6s ease-in-out,
+    transform 0.6s ease-in-out;
   opacity: 1;
   transform: translateY(0);
 }

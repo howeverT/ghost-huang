@@ -3,98 +3,38 @@ import { onMounted, ref } from 'vue'
 import { VideoPlay, Headset, LocationFilled } from '@element-plus/icons-vue'
 
 const pageLoaded = ref(false)
-const selectedYear = ref("2024/05/24")
+const selectedYear = ref('2024/11/01')
 const contentVisible = ref(true)
 
-// 时间轴数据
-const timelineData = [
-  {
-    year: "2024/05/24",
-    title: '成都站',
-    description: "———其实我是因为魔星保护了我的梦才走到这里。我时常在夜里会把我的枕头哭湿。你们为了我一次又一次地承受这些伤害，我不知道我要怎么做，才能让你们更快乐，不委屈。我一直老说，我一定要变强，我才能保护你们，但是我觉得我没有保护好。而是你们一直冲在前面为我遮挡这些伤害。让我安心地做音乐，累不累啊。不可能不累的，累就对了其实，因为我们都在走上坡路。",
-    places: "成都东安湖体育公园多功能体育馆",
-    links: [
-      {
-        link_title: "十六机位饭拍 2025.05.24 宇宙无敌号成都站演唱会大电影 全程4K超清饭拍",
-        link: "https://www.bilibili.com/video/BV1dUjkzqEUj/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
-        icon: "video"
-      },
-      {
-        link_title: "[4K/Hifi]黄霄雲成都演唱会全程，画质音质巅峰",
-        link: "https://www.bilibili.com/video/BV1JZjrzkEaJ/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
-        icon: "video"
-      },
-      {
-        link_title: "黄霄雲成都站演唱会幕后与十年前的自己对话，所想的画面未来都已成真！",
-        link: "https://www.bilibili.com/video/BV1VwMXz3E2i/?spm_id_from=333.1387.homepage.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
-        icon: "video"
-      },
-      {
-        link_title: "黄霄雲&孙楠《美丽的神话》有官摄了！！！一开口又是多少人的青春？",
-        link: "https://www.bilibili.com/video/BV1yk3LzFEvh/?spm_id_from=333.1387.homepage.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
-        icon: "video"
-      }
-    ],
-    image: ["/src/assets/background/background.jpg"]
-  },
-  {
-    year: "2024/11/01",
-    title: '北京站 Day1',
-    description: "探索宇宙的奥秘，发现更多美好的事物。让我们一起在星辰大海中遨游，寻找属于我们的梦想。",
-    places: "北京·华熙LIVE·五棵松·场馆",
-    links: [
-      {
-        link_title: "【8K】黄霄雲 - 宇宙无敌号2024北京演唱会全程（11月1日）",
-        link: "https://www.bilibili.com/video/BV1KHDcYLEyX/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
-        icon: "video"
-      },
-      {
-        link_title: "【面包的vlog第47集】谁懂演唱会之后的戒断反应对黄霄雲的冲击有多大！！！舍不得舍不得～",
-        link: "https://www.bilibili.com/video/BV1xYUSY5Ek6/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
-        icon: "video"
-      }
-    ],
-    image: ["/src/assets/background/background.jpg"]
-  },
-  {
-    year: "2024/11/02",
-    title: '北京站 Day2',
-    description: "开始追逐梦想，踏上星辰大海的征程。每一个梦想都值得我们去追逐，每一次努力都会让我们更接近目标。",
-    places: "北京·华熙LIVE·五棵松·场馆",
-    links: [
-      {
-        link_title: "梦想起【8K】黄霄雲 - 宇宙无敌号2024北京演唱会全程（11月2日）航视频",
-        link: "https://www.bilibili.com/video/BV1ZcS6YMEtw/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
-        icon: "video"
-      },
-      {
-        link_title: "【面包的vlog第47集】谁懂演唱会之后的戒断反应对黄霄雲的冲击有多大！！！舍不得舍不得～",
-        link: "https://www.bilibili.com/video/BV1xYUSY5Ek6/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
-        icon: "video"
-      }
-    ],
-    image: ["/src/assets/background/background.jpg"]
-  },
-  {
-    year: "2021/08/20",
-    title: '初心萌动',
-    description: "心中种下星辰大海的种子，等待发芽。最初的梦想总是最珍贵的，让我们不忘初心，继续前行。",
-    places: "",
-    links: [
-      {
-        link_title: "初心萌动视频",
-        link: "https://www.baidu.com",
-        icon: "video"
-      },
-      {
-        link_title: "初心萌动音频",
-        link: "https://www.baidu.com",
-        icon: "audio"
-      }
-    ],
-    image: ["/src/assets/background/background.jpg"]
+// 定义时间轴数据类型
+interface TimelineItem {
+  year: string
+  title: string
+  description: string
+  places: string
+  links: {
+    link_title: string
+    link: string
+    icon: string
+  }[]
+  image: string[]
+}
+
+// 时间轴数据 - 从JSON文件读取
+const timelineData = ref<TimelineItem[]>([])
+
+// 从JSON文件加载数据
+const loadTimelineData = async () => {
+  try {
+    const response = await fetch('/src/assets/page_data/concert/concert.json')
+    const data = await response.json()
+    timelineData.value = data
+  } catch (error) {
+    console.error('加载时间轴数据失败:', error)
+    // 如果加载失败，使用默认数据
+    timelineData.value = []
   }
-]
+}
 
 const selectYear = (year: string) => {
   if (selectedYear.value === year) return
@@ -113,6 +53,9 @@ const selectYear = (year: string) => {
 }
 
 onMounted(() => {
+  // 加载时间轴数据
+  loadTimelineData()
+
   setTimeout(() => {
     pageLoaded.value = true
   }, 100)
@@ -120,7 +63,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="about" :class="{ 'loaded': pageLoaded }">
+  <div class="about" :class="{ loaded: pageLoaded }">
     <p class="subtitle">时光荏苒，让我们一起回顾这段美好的旅程</p>
 
     <div class="timeline-container">
@@ -131,7 +74,7 @@ onMounted(() => {
             v-for="(item, index) in timelineData"
             :key="item.year"
             class="timeline-step"
-            :class="{ 'active': selectedYear === item.year }"
+            :class="{ active: selectedYear === item.year }"
             @click="selectYear(item.year)"
           >
             <div class="step-icon">
@@ -145,30 +88,36 @@ onMounted(() => {
 
       <!-- 右侧内容展示 -->
       <div class="timeline-right">
-        <div class="content-display" :class="{ 'visible': contentVisible }">
+        <div class="content-display" :class="{ visible: contentVisible }">
           <!-- 拍立得展示 -->
           <div class="polaroid-section">
             <div class="polaroid-frame">
               <div class="polaroid-image">
                 <img
-                  :src="timelineData.find(item => item.year === selectedYear)?.image[0]"
-                  :alt="timelineData.find(item => item.year === selectedYear)?.title"
+                  :src="timelineData.find((item) => item.year === selectedYear)?.image[0]"
+                  :alt="timelineData.find((item) => item.year === selectedYear)?.title"
                 />
               </div>
               <div class="polaroid-caption">
-                {{ timelineData.find(item => item.year === selectedYear)?.year }}
+                {{ timelineData.find((item) => item.year === selectedYear)?.year }}
               </div>
             </div>
           </div>
 
           <!-- 介绍文字 -->
           <div class="description-section">
-            <h3>{{ timelineData.find(item => item.year === selectedYear)?.title }}</h3>
-            <p class="places-text"><el-icon><LocationFilled /></el-icon>{{ timelineData.find(item => item.year === selectedYear)?.places }}</p>
-            <p class="description-text">{{ timelineData.find(item => item.year === selectedYear)?.description }}</p>
+            <h3>{{ timelineData.find((item) => item.year === selectedYear)?.title }}</h3>
+            <p class="places-text">
+              <el-icon><LocationFilled /></el-icon
+              >{{ timelineData.find((item) => item.year === selectedYear)?.places }}
+            </p>
+            <p class="description-text">
+              {{ timelineData.find((item) => item.year === selectedYear)?.description }}
+            </p>
             <div class="links-container">
               <a
-                v-for="(link, index) in timelineData.find(item => item.year === selectedYear)?.links"
+                v-for="(link, index) in timelineData.find((item) => item.year === selectedYear)
+                  ?.links"
                 :key="index"
                 :href="link.link"
                 target="_blank"
@@ -203,7 +152,9 @@ onMounted(() => {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
   padding: 2rem 0;
 }
 
@@ -342,7 +293,9 @@ onMounted(() => {
   max-width: 1200px;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  transition:
+    opacity 0.6s ease-in-out,
+    transform 0.6s ease-in-out;
 }
 
 .content-display.visible {
@@ -368,8 +321,8 @@ onMounted(() => {
 }
 
 .polaroid-image {
-  width: 250px;
-  height: 300px;
+  width: 320px;
+  height: 400px;
   overflow: hidden;
   border: 1px solid #ddd;
 }
@@ -398,11 +351,11 @@ onMounted(() => {
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  min-height: 300px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-width: 40vw;
+  min-width: 45vw;
 }
 
 .description-section h3 {
@@ -556,12 +509,13 @@ onMounted(() => {
   }
 
   .polaroid-image {
-    width: 200px;
-    height: 250px;
+    width: 280px;
+    height: 350px;
   }
 
   .description-section {
     padding: 1.5rem;
+    min-height: 350px;
   }
 }
 
@@ -575,12 +529,13 @@ onMounted(() => {
   }
 
   .polaroid-image {
-    width: 180px;
-    height: 220px;
+    width: 240px;
+    height: 300px;
   }
 
   .description-section {
     padding: 1rem;
+    min-height: 300px;
   }
 }
 </style>
