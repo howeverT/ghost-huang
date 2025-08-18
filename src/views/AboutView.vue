@@ -130,6 +130,9 @@ onMounted(() => {
                 <el-icon v-else-if="link.icon === 'audio'">
                   <Headset />
                 </el-icon>
+                <el-icon v-else-if="link.icon === 'picture'">
+                  <Camera />
+                </el-icon>
                 <span class="link-text">{{ link.link_title }}</span>
               </a>
             </div>
@@ -181,18 +184,19 @@ onMounted(() => {
 /* 时间轴容器 */
 .timeline-container {
   display: flex;
-  width: 100%;
-  max-width: 1600px;
-  gap: 6rem;
+  width: fit-content;
+  gap: 8rem;
   align-items: flex-start;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 /* 左侧时间轴 */
 .timeline-left {
-  flex: 0 0 150px;
+  flex: 0 0 200px;
   display: flex;
   justify-content: flex-start;
-  margin-left: 2rem;
+  margin-left: 0;
 }
 
 .timeline {
@@ -208,7 +212,7 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   transition: all 0.3s ease;
 }
 
@@ -225,11 +229,11 @@ onMounted(() => {
 }
 
 .step-circle {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
-  border: 3px solid rgba(255, 255, 255, 0.4);
+  border: 4px solid rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -237,8 +241,8 @@ onMounted(() => {
 }
 
 .step-number {
-  margin-top: 0.5rem;
-  font-size: 1rem;
+  margin-top: 0.8rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.7);
   transition: color 0.3s ease;
@@ -259,9 +263,9 @@ onMounted(() => {
 /* 连接线 */
 .step-line {
   position: absolute;
-  top: 30px;
-  width: 2px;
-  height: 60px;
+  top: 40px;
+  width: 3px;
+  height: 80px;
   background: rgba(255, 255, 255, 0.2);
   z-index: 1;
   pointer-events: none;
@@ -290,7 +294,7 @@ onMounted(() => {
   flex-direction: row;
   align-items: flex-start;
   gap: 3rem;
-  max-width: 1200px;
+  max-width: 100%;
   opacity: 0;
   transform: translateY(20px);
   transition:
@@ -309,8 +313,8 @@ onMounted(() => {
 }
 
 .polaroid-frame {
-  background: #ffffff;
-  padding: 1rem;
+  background: rgba(255, 255, 255, 0.65);
+  padding: 1.5rem;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   transform: rotate(-2deg);
   transition: transform 0.3s ease;
@@ -321,8 +325,8 @@ onMounted(() => {
 }
 
 .polaroid-image {
-  width: 320px;
-  height: 400px;
+  width: 350px;
+  height: 440px;
   overflow: hidden;
   border: 1px solid #ddd;
 }
@@ -334,9 +338,9 @@ onMounted(() => {
 }
 
 .polaroid-caption {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   font-family: 'Courier New', monospace;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: #333;
   text-align: center;
   font-weight: bold;
@@ -347,45 +351,45 @@ onMounted(() => {
   flex: 1;
   text-align: left;
   background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  min-height: 400px;
+  min-height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-width: 45vw;
+  width: 50vw;
 }
 
 .description-section h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
   color: #667eea;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .places-text {
-  font-size: 0.8rem;
+  font-size: 1.1rem;
   line-height: 1.6;
   color: #667eea;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   text-align: left;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .places-text .el-icon {
   color: #667eea;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 .description-text {
-  font-size: 0.8rem;
-  line-height: 1.6;
-  color: rgba(198, 193, 193, 0.6);
-  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(198, 193, 193, 0.8);
+  margin-bottom: 2rem;
   text-align: left;
 }
 
@@ -393,18 +397,18 @@ onMounted(() => {
 .links-container {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  margin-top: 1rem;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 .link-item {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 1rem;
   color: white;
   text-decoration: none;
   transition: all 0.3s ease;
-  padding: 0.3rem 0;
+  padding: 0.5rem 0;
 }
 
 .link-item:hover {
@@ -413,27 +417,27 @@ onMounted(() => {
 }
 
 .link-item .el-icon {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #667eea;
-  width: 20px;
+  width: 24px;
   text-align: center;
   flex-shrink: 0;
 }
 
 .link-text {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 400px;
+  max-width: calc(100% - 50px);
 }
 
 /* 响应式设计 */
 @media (max-width: 1024px) {
   .timeline-container {
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
     max-width: 100%;
   }
 
@@ -447,7 +451,7 @@ onMounted(() => {
   .timeline {
     flex-direction: row;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
     position: relative;
   }
 
@@ -457,10 +461,10 @@ onMounted(() => {
   }
 
   .step-line {
-    width: 60px;
-    height: 2px;
-    top: 12px;
-    left: 30px;
+    width: 80px;
+    height: 3px;
+    top: 16px;
+    left: 40px;
     position: absolute;
     z-index: 1;
     background: rgba(255, 255, 255, 0.2);
@@ -469,7 +473,7 @@ onMounted(() => {
   .content-display {
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
     max-width: 100%;
   }
 
@@ -509,13 +513,13 @@ onMounted(() => {
   }
 
   .polaroid-image {
-    width: 280px;
-    height: 350px;
+    width: 350px;
+    height: 440px;
   }
 
   .description-section {
-    padding: 1.5rem;
-    min-height: 350px;
+    padding: 2rem;
+    min-height: 400px;
   }
 }
 
@@ -525,17 +529,17 @@ onMounted(() => {
   }
 
   .timeline {
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .polaroid-image {
-    width: 240px;
-    height: 300px;
+    width: 300px;
+    height: 375px;
   }
 
   .description-section {
-    padding: 1rem;
-    min-height: 300px;
+    padding: 1.5rem;
+    min-height: 350px;
   }
 }
 </style>
