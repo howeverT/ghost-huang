@@ -2,7 +2,6 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import BackgroundSlideshow from './components/BackgroundSlideshow.vue'
 
 const route = useRoute()
 const pageTransitioning = ref(false)
@@ -26,13 +25,14 @@ watch(
 </script>
 
 <template>
-  <BackgroundSlideshow />
+  <!-- <BackgroundSlideshow /> -->
 
   <header class="top-navbar">
     <div class="nav-container">
       <nav>
         <RouterLink to="/">主页</RouterLink>
         <RouterLink to="/about">宇宙无敌号</RouterLink>
+        <RouterLink to="/history">考古区</RouterLink>
       </nav>
     </div>
   </header>
@@ -58,7 +58,7 @@ watch(
   width: 100vw;
   height: 6vh;
   background: transparent;
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,24 +108,26 @@ nav a.router-link-exact-active {
 }
 
 .main-content {
-  margin-top: 8vh;
-  min-height: 92vh;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 .content-wrapper {
-  width: 100%;
-  max-width: 90vw;
+  width: 100vw;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 2vh 5vw;
+  padding: 0;
   transition:
     opacity 0.6s ease-in-out,
     transform 0.6s ease-in-out;
@@ -159,13 +161,13 @@ nav a.router-link-exact-active {
   }
 
   .main-content {
-    margin-top: 10vh;
-    min-height: 90vh;
+    margin-top: 0;
+    min-height: 100vh;
   }
 
   .content-wrapper {
-    max-width: 95vw;
-    padding: 2vh 3vw;
+    max-width: 100vw;
+    padding: 0;
   }
 }
 
@@ -185,13 +187,13 @@ nav a.router-link-exact-active {
   }
 
   .main-content {
-    margin-top: 12vh;
-    min-height: 88vh;
+    margin-top: 0;
+    min-height: 100vh;
   }
 
   .content-wrapper {
-    max-width: 98vw;
-    padding: 2vh 2vw;
+    max-width: 100vw;
+    padding: 0;
   }
 }
 </style>

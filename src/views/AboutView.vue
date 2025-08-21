@@ -184,16 +184,17 @@ onMounted(() => {
 /* 时间轴容器 */
 .timeline-container {
   display: flex;
-  width: fit-content;
-  gap: 8rem;
+  width: 85vw;
+  gap: 4vw;
   align-items: flex-start;
   justify-content: center;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* 左侧时间轴 */
 .timeline-left {
-  flex: 0 0 200px;
+  flex: 0 0 10vw;
   display: flex;
   justify-content: flex-start;
   margin-left: 0;
@@ -293,7 +294,7 @@ onMounted(() => {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 3rem;
+  gap: 3vw;
   max-width: 100%;
   opacity: 0;
   transform: translateY(20px);
@@ -314,7 +315,7 @@ onMounted(() => {
 
 .polaroid-frame {
   background: rgba(255, 255, 255, 0.65);
-  padding: 1.5rem;
+  padding: 1.5vw;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   transform: rotate(-2deg);
   transition: transform 0.3s ease;
@@ -325,8 +326,8 @@ onMounted(() => {
 }
 
 .polaroid-image {
-  width: 350px;
-  height: 440px;
+  width: 19vw;
+  height: 25.25vw;
   overflow: hidden;
   border: 1px solid #ddd;
 }
@@ -351,15 +352,16 @@ onMounted(() => {
   flex: 1;
   text-align: left;
   background: rgba(255, 255, 255, 0.1);
-  padding: 2.5rem;
+  padding: 2.5vw;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  min-height: 450px;
+  min-height: 45vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 50vw;
+  min-width: 35vw;
+  max-width: 40vw;
 }
 
 .description-section h3 {
