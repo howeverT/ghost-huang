@@ -9,10 +9,11 @@ const contentVisible = ref(true)
 
 // 定义时间轴数据类型
 interface TimelineItem {
-  year: string
+  date: string
   title: string
   description: string
   places: string
+  display?: 'left' | 'right'
   links: {
     link_title: string
     link: string
@@ -124,6 +125,9 @@ onMounted(() => {
         }"
       ></div>
 
+      <!-- 半透明黑色蒙版 -->
+      <div class="overlay-mask"></div>
+
       <!-- 导航箭头 -->
       <div class="navigation-arrows">
         <div class="arrow left-arrow" @click="prevImage" title="上一张">
@@ -175,7 +179,7 @@ onMounted(() => {
     </div>
 
     <!-- 内容区域 -->
-    <div class="content-overlay">
+    <div class="content-overlay" :class="`content-${currentData?.display || 'right'}`">
       <div class="content-container" :class="{ visible: contentVisible }">
         <!-- 介绍文字 -->
         <div class="description-section">
@@ -183,6 +187,10 @@ onMounted(() => {
           <p class="places-text">
             <el-icon><LocationFilled /></el-icon>
             {{ currentData?.places }}
+          </p>
+          <p class="places-text">
+            <el-icon><Calendar /></el-icon>
+            {{ currentData?.date }}
           </p>
           <p class="description-text">
             {{ currentData?.description }}
@@ -321,6 +329,18 @@ onMounted(() => {
   min-height: 100vh;
 }
 
+/* 半透明黑色蒙版 */
+.overlay-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  pointer-events: none;
+}
+
 /* 导航箭头 */
 .navigation-arrows {
   position: absolute;
@@ -331,7 +351,7 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   padding: 0 2rem;
-  z-index: 100;
+  z-index: 200;
   pointer-events: auto;
 }
 
@@ -364,7 +384,7 @@ onMounted(() => {
   transform: translateX(-50%);
   display: flex;
   gap: 1rem;
-  z-index: 10;
+  z-index: 200;
 }
 
 .indicator {
@@ -394,13 +414,22 @@ onMounted(() => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 5;
+  z-index: 150;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   padding: 2rem;
   box-sizing: border-box;
   pointer-events: none;
+}
+
+/* 右侧布局（默认） */
+.content-right {
+  justify-content: flex-end;
+}
+
+/* 左侧布局 */
+.content-left {
+  justify-content: flex-start;
 }
 
 .content-container {
@@ -408,13 +437,24 @@ onMounted(() => {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  max-width: 700px;
+  max-width: 35vw;
   width: 100%;
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s ease-in-out;
   pointer-events: auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* 右侧布局时的边距 */
+.content-right .content-container {
   margin-right: 8rem;
+}
+
+/* 左侧布局时的边距 */
+.content-left .content-container {
+  margin-left: 8rem;
 }
 
 .content-container.visible {
@@ -435,8 +475,12 @@ onMounted(() => {
   overflow: hidden;
 }
 
+.content-left .places-text {
+  justify-content: flex-start;
+}
+
 .description-section h3 {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 1.5rem;
   color: #667eea;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
@@ -445,7 +489,7 @@ onMounted(() => {
 }
 
 .places-text {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   line-height: 1.6;
   color: #667eea;
   margin-bottom: 1.5rem;
@@ -460,17 +504,21 @@ onMounted(() => {
 
 .places-text .el-icon {
   color: #667eea;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 .description-text {
-  font-size: 1rem;
+  font-size: 1.3rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 2rem;
   text-align: left;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  border-left: 3px solid rgba(255, 255, 255, 0.3);
+  padding-left: 1rem;
 }
 
 /* 链接列表样式 */
@@ -509,7 +557,7 @@ onMounted(() => {
 }
 
 .link-text {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 500;
   word-wrap: break-word;
   overflow-wrap: break-word;

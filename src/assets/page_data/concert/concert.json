@@ -1,6 +1,6 @@
 [
   {
-    "year": "2024/11/01",
+    "date": "2024/11/01",
     "title": "北京站 Day1",
     "description": "探索宇宙的奥秘，发现更多美好的事物。让我们一起在星辰大海中遨游，寻找属于我们的梦想。",
     "places": "北京·华熙LIVE·五棵松·场馆",
@@ -16,10 +16,11 @@
         "icon": "video"
       }
     ],
-    "image": ["/src/assets/background/Beijing-day1.jpg"]
+    "image": ["/src/assets/background/Beijing-day1.jpg"],
+    "display": "right"
   },
   {
-    "year": "2024/11/02",
+    "date": "2024/11/02",
     "title": "北京站 Day2",
     "description": "开始追逐梦想，踏上星辰大海的征程。每一个梦想都值得我们去追逐，每一次努力都会让我们更接近目标。",
     "places": "北京·华熙LIVE·五棵松·场馆",
@@ -35,10 +36,11 @@
         "icon": "video"
       }
     ],
-    "image": ["/src/assets/background//Beijing-day2.jpg"]
+    "image": ["/src/assets/background//Beijing-day2.jpg"],
+    "display": "right"
   },
   {
-    "year": "2025/03/22",
+    "date": "2025/03/22",
     "title": "广州站",
     "description": "心中种下星辰大海的种子，等待发芽。最初的梦想总是最珍贵的，让我们不忘初心，继续前行。",
     "places": "宝能广州国际体育演艺中心",
@@ -64,10 +66,11 @@
         "icon": "video"
       }
     ],
-    "image": ["/src/assets/background/background.jpg"]
+    "image": ["/src/assets/background/Guangzhou.jpg"],
+    "display": "left"
   },
   {
-    "year": "2025/05/24",
+    "date": "2025/05/24",
     "title": "成都站",
     "description": "———其实我是因为魔星保护了我的梦才走到这里。我时常在夜里会把我的枕头哭湿。你们为了我一次又一次地承受这些伤害，我不知道我要怎么做，才能让你们更快乐，不委屈。我一直老说，我一定要变强，我才能保护你们，但是我觉得我没有保护好。而是你们一直冲在前面为我遮挡这些伤害。让我安心地做音乐，累不累啊。不可能不累的，累就对了其实，因为我们都在走上坡路。",
     "places": "成都东安湖体育公园多功能体育馆",
@@ -98,10 +101,11 @@
         "icon": "picture"
       }
     ],
-    "image": ["/src/assets/background/background.jpg"]
+    "image": ["/src/assets/background/Chengdu.jpg"],
+    "display": "right"
   },
   {
-    "year": "2025/07/26",
+    "date": "2025/07/26",
     "title": "上海站",
     "description": "———其实我是因为魔星保护了我的梦才走到这里。我时常在夜里会把我的枕头哭湿。你们为了我一次又一次地承受这些伤害，我不知道我要怎么做，才能让你们更快乐，不委屈。我一直老说，我一定要变强，我才能保护你们，但是我觉得我没有保护好。而是你们一直冲在前面为我遮挡这些伤害。让我安心地做音乐，累不累啊。不可能不累的，累就对了其实，因为我们都在走上坡路。",
     "places": "上海梅赛德斯-奔驰文化中心",
@@ -122,6 +126,7 @@
         "icon": "video"
       }
     ],
-    "image": ["/src/assets/background/background.jpg"]
+    "image": ["/src/assets/background/background.jpg"],
+    "display": "left"
   }
 ]
