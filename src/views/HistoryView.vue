@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref, computed } from 'vue'
-import { ElButton } from 'element-plus'
-import { VideoPlay, Headset, LocationFilled } from '@element-plus/icons-vue'
+import { VideoPlay } from '@element-plus/icons-vue'
 
 const pageLoaded = ref(false)
 const currentIndex = ref(0)
@@ -9,17 +8,13 @@ const contentVisible = ref(true)
 
 // 定义时间轴数据类型
 interface TimelineItem {
-  date: string
-  title: string
-  description: string
-  places: string
-  display?: 'left' | 'right'
+  year: string
   links: {
     link_title: string
     link: string
     icon: string
   }[]
-  image: string[]
+  image?: string[]
 }
 
 // 时间轴数据 - 从JSON文件读取
@@ -28,7 +23,7 @@ const timelineData = ref<TimelineItem[]>([])
 // 从JSON文件加载数据
 const loadTimelineData = async () => {
   try {
-    const response = await fetch('/src/assets/page_data/concert/concert.json')
+    const response = await fetch('/src/assets/page_data/history/history.json')
     const data = await response.json()
     timelineData.value = data
     console.log('成功加载数据:', data)
@@ -93,6 +88,12 @@ const currentData = computed(() => {
   return timelineData.value[currentIndex.value]
 })
 
+// 根据类型获取链接
+const getLinksByType = (type: string) => {
+  if (!currentData.value?.links) return []
+  return currentData.value.links.filter((link) => link.icon === type)
+}
+
 // 处理指示器点击
 const handleIndicatorClick = (index: number) => {
   contentVisible.value = false
@@ -121,7 +122,7 @@ onMounted(() => {
       <div
         class="background-image"
         :style="{
-          backgroundImage: `url(${currentData?.image[0] || '/src/assets/background/background.jpg'})`,
+          backgroundImage: `url(${currentData?.image?.[0] || '/src/assets/background/background.jpg'})`,
         }"
       ></div>
 
@@ -179,63 +180,106 @@ onMounted(() => {
     </div>
 
     <!-- 内容区域 -->
-    <div class="content-overlay" :class="`content-${currentData?.display || 'right'}`">
+    <div class="content-overlay content-right">
       <div class="content-container" :class="{ visible: contentVisible }">
         <!-- 介绍文字 -->
         <div class="description-section">
-          <h3>{{ currentData?.title }}</h3>
-          <p class="places-text">
-            <el-icon><LocationFilled /></el-icon>
-            {{ currentData?.places }}
-          </p>
-          <p class="places-text">
-            <el-icon><Calendar /></el-icon>
-            {{ currentData?.date }}
-          </p>
-          <p class="description-text">
-            {{ currentData?.description }}
-          </p>
-          <div class="links-container">
-            <a
-              v-for="(link, index) in currentData?.links"
-              :key="index"
-              :href="link.link"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="link-item"
-            >
-              <el-icon v-if="link.icon === 'video'">
-                <VideoPlay />
-              </el-icon>
-              <el-icon v-else-if="link.icon === 'audio'">
-                <Headset />
-              </el-icon>
-              <el-icon v-else-if="link.icon === 'picture'">
+          <h3>{{ currentData?.year }}年</h3>
+
+          <!-- 视频分类 -->
+          <div v-if="getLinksByType('video').length > 0" class="category-section">
+            <h4 class="category-title">🎥 视频</h4>
+            <div class="links-grid">
+              <a
+                v-for="(link, index) in getLinksByType('video')"
+                :key="index"
+                :href="link.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="link-item"
+              >
+                <el-icon><VideoPlay /></el-icon>
+                <span class="link-text">{{ link.link_title }}</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- 综艺分类 -->
+          <div v-if="getLinksByType('variety').length > 0" class="category-section">
+            <h4 class="category-title">📺 综艺</h4>
+            <div class="links-grid">
+              <a
+                v-for="(link, index) in getLinksByType('variety')"
+                :key="index"
+                :href="link.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="link-item"
+              >
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M23 19C23 19.5304 22.7893 20.0391 22.4142 20.4142C22.0391 20.7893 21.5304 21 21 21H3C2.46957 21 1.96086 20.7893 1.58579 20.4142C1.21071 20.0391 1 19.5304 1 19V8C1 7.46957 1.21071 6.96086 1.58579 6.58579C1.96086 6.21071 2.46957 6 3 6H7L9 3H15L17 6H21C21.5304 6 22.0391 6.21071 22.4142 6.58579C22.7893 6.96086 23 7.46957 23 8V19Z"
+                    d="M12 2L2 7L12 12L22 7L12 2Z"
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
                   <path
-                    d="M12 17C16 15.2091 16 13C16 10.7909 14.2091 9 12 9C9.79086 9 8 10.7909 8 13C8 15.2091 9.79086 17 12 17Z"
+                    d="M2 17L12 22L22 17"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M2 12L12 17L22 12"
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
                 </svg>
-              </el-icon>
-              <span class="link-text">{{ link.link_title }}</span>
-            </a>
+                <span class="link-text">{{ link.link_title }}</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- 音乐节分类 -->
+          <div v-if="getLinksByType('festival').length > 0" class="category-section">
+            <h4 class="category-title">⭐ 音乐节/演出</h4>
+            <div class="links-grid">
+              <a
+                v-for="(link, index) in getLinksByType('festival')"
+                :key="index"
+                :href="link.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="link-item"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span class="link-text">{{ link.link_title }}</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -422,14 +466,9 @@ onMounted(() => {
   pointer-events: none;
 }
 
-/* 右侧布局（默认） */
+/* 右侧布局 */
 .content-right {
   justify-content: flex-end;
-}
-
-/* 左侧布局 */
-.content-left {
-  justify-content: flex-start;
 }
 
 .content-container {
@@ -452,11 +491,6 @@ onMounted(() => {
   margin-right: 8rem;
 }
 
-/* 左侧布局时的边距 */
-.content-left .content-container {
-  margin-left: 8rem;
-}
-
 .content-container.visible {
   opacity: 1;
   transform: translateY(0);
@@ -473,10 +507,52 @@ onMounted(() => {
   justify-content: flex-start;
   max-width: 100%;
   overflow: hidden;
+  margin-top: 2rem;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-.content-left .places-text {
-  justify-content: flex-start;
+/* 隐藏滚动条 */
+.description-section::-webkit-scrollbar {
+  display: none;
+}
+
+/* 分类标题 */
+.category-title {
+  font-size: 1.5rem;
+  color: #667eea;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+/* 链接网格 */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  padding-right: 0.5rem;
+}
+
+/* 隐藏滚动条 */
+.links-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* 悬停效果增强 */
+.links-grid .link-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .description-section h3 {
@@ -534,13 +610,16 @@ onMounted(() => {
 .link-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
   color: white;
   text-decoration: none;
   transition: all 0.3s ease;
-  padding: 0.5rem 0;
-  width: 100%;
+  padding: 0.8rem;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
 }
 
 .link-item:hover {
@@ -549,15 +628,15 @@ onMounted(() => {
 }
 
 .link-item .el-icon {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #667eea;
-  width: 24px;
+  width: 20px;
   text-align: center;
   flex-shrink: 0;
 }
 
 .link-text {
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   font-weight: 500;
   word-wrap: break-word;
   overflow-wrap: break-word;
