@@ -7,6 +7,20 @@ const route = useRoute()
 const pageTransitioning = ref(false)
 const pageVisible = ref(true)
 
+// 二级菜单状态
+const showHistorySubmenu = ref(false)
+const showYearSubmenu = ref(false)
+const selectedYear = ref('2024')
+const selectedType = ref('all')
+
+// 年份和类型数据
+const years = ['2024', '2023', '2022']
+const types = [
+  { key: 'video', label: '视频' },
+  { key: 'variety', label: '综艺' },
+  { key: 'festival', label: '音乐节/演出' },
+]
+
 // 监听路由变化，添加页面切换动画
 watch(
   () => route.path,
@@ -22,6 +36,39 @@ watch(
     }, 300)
   },
 )
+
+// 处理年份选择
+const handleYearSelect = (year: string) => {
+  selectedYear.value = year
+  showYearSubmenu.value = false
+  // 触发全局事件，通知HistoryView更新年份
+  window.dispatchEvent(
+    new CustomEvent('history-filter-changed', {
+      detail: { year, type: selectedType.value },
+    }),
+  )
+}
+
+// 处理类型选择
+const handleTypeSelect = (type: string) => {
+  selectedType.value = type
+  showYearSubmenu.value = false
+  showHistorySubmenu.value = false
+  // 触发全局事件，通知HistoryView更新筛选
+  window.dispatchEvent(
+    new CustomEvent('history-filter-changed', {
+      detail: { year: selectedYear.value, type },
+    }),
+  )
+}
+
+// 关闭所有菜单
+const closeAllMenus = () => {
+  setTimeout(() => {
+    showHistorySubmenu.value = false
+    showYearSubmenu.value = false
+  }, 200)
+}
 </script>
 
 <template>
@@ -32,7 +79,45 @@ watch(
       <nav>
         <RouterLink to="/">主页</RouterLink>
         <RouterLink to="/about">宇宙无敌号</RouterLink>
-        <RouterLink to="/history">考古区</RouterLink>
+        <!-- 考古区带二级菜单 -->
+        <div
+          class="nav-item-with-submenu"
+          @mouseenter="showHistorySubmenu = true"
+          @mouseleave="closeAllMenus"
+        >
+          <RouterLink to="/history" class="nav-link">考古区</RouterLink>
+
+          <!-- 二级菜单：年份 -->
+          <div
+            v-if="showHistorySubmenu"
+            class="submenu year-submenu"
+            @mouseenter="showYearSubmenu = true"
+            @mouseleave="showYearSubmenu = false"
+          >
+            <div
+              v-for="year in years"
+              :key="year"
+              class="submenu-item year-item"
+              :class="{ active: selectedYear === year }"
+              @click="handleYearSelect(year)"
+            >
+              {{ year }}
+
+              <!-- 三级菜单：类型 -->
+              <div v-if="showYearSubmenu && selectedYear === year" class="submenu type-submenu">
+                <div
+                  v-for="type in types"
+                  :key="type.key"
+                  class="submenu-item type-item"
+                  :class="{ active: selectedType === type.key }"
+                  @click="handleTypeSelect(type.key)"
+                >
+                  {{ type.label }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
@@ -105,6 +190,98 @@ nav a:hover {
 nav a.router-link-exact-active {
   color: #667eea;
   font-weight: bold;
+}
+
+/* 二级菜单样式 */
+.nav-item-with-submenu {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item-with-submenu .nav-link {
+  padding: 0 4vw;
+  color: white;
+  text-decoration: none;
+  font-size: clamp(0.7rem, 2.5vw, 1.1rem);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  height: 100%;
+  min-width: 15vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-item-with-submenu .nav-link:hover {
+  color: #667eea;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0;
+  min-width: 120px;
+  z-index: 1001;
+}
+
+.year-submenu {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.year-item {
+  position: relative;
+  padding: 0.5rem 1rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.year-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #667eea;
+}
+
+.year-item.active {
+  background: rgba(102, 126, 234, 0.3);
+  color: #667eea;
+}
+
+/* 三级菜单样式 */
+.type-submenu {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  margin-left: 5px;
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0;
+  min-width: 100px;
+}
+
+.type-item {
+  padding: 0.5rem 1rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.type-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #667eea;
+}
+
+.type-item.active {
+  background: rgba(102, 126, 234, 0.3);
+  color: #667eea;
 }
 
 .main-content {

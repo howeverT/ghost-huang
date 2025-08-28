@@ -1,20 +1,26 @@
 <script setup lang="ts">
 import { onMounted, ref, computed } from 'vue'
-import { VideoPlay } from '@element-plus/icons-vue'
+import { Film, Headset, Star } from '@element-plus/icons-vue'
 
 const pageLoaded = ref(false)
 const currentIndex = ref(0)
 const contentVisible = ref(true)
 
+// 筛选状态（用于导航菜单）
+const selectedYear = ref('2024')
+const selectedType = ref('video')
+
 // 定义时间轴数据类型
 interface TimelineItem {
   year: string
+  title: string
   links: {
     link_title: string
     link: string
     icon: string
   }[]
   image?: string[]
+  display?: 'left' | 'right'
 }
 
 // 时间轴数据 - 从JSON文件读取
@@ -88,12 +94,6 @@ const currentData = computed(() => {
   return timelineData.value[currentIndex.value]
 })
 
-// 根据类型获取链接
-const getLinksByType = (type: string) => {
-  if (!currentData.value?.links) return []
-  return currentData.value.links.filter((link) => link.icon === type)
-}
-
 // 处理指示器点击
 const handleIndicatorClick = (index: number) => {
   contentVisible.value = false
@@ -105,9 +105,32 @@ const handleIndicatorClick = (index: number) => {
   }, 300)
 }
 
+// 监听筛选变化事件
+const handleFilterChange = (event: CustomEvent) => {
+  const { year, type } = event.detail
+
+  // 根据年份找到对应的索引
+  const yearIndex = timelineData.value.findIndex((item) => item.year === year)
+  if (yearIndex !== -1) {
+    currentIndex.value = yearIndex
+  }
+
+  selectedYear.value = year
+  selectedType.value = type
+
+  // 重新显示内容
+  contentVisible.value = false
+  setTimeout(() => {
+    contentVisible.value = true
+  }, 100)
+}
+
 onMounted(() => {
   // 加载时间轴数据
   loadTimelineData()
+
+  // 添加事件监听器
+  window.addEventListener('history-filter-changed', handleFilterChange as EventListener)
 
   setTimeout(() => {
     pageLoaded.value = true
@@ -180,106 +203,32 @@ onMounted(() => {
     </div>
 
     <!-- 内容区域 -->
-    <div class="content-overlay content-right">
+    <div class="content-overlay" :class="`content-${currentData?.display || 'right'}`">
       <div class="content-container" :class="{ visible: contentVisible }">
         <!-- 介绍文字 -->
         <div class="description-section">
-          <h3>{{ currentData?.year }}年</h3>
+          <h3>{{ currentData?.title }}</h3>
 
-          <!-- 视频分类 -->
-          <div v-if="getLinksByType('video').length > 0" class="category-section">
-            <h4 class="category-title">🎥 视频</h4>
-            <div class="links-grid">
-              <a
-                v-for="(link, index) in getLinksByType('video')"
-                :key="index"
-                :href="link.link"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="link-item"
-              >
-                <el-icon><VideoPlay /></el-icon>
-                <span class="link-text">{{ link.link_title }}</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- 综艺分类 -->
-          <div v-if="getLinksByType('variety').length > 0" class="category-section">
-            <h4 class="category-title">📺 综艺</h4>
-            <div class="links-grid">
-              <a
-                v-for="(link, index) in getLinksByType('variety')"
-                :key="index"
-                :href="link.link"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="link-item"
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 2L2 7L12 12L22 7L12 2Z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M2 17L12 22L22 17"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M2 12L12 17L22 12"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <span class="link-text">{{ link.link_title }}</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- 音乐节分类 -->
-          <div v-if="getLinksByType('festival').length > 0" class="category-section">
-            <h4 class="category-title">⭐ 音乐节/演出</h4>
-            <div class="links-grid">
-              <a
-                v-for="(link, index) in getLinksByType('festival')"
-                :key="index"
-                :href="link.link"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="link-item"
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <span class="link-text">{{ link.link_title }}</span>
-              </a>
-            </div>
+          <div class="links-container">
+            <a
+              v-for="(link, index) in currentData?.links"
+              :key="index"
+              :href="link.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link-item"
+            >
+              <el-icon v-if="link.icon === 'video'">
+                <Film />
+              </el-icon>
+              <el-icon v-else-if="link.icon === 'variety'">
+                <Headset />
+              </el-icon>
+              <el-icon v-else-if="link.icon === 'festival'">
+                <Star />
+              </el-icon>
+              <span class="link-text">{{ link.link_title }}</span>
+            </a>
           </div>
         </div>
       </div>
@@ -466,9 +415,14 @@ onMounted(() => {
   pointer-events: none;
 }
 
-/* 右侧布局 */
+/* 右侧布局（默认） */
 .content-right {
   justify-content: flex-end;
+}
+
+/* 左侧布局 */
+.content-left {
+  justify-content: flex-start;
 }
 
 .content-container {
@@ -489,6 +443,11 @@ onMounted(() => {
 /* 右侧布局时的边距 */
 .content-right .content-container {
   margin-right: 8rem;
+}
+
+/* 左侧布局时的边距 */
+.content-left .content-container {
+  margin-left: 8rem;
 }
 
 .content-container.visible {
@@ -527,32 +486,6 @@ onMounted(() => {
   margin-top: 2rem;
   border-bottom: 2px solid rgba(102, 126, 234, 0.3);
   padding-bottom: 0.5rem;
-}
-
-/* 链接网格 */
-.links-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-bottom: 2rem;
-  max-height: 280px;
-  overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  padding-right: 0.5rem;
-}
-
-/* 隐藏滚动条 */
-.links-grid::-webkit-scrollbar {
-  display: none;
-}
-
-/* 悬停效果增强 */
-.links-grid .link-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .description-section h3 {
@@ -610,16 +543,13 @@ onMounted(() => {
 .link-item {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 1rem;
   color: white;
   text-decoration: none;
   transition: all 0.3s ease;
-  padding: 0.8rem;
-  box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .link-item:hover {
@@ -628,15 +558,15 @@ onMounted(() => {
 }
 
 .link-item .el-icon {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #667eea;
-  width: 20px;
+  width: 24px;
   text-align: center;
   flex-shrink: 0;
 }
 
 .link-text {
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   font-weight: 500;
   word-wrap: break-word;
   overflow-wrap: break-word;

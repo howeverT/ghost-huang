@@ -22,6 +22,16 @@ const router = createRouter({
       name: 'history',
       component: () => import('../views/HistoryView.vue'),
     },
+    // {
+    //   path: '/chengdu',
+    //   name: 'chengdu',
+    //   component: () => import('../views/ChengduView.vue'),
+    // },
+    {
+      path: '/concert/:city',
+      name: 'concert',
+      component: () => import('../views/ConcertView.vue'),
+    },
   ],
 })
 
