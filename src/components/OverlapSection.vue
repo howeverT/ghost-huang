@@ -7,7 +7,7 @@
           <h3 class="black-title">{{ title }}</h3>
           <p class="black-text">{{ content }}</p>
           <button v-if="buttonLink" class="action-button" @click="handleButtonClick">
-            跳转视频 >
+            跳转视频 <el-icon class="chevron-icon"><ArrowRight /></el-icon>
           </button>
         </div>
       </div>
@@ -114,6 +114,16 @@ const handleButtonClick = () => {
   background-color: #f8f9fa;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.chevron-icon {
+  margin-left: 0.5rem;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+  fill: currentColor; /* SVG会继承父元素的颜色 */
+  position: relative;
+  top: -2.5px; /* 微调位置，让箭头稍微往上一点点 */
 }
 
 .left-rectangle {

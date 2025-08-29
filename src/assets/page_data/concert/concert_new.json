@@ -71,7 +71,7 @@
     "content": [
       {
         "type": "HeroSection",
-        "title": "北京站 Day1",
+        "title": "北京站",
         "title_align": "center",
         "title_margin": "0",
         "background_image": "/src/assets/background/Beijing-day1.jpg",

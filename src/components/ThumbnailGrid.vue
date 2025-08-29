@@ -15,7 +15,14 @@
               height: dynamicImageHeight,
             }"
           ></div>
-          <div class="thumbnail-title">{{ item.title }}</div>
+          <div class="thumbnail-title">
+            {{ item.title }}
+            <svg class="title-arrow" viewBox="0 0 31 40" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10.974 40L0 29.04 9.052 20 0 10.96 10.974 0 31 20 10.974 40zm-9.27-10.96l9.27 9.258L29.296 20 10.974 1.702l-9.27 9.257L10.757 20l-9.053 9.04z"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -151,6 +158,14 @@ const handleItemClick = (item: ThumbnailItem) => {
     rgba(0, 0, 0, 0.2) 80%,
     transparent 100%
   );
+}
+
+.title-arrow {
+  margin-left: 0.5rem;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+  fill: white;
 }
 
 /* 响应式布局 */
