@@ -1,36 +1,71 @@
 <template>
   <div class="thumbnail-section">
-    <div class="thumbnail-container">
-      <div v-for="(row, rowIndex) in thumbnailRows" :key="rowIndex" class="thumbnail-row">
-        <div
-          v-for="(item, itemIndex) in row"
-          :key="itemIndex"
-          class="thumbnail-item"
-          @click="handleItemClick(item)"
-        >
+    <div class="carousel-container">
+      <!-- 左箭头 -->
+      <button
+        class="carousel-arrow carousel-arrow-left"
+        @click="previousSlide"
+        :disabled="currentIndex === 0"
+      >
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </button>
+
+      <!-- 相框容器 -->
+      <div class="frames-container">
+        <div class="frames-wrapper" :style="{ transform: `translateX(-${currentIndex * slideWidth}px)` }">
           <div
-            class="thumbnail-image"
-            :style="{
-              backgroundImage: `url(${item.image})`,
-              height: dynamicImageHeight,
-            }"
-          ></div>
-          <div class="thumbnail-title">
-            {{ item.title }}
-            <svg class="title-arrow" viewBox="0 0 31 40" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M10.974 40L0 29.04 9.052 20 0 10.96 10.974 0 31 20 10.974 40zm-9.27-10.96l9.27 9.258L29.296 20 10.974 1.702l-9.27 9.257L10.757 20l-9.053 9.04z"
-              />
-            </svg>
+            v-for="(item, index) in items"
+            :key="index"
+            class="frame-item"
+            @click="handleItemClick(item)"
+          >
+            <div class="frame-border">
+              <div class="frame-content">
+                <div
+                  class="frame-image"
+                  :style="{
+                    backgroundImage: `url(${item.image})`,
+                  }"
+                ></div>
+                <div class="frame-title">
+                  {{ item.title }}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- 右箭头 -->
+      <button
+        class="carousel-arrow carousel-arrow-right"
+        @click="nextSlide"
+        :disabled="currentIndex >= maxIndex"
+      >
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+        </svg>
+      </button>
     </div>
+
+    <!-- 指示器 -->
+    <div class="carousel-indicators">
+      <button
+        v-for="(_, index) in items"
+        :key="index"
+        class="indicator"
+        :class="{ active: index === currentIndex }"
+        @click="goToSlide(index)"
+      ></button>
+    </div>
+
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 
 interface ThumbnailItem {
   image: string
@@ -40,7 +75,7 @@ interface ThumbnailItem {
 
 interface Props {
   items?: ThumbnailItem[]
-  itemsPerRow?: number
+  itemsPerView?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -52,43 +87,55 @@ const props = withDefaults(defineProps<Props>(), {
     { image: '/src/assets/background/History2024.jpg', title: '历史回顾' },
     { image: '/src/assets/background/background.jpg', title: '精彩瞬间' },
   ],
-  itemsPerRow: 3,
+  itemsPerView: 3,
 })
 
-// 将items分组为行
-const thumbnailRows = computed(() => {
-  const rows = []
-  for (let i = 0; i < props.items.length; i += props.itemsPerRow) {
-    rows.push(props.items.slice(i, i + props.itemsPerRow))
+const currentIndex = ref(0)
+const slideWidth = ref(0)
+const containerWidth = ref(0)
+
+// 计算最大索引
+const maxIndex = computed(() => {
+  return Math.max(0, props.items.length - props.itemsPerView)
+})
+
+// 计算每个相框的宽度
+const frameWidth = computed(() => {
+  return containerWidth.value / props.itemsPerView
+})
+
+// 计算滑动距离
+const slideWidthComputed = computed(() => {
+  return frameWidth.value
+})
+
+// 更新尺寸
+const updateDimensions = () => {
+  const container = document.querySelector('.frames-container')
+  if (container) {
+    containerWidth.value = container.clientWidth
+    slideWidth.value = slideWidthComputed.value
   }
-  return rows
-})
+}
 
-// 根据每行显示数量动态计算图片高度
-const dynamicImageHeight = computed(() => {
-  const itemsPerRow = props.itemsPerRow || 3
-  const isMobile = window.innerWidth <= 768
-  const isSmallMobile = window.innerWidth <= 480
-
-  if (isSmallMobile) {
-    // 小手机端
-    if (itemsPerRow === 1) return '250px'
-    if (itemsPerRow === 2) return '200px'
-    if (itemsPerRow === 3) return '180px'
-  } else if (isMobile) {
-    // 平板端
-    if (itemsPerRow === 1) return '400px'
-    if (itemsPerRow === 2) return '300px'
-    if (itemsPerRow === 3) return '250px'
-  } else {
-    // 桌面端
-    if (itemsPerRow === 1) return '800px' // 2个item，每行1个
-    if (itemsPerRow === 2) return '600px' // 4个item，每行2个
-    if (itemsPerRow === 3) return '400px' // 6个item，每行3个
+// 下一张
+const nextSlide = () => {
+  if (currentIndex.value < maxIndex.value) {
+    currentIndex.value++
   }
+}
 
-  return '350px' // 默认值
-})
+// 上一张
+const previousSlide = () => {
+  if (currentIndex.value > 0) {
+    currentIndex.value--
+  }
+}
+
+// 跳转到指定幻灯片
+const goToSlide = (index: number) => {
+  currentIndex.value = index
+}
 
 // 处理缩略图点击
 const handleItemClick = (item: ThumbnailItem) => {
@@ -96,9 +143,57 @@ const handleItemClick = (item: ThumbnailItem) => {
     window.open(item.link, '_blank')
   }
 }
+
+// 自动播放
+let autoPlayInterval: number | null = null
+
+const startAutoPlay = () => {
+  autoPlayInterval = window.setInterval(() => {
+    if (currentIndex.value >= maxIndex.value) {
+      currentIndex.value = 0
+    } else {
+      currentIndex.value++
+    }
+  }, 5000)
+}
+
+const stopAutoPlay = () => {
+  if (autoPlayInterval) {
+    clearInterval(autoPlayInterval)
+    autoPlayInterval = null
+  }
+}
+
+onMounted(() => {
+  updateDimensions()
+  window.addEventListener('resize', updateDimensions)
+  startAutoPlay()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateDimensions)
+  stopAutoPlay()
+})
 </script>
 
 <style scoped>
+.el-carousel__item h3 {
+  color: #475669;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+  text-align: center;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
+}
+
+
 .thumbnail-section {
   width: 100%;
   background-color: #f8f9fa;
@@ -106,79 +201,215 @@ const handleItemClick = (item: ThumbnailItem) => {
   flex-shrink: 0;
 }
 
-.thumbnail-container {
+.carousel-container {
+  position: relative;
   width: 100%;
-  padding: 0;
-}
-
-.thumbnail-row {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  width: 100%;
-  margin-bottom: 0;
+  align-items: center;
+  gap: 2rem;
 }
 
-.thumbnail-row:last-child {
-  margin-bottom: 0;
-}
-
-.thumbnail-item {
+.frames-container {
   flex: 1;
-  position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.thumbnail-item:hover {
-  transform: scale(1.02);
-}
-
-.thumbnail-image {
-  width: 100%;
-  background-size: cover;
-  background-position: center 30%;
-  background-repeat: no-repeat;
   position: relative;
 }
 
-.thumbnail-title {
+.frames-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 2rem;
+}
+
+.frame-item {
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.frame-item:hover {
+  transform: scale(1.05);
+}
+
+.frame-border {
+  width: 400px;
+  height: 300px;
+  padding: 15px;
+  background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+  border-radius: 15px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.frame-border::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 2px solid #d0d0d0;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.frame-content {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.frame-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.frame-title {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 2rem 1.5rem 1.5rem;
-  font-size: 1.5rem;
+  padding: 1.5rem 1rem 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: white;
-  text-align: left;
+  text-align: center;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.6) 40%,
     rgba(0, 0, 0, 0.2) 80%,
     transparent 100%
   );
 }
 
-.title-arrow {
-  margin-left: 0.5rem;
-  width: 1.2em;
-  height: 1.2em;
-  vertical-align: middle;
-  fill: white;
+.carousel-arrow {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+  background: white;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.carousel-arrow svg {
+  width: 24px;
+  height: 24px;
+  fill: #333;
+}
+
+.carousel-arrow-left svg {
+  transform: translateX(-1px);
+}
+
+.carousel-arrow-right svg {
+  transform: translateX(1px);
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator:hover {
+  background: #999;
+}
+
+.indicator.active {
+  background: #666;
+  transform: scale(1.2);
 }
 
 /* 响应式布局 */
+@media (max-width: 1200px) {
+  .carousel-container {
+    max-width: 900px;
+    gap: 1.5rem;
+  }
+
+  .frame-border {
+    width: 350px;
+    height: 260px;
+  }
+}
+
 @media (max-width: 768px) {
-  .thumbnail-title {
-    font-size: 1.3rem;
-    padding: 1.5rem 1rem 1rem;
+  .carousel-container {
+    max-width: 600px;
+    gap: 1rem;
+  }
+
+  .frame-border {
+    width: 300px;
+    height: 225px;
+  }
+
+  .frames-wrapper {
+    gap: 1rem;
+  }
+
+  .carousel-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel-arrow svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .thumbnail-title {
-    font-size: 1.2rem;
+  .carousel-container {
+    max-width: 400px;
+    gap: 0.5rem;
+  }
+
+  .frame-border {
+    width: 250px;
+    height: 190px;
+  }
+
+  .frame-title {
+    font-size: 1rem;
     padding: 1rem 0.8rem 0.8rem;
   }
 }
