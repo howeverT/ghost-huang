@@ -14,7 +14,7 @@
 
       <!-- 相框容器 -->
       <div class="frames-container">
-        <div class="frames-wrapper" :style="{ transform: `translateX(-${currentIndex * slideWidth}px)` }">
+        <div class="frames-wrapper" :style="{ transform: `translateX(-${getSlidePosition(currentIndex)}px)` }">
           <div
             v-for="(item, index) in items"
             :key="index"
@@ -50,16 +50,7 @@
       </button>
     </div>
 
-    <!-- 指示器 -->
-    <div class="carousel-indicators">
-      <button
-        v-for="(_, index) in items"
-        :key="index"
-        class="indicator"
-        :class="{ active: index === currentIndex }"
-        @click="goToSlide(index)"
-      ></button>
-    </div>
+
 
   </div>
 </template>
@@ -94,20 +85,63 @@ const currentIndex = ref(0)
 const slideWidth = ref(0)
 const containerWidth = ref(0)
 
-// 计算最大索引
+// 计算最大索引 - 允许滑动到最后
+// 计算最大索引 - 基于实际滑动距离动态计算
 const maxIndex = computed(() => {
-  return Math.max(0, props.items.length - props.itemsPerView)
+  const itemWidth = 512 // 32rem ≈ 512px
+  const gapWidth = 32
+  const displayWidth = containerWidth.value || 1200
+
+  // 计算所有items的总宽度
+  const totalWidth = props.items.length * itemWidth + (props.items.length - 1) * gapWidth
+
+  // 计算最后一个位置
+  const lastPosition = totalWidth - displayWidth
+
+  // 计算需要点击几次才能到达最后位置
+  const clicksNeeded = Math.ceil(lastPosition / (itemWidth + gapWidth))
+
+  console.log(`Total width: ${totalWidth}px, Last position: ${lastPosition}px, Clicks needed: ${clicksNeeded}`)
+
+  return clicksNeeded
 })
 
-// 计算每个相框的宽度
-const frameWidth = computed(() => {
-  return containerWidth.value / props.itemsPerView
-})
 
-// 计算滑动距离
+
+// 计算滑动距离 - 每次滑动一个item的完整宽度
 const slideWidthComputed = computed(() => {
-  return frameWidth.value
+  return 400 + 32 // item宽度 + gap
 })
+
+// 计算精确的滑动位置
+const getSlidePosition = (index: number) => {
+  const itemWidth = 512 // 32rem ≈ 512px
+  const gapWidth = 32
+
+  // 动态获取实际显示区域宽度
+  const displayWidth = containerWidth.value || 1200
+
+  // 动态计算所有items的总宽度
+  const totalWidth = props.items.length * itemWidth + (props.items.length - 1) * gapWidth
+
+  // 计算最后一个位置
+  const lastPosition = totalWidth - displayWidth
+
+  // 计算需要点击几次才能到达最后位置
+  const clicksNeeded = Math.ceil(lastPosition / (itemWidth + gapWidth))
+
+  let position
+  if (index === clicksNeeded) {
+    // 最后位置：让最后一个item贴住右边
+    position = lastPosition
+  } else {
+    // 其他位置：按比例计算，确保最后能到达lastPosition
+    position = (index / clicksNeeded) * lastPosition
+  }
+
+  console.log(`Slide to index ${index}, position: ${position}px, lastPosition: ${lastPosition}px, clicksNeeded: ${clicksNeeded}`)
+  return position
+}
 
 // 更新尺寸
 const updateDimensions = () => {
@@ -122,6 +156,9 @@ const updateDimensions = () => {
 const nextSlide = () => {
   if (currentIndex.value < maxIndex.value) {
     currentIndex.value++
+  } else {
+    // 如果已经到最后，可以循环回到开始，或者保持到最后
+    // currentIndex.value = 0  // 取消注释这行如果你想循环
   }
 }
 
@@ -132,10 +169,7 @@ const previousSlide = () => {
   }
 }
 
-// 跳转到指定幻灯片
-const goToSlide = (index: number) => {
-  currentIndex.value = index
-}
+
 
 // 处理缩略图点击
 const handleItemClick = (item: ThumbnailItem) => {
@@ -144,17 +178,18 @@ const handleItemClick = (item: ThumbnailItem) => {
   }
 }
 
-// 自动播放
+// 自动播放 - 暂时禁用，避免干扰手动操作
 let autoPlayInterval: number | null = null
 
 const startAutoPlay = () => {
-  autoPlayInterval = window.setInterval(() => {
-    if (currentIndex.value >= maxIndex.value) {
-      currentIndex.value = 0
-    } else {
-      currentIndex.value++
-    }
-  }, 5000)
+  // 暂时禁用自动播放
+  // autoPlayInterval = window.setInterval(() => {
+  //   if (currentIndex.value >= maxIndex.value) {
+  //     currentIndex.value = 0
+  //   } else {
+  //     currentIndex.value++
+  //   }
+  // }, 5000)
 }
 
 const stopAutoPlay = () => {
@@ -167,7 +202,7 @@ const stopAutoPlay = () => {
 onMounted(() => {
   updateDimensions()
   window.addEventListener('resize', updateDimensions)
-  startAutoPlay()
+  // startAutoPlay() // 暂时禁用
 })
 
 onUnmounted(() => {
@@ -197,14 +232,15 @@ onUnmounted(() => {
 .thumbnail-section {
   width: 100%;
   background-color: #f8f9fa;
-  padding: 4rem 0;
+  padding: 6rem 0 4rem 0;
   flex-shrink: 0;
+  margin-top: 2rem;
 }
 
 .carousel-container {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  max-width: 90vw;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -215,6 +251,9 @@ onUnmounted(() => {
   flex: 1;
   overflow: hidden;
   position: relative;
+  width: 100%;
+  max-width: 80vw;
+  margin: 0 auto;
 }
 
 .frames-wrapper {
@@ -234,15 +273,16 @@ onUnmounted(() => {
 }
 
 .frame-border {
-  width: 400px;
-  height: 300px;
-  padding: 15px;
+  width: 32rem;
+  height: 22rem;
+  padding: 1.5rem;
   background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
-  border-radius: 15px;
+  border-radius: 1.5rem;
   box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 1.25rem 3rem rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
   position: relative;
+  flex-shrink: 0;
 }
 
 .frame-border::before {
@@ -332,54 +372,30 @@ onUnmounted(() => {
   transform: translateX(1px);
 }
 
-.carousel-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
 
-.indicator {
-  width: 12px;
-  height: 12px;
-  border: none;
-  border-radius: 50%;
-  background: #ccc;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.indicator:hover {
-  background: #999;
-}
-
-.indicator.active {
-  background: #666;
-  transform: scale(1.2);
-}
 
 /* 响应式布局 */
 @media (max-width: 1200px) {
   .carousel-container {
-    max-width: 900px;
+    max-width: 95vw;
     gap: 1.5rem;
   }
 
   .frame-border {
-    width: 350px;
-    height: 260px;
+    width: 26rem;
+    height: 18rem;
   }
 }
 
 @media (max-width: 768px) {
   .carousel-container {
-    max-width: 600px;
+    max-width: 98vw;
     gap: 1rem;
   }
 
   .frame-border {
-    width: 300px;
-    height: 225px;
+    width: 22rem;
+    height: 15rem;
   }
 
   .frames-wrapper {
@@ -387,13 +403,13 @@ onUnmounted(() => {
   }
 
   .carousel-arrow {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   .carousel-arrow svg {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
   }
 }
 
