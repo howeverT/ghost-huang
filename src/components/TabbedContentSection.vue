@@ -32,7 +32,7 @@
             >
               <div class="content-items">
                 <a
-                  v-for="(item, itemIndex) in sortedItems(tab.items)"
+                  v-for="(item, itemIndex) in paginatedItems(tab.items)"
                   :key="itemIndex"
                   :href="item.url"
                   target="_blank"
@@ -42,13 +42,25 @@
                   {{ item.date }} - {{ item.title }}
                 </a>
               </div>
+              <!-- 走马灯箭头按钮 -->
+              <div v-if="sortedItems(tab.items).length > itemsPerPage" class="carousel-arrows">
+                <div v-if="currentPage > 0" class="arrow prev" @click="prevPage">
+                  <img src="/src/assets/svg/chevron-icon.svg" alt="上一页" />
+                </div>
+                <div v-if="currentPage < maxPage(tab.items)" class="arrow next" @click="nextPage">
+                  <img src="/src/assets/svg/chevron-icon.svg" alt="下一页" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 右侧背景图片区域 -->
         <div class="background-container">
-          <div class="background-image" :style="{ backgroundImage: `url(${currentBackgroundImage})` }">
+          <div class="background-image" :style="{
+            backgroundImage: `url(${currentBackgroundImage})`,
+            height: '500px'
+          }">
             <div class="image-overlay">
               <h3 class="image-title">{{ currentTabData?.imageTitle || '背景图片' }}</h3>
               <p class="image-caption">{{ currentTabData?.imageCaption || '点击左侧标签查看不同内容' }}</p>
@@ -86,13 +98,39 @@ const props = defineProps<Props>()
 const activeTab = ref('part1')
 const tabsContainerRef = ref<HTMLElement>()
 const leftContentHeight = ref(0)
+const currentPage = ref(0) // 当前页码
+const itemsPerPage = ref(5) // 每页显示5个item
 
 const setActiveTab = (tabId: string) => {
   activeTab.value = tabId
-  // 切换tab后重新计算高度
-  nextTick(() => {
-    calculateLeftContentHeight()
-  })
+  // 只在第一次加载时计算高度，切换tab后不再重新计算
+}
+
+// 计算最大页码
+const maxPage = (items: any[]) => {
+  return Math.ceil(items.length / itemsPerPage.value) - 1
+}
+
+// 获取当前页的items
+const paginatedItems = (items: any[]) => {
+  const start = currentPage.value * itemsPerPage.value
+  const end = start + itemsPerPage.value
+  return sortedItems(items).slice(start, end)
+}
+
+// 上一页
+const prevPage = () => {
+  if (currentPage.value > 0) {
+    currentPage.value--
+  }
+}
+
+// 下一页
+const nextPage = () => {
+  const maxPageValue = maxPage(sortedItems(currentTabData.value?.items || []))
+  if (currentPage.value < maxPageValue) {
+    currentPage.value++
+  }
 }
 
 const currentTabData = computed(() => {
@@ -109,14 +147,33 @@ const sortedItems = (items: any[]) => {
 
 // 计算左边内容的实际高度
 const calculateLeftContentHeight = () => {
-  if (tabsContainerRef.value) {
-    leftContentHeight.value = tabsContainerRef.value.offsetHeight
-  }
+  // 找到item最多的tab
+  const tabWithMostItems = props.tabs.reduce((maxTab, currentTab) =>
+    currentTab.items.length > maxTab.items.length ? currentTab : maxTab
+  )
+
+  // 计算总高度：包含必要的padding和margin
+  const titleHeight = 80 // 标题大约80px
+  const titleMarginBottom = 32 // margin-bottom: 2rem = 32px
+  const tabsListHeight = 60 // tabs列表大约60px
+  const tabsMarginBottom = 32 // margin-bottom: 2rem = 32px
+  const itemHeight = 32 // 每个item 32px
+  const itemSpacing = 16 // item之间的间距
+  const totalItemHeight = tabWithMostItems.items.length * (itemHeight + itemSpacing)
+  const contentBottomPadding = 32 // 内容区域底部的padding
+
+  leftContentHeight.value = titleHeight + titleMarginBottom + tabsListHeight + tabsMarginBottom + totalItemHeight + contentBottomPadding
+
+  console.log('计算出的左边内容高度:', leftContentHeight.value)
+  console.log('item最多的tab:', tabWithMostItems.label, 'item数量:', tabWithMostItems.items.length)
 }
 
 // 组件挂载后计算高度
 onMounted(() => {
-  calculateLeftContentHeight()
+  // 延迟一点时间确保DOM完全渲染
+  setTimeout(() => {
+    calculateLeftContentHeight()
+  }, 100)
 })
 </script>
 
@@ -217,6 +274,38 @@ onMounted(() => {
   animation: inkFlow 0.6s ease-out;
 }
 
+/* 走马灯箭头样式 */
+.carousel-arrows {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.arrow {
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.arrow img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+.arrow:hover img {
+  opacity: 1;
+}
+
+.arrow.prev img {
+  transform: rotate(180deg);
+}
+
+.arrow.next img {
+  transform: rotate(0deg);
+}
+
 @keyframes inkFlow {
   0% {
     transform: scaleX(0);
@@ -288,7 +377,6 @@ onMounted(() => {
 .background-image {
   width: 100%;
   height: auto;
-  min-height: 90vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
