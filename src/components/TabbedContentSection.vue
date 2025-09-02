@@ -57,13 +57,18 @@
 
         <!-- 右侧背景图片区域 -->
         <div class="background-container">
-          <div class="background-image" :style="{
-            backgroundImage: `url(${currentBackgroundImage})`,
-            height: '500px'
-          }">
+          <div
+            class="background-image"
+            :style="{
+              backgroundImage: `url(${currentBackgroundImage})`,
+              height: '500px',
+            }"
+          >
             <div class="image-overlay">
               <h3 class="image-title">{{ currentTabData?.imageTitle || '背景图片' }}</h3>
-              <p class="image-caption">{{ currentTabData?.imageCaption || '点击左侧标签查看不同内容' }}</p>
+              <p class="image-caption">
+                {{ currentTabData?.imageCaption || '点击左侧标签查看不同内容' }}
+              </p>
             </div>
           </div>
         </div>
@@ -134,7 +139,7 @@ const nextPage = () => {
 }
 
 const currentTabData = computed(() => {
-  return props.tabs.find(tab => tab.id === activeTab.value)
+  return props.tabs.find((tab) => tab.id === activeTab.value)
 })
 
 const currentBackgroundImage = computed(() => {
@@ -149,7 +154,7 @@ const sortedItems = (items: any[]) => {
 const calculateLeftContentHeight = () => {
   // 找到item最多的tab
   const tabWithMostItems = props.tabs.reduce((maxTab, currentTab) =>
-    currentTab.items.length > maxTab.items.length ? currentTab : maxTab
+    currentTab.items.length > maxTab.items.length ? currentTab : maxTab,
   )
 
   // 计算总高度：包含必要的padding和margin
@@ -162,7 +167,13 @@ const calculateLeftContentHeight = () => {
   const totalItemHeight = tabWithMostItems.items.length * (itemHeight + itemSpacing)
   const contentBottomPadding = 32 // 内容区域底部的padding
 
-  leftContentHeight.value = titleHeight + titleMarginBottom + tabsListHeight + tabsMarginBottom + totalItemHeight + contentBottomPadding
+  leftContentHeight.value =
+    titleHeight +
+    titleMarginBottom +
+    tabsListHeight +
+    tabsMarginBottom +
+    totalItemHeight +
+    contentBottomPadding
 
   console.log('计算出的左边内容高度:', leftContentHeight.value)
   console.log('item最多的tab:', tabWithMostItems.label, 'item数量:', tabWithMostItems.items.length)
@@ -181,8 +192,8 @@ onMounted(() => {
 .tabbed-content-section {
   width: 100%;
   background-color: white;
-  padding: 3rem 0;
-  min-height: 80vh;
+  padding: 2rem 0;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -197,7 +208,7 @@ onMounted(() => {
 
 .content-layout {
   display: flex;
-  gap: 6rem;
+  gap: 8rem;
   align-items: flex-start;
   min-height: 70vh;
   padding: 0 1rem;
@@ -211,6 +222,7 @@ onMounted(() => {
   flex-direction: column;
   padding: 2rem 0;
   margin-left: 8em;
+  margin-right: 2rem;
   justify-content: flex-start;
 }
 
@@ -224,7 +236,7 @@ onMounted(() => {
   color: #000;
   margin: 0;
   font-weight: 900;
-  font-family: "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* 横向Tabs */
@@ -252,7 +264,7 @@ onMounted(() => {
   color: #000;
   font-weight: 900;
   transition: color 0.3s ease;
-  font-family: "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .tab-item.active .tab-label {
@@ -355,7 +367,7 @@ onMounted(() => {
   padding: 0.5rem 0;
   border-bottom: 1px solid transparent;
   font-weight: 600;
-  font-family: "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .content-item:hover {
@@ -370,6 +382,7 @@ onMounted(() => {
   max-width: 500px;
   position: relative;
   margin-right: 8rem;
+  margin-left: 2rem;
   height: fit-content;
   margin-top: 3rem;
 }
@@ -462,7 +475,7 @@ onMounted(() => {
 
 @media (max-width: 480px) {
   .tabbed-content-section {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
   }
 
   .tabs-container {

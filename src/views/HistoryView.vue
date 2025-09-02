@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import HeroSection from '@/components/HeroSection.vue'
+import ContentSection from '@/components/ContentSection.vue'
 import TabbedContentSection from '@/components/TabbedContentSection.vue'
+import MainTitleSection from '@/components/MainTitleSection.vue'
 
 // 类型定义
 interface TabItem {
@@ -10,6 +12,7 @@ interface TabItem {
   items: {
     title: string
     url: string
+    date: string
   }[]
   backgroundImage: string
   imageTitle?: string
@@ -22,6 +25,7 @@ interface HistoryItem {
   title_align?: string
   title_margin?: string
   background_image?: string
+  paragraphs?: string[]
   tabs?: TabItem[]
   index: number
 }
@@ -88,12 +92,22 @@ onMounted(() => {
           :title-margin="item.title_margin"
         />
 
+        <!-- ContentSection -->
+        <ContentSection
+          v-else-if="item.type === 'ContentSection'"
+          :title="item.title"
+          :paragraphs="item.paragraphs"
+        />
+
         <!-- TabbedContentSection -->
         <TabbedContentSection
           v-else-if="item.type === 'TabbedContentSection'"
-          :tabs="item.tabs"
-          :title="item.title"
+          :tabs="item.tabs || []"
+          :title="item.title || ''"
         />
+
+        <!-- MainTitleSection -->
+        <MainTitleSection v-else-if="item.type === 'MainTitleSection'" :title="item.title" />
       </template>
     </div>
   </div>

@@ -1,20 +1,9 @@
 <template>
   <div class="thumbnail-section">
     <div class="carousel-container">
-      <!-- 左箭头 -->
-      <button
-        class="carousel-arrow carousel-arrow-left"
-        @click="previousSlide"
-        :disabled="currentIndex === 0"
-      >
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-        </svg>
-      </button>
-
       <!-- 相框容器 -->
       <div class="frames-container">
-        <div class="frames-wrapper" :style="{ transform: `translateX(-${getSlidePosition(currentIndex)}px)` }">
+        <div class="frames-wrapper">
           <div
             v-for="(item, index) in items"
             :key="index"
@@ -37,21 +26,7 @@
           </div>
         </div>
       </div>
-
-      <!-- 右箭头 -->
-      <button
-        class="carousel-arrow carousel-arrow-right"
-        @click="nextSlide"
-        :disabled="currentIndex >= maxIndex"
-      >
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
-        </svg>
-      </button>
     </div>
-
-
-
   </div>
 </template>
 
@@ -101,12 +76,12 @@ const maxIndex = computed(() => {
   // 计算需要点击几次才能到达最后位置
   const clicksNeeded = Math.ceil(lastPosition / (itemWidth + gapWidth))
 
-  console.log(`Total width: ${totalWidth}px, Last position: ${lastPosition}px, Clicks needed: ${clicksNeeded}`)
+  console.log(
+    `Total width: ${totalWidth}px, Last position: ${lastPosition}px, Clicks needed: ${clicksNeeded}`,
+  )
 
   return clicksNeeded
 })
-
-
 
 // 计算滑动距离 - 每次滑动一个item的完整宽度
 const slideWidthComputed = computed(() => {
@@ -139,7 +114,9 @@ const getSlidePosition = (index: number) => {
     position = (index / clicksNeeded) * lastPosition
   }
 
-  console.log(`Slide to index ${index}, position: ${position}px, lastPosition: ${lastPosition}px, clicksNeeded: ${clicksNeeded}`)
+  console.log(
+    `Slide to index ${index}, position: ${position}px, lastPosition: ${lastPosition}px, clicksNeeded: ${clicksNeeded}`,
+  )
   return position
 }
 
@@ -168,8 +145,6 @@ const previousSlide = () => {
     currentIndex.value--
   }
 }
-
-
 
 // 处理缩略图点击
 const handleItemClick = (item: ThumbnailItem) => {
@@ -228,38 +203,33 @@ onUnmounted(() => {
   background-color: #d3dce6;
 }
 
-
 .thumbnail-section {
   width: 100%;
-  background-color: #f8f9fa;
-  padding: 6rem 0 4rem 0;
+  padding: 2rem 1rem;
   flex-shrink: 0;
-  margin-top: 2rem;
 }
 
 .carousel-container {
   position: relative;
   width: 100%;
-  max-width: 90vw;
+  max-width: 100vw;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
 }
 
 .frames-container {
-  flex: 1;
-  overflow: hidden;
-  position: relative;
   width: 100%;
-  max-width: 80vw;
+  position: relative;
   margin: 0 auto;
 }
 
 .frames-wrapper {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-  gap: 2rem;
+  gap: 3.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .frame-item {
@@ -273,28 +243,10 @@ onUnmounted(() => {
 }
 
 .frame-border {
-  width: 32rem;
-  height: 22rem;
-  padding: 1.5rem;
-  background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
-  border-radius: 1.5rem;
-  box-shadow:
-    0 1.25rem 3rem rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  width: 36rem;
+  height: 50rem;
   position: relative;
   flex-shrink: 0;
-}
-
-.frame-border::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  right: 8px;
-  bottom: 8px;
-  border: 2px solid #d0d0d0;
-  border-radius: 10px;
-  pointer-events: none;
 }
 
 .frame-content {
@@ -332,96 +284,45 @@ onUnmounted(() => {
   );
 }
 
-.carousel-arrow {
-  width: 50px;
-  height: 50px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-
-.carousel-arrow:hover:not(:disabled) {
-  background: white;
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.carousel-arrow:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.carousel-arrow svg {
-  width: 24px;
-  height: 24px;
-  fill: #333;
-}
-
-.carousel-arrow-left svg {
-  transform: translateX(-1px);
-}
-
-.carousel-arrow-right svg {
-  transform: translateX(1px);
-}
-
-
-
 /* 响应式布局 */
 @media (max-width: 1200px) {
   .carousel-container {
     max-width: 95vw;
-    gap: 1.5rem;
   }
 
   .frame-border {
-    width: 26rem;
-    height: 18rem;
+    width: 34rem;
+    height: 45rem;
   }
 }
 
 @media (max-width: 768px) {
   .carousel-container {
     max-width: 98vw;
-    gap: 1rem;
   }
 
   .frame-border {
-    width: 22rem;
-    height: 15rem;
+    width: 32rem;
+    height: 40rem;
   }
 
   .frames-wrapper {
-    gap: 1rem;
-  }
-
-  .carousel-arrow {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  .carousel-arrow svg {
-    width: 1.25rem;
-    height: 1.25rem;
+    gap: 3rem;
   }
 }
 
 @media (max-width: 480px) {
   .carousel-container {
     max-width: 400px;
-    gap: 0.5rem;
   }
 
   .frame-border {
-    width: 250px;
-    height: 190px;
+    width: 28rem;
+    height: 36rem;
+  }
+
+  .frames-wrapper {
+    gap: 2.5rem;
   }
 
   .frame-title {
