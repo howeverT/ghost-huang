@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import HeroSection from '@/components/HeroSection.vue'
-import ContentSection from '@/components/ContentSection.vue'
 import TabbedContentSection from '@/components/TabbedContentSection.vue'
-import MainTitleSection from '@/components/MainTitleSection.vue'
+import ConcertItemSection from '@/components/ConcertItemSection.vue'
 
 // 类型定义
 interface TabItem {
@@ -19,6 +18,13 @@ interface TabItem {
   imageCaption?: string
 }
 
+interface ConcertItem {
+  title: string
+  date: string
+  image?: string
+  url?: string
+}
+
 interface HistoryItem {
   type: string
   title?: string
@@ -27,6 +33,7 @@ interface HistoryItem {
   background_image?: string
   paragraphs?: string[]
   tabs?: TabItem[]
+  items?: ConcertItem[]
   index: number
 }
 
@@ -92,13 +99,6 @@ onMounted(() => {
           :title-margin="item.title_margin"
         />
 
-        <!-- ContentSection -->
-        <ContentSection
-          v-else-if="item.type === 'ContentSection'"
-          :title="item.title"
-          :paragraphs="item.paragraphs"
-        />
-
         <!-- TabbedContentSection -->
         <TabbedContentSection
           v-else-if="item.type === 'TabbedContentSection'"
@@ -106,8 +106,13 @@ onMounted(() => {
           :title="item.title || ''"
         />
 
-        <!-- MainTitleSection -->
-        <MainTitleSection v-else-if="item.type === 'MainTitleSection'" :title="item.title" />
+        <!-- ConcertItemSection -->
+        <ConcertItemSection
+          v-else-if="item.type === 'ConcertItemSection'"
+          :items="item.items || []"
+          :title="item.title"
+          :tabs="item.tabs"
+        />
       </template>
     </div>
   </div>
