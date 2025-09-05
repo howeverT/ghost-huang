@@ -3,6 +3,7 @@ import { ref, computed, onMounted } from 'vue'
 import HeroSection from '@/components/HeroSection.vue'
 import TabbedContentSection from '@/components/TabbedContentSection.vue'
 import ConcertItemSection from '@/components/ConcertItemSection.vue'
+import OverlapSecondSection from '@/components/OverlapSecondSection.vue'
 
 // 类型定义
 interface TabItem {
@@ -25,6 +26,12 @@ interface ConcertItem {
   url?: string
 }
 
+interface LinkItem {
+  link_title: string
+  date: string
+  link: string
+}
+
 interface HistoryItem {
   type: string
   title?: string
@@ -34,6 +41,8 @@ interface HistoryItem {
   paragraphs?: string[]
   tabs?: TabItem[]
   items?: ConcertItem[]
+  content?: string
+  links?: LinkItem[]
   index: number
 }
 
@@ -104,6 +113,15 @@ onMounted(() => {
           v-else-if="item.type === 'TabbedContentSection'"
           :tabs="item.tabs || []"
           :title="item.title || ''"
+        />
+
+        <!-- OverlapSecondSection -->
+        <OverlapSecondSection
+          v-else-if="item.type === 'OverlapSecondSection'"
+          :title="item.title || ''"
+          :content="item.content || ''"
+          :background-image="item.background_image || ''"
+          :links="item.links || []"
         />
 
         <!-- ConcertItemSection -->

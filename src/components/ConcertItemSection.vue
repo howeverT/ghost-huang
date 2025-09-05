@@ -16,7 +16,6 @@
           @click="setActiveTab(tab.id)"
         >
           <span class="tab-label">{{ tab.label }}</span>
-          <div class="ink-line" v-if="activeTab === tab.id"></div>
         </div>
       </div>
     </div>
@@ -147,8 +146,41 @@ const currentRightItems = computed(() => {
 
 // Tab切换函数
 const setActiveTab = (tabId: string) => {
-  activeTab.value = tabId
-  currentPage.value = 0 // 切换tab时重置到第一页
+  if (activeTab.value !== tabId) {
+    // 笔刷和内容同时淡出
+    const itemsContainer = document.querySelector('.items-container')
+    const activeTabElement = document.querySelector('.tab-item.active')
+
+    if (itemsContainer) {
+      itemsContainer.style.opacity = '0'
+      itemsContainer.style.transform = 'translateY(20px)'
+    }
+
+    // 直接操作CSS变量来控制笔刷的opacity
+    if (activeTabElement) {
+      activeTabElement.style.setProperty('--brush-opacity', '0')
+    }
+
+    // 延迟切换内容
+    setTimeout(() => {
+      activeTab.value = tabId
+      currentPage.value = 0 // 切换tab时重置到第一页
+
+      // 延迟一点让新tab的笔刷出现
+      setTimeout(() => {
+        const newActiveTabElement = document.querySelector('.tab-item.active')
+        if (newActiveTabElement) {
+          newActiveTabElement.style.setProperty('--brush-opacity', '1')
+        }
+
+        // 内容淡入
+        if (itemsContainer) {
+          itemsContainer.style.opacity = '1'
+          itemsContainer.style.transform = 'translateY(0)'
+        }
+      }, 100)
+    }, 200)
+  }
 }
 
 // 分页控制函数
@@ -203,14 +235,14 @@ const handleItemClick = (item: ConcertItem) => {
 
 /* Tabs样式 */
 .tabs-section {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   margin-left: calc(50% - 500px - 2rem);
 }
 
 .tabs-list {
   display: flex;
   gap: 0;
-  border-bottom: 2px solid #e0e0e0;
+  position: relative;
 }
 
 .tab-item {
@@ -218,7 +250,6 @@ const handleItemClick = (item: ConcertItem) => {
   padding: 1rem 2rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-bottom: 2px solid transparent;
 }
 
 .tab-item:hover {
@@ -241,14 +272,23 @@ const handleItemClick = (item: ConcertItem) => {
   color: #333;
 }
 
-.ink-line {
+.tab-item.active::after {
+  content: '';
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: #333;
-  transition: all 0.3s ease;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 450px;
+  height: 30px;
+  background-image: url('/src/assets/svg/bishua.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
+  opacity: var(--brush-opacity, 1);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .items-container {
@@ -257,6 +297,7 @@ const handleItemClick = (item: ConcertItem) => {
   display: flex;
   justify-content: center;
   gap: 4rem;
+  transition: all 0.5s ease;
 }
 
 .left-column {
@@ -279,7 +320,9 @@ const handleItemClick = (item: ConcertItem) => {
   width: 500px;
   position: relative;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .item-content:hover {
@@ -346,6 +389,12 @@ const handleItemClick = (item: ConcertItem) => {
 
   .tabs-section {
     margin-left: calc(50% - 400px - 1rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .tab-item.active::after {
+    width: 400px;
+    height: 25px;
   }
 
   .tab-item {
@@ -409,6 +458,12 @@ const handleItemClick = (item: ConcertItem) => {
 
   .tabs-section {
     margin-left: calc(50% - 350px - 0.75rem);
+    margin-bottom: 2rem;
+  }
+
+  .tab-item.active::after {
+    width: 350px;
+    height: 20px;
   }
 
   .tab-item {
