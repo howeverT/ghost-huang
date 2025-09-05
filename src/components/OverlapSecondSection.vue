@@ -2,31 +2,12 @@
   <div class="overlap-second-section">
     <!-- 横条div - 占满屏幕宽度，包含标题、描述和链接 -->
     <div class="horizontal-bar">
-      <!-- 左箭头 -->
-      <button class="arrow-btn arrow-left" @click="prevContent" :disabled="currentIndex === 0">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M15 18L9 12L15 6"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </button>
-
       <div class="bar-content">
-        <h2 class="bar-title">{{ currentContent.title }}</h2>
+        <h2 class="bar-title">{{ title }}</h2>
 
         <!-- 链接直接显示，去掉div包装，所有链接在同一行 -->
         <div class="links-container">
-          <div v-for="(link, index) in currentContent.links" :key="index" class="link-item">
+          <div v-for="(link, index) in links" :key="index" class="link-item">
             <a :href="link.link" target="_blank" rel="noopener noreferrer" class="link-text">
               {{ link.link_title }}
             </a>
@@ -34,56 +15,20 @@
           </div>
         </div>
       </div>
-
-      <!-- 右箭头 -->
-      <button
-        class="arrow-btn arrow-right"
-        @click="nextContent"
-        :disabled="currentIndex === contentList.length - 1"
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M9 18L15 12L9 6"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </button>
     </div>
 
     <!-- 图片div - 横的，显示在左边 -->
     <div class="image-overlay">
-      <img
-        :src="currentContent.backgroundImage"
-        :alt="currentContent.title"
-        class="overlay-image"
-      />
+      <img :src="backgroundImage" :alt="title" class="overlay-image" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-
 interface LinkItem {
   link_title: string
   date: string
   link: string
-}
-
-interface ContentItem {
-  title: string
-  content: string
-  backgroundImage: string
-  links: LinkItem[]
 }
 
 interface Props {
@@ -94,70 +39,6 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-
-// 测试数据 - 创建多个内容项
-const contentList = ref<ContentItem[]>([
-  {
-    title: '我们的歌',
-    content: '2025.05.24 宇宙无敌号成都站演唱会大电影 全程4K超清饭拍',
-    backgroundImage: '/src/assets/background/History2024.jpg',
-    links: props.links,
-  },
-  {
-    title: '测试内容2',
-    content: '这是第二个测试内容',
-    backgroundImage: '/src/assets/background/Beijing-day1.jpg',
-    links: [
-      {
-        link_title: '测试链接1',
-        date: '2024-01-01',
-        link: 'https://example.com/1',
-      },
-      {
-        link_title: '测试链接2',
-        date: '2024-01-02',
-        link: 'https://example.com/2',
-      },
-    ],
-  },
-  {
-    title: '测试内容3',
-    content: '这是第三个测试内容',
-    backgroundImage: '/src/assets/background/Beijing-day2.jpg',
-    links: [
-      {
-        link_title: '测试链接3',
-        date: '2024-01-03',
-        link: 'https://example.com/3',
-      },
-      {
-        link_title: '测试链接4',
-        date: '2024-01-04',
-        link: 'https://example.com/4',
-      },
-    ],
-  },
-])
-
-// 当前内容索引
-const currentIndex = ref(0)
-
-// 当前显示的内容
-const currentContent = computed(() => contentList.value[currentIndex.value])
-
-// 切换到下一个内容
-const nextContent = () => {
-  if (currentIndex.value < contentList.value.length - 1) {
-    currentIndex.value++
-  }
-}
-
-// 切换到上一个内容
-const prevContent = () => {
-  if (currentIndex.value > 0) {
-    currentIndex.value--
-  }
-}
 </script>
 
 <style scoped>
@@ -177,44 +58,6 @@ const prevContent = () => {
   justify-content: center;
   position: relative;
   z-index: 1;
-}
-
-/* 箭头按钮 */
-.arrow-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: white;
-  z-index: 3;
-}
-
-.arrow-btn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.arrow-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-.arrow-left {
-  left: 2rem;
-}
-
-.arrow-right {
-  right: 2rem;
 }
 
 .bar-content {
@@ -327,19 +170,6 @@ const prevContent = () => {
     height: 400px; /* 增加高度 */
   }
 
-  .arrow-btn {
-    width: 45px;
-    height: 45px;
-  }
-
-  .arrow-left {
-    left: 1.5rem;
-  }
-
-  .arrow-right {
-    right: 1.5rem;
-  }
-
   .bar-title {
     font-size: 2.5rem;
   }
@@ -385,19 +215,6 @@ const prevContent = () => {
   .overlay-image {
     width: 300px;
     height: 300px; /* 增加高度 */
-  }
-
-  .arrow-btn {
-    width: 40px;
-    height: 40px;
-  }
-
-  .arrow-left {
-    left: 1rem;
-  }
-
-  .arrow-right {
-    right: 1rem;
   }
 
   .bar-title {
@@ -449,19 +266,6 @@ const prevContent = () => {
   .overlay-image {
     width: 250px;
     height: 250px; /* 增加高度 */
-  }
-
-  .arrow-btn {
-    width: 35px;
-    height: 35px;
-  }
-
-  .arrow-left {
-    left: 0.5rem;
-  }
-
-  .arrow-right {
-    right: 0.5rem;
   }
 
   .bar-title {
