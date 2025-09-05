@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import HeroSection from '@/components/HeroSection.vue'
 import TabbedContentSection from '@/components/TabbedContentSection.vue'
 import ConcertItemSection from '@/components/ConcertItemSection.vue'
@@ -55,6 +56,13 @@ interface HistoryData {
 const loading = ref(true)
 const error = ref('')
 const historyData = ref<HistoryData | null>(null)
+const router = useRouter()
+
+// 年份导航
+const availableYears = ['2024', '2023']
+const navigateToYear = (year: string) => {
+  router.push(`/history/${year}`)
+}
 
 // 计算属性：按index排序的内容
 const sortedContent = computed(() => {
@@ -94,6 +102,21 @@ onMounted(() => {
 
 <template>
   <div class="history-page">
+    <!-- 年份导航 -->
+    <div class="year-navigation">
+      <h2>选择年份查看历史内容</h2>
+      <div class="year-buttons">
+        <button
+          v-for="year in availableYears"
+          :key="year"
+          @click="navigateToYear(year)"
+          class="year-btn"
+        >
+          {{ year }}年
+        </button>
+      </div>
+    </div>
+
     <div v-if="loading" class="loading">加载中...</div>
     <div v-else-if="error" class="error">{{ error }}</div>
     <div v-else-if="historyData" class="history-content">
@@ -143,6 +166,70 @@ onMounted(() => {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+}
+
+/* 年份导航样式 */
+.year-navigation {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.year-navigation h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 2rem 0;
+  font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.year-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.year-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+  backdrop-filter: blur(10px);
+}
+
+.year-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .year-navigation {
+    padding: 2rem 1rem;
+  }
+
+  .year-navigation h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .year-buttons {
+    gap: 1rem;
+  }
+
+  .year-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+  }
 }
 
 .loading {

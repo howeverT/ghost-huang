@@ -22,6 +22,11 @@ const router = createRouter({
       name: 'history',
       component: () => import('../views/HistoryView.vue'),
     },
+    {
+      path: '/history/:year',
+      name: 'history-year',
+      component: () => import('../views/HistoryYearView.vue'),
+    },
     // {
     //   path: '/chengdu',
     //   name: 'chengdu',

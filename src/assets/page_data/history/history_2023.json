@@ -1,0 +1,92 @@
+[
+  {
+    "title": "2023年考古区",
+    "year": "2023",
+    "content": [
+      {
+        "type": "HeroSection",
+        "title": "2023年考古区",
+        "title_align": "center",
+        "title_margin": "0",
+        "background_image": "/src/assets/background/History2024.jpg",
+        "index": 1
+      },
+      {
+        "type": "ThumbnailGrid",
+        "title": "2023年精彩回顾",
+        "items": [
+          {
+            "title": "2023年活动1",
+            "date": "2023-01-01",
+            "image": "/src/assets/background/Beijing-day1.jpg",
+            "url": "https://example.com/2023-1"
+          },
+          {
+            "title": "2023年活动2",
+            "date": "2023-02-01",
+            "image": "/src/assets/background/Beijing-day2.jpg",
+            "url": "https://example.com/2023-2"
+          },
+          {
+            "title": "2023年活动3",
+            "date": "2023-03-01",
+            "image": "/src/assets/background/Chengdu.jpg",
+            "url": "https://example.com/2023-3"
+          },
+          {
+            "title": "2023年活动4",
+            "date": "2023-04-01",
+            "image": "/src/assets/background/Guangzhou.jpg",
+            "url": "https://example.com/2023-4"
+          }
+        ],
+        "index": 2
+      },
+      {
+        "type": "TabbedContentSection",
+        "title": "2023年分类内容",
+        "tabs": [
+          {
+            "id": "q1",
+            "label": "第一季度",
+            "backgroundImage": "/src/assets/background/History2024.jpg",
+            "imageTitle": "2023年第一季度",
+            "imageCaption": "第一季度精彩回顾",
+            "items": [
+              {
+                "title": "2023年Q1活动1",
+                "url": "https://example.com/2023-q1-1",
+                "date": "2023-01-15"
+              },
+              {
+                "title": "2023年Q1活动2",
+                "url": "https://example.com/2023-q1-2",
+                "date": "2023-02-15"
+              }
+            ]
+          },
+          {
+            "id": "q2",
+            "label": "第二季度",
+            "backgroundImage": "/src/assets/background/Beijing-day1.jpg",
+            "imageTitle": "2023年第二季度",
+            "imageCaption": "第二季度精彩回顾",
+            "items": [
+              {
+                "title": "2023年Q2活动1",
+                "url": "https://example.com/2023-q2-1",
+                "date": "2023-04-15"
+              },
+              {
+                "title": "2023年Q2活动2",
+                "url": "https://example.com/2023-q2-2",
+                "date": "2023-05-15"
+              }
+            ]
+          }
+        ],
+        "index": 3
+      }
+    ]
+  }
+]
