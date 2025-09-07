@@ -1,0 +1,122 @@
+[
+    {
+        "title": "资料区",
+        "year": "2024",
+        "content": [
+            {
+                "type": "HeroSection",
+                "title": "资料区",
+                "title_align": "center",
+                "title_margin": "0",
+                "background_image": "/src/assets/background/History2024.jpg",
+                "index": 1
+            },
+            {
+                "type": "AvatarSection",
+                "title": "黄霄雲个人",
+                "content": [
+                    {
+                        "subtitle": "微博",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/ghost/huangxiaoyun_weibo.jpg",
+                                "name": "黄霄雲",
+                                "link": "https://weibo.com/u/5043186742"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/ghost/haoxiangchi_weibo.jpg",
+                                "name": "好想吃面包蛋糕芝士",
+                                "link": "https://weibo.com/u/5638314984"
+                            }
+                        ]
+                    },
+                    {
+                        "subtitle": "B站/小红书",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/ghost/huangxiaoyun_bili.webp",
+                                "name": "黄霄雲",
+                                "link": "https://space.bilibili.com/501005668?spm_id_from=333.337.0.0"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/ghost/huangxiaoyun_weibo.jpg",
+                                "name": "黄霄雲",
+                                "link": "https://www.xiaohongshu.com/user/profile/5e6cc87f0000000001003f24?xsec_token=YBZwRm76oIowvBwMZDijXj4qe7d7FLeo3rsDRc2x6npqg%3D&xsec_source=app_share&xhsshare=&appuid=5f89a56b000000000101f7b7&apptime=1757242269&share_id=458cbc093e074ea88c760344e4ff660f&share_channel=copy_link"
+                            }
+                        ]
+                    },
+                    {
+                        "subtitle": "抖音",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/ghost/huangxiaoyun_weibo.jpg",
+                                "name": "黄霄雲",
+                                "link": "https://www.douyin.com/user/MS4wLjABAAAAjW0gMk6HfnozLjpBmla_Ad2igcU4EkqV6WwnkK0ZuNM?from_tab_name=main"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/ghost/haoxiangchi_weibo.jpg",
+                                "name": "好想吃面包蛋糕芝士",
+                                "link": "https://www.douyin.com/user/MS4wLjABAAAAkQtgDTZYCFE82g4_g5Ndt8y_TZ5MuAxOvTkBNR8OUx3jCoV1AKmU07GJ-Tv9FdAl?from_tab_name=main"
+                            }
+                        ]
+                    }
+                ],
+                "index": 2
+            },
+            {
+                "type": "AvatarSection",
+                "title": "黄霄雲工作室",
+                "content": [
+                    {
+                        "subtitle": "微博",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/workshop/gongzuoshi_weibo.jpg",
+                                "name": "黄霄雲的雲上面包坊",
+                                "link": "https://weibo.com/u/7798421503"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/workshop/bianbian_weibo.jpg",
+                                "name": "面包的边边",
+                                "link": "https://weibo.com/u/7942582311"
+                            }
+                        ]
+                    }
+                ],
+                "index": 3
+            },
+            {
+                "type": "AvatarSection",
+                "title": "黄霄雲后援会",
+                "content": [
+                    {
+                        "subtitle": "微博",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/club/menghuandao_weibo.jpg",
+                                "name": "黄霄雲·魔星梦幻岛",
+                                "link": "https://weibo.com/u/7186769076"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/club/huweijian_weibo.jpg",
+                                "name": "黄霄雲·魔星护卫舰",
+                                "link": "https://weibo.com/u/6143856130"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/club/zhinandui_weibo.jpg",
+                                "name": "黄霄雲·魔星奔赴指南队·",
+                                "link": "https://weibo.com/u/6423643793"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/club/bowuguan_weibo.jpg",
+                                "name": "黄霄雲·魔星博物馆",
+                                "link": "https://weibo.com/u/6961164430"
+                            }
+                        ]
+                    }
+                ],
+                "index": 4
+            }
+        ]
+    }
+]

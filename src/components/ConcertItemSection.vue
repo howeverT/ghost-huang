@@ -208,7 +208,7 @@ const handleItemClick = (item: ConcertItem) => {
 .concert-item-section {
   width: 100%;
   padding: 3rem 2rem;
-  background-color: #f8f9fa;
+  background-color: white;
 }
 
 .section-title {

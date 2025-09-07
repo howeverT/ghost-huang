@@ -1,0 +1,67 @@
+[
+  {
+    "date": "2024/08/18",
+    "title": "SP06EP05",
+    "description": "探索宇宙的奥秘，发现更多美好的事物。让我们一起在星辰大海中遨游，寻找属于我们的梦想。",
+    "places": "",
+    "links": [
+      {
+        "link_title": "SP06EP05面包CUT",
+        "link": "https://weibo.com/6961164430/5068888679647400",
+        "icon": "video"
+      },
+      {
+        "link_title": "SP06EP05加更版面包CUT",
+        "link": "https://weibo.com/6961164430/5069942048691415",
+        "icon": "video"
+      }
+    ],
+    "image": ["/src/assets/background/Beijing-day1.jpg"],
+    "display": "right"
+  },
+  {
+    "date": "2024/08/28",
+    "title": "SP06EP06",
+    "description": "开始追逐梦想，踏上星辰大海的征程。每一个梦想都值得我们去追逐，每一次努力都会让我们更接近目标。",
+    "places": "",
+    "links": [
+      {
+        "link_title": "探班直播面包",
+        "link": "https://weibo.com/6961164430/5071323086456569",
+        "icon": "video"
+      },
+      {
+        "link_title": "SP06EP06面包CUT",
+        "link": "https://weibo.com/6961164430/5071443178553846",
+        "icon": "video"
+      },
+      {
+        "link_title": "SP06EP06加更版面包CUT",
+        "link": "https://weibo.com/6961164430/5072399735200984",
+        "icon": "video"
+      }
+    ],
+    "image": ["/src/assets/background//Beijing-day2.jpg"],
+    "display": "right"
+  },
+  {
+    "date": "2025/09/29",
+    "title": "巅峰夜",
+    "description": "心中种下星辰大海的种子，等待发芽。最初的梦想总是最珍贵的，让我们不忘初心，继续前行。",
+    "places": "",
+    "links": [
+      {
+        "link_title": "巅峰夜-袖手旁观.feat 陈楚生",
+        "link": "https://weibo.com/6961164430/5084044087793499",
+        "icon": "video"
+      },
+      {
+        "link_title": "巅峰夜-许愿.feat 王赫野",
+        "link": "https://weibo.com/6961164430/5084051784079366",
+        "icon": "video"
+      }
+    ],
+    "image": ["/src/assets/background/Guangzhou.jpg"],
+    "display": "left"
+  }
+]

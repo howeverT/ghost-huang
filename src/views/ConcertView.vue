@@ -41,6 +41,7 @@
         <ThumbnailGrid
           v-else-if="item.type === 'ThumbnailGrid'"
           :items="item.items"
+          :title="item.title"
           :items-per-row="getItemsPerRow(item.items?.length || 0)"
         />
       </template>

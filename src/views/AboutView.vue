@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref, computed } from 'vue'
-import { ElButton } from 'element-plus'
-import { VideoPlay, Headset, LocationFilled } from '@element-plus/icons-vue'
+import { useRoute } from 'vue-router'
+import { VideoPlay, Headset } from '@element-plus/icons-vue'
 
+const route = useRoute()
 const pageLoaded = ref(false)
 const currentIndex = ref(0)
 const contentVisible = ref(true)
@@ -28,7 +29,14 @@ const timelineData = ref<TimelineItem[]>([])
 // 从JSON文件加载数据
 const loadTimelineData = async () => {
   try {
-    const response = await fetch('/src/assets/page_data/concert/concert.json')
+    // 根据路由决定加载哪个JSON文件
+    let jsonPath = '/src/assets/page_data/concert/concert.json' // 默认路径
+
+    if (route.path === '/about/oursong') {
+      jsonPath = '/src/assets/page_data/collection/our_song.json'
+    }
+
+    const response = await fetch(jsonPath)
     const data = await response.json()
     timelineData.value = data
     console.log('成功加载数据:', data)
@@ -170,7 +178,7 @@ onMounted(() => {
       <div class="indicators">
         <div
           v-for="(item, index) in timelineData"
-          :key="item.year"
+          :key="item.title"
           class="indicator"
           :class="{ active: index === currentIndex }"
           @click="handleIndicatorClick(index)"
@@ -184,10 +192,6 @@ onMounted(() => {
         <!-- 介绍文字 -->
         <div class="description-section">
           <h3>{{ currentData?.title }}</h3>
-          <p class="places-text">
-            <el-icon><LocationFilled /></el-icon>
-            {{ currentData?.places }}
-          </p>
           <p class="places-text">
             <el-icon><Calendar /></el-icon>
             {{ currentData?.date }}

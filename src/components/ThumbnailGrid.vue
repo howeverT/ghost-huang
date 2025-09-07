@@ -1,5 +1,8 @@
 <template>
   <div class="thumbnail-section">
+    <div v-if="title" class="section-title">
+      <h2>{{ title }}</h2>
+    </div>
     <div class="carousel-container">
       <!-- 相框容器 -->
       <div class="frames-container">
@@ -42,6 +45,7 @@ interface ThumbnailItem {
 interface Props {
   items?: ThumbnailItem[]
   itemsPerView?: number
+  title?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -54,6 +58,7 @@ const props = withDefaults(defineProps<Props>(), {
     { image: '/src/assets/background/background.jpg', title: '精彩瞬间' },
   ],
   itemsPerView: 3,
+  title: '',
 })
 
 const currentIndex = ref(0)
@@ -209,6 +214,21 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 
+.section-title {
+  text-align: left;
+  margin-bottom: 2rem;
+  margin-left: calc((100% - 20rem - 20rem - 20rem - 20rem - 2rem - 2rem - 2rem) / 2);
+  width: 20rem;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+  font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+}
+
 .carousel-container {
   position: relative;
   width: 100%;
@@ -227,7 +247,7 @@ onUnmounted(() => {
 
 .frames-wrapper {
   display: flex;
-  gap: 3.5rem;
+  gap: 2rem;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -243,8 +263,8 @@ onUnmounted(() => {
 }
 
 .frame-border {
-  width: 36rem;
-  height: 50rem;
+  width: 20rem;
+  height: 28rem;
   position: relative;
   flex-shrink: 0;
 }
@@ -286,43 +306,71 @@ onUnmounted(() => {
 
 /* 响应式布局 */
 @media (max-width: 1200px) {
+  .section-title {
+    margin-left: calc((100% - 20rem - 20rem - 20rem - 2rem - 2rem) / 2);
+    width: 20rem;
+  }
+
+  .section-title h2 {
+    font-size: 2.2rem;
+  }
+
   .carousel-container {
     max-width: 95vw;
   }
 
   .frame-border {
-    width: 34rem;
-    height: 45rem;
+    width: 20rem;
+    height: 28rem;
   }
 }
 
 @media (max-width: 768px) {
+  .section-title {
+    margin-left: calc((100% - 20rem - 20rem - 2rem) / 2);
+    width: 20rem;
+  }
+
+  .section-title h2 {
+    font-size: 2rem;
+  }
+
   .carousel-container {
     max-width: 98vw;
   }
 
   .frame-border {
-    width: 32rem;
-    height: 40rem;
+    width: 20rem;
+    height: 28rem;
   }
 
   .frames-wrapper {
-    gap: 3rem;
+    gap: 2rem;
   }
 }
 
 @media (max-width: 480px) {
+  .section-title {
+    margin-left: calc((100% - 18rem - 18rem - 1.5rem) / 2);
+    width: 18rem;
+    text-align: left;
+  }
+
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+
   .carousel-container {
     max-width: 400px;
   }
 
   .frame-border {
-    width: 28rem;
-    height: 36rem;
+    width: 18rem;
+    height: 25rem;
   }
 
   .frames-wrapper {
-    gap: 2.5rem;
+    gap: 1.5rem;
   }
 
   .frame-title {

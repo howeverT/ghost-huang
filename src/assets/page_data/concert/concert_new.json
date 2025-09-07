@@ -38,6 +38,7 @@
       },
       {
         "type": "ThumbnailGrid",
+        "title": "演唱会合集",
         "items": [
           {
             "image": "/src/assets/background/Beijing-day1.jpg",
@@ -102,6 +103,7 @@
       },
       {
         "type": "ThumbnailGrid",
+        "title": "演唱会合集",
         "items": [
           {
             "image": "/src/assets/background/Beijing-day1.jpg",

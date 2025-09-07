@@ -45,6 +45,22 @@
           :title="item.title || ''"
         />
 
+        <!-- ContentSection -->
+        <ContentSection
+          v-else-if="item.type === 'ContentSection'"
+          :title="item.title || ''"
+          :paragraphs="item.paragraphs || []"
+        />
+
+        <!-- OverlapSection -->
+        <OverlapSection
+          v-else-if="item.type === 'OverlapSection'"
+          :title="item.title || ''"
+          :content="item.content || ''"
+          :image-url="item.image_url || ''"
+          :button-link="item.button_link || ''"
+        />
+
         <!-- 未知组件类型 -->
         <div v-else class="unknown-component">
           <p>未知组件类型: {{ item.type }}</p>
@@ -61,7 +77,9 @@ import HeroSection from '@/components/HeroSection.vue'
 import TabbedContentSection from '@/components/TabbedContentSection.vue'
 import ConcertItemSection from '@/components/ConcertItemSection.vue'
 import OverlapSecondSection from '@/components/OverlapSecondSection.vue'
+import OverlapSection from '@/components/OverlapSection.vue'
 import ThumbnailGrid from '@/components/ThumbnailGrid.vue'
+import ContentSection from '@/components/ContentSection.vue'
 
 // 类型定义
 interface TabItem {

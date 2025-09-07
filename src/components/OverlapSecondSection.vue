@@ -69,10 +69,11 @@ const props = defineProps<Props>()
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-left: calc(15% + 250px + 2rem);
 }
 
 .bar-title {
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-weight: 700;
   margin: 0 0 1rem 0;
   font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
@@ -109,8 +110,8 @@ const props = defineProps<Props>()
 .link-text {
   color: white;
   text-decoration: none;
-  font-size: 1.4rem; /* 更大字体 */
-  font-weight: 900; /* 更粗字体 */
+  font-size: 1.1rem; /* 调整字体大小 */
+  font-weight: 800; /* 调整字体粗细 */
   transition: all 0.3s ease;
   font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
   white-space: nowrap; /* 不换行 */
@@ -123,8 +124,8 @@ const props = defineProps<Props>()
 /* 链接日期 - 小字左对齐 */
 .link-date {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem; /* 再大一点 */
-  font-weight: 600; /* 更粗一点 */
+  font-size: 0.8rem; /* 调整字体大小 */
+  font-weight: 500; /* 调整字体粗细 */
   font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
   text-align: left; /* 左对齐 */
   margin-top: 0.3rem;
@@ -156,9 +157,47 @@ const props = defineProps<Props>()
 }
 
 /* 响应式设计 */
+@media (min-width: 1400px) {
+  .bar-content {
+    margin-left: calc(15% + 250px + 2rem);
+  }
+
+  .bar-title {
+    font-size: 2.2rem;
+  }
+
+  .link-text {
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  .link-date {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .links-container {
+    gap: 1.8rem;
+  }
+
+  .link-item {
+    max-width: 160px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .bar-content {
+    margin-left: calc(15% + 250px + 2rem);
+  }
+}
+
 @media (max-width: 1200px) {
   .horizontal-bar {
     height: 450px;
+  }
+
+  .bar-content {
+    margin-left: calc(20% + 200px + 2rem);
   }
 
   .image-overlay {
@@ -205,6 +244,11 @@ const props = defineProps<Props>()
 @media (max-width: 768px) {
   .horizontal-bar {
     height: 500px;
+  }
+
+  .bar-content {
+    margin-left: 0;
+    text-align: center;
   }
 
   .image-overlay {
@@ -256,6 +300,11 @@ const props = defineProps<Props>()
 @media (max-width: 480px) {
   .horizontal-bar {
     height: 550px;
+  }
+
+  .bar-content {
+    margin-left: 0;
+    text-align: center;
   }
 
   .image-overlay {
