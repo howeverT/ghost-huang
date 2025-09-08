@@ -1,29 +1,28 @@
 <template>
   <div class="thumbnail-section">
-    <div v-if="title" class="section-title">
-      <h2>{{ title }}</h2>
-    </div>
-    <div class="carousel-container">
-      <!-- 相框容器 -->
-      <div class="frames-container">
-        <div class="frames-wrapper">
-          <div
-            v-for="(item, index) in items"
-            :key="index"
-            class="frame-item"
-            @click="handleItemClick(item)"
-          >
-            <div class="frame-border">
-              <div class="frame-content">
-                <div
-                  class="frame-image"
-                  :style="{
-                    backgroundImage: `url(${item.image})`,
-                  }"
-                ></div>
-                <div class="frame-title">
-                  {{ item.title }}
-                </div>
+    <div class="content-container">
+      <!-- 标题容器 -->
+      <div v-if="title" class="title-container">
+        <h2>{{ title }}</h2>
+      </div>
+      <!-- 项目容器 -->
+      <div class="items-container">
+        <div
+          v-for="(item, index) in items"
+          :key="index"
+          class="frame-item"
+          @click="handleItemClick(item)"
+        >
+          <div class="frame-border">
+            <div class="frame-content">
+              <div
+                class="frame-image"
+                :style="{
+                  backgroundImage: `url(${item.image})`,
+                }"
+              ></div>
+              <div class="frame-title">
+                {{ item.title }}
               </div>
             </div>
           </div>
@@ -214,14 +213,22 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 
-.section-title {
-  text-align: left;
-  margin-bottom: 2rem;
-  margin-left: calc((100% - 20rem - 20rem - 20rem - 20rem - 2rem - 2rem - 2rem) / 2);
-  width: 20rem;
+.content-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.section-title h2 {
+.title-container {
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.title-container h2 {
   font-size: 2.5rem;
   font-weight: 700;
   color: #333;
@@ -229,27 +236,13 @@ onUnmounted(() => {
   font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
 }
 
-.carousel-container {
-  position: relative;
-  width: 100%;
-  max-width: 100vw;
-  margin: 0 auto;
+.items-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.frames-container {
-  width: 100%;
-  position: relative;
-  margin: 0 auto;
-}
-
-.frames-wrapper {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
+  gap: 1rem;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .frame-item {
@@ -263,8 +256,8 @@ onUnmounted(() => {
 }
 
 .frame-border {
-  width: 20rem;
-  height: 28rem;
+  width: 18rem;
+  height: 25rem;
   position: relative;
   flex-shrink: 0;
 }
@@ -305,72 +298,84 @@ onUnmounted(() => {
 }
 
 /* 响应式布局 */
+@media (min-width: 1600px) {
+  .title-container,
+  .items-container {
+    max-width: 1600px;
+  }
+
+  .frame-border {
+    width: 22rem;
+    height: 30rem;
+  }
+}
+
+@media (max-width: 1400px) {
+  .title-container,
+  .items-container {
+    max-width: 1400px;
+  }
+
+  .frame-border {
+    width: 20rem;
+    height: 28rem;
+  }
+}
+
 @media (max-width: 1200px) {
-  .section-title {
-    margin-left: calc((100% - 20rem - 20rem - 20rem - 2rem - 2rem) / 2);
-    width: 20rem;
+  .title-container,
+  .items-container {
+    max-width: 1200px;
   }
 
-  .section-title h2 {
+  .title-container h2 {
     font-size: 2.2rem;
-  }
-
-  .carousel-container {
-    max-width: 95vw;
-  }
-
-  .frame-border {
-    width: 20rem;
-    height: 28rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .section-title {
-    margin-left: calc((100% - 20rem - 20rem - 2rem) / 2);
-    width: 20rem;
-  }
-
-  .section-title h2 {
-    font-size: 2rem;
-  }
-
-  .carousel-container {
-    max-width: 98vw;
-  }
-
-  .frame-border {
-    width: 20rem;
-    height: 28rem;
-  }
-
-  .frames-wrapper {
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-title {
-    margin-left: calc((100% - 18rem - 18rem - 1.5rem) / 2);
-    width: 18rem;
-    text-align: left;
-  }
-
-  .section-title h2 {
-    font-size: 1.8rem;
-  }
-
-  .carousel-container {
-    max-width: 400px;
   }
 
   .frame-border {
     width: 18rem;
     height: 25rem;
   }
+}
 
-  .frames-wrapper {
-    gap: 1.5rem;
+@media (max-width: 768px) {
+  .title-container,
+  .items-container {
+    max-width: 1000px;
+  }
+
+  .title-container h2 {
+    font-size: 2rem;
+  }
+
+  .frame-border {
+    width: 16rem;
+    height: 22rem;
+  }
+
+  .items-container {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-container,
+  .items-container {
+    max-width: 100%;
+  }
+
+  .title-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .frame-border {
+    width: calc(50% - 0.75rem);
+    min-width: 150px;
+    height: 20rem;
+  }
+
+  .items-container {
+    gap: 1rem;
   }
 
   .frame-title {

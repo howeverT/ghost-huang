@@ -21,6 +21,16 @@
           :paragraphs="item.paragraphs"
         />
 
+        <!-- TitleSection -->
+        <TitleSection
+          v-else-if="item.type === 'TitleSection'"
+          :title-text="item.title_text || ''"
+          :subtitle="item.subtitle || ''"
+          :picture="item.picture || ''"
+          :picture-title="item.picture_title || ''"
+          :content="Array.isArray(item.content) ? item.content : []"
+        />
+
         <!-- OverlapSection -->
         <OverlapSection
           v-else-if="item.type === 'OverlapSection'"
@@ -28,13 +38,6 @@
           :content="item.content"
           :image-url="item.image_url"
           :button-link="item.button_link"
-        />
-
-        <!-- TitleSection -->
-        <TitleSection
-          v-else-if="item.type === 'TitleSection'"
-          :title-text="item.title_text"
-          :subtitle="item.subtitle"
         />
 
         <!-- ThumbnailGrid -->

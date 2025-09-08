@@ -119,6 +119,8 @@ interface HistoryItem {
   items?: ConcertItem[]
   content?: string
   links?: LinkItem[]
+  image_url?: string
+  button_link?: string
   index: number
 }
 

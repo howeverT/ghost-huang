@@ -1,15 +1,36 @@
 <template>
   <div class="title-section">
     <div class="title-wrapper">
-      <div class="title-content">
-        <div class="polaroid-frame">
-          <div class="polaroid-image" :style="{ backgroundImage: `url(${imageUrl})` }"></div>
-          <div class="polaroid-caption">成都印象</div>
+      <!-- 主要内容区域 -->
+      <div class="main-content">
+        <!-- 左侧拍立得区域 -->
+        <div class="polaroid-section">
+          <div class="polaroid-frame">
+            <div class="polaroid-image" :style="{ backgroundImage: `url(${picture})` }"></div>
+            <div class="polaroid-caption">{{ pictureTitle }}</div>
+          </div>
         </div>
-        <div class="title-content-right">
-          <h2 class="title-text">{{ titleText }}</h2>
-          <div v-if="subtitle" class="subtitle-text">
-            {{ subtitle }}
+
+        <!-- 右侧内容区域 - 包含标题、副标题和5个Part -->
+        <div class="content-section">
+          <!-- 标题和副标题 -->
+          <div class="header-section">
+            <h2 class="title-text">{{ titleText }}</h2>
+            <div v-if="subtitle" class="subtitle-text">
+              {{ subtitle }}
+            </div>
+          </div>
+
+          <!-- 5列歌单区域 -->
+          <div class="playlist-section">
+            <div v-for="(part, index) in content" :key="index" class="playlist-column">
+              <h3 class="part-title">{{ part.tab }}</h3>
+              <ul class="song-list">
+                <li v-for="(song, songIndex) in part.song" :key="songIndex" class="song-item">
+                  {{ song }}
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -18,17 +39,25 @@
 </template>
 
 <script setup lang="ts">
+interface PlaylistPart {
+  tab: string
+  song: string[]
+}
+
 interface Props {
   titleText?: string
-  imageUrl?: string
+  picture?: string
+  pictureTitle?: string
   subtitle?: string
+  content?: PlaylistPart[]
 }
 
 withDefaults(defineProps<Props>(), {
-  titleText:
-    'In a world of complexity, we offer simplicity through consistent, world-class services and integrated solutions.',
-  imageUrl: '/src/assets/background/Chengdu.jpg',
-  subtitle: '',
+  titleText: '成都站歌单',
+  picture: '/src/assets/background/Chengdu.jpg',
+  pictureTitle: '成都印象',
+  subtitle: '成都东安湖体育公园多功能体育馆 - 2025/05/24',
+  content: () => [],
 })
 </script>
 
@@ -36,139 +65,275 @@ withDefaults(defineProps<Props>(), {
 .title-section {
   width: 100%;
   background-color: white;
-  padding: 2rem 0;
-  min-height: 30vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 3rem 0;
   flex-shrink: 0;
 }
 
 .title-wrapper {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 2rem;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-.title-content {
+.main-content {
   display: flex;
-  align-items: center;
+  gap: 6rem;
+  align-items: flex-start;
   justify-content: center;
-  gap: 15rem;
-  padding: 0 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title-text {
+  font-size: 3rem;
+  color: #333;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.subtitle-text {
+  font-size: 1.5rem;
+  color: #666;
+  margin: 0;
+  font-weight: 400;
+}
+
+.polaroid-section {
+  flex-shrink: 0;
+  margin-right: 2rem;
+  margin-left: -3rem;
 }
 
 .polaroid-frame {
   background: white;
-  padding: 1.5rem 1.5rem 2.2rem 1.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transform: rotate(-5deg);
-  flex-shrink: 0;
+  padding: 2rem 2rem 3rem 2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: rotate(-3deg);
+  transition: transform 0.3s ease;
+}
+
+.polaroid-frame:hover {
+  transform: rotate(-1deg) scale(1.02);
 }
 
 .polaroid-image {
-  width: 300px;
-  height: 420px;
+  width: 350px;
+  height: 500px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 1px solid #eee;
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
 }
 
 .polaroid-caption {
-  margin-top: 1.2rem;
-  font-size: 1.2rem;
-  color: #666;
+  margin-top: 1.5rem;
+  font-size: 1.6rem;
+  color: #333;
   text-align: center;
-  font-family: 'Courier New', monospace;
+  font-family: 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.title-content-right {
+.playlist-section {
+  flex: 1;
+  display: flex;
+  gap: 2rem;
+  min-height: 500px;
+  align-items: flex-start;
+}
+
+.playlist-column {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-  flex: 1;
 }
 
-.title-text {
-  font-size: 2.5rem;
+.part-title {
+  font-size: 1.2rem;
   color: #333;
   font-weight: 600;
+  margin: 0 0 1rem 0;
+  font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+  text-align: center;
+}
+
+.song-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.song-item {
+  font-size: 0.9rem;
+  color: #333;
+  padding: 0.4rem 0;
+  font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.4;
-  white-space: nowrap;
-  margin: 0;
-  text-align: left;
-  min-width: 0;
-}
-
-.subtitle-text {
-  font-size: 2.5rem;
-  color: #333;
-  font-weight: 600;
-  margin: 0;
+  text-align: center;
 }
 
 /* 响应式设计 */
-@media (max-width: 768px) {
-  .title-wrapper {
-    padding: 0 1.5rem;
-    max-width: 1000px;
+@media (max-width: 1400px) {
+  .main-content {
+    gap: 5rem;
   }
 
-  .title-content {
-    gap: 3rem;
-    padding: 0 1.5rem;
+  .polaroid-section {
+    margin-right: 1.5rem;
   }
 
-  .polaroid-frame {
-    padding: 0.8rem 0.8rem 1.5rem 0.8rem;
+  .playlist-section {
+    gap: 1.5rem;
+  }
+
+  .part-title {
+    font-size: 1.1rem;
+  }
+
+  .song-item {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .main-content {
+    gap: 4rem;
+  }
+
+  .polaroid-section {
+    margin-right: 1rem;
   }
 
   .polaroid-image {
-    width: 240px;
-    height: 336px;
+    width: 300px;
+    height: 420px;
+  }
+
+  .playlist-section {
+    min-height: 420px;
+    gap: 1rem;
+  }
+
+  .part-title {
+    font-size: 1rem;
+  }
+
+  .song-item {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title-wrapper {
+    padding: 0 1.5rem;
+  }
+
+  .main-content {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .content-section {
+    width: 100%;
+  }
+
+  .polaroid-section {
+    margin-right: 0;
+  }
+
+  .polaroid-frame {
+    padding: 1.5rem 1.5rem 2rem 1.5rem;
+  }
+
+  .polaroid-image {
+    width: 280px;
+    height: 380px;
   }
 
   .title-text {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .subtitle-text {
-    font-size: 2rem;
+    font-size: 1.3rem;
+  }
+
+  .playlist-section {
+    min-height: auto;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .playlist-column {
+    flex: 0 0 calc(50% - 0.5rem);
+    margin-bottom: 2rem;
+  }
+
+  .part-title {
+    font-size: 1.2rem;
+  }
+
+  .song-item {
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
   .title-wrapper {
     padding: 0 1rem;
-    max-width: 900px;
-  }
-
-  .title-content {
-    gap: 2rem;
-    flex-direction: column;
-    padding: 0 1rem;
   }
 
   .polaroid-frame {
-    padding: 0.6rem 0.6rem 1.2rem 0.6rem;
-    transform: rotate(-3deg);
+    padding: 1rem 1rem 1.5rem 1rem;
+    transform: rotate(-2deg);
   }
 
   .polaroid-image {
-    width: 210px;
-    height: 294px;
+    width: 250px;
+    height: 340px;
   }
 
   .title-text {
-    font-size: 1.5rem;
-    text-align: center;
+    font-size: 2rem;
   }
 
   .subtitle-text {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .playlist-column {
+    flex: 0 0 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .part-title {
+    font-size: 1.1rem;
+  }
+
+  .song-item {
+    font-size: 0.85rem;
+    padding: 0.3rem 0;
   }
 }
 </style>
