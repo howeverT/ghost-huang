@@ -68,11 +68,7 @@ onMounted(() => {
   <div class="related-page" :class="{ loaded: pageLoaded }">
     <div v-if="pageData" class="page-content">
       <!-- 动态渲染组件 -->
-      <div
-        v-for="item in pageData.content"
-        :key="item.index"
-        class="content-item"
-      >
+      <div v-for="item in pageData.content" :key="item.index" class="content-item">
         <!-- HeroSection -->
         <HeroSection
           v-if="item.type === 'HeroSection'"

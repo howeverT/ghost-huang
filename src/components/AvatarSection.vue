@@ -2,6 +2,7 @@
 interface AvatarItem {
   avatar: string
   name: string
+  avatar_title: string
   link: string
 }
 
@@ -17,7 +18,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   title: '',
-  content: () => []
+  content: () => [],
 })
 </script>
 
@@ -36,10 +37,10 @@ const props = withDefaults(defineProps<Props>(), {
           :key="contentIndex"
           class="content-group"
         >
-          <!-- 副标题 -->
-          <div class="subtitle">
+          <!-- 副标题 - 暂时隐藏 -->
+          <!-- <div class="subtitle">
             <h3>{{ contentItem.subtitle }}</h3>
-          </div>
+          </div> -->
 
           <!-- 头像列表 -->
           <div class="avatar-list">
@@ -52,13 +53,10 @@ const props = withDefaults(defineProps<Props>(), {
               class="avatar-item"
             >
               <div class="avatar-container">
-                <img
-                  :src="avatar.avatar"
-                  :alt="avatar.name"
-                  class="avatar-image"
-                />
+                <img :src="avatar.avatar" :alt="avatar.name" class="avatar-image" />
               </div>
               <div class="avatar-name">{{ avatar.name }}</div>
+              <div class="avatar-title">{{ avatar.avatar_title }}</div>
             </a>
           </div>
         </div>
@@ -86,10 +84,24 @@ const props = withDefaults(defineProps<Props>(), {
 }
 
 .section-title h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #667eea;
   margin: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
 }
 
 .content-area {
@@ -184,9 +196,22 @@ const props = withDefaults(defineProps<Props>(), {
   color: #333;
   text-align: center;
   transition: color 0.3s ease;
+  margin-bottom: 0.3rem;
+}
+
+.avatar-title {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #666;
+  text-align: center;
+  transition: color 0.3s ease;
 }
 
 .avatar-item:hover .avatar-name {
+  color: #667eea;
+}
+
+.avatar-item:hover .avatar-title {
   color: #667eea;
 }
 
@@ -201,7 +226,7 @@ const props = withDefaults(defineProps<Props>(), {
   }
 
   .section-title h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .subtitle h3 {
@@ -220,6 +245,10 @@ const props = withDefaults(defineProps<Props>(), {
   .avatar-name {
     font-size: 1rem;
   }
+
+  .avatar-title {
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -234,6 +263,10 @@ const props = withDefaults(defineProps<Props>(), {
 
   .avatar-name {
     font-size: 0.9rem;
+  }
+
+  .avatar-title {
+    font-size: 0.7rem;
   }
 
   .subtitle h3 {
