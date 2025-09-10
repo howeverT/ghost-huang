@@ -147,10 +147,11 @@ withDefaults(defineProps<Props>(), {
   font-size: 1.6rem;
   color: #333;
   text-align: center;
-  font-family: 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-family: 'Comic Sans MS', 'Marker Felt', 'Bradley Hand', cursive;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transform: rotate(-1deg);
 }
 
 .playlist-section {

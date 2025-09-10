@@ -27,7 +27,7 @@
         "title": "[视听盛宴] 黄霄雲 十六机位饭拍",
         "content": "2025.05.24 宇宙无敌号成都站演唱会大电影 全程4K超清饭拍",
         "button_link": "https://www.bilibili.com/video/BV1dUjkzqEUj/?spm_id_from=333.337.search-card.all.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
-        "image_url": "/src/assets/background/History2024.jpg",
+        "image_url": "/src/assets/concert/chengdu/chengdu_duojiwei.jpg",
         "index": 3
       },
       {
@@ -35,7 +35,7 @@
         "title_text": "成都站歌单",
         "subtitle": "成都东安湖体育公园多功能体育馆",
         "picture": "/src/assets/background/Chengdu.jpg",
-        "pacture_title": "2025/05/24",
+        "picture_title": "2025/05/24",
         "content": [
           {
             "tab": "Part1",
@@ -55,7 +55,7 @@
               "Into the light跃入星光（原唱）",
               "小云（原创）",
               "弦上生花（原创）",
-              "喜帖街（翻唱） "
+              "喜帖街（翻唱）"
             ]
           },
           {
@@ -100,22 +100,22 @@
         "title": "演唱会合集",
         "items": [
           {
-            "image": "/src/assets/background/Beijing-day1.jpg",
-            "link": "https://www.bilibili.com/video/BV1dUjkzqEUj/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
-            "title": "十六机位饭拍"
+            "image": "/src/assets/concert/chengdu/vlog_54.jpg",
+            "link": "https://www.bilibili.com/video/BV1suMvzkETk/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "[面包的vlog第54集]黄霄雲成都演唱会祝大家笑得开怀骂得痛快"
           },
           {
-            "image": "/src/assets/background/Beijing-day1.jpg",
+            "image": "/src/assets/concert/chengdu/quancheng.jpg",
             "link": "https://www.bilibili.com/video/BV1JZjrzkEaJ/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
             "title": "黄霄雲成都演唱会全程"
           },
           {
-            "image": "/src/assets/background/Beijing-day1.jpg",
+            "image": "/src/assets/concert/chengdu/vlog_tenyear.jpg",
             "link": "https://www.bilibili.com/video/BV1VwMXz3E2i/?spm_id_from=333.1387.homepage.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
             "title": "黄霄雲成都站演唱会幕后与十年前的自己对话"
           },
           {
-            "image": "/src/assets/background/Beijing-day1.jpg",
+            "image": "/src/assets/concert/chengdu/with_sunnan.jpg",
             "link": "https://www.bilibili.com/video/BV1yk3LzFEvh/?spm_id_from=333.1387.homepage.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
             "title": "黄霄雲&孙楠《美丽的神话》"
           }
@@ -131,7 +131,7 @@
     "content": [
       {
         "type": "HeroSection",
-        "title": "北京站",
+        "title": "北京站-Day1",
         "title_align": "center",
         "title_margin": "0",
         "background_image": "/src/assets/background/Beijing-day1.jpg",
@@ -139,25 +139,76 @@
       },
       {
         "type": "ContentSection",
-        "title": "因为我们都在走上坡路。",
+        "title": "再次谢谢你们，让我实现了梦想。",
         "paragraphs": [
-          "其实我是因为魔星保护了我的梦才走到这里。我时常在夜里会把我的枕头哭湿。你们为了我一次又一次地承受这些伤害，我不知道我要怎么做，才能让你们更快乐，不委屈。",
-          "我一直老说，我一定要变强，我才能保护你们，但是我觉得我没有保护好。而是你们一直冲在前面为我遮挡这些伤害。",
-          "累不累啊。不可能不累的，累就对了其实。"
+          "有没有去年广州也来的呀，你们好棒啊。今年我们再做一个约定，明年如果我们开巡演，你们会来吗。那今天的演唱会就要接近尾声了，非常开心跟你们度过这个难忘的，重要的，美好的夜晚。",
+          "谢谢你们为我做的一切，虽然我们的每一步都走的很难，很漫长，但是很踏实。我也会继续加油，带来更多很好的作品来给你们听。",
+          "今天的我很幸福，我见到了你们，其实一直到现在我的感觉不太真实，所以下一首歌我会请我的工作人员记录下来，我和你们，然后发微博。同时我也希望我的宇宙无敌号能开到更多更远的地方。"
         ],
         "index": 2
       },
       {
         "type": "OverlapSection",
-        "title": "[视听盛宴] 黄霄雲 十六机位饭拍",
-        "content": "2025.05.24 宇宙无敌号成都站演唱会大电影 全程4K超清饭拍",
-        "button_link": "https://www.bilibili.com/video/BV1dUjkzqEUj/?spm_id_from=333.337.search-card.all.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
-        "image_url": "/src/assets/background/History2024.jpg",
+        "title": "[视听盛宴] 黄霄雲 五机位全程饭拍",
+        "content": "2024.11.01 宇宙无敌号 北京演唱会 11.1 五机位全程剪辑版",
+        "button_link": "https://www.bilibili.com/video/BV1RmDvYsEWL/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "image_url": "/src/assets/concert/beijing1/beijing_duojiwei.jpg",
         "index": 3
       },
       {
         "type": "TitleSection",
-        "title_text": "成都东安湖体育公园多功能体育馆，五月24日",
+        "title_text": "北京站Day1歌单",
+        "subtitle": "北京·华熙LIVE·五棵松·场馆",
+        "picture": "/src/assets/background/Chengdu.jpg",
+        "picture_title": "2024/11/01",
+        "content": [
+          {
+            "tab": "Part1",
+            "song": [
+              "挑战（原唱）",
+              "蝴蝶夫人（原唱）",
+              "平行线 wish you were here（原唱）",
+              "没语季节（原创）"
+            ]
+          },
+          {
+            "tab": "Part2",
+            "song": [
+              "请带我去很远地方（原唱） ",
+              "Into the light跃入星光（原唱）",
+              "小云（原创）",
+              "月牙湾（翻唱）",
+              "人鱼之歌（翻唱）",
+              "要不然我们就这样一万年（原唱）",
+              "十一（队长合唱）",
+              "予你（队长独唱）"
+            ]
+          },
+          {
+            "tab": "Part3",
+            "song": [
+              "没了我你依然拥有太阳（原创）",
+              "[点歌]光之黎明（原创）",
+              "[点歌]羽众不同（原唱）",
+              "[点歌]弦上生花（原创）",
+              "盲选（原创）",
+              "然后呢，最后呢（原创）"
+            ]
+          },
+          {
+            "tab": "Part4",
+            "song": [
+              "渐渐被你吸引（翻唱）",
+              "以我之躯（原唱）",
+              "回音如果（原创）",
+              "All by myself（翻唱）",
+              "不潮不用花钱（翻唱）",
+              "觉醒时代（原创）",
+              "打开（原创）",
+              "星辰大海（原唱）"
+            ]
+          }
+        ],
         "index": 4
       },
       {

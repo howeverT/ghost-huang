@@ -77,6 +77,8 @@ interface ConcertItem {
   image_url?: string
   title_text?: string
   subtitle?: string
+  picture?: string
+  picture_title?: string
   button_link?: string
   items?: Array<{
     image: string

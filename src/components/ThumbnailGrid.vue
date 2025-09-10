@@ -223,9 +223,9 @@ onUnmounted(() => {
 .title-container {
   margin-bottom: 2rem;
   width: 100%;
-  max-width: 1200px;
+  max-width: calc(100vw - 3rem);
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .title-container h2 {
@@ -238,11 +238,11 @@ onUnmounted(() => {
 
 .items-container {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: calc(100vw - 3rem);
 }
 
 .frame-item {
@@ -256,8 +256,9 @@ onUnmounted(() => {
 }
 
 .frame-border {
-  width: 18rem;
-  height: 25rem;
+  width: calc(25% - 1.125rem);
+  min-width: 22rem;
+  height: 32rem;
   position: relative;
   flex-shrink: 0;
 }
@@ -298,34 +299,61 @@ onUnmounted(() => {
 }
 
 /* 响应式布局 */
-@media (min-width: 1600px) {
+@media (min-width: 1800px) {
   .title-container,
   .items-container {
-    max-width: 1600px;
+    max-width: calc(100vw - 4rem);
   }
 
   .frame-border {
-    width: 22rem;
-    height: 30rem;
+    width: calc(25% - 1.875rem);
+    min-width: 28rem;
+    height: 38rem;
+  }
+
+  .items-container {
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 1799px) {
+  .title-container,
+  .items-container {
+    max-width: calc(100vw - 4rem);
+  }
+
+  .frame-border {
+    width: calc(25% - 1.5rem);
+    min-width: 26rem;
+    height: 36rem;
+  }
+
+  .items-container {
+    gap: 2rem;
   }
 }
 
 @media (max-width: 1400px) {
   .title-container,
   .items-container {
-    max-width: 1400px;
+    max-width: calc(100vw - 3rem);
   }
 
   .frame-border {
-    width: 20rem;
-    height: 28rem;
+    width: calc(25% - 1.35rem);
+    min-width: 24rem;
+    height: 34rem;
+  }
+
+  .items-container {
+    gap: 1.8rem;
   }
 }
 
 @media (max-width: 1200px) {
   .title-container,
   .items-container {
-    max-width: 1200px;
+    max-width: calc(100vw - 2rem);
   }
 
   .title-container h2 {
@@ -333,15 +361,20 @@ onUnmounted(() => {
   }
 
   .frame-border {
-    width: 18rem;
-    height: 25rem;
+    width: calc(25% - 1.125rem);
+    min-width: 22rem;
+    height: 32rem;
+  }
+
+  .items-container {
+    gap: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .title-container,
   .items-container {
-    max-width: 1000px;
+    max-width: calc(100vw - 1.5rem);
   }
 
   .title-container h2 {
@@ -349,12 +382,13 @@ onUnmounted(() => {
   }
 
   .frame-border {
-    width: 16rem;
-    height: 22rem;
+    width: calc(50% - 0.6rem);
+    min-width: 18rem;
+    height: 28rem;
   }
 
   .items-container {
-    gap: 1rem;
+    gap: 1.2rem;
   }
 }
 
@@ -369,13 +403,13 @@ onUnmounted(() => {
   }
 
   .frame-border {
-    width: calc(50% - 0.75rem);
-    min-width: 150px;
-    height: 20rem;
+    width: calc(50% - 0.6rem);
+    min-width: 160px;
+    height: 22rem;
   }
 
   .items-container {
-    gap: 1rem;
+    gap: 1.2rem;
   }
 
   .frame-title {
