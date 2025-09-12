@@ -14,11 +14,11 @@
       },
       {
         "type": "ContentSection",
-        "title": "因为我们都在走上坡路。",
+        "title": "因为我们都在走上坡路",
         "paragraphs": [
           "其实我是因为魔星保护了我的梦才走到这里。我时常在夜里会把我的枕头哭湿。你们为了我一次又一次地承受这些伤害，我不知道我要怎么做，才能让你们更快乐，不委屈。",
           "我一直老说，我一定要变强，我才能保护你们，但是我觉得我没有保护好。而是你们一直冲在前面为我遮挡这些伤害。",
-          "累不累啊。不可能不累的，累就对了其实。"
+          "累不累啊。不可能不累的。累就对了其实。"
         ],
         "index": 2
       },
@@ -40,7 +40,7 @@
           {
             "tab": "Part1",
             "song": [
-              "Oracle",
+              "Oracle（原唱）",
               "打开（原创）",
               "蝴蝶夫人（原唱）",
               "没了我你依然拥有太阳mix没语季节（原创）",
@@ -131,7 +131,7 @@
     "content": [
       {
         "type": "HeroSection",
-        "title": "北京站-Day1",
+        "title": "北京站",
         "title_align": "center",
         "title_margin": "0",
         "background_image": "/src/assets/background/Beijing-day1.jpg",
@@ -139,7 +139,7 @@
       },
       {
         "type": "ContentSection",
-        "title": "再次谢谢你们，让我实现了梦想。",
+        "title": "再次谢谢你们，让我实现了梦想",
         "paragraphs": [
           "有没有去年广州也来的呀，你们好棒啊。今年我们再做一个约定，明年如果我们开巡演，你们会来吗。那今天的演唱会就要接近尾声了，非常开心跟你们度过这个难忘的，重要的，美好的夜晚。",
           "谢谢你们为我做的一切，虽然我们的每一步都走的很难，很漫长，但是很踏实。我也会继续加油，带来更多很好的作品来给你们听。",
@@ -234,6 +234,133 @@
             "image": "/src/assets/background/Beijing-day1.jpg",
             "link": "https://www.bilibili.com/video/BV1yk3LzFEvh/?spm_id_from=333.1387.homepage.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
             "title": "黄霄雲&孙楠《美丽的神话》"
+          }
+        ],
+        "index": 5
+      }
+    ]
+  },
+  {
+    "date": "2025/07/26",
+    "title": "shanghai",
+    "places": "上海梅赛德斯-奔驰文化中心",
+    "content": [
+      {
+        "type": "HeroSection",
+        "title": "上海站",
+        "title_align": "center",
+        "title_margin": "0",
+        "background_image": "/src/assets/background/background.jpg",
+        "index": 1
+      },
+      {
+        "type": "ContentSection",
+        "title": "我还要带着你们去看更璀璨的星海",
+        "paragraphs": [
+          "十年了，我觉得不是终点，是我们一起给时光盖的第一个邮戳，我用歌声和努力奔向你们，你们用热爱和陪伴奔向我。",
+          "今天我们一起攒出了这一属于自己的星辰大海，我爱你们，爱每一个来听我现场的，爱每一个线上线下支持我的人，爱每一个在十年里面从未缺席的你，也爱刚刚认识的你，谢谢你们陪我走过这十年的春夏秋冬。",
+          "等下一个十年，让我们继续永远有力量的双向奔赴，好不好。我会带着你们的爱，把宇宙无敌号开到更亮的星海。"
+        ],
+        "index": 2
+      },
+      {
+        "type": "OverlapSection",
+        "title": "[视听盛宴] 黄霄雲 演唱会大电影",
+        "content": "2025.07.26 宇宙无敌号上海站 十二机位 全程4K超清饭拍",
+        "button_link": "https://www.bilibili.com/video/BV1L48qzsESK/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "image_url": "/src/assets/concert/shanghai/shanghai_dianying.jpg",
+        "index": 3
+      },
+      {
+        "type": "TitleSection",
+        "title_text": "上海站歌单",
+        "subtitle": "上海梅赛德斯-奔驰文化中心",
+        "picture": "/src/assets/concert/shanghai/gedan.jpg",
+        "picture_title": "2025/07/26",
+        "content": [
+          {
+            "tab": "Part1",
+            "song": [
+              "Oracle（原唱）",
+              "淬炼（原唱）",
+              "打开（原创）",
+              "蝴蝶夫人（原唱）",
+              "四季与你（原唱）",
+              "你的答案（翻唱）"
+            ]
+          },
+          {
+            "tab": "Part2",
+            "song": [
+              "请带我去很远地方（原唱） ",
+              "Into the light跃入星光（原唱）",
+              "小云（原创）",
+              "没语季节（原创）",
+              "烟火里的尘埃（翻唱）",
+              "好日子（翻唱）"
+            ]
+          },
+          {
+            "tab": "Part3",
+            "song": [
+              "当爱（原唱）",
+              "别叹（原唱）",
+              "天下（翻唱）",
+              "画中来（原唱）",
+              "要不然我们就这样一万年（原唱）",
+              "沈园外（刘宇合唱）",
+              "怎叹（刘宇独唱）"
+            ]
+          },
+          {
+            "tab": "Part4",
+            "song": [
+              "人鱼之歌（翻唱）",
+              "梦返（原唱）",
+              "[点歌]说谎动物（原创）",
+              "[点歌]连名带姓（翻唱）",
+              "[点歌]Sad Sometimes（原唱）",
+              "盲选（原创）"
+            ]
+          },
+          {
+            "tab": "Part5",
+            "song": [
+              "渐渐被你吸引（翻唱）",
+              "不潮不用花钱（翻唱）",
+              "上海滩（翻唱）",
+              "平行线（原唱）",
+              "觉醒时代（原创）",
+              "星辰大海（原唱）",
+              "光之黎明返场（原创）"
+            ]
+          }
+        ],
+        "index": 4
+      },
+      {
+        "type": "ThumbnailGrid",
+        "title": "演唱会合集",
+        "items": [
+          {
+            "image": "/src/assets/concert/shanghai/mangxuan_guanshe.jpg",
+            "link": "https://www.bilibili.com/video/BV1UtYmzLEwv/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "上海站《盲选》官摄"
+          },
+          {
+            "image": "/src/assets/concert/shanghai/shanghai_vlog1.jpg",
+            "link": "https://www.bilibili.com/video/BV1wTeNzXE9M/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "黄霄雲上海站演唱会纪录片"
+          },
+          {
+            "image": "/src/assets/concert/shanghai/shanghai_vlog2.jpg",
+            "link": "https://www.bilibili.com/video/BV1amePziEhd/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "【面包的Vlog第57集】黄霄雲上海站演唱会Vlog终于来了"
+          },
+          {
+            "image": "/src/assets/concert/shanghai/with_liuyu.jpg",
+            "link": "https://www.bilibili.com/video/BV1UZtHzcEvK/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "黄霄雲&刘宇《沈园外》官摄"
           }
         ],
         "index": 5
