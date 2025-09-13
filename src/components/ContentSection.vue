@@ -25,7 +25,8 @@ withDefaults(defineProps<Props>(), {
 .content-section {
   width: 100%;
   background-color: white;
-  padding: 2rem 0;
+  padding: 4rem 0;
+  margin: 2rem 0;
   min-height: 30vh;
   display: flex;
   align-items: center;
@@ -59,6 +60,11 @@ withDefaults(defineProps<Props>(), {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+  .content-section {
+    padding: 3rem 0;
+    margin: 1.5rem 0;
+  }
+
   .section-title {
     font-size: 2.5rem;
   }
@@ -74,6 +80,11 @@ withDefaults(defineProps<Props>(), {
 }
 
 @media (max-width: 480px) {
+  .content-section {
+    padding: 2.5rem 0;
+    margin: 1rem 0;
+  }
+
   .section-title {
     font-size: 2rem;
   }

@@ -40,6 +40,30 @@
           :button-link="item.button_link"
         />
 
+        <!-- OverlapSecondSection -->
+        <OverlapSecondSection
+          v-else-if="item.type === 'OverlapSecondSection'"
+          :title="item.title || ''"
+          :content="item.content || ''"
+          :background-image="item.background_image || ''"
+          :links="item.links || []"
+        />
+
+        <!-- ConcertItemSection -->
+        <ConcertItemSection
+          v-else-if="item.type === 'ConcertItemSection'"
+          :items="(item.items as any) || []"
+          :title="item.title"
+          :tabs="item.tabs"
+        />
+
+        <!-- TabbedContentSection -->
+        <TabbedContentSection
+          v-else-if="item.type === 'TabbedContentSection'"
+          :tabs="item.tabs || []"
+          :title="item.title || ''"
+        />
+
         <!-- ThumbnailGrid -->
         <ThumbnailGrid
           v-else-if="item.type === 'ThumbnailGrid'"
@@ -47,6 +71,11 @@
           :title="item.title"
           :items-per-row="getItemsPerRow(item.items?.length || 0)"
         />
+
+        <!-- 未知组件类型 -->
+        <div v-else class="unknown-component">
+          <p>未知组件类型: {{ item.type }}</p>
+        </div>
       </template>
     </div>
   </div>
@@ -58,14 +87,37 @@ import { useRoute } from 'vue-router'
 import HeroSection from '@/components/HeroSection.vue'
 import ContentSection from '@/components/ContentSection.vue'
 import OverlapSection from '@/components/OverlapSection.vue'
+import OverlapSecondSection from '@/components/OverlapSecondSection.vue'
 import TitleSection from '@/components/TitleSection.vue'
 import ThumbnailGrid from '@/components/ThumbnailGrid.vue'
+import ConcertItemSection from '@/components/ConcertItemSection.vue'
+import TabbedContentSection from '@/components/TabbedContentSection.vue'
 
 // 路由参数
 const route = useRoute()
 const city = route.params.city as string
 
 // 类型定义
+interface TabItem {
+  id: string
+  label: string
+  items: {
+    title: string
+    url: string
+    date: string
+    image?: string
+  }[]
+  backgroundImage: string
+  imageTitle?: string
+  imageCaption?: string
+}
+
+interface LinkItem {
+  link_title: string
+  date: string
+  link: string
+}
+
 interface ConcertItem {
   type: string
   title?: string
@@ -85,6 +137,8 @@ interface ConcertItem {
     title: string
     link?: string
   }>
+  tabs?: TabItem[]
+  links?: LinkItem[]
   index: number
 }
 
@@ -183,5 +237,19 @@ onMounted(() => {
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.unknown-component {
+  padding: 2rem;
+  text-align: center;
+  background: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  margin: 1rem 0;
+  border-radius: 8px;
+}
+
+.unknown-component p {
+  color: #6c757d;
+  font-size: 1.1rem;
 }
 </style>
