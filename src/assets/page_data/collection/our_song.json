@@ -2,7 +2,7 @@
   {
     "date": "2024/08/18",
     "title": "SP06EP05",
-    "description": "探索宇宙的奥秘，发现更多美好的事物。让我们一起在星辰大海中遨游，寻找属于我们的梦想。",
+    "description": "当手中握住繁华，心情却变得荒芜，才发现世上一切都会变卦，当青春剩下日记，乌丝就要变成白发，不变的只有那首歌，在心中来回地唱。",
     "places": "",
     "links": [
       {
@@ -16,13 +16,13 @@
         "icon": "video"
       }
     ],
-    "image": ["/src/assets/background/Beijing-day1.jpg"],
-    "display": "right"
+    "image": ["/src/assets/variety/oursong/oursong_08-18.jpg"],
+    "display": "left"
   },
   {
     "date": "2024/08/28",
     "title": "SP06EP06",
-    "description": "开始追逐梦想，踏上星辰大海的征程。每一个梦想都值得我们去追逐，每一次努力都会让我们更接近目标。",
+    "description": "月缺之后终会月圆，谁能区分起点在哪边，签下契约层层欲念，哭声笑声都正确地作答。",
     "places": "",
     "links": [
       {
@@ -41,13 +41,13 @@
         "icon": "video"
       }
     ],
-    "image": ["/src/assets/background//Beijing-day2.jpg"],
+    "image": ["/src/assets/variety/oursong/oursong_08-28.jpg"],
     "display": "right"
   },
   {
     "date": "2025/09/29",
     "title": "巅峰夜",
-    "description": "心中种下星辰大海的种子，等待发芽。最初的梦想总是最珍贵的，让我们不忘初心，继续前行。",
+    "description": "你的近况，断续从朋友口中传到我耳畔，我拿什么条件可以袖手旁观，除非你说，离开我你从不曾觉得遗憾。",
     "places": "",
     "links": [
       {
@@ -61,7 +61,7 @@
         "icon": "video"
       }
     ],
-    "image": ["/src/assets/background/Guangzhou.jpg"],
+    "image": ["/src/assets/variety/oursong/oursong_09-29.jpg"],
     "display": "left"
   }
 ]
