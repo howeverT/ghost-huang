@@ -24,7 +24,7 @@
       {
         "type": "OverlapSecondSection",
         "title": "综艺合集",
-        "content": "2025.05.24 宇宙无敌号成都站表演会大电影 全程4K超清饭拍",
+        "content": "",
         "background_image": "/src/assets/background/History2024.jpg",
         "links": [
           {
@@ -193,7 +193,7 @@
             "id": "part2",
             "label": "5-8月",
             "backgroundImage": "/src/assets/background/History2024.jpg",
-            "imageTitle": "2024年5-8月晚会",
+            "imageTitle": "2023年5-8月晚会",
             "imageCaption": "毕业歌会、诗画中国等精彩回顾",
             "items": [
               {
@@ -274,7 +274,7 @@
             "id": "part3",
             "label": "9-12月",
             "backgroundImage": "/src/assets/background/History2024.jpg",
-            "imageTitle": "2024年9-12月晚会",
+            "imageTitle": "2023年9-12月晚会",
             "imageCaption": "中秋晚会、跨年晚会等精彩回顾",
             "items": [
               {

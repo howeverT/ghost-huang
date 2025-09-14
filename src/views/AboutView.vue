@@ -34,6 +34,10 @@ const loadTimelineData = async () => {
 
     if (route.path === '/about/oursong') {
       jsonPath = '/src/assets/page_data/collection/our_song.json'
+    } else if (route.path === '/about/tianci') {
+      jsonPath = '/src/assets/page_data/collection/tian_ci.json'
+    } else if (route.path === '/about/qiche') {
+      jsonPath = '/src/assets/page_data/collection/qi_che.json'
     }
 
     const response = await fetch(jsonPath)
