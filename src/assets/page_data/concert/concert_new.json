@@ -558,5 +558,124 @@
         "index": 5
       }
     ]
+  },
+  {
+    "date": "2025/08/23",
+    "title": "ningbo",
+    "places": "宁波奥体中心体育馆",
+    "content": [
+      {
+        "type": "HeroSection",
+        "title": "宁波站",
+        "title_align": "center",
+        "title_margin": "0",
+        "background_image": "/src/assets/background/Ningbo.jpg",
+        "index": 1
+      },
+      {
+        "type": "ContentSection",
+        "title": "你们知道，我为什么一直都不敢唱完整的光之黎明吗，你们的眼泪和我的眼泪就是答案。",
+        "paragraphs": [
+          "你们居然都会唱盲选，还会分声部，像精心排练过的一样，我们一起听同一首歌回家，我觉得这一切都值得，很浪漫是不是。",
+          "我很荣幸，你们一直在我困难的时候支持我，帮我抚平了很多伤疤，未来呢不可能没有新的伤疤，但是我觉得它一定结痂得更快，这说明我们都更强大了。",
+          "希望我能用我的音乐，能治愈更多更多被需要安慰的人。这场关于爱的传奇故事，就告一段落，但是音乐还在继续。"
+        ],
+        "index": 2
+      },
+      {
+        "type": "OverlapSection",
+        "title": "[视听盛宴] 黄霄雲 二十机位大电影",
+        "content": "2025.08.23 宇宙无敌号宁波站演唱会 全程4K超清饭拍",
+        "button_link": "https://www.bilibili.com/video/BV1pca3zPECZ/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "image_url": "/src/assets/concert/ningbo/ningbo_dianying.jpg",
+        "index": 3
+      },
+      {
+        "type": "TitleSection",
+        "title_text": "宁波站歌单",
+        "subtitle": "宁波奥体中心体育馆",
+        "picture": "/src/assets/concert/ningbo/ningbo_gedan.jpg",
+        "picture_title": "2025/08/23",
+        "content": [
+          {
+            "tab": "Part1",
+            "song": [
+              "打开（原创，23年打开演唱会版）",
+              "回音如果（原创）",
+              "四季与你（原唱）",
+              "平行线（原唱）",
+              "羽众不同（原唱）"
+            ]
+          },
+          {
+            "tab": "Part2",
+            "song": [
+              "请带我去很远地方（原唱） ",
+              "Into the light跃入星光（原唱）",
+              "小云（原创）",
+              "烟火里的尘埃（翻唱）",
+              "没语季节（原创）"
+            ]
+          },
+          {
+            "tab": "Part3",
+            "song": [
+              "梁祝（古筝弹唱）",
+              "故人归（原唱）",
+              "落凡尘（原唱）",
+              "别叹（原唱）",
+              "画中来（原唱）",
+              "要不然我们就这样一万年（原唱）",
+              "天下（翻唱）",
+              "三界四洲（者来女合唱）",
+              "丝路谣（者来女独唱）"
+            ]
+          },
+          {
+            "tab": "Part4",
+            "song": [
+              "人鱼之歌（翻唱）",
+              "然后呢，最后呢（原创）",
+              "[点歌]重返地球（原创）",
+              "[点歌]玫瑰星云（原创）",
+              "[点歌]Sad Sometimes（原唱）",
+              "梦返（原唱）",
+              "盲选（原创）"
+            ]
+          },
+          {
+            "tab": "Part5",
+            "song": [
+              "Oracle（原唱）",
+              "渐渐被你吸引（翻唱）",
+              "不潮不用花钱（翻唱）",
+              "上海滩（翻唱）",
+              "蝴蝶夫人（原唱）",
+              "光之黎明（原创）",
+              "觉醒时代（原创）",
+              "星辰大海（原唱）"
+            ]
+          }
+        ],
+        "index": 4
+      },
+      {
+        "type": "ThumbnailGrid",
+        "title": "演唱会合集",
+        "items": [
+          {
+            "image": "/src/assets/concert/ningbo/ningbo_vlog1.jpg",
+            "link": "https://www.bilibili.com/video/BV1hLpVzFEVS/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "宇宙无敌号宁波站演唱会Vlog"
+          },
+          {
+            "image": "/src/assets/concert/ningbo/with_zhelainv.jpg",
+            "link": "https://www.bilibili.com/video/BV1QhezzPEZy/?spm_id_from=333.337.search-card.all.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "黄霄雲&刘者来女《三界四洲》直拍"
+          }
+        ],
+        "index": 5
+      }
+    ]
   }
 ]

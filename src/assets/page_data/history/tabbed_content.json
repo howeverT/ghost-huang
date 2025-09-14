@@ -5,7 +5,7 @@
     "content": [
       {
         "type": "HeroSection",
-        "title": "考古区",
+        "title": "二四年",
         "title_align": "center",
         "title_margin": "0",
         "background_image": "/src/assets/background/History2024.jpg",
@@ -56,8 +56,30 @@
         "index": 3
       },
       {
+        "type": "ThumbnailGrid",
+        "title": "音乐节合集",
+        "items": [
+          {
+            "image": "/src/assets/festival/2024-02-06.jpg",
+            "link": "https://www.bilibili.com/video/BV11A4m1V7J8/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "24.02.06 成都商演"
+          },
+          {
+            "image": "/src/assets/festival/2024-09-08_1.jpg",
+            "link": "https://www.bilibili.com/video/BV1LMpzenE6T/?spm_id_from=333.337.search-card.all.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "24.09.08 天津天地龙行海畔音乐节"
+          },
+          {
+            "image": "/src/assets/festival/2024-12-07.jpg",
+            "link": "https://www.bilibili.com/video/BV1Ybq7YqEpZ/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "24.12.07 王者荣耀电竞派对音乐节"
+          }
+        ],
+        "index": 7
+      },
+      {
         "type": "ConcertItemSection",
-        "index": 7,
+        "index": 8,
         "title": "2024年晚会/盛典汇总",
         "tabs": [
           {
