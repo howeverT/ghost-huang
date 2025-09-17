@@ -57,6 +57,11 @@ const router = createRouter({
       name: 'related',
       component: () => import('../views/RelatedView.vue'),
     },
+    {
+      path: '/test/haoshengyin',
+      name: 'test-haoshengyin',
+      component: () => import('../views/TestOurSongView.vue'),
+    },
   ],
 })
 
