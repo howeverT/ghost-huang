@@ -135,8 +135,32 @@
                             {
                                 "avatar": "/src/assets/avatar/club/bowuguan_weibo.jpg",
                                 "name": "黄霄雲·魔星博物馆",
-                                "avatar_title": "博物馆",
+                                "avatar_title": "考古区",
                                 "link": "https://weibo.com/u/6961164430"
+                            }
+                        ]
+                    }
+                ],
+                "index": 4
+            },
+            {
+                "type": "AvatarSection",
+                "title": "演唱会主办方",
+                "content": [
+                    {
+                        "subtitle": "微博",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/concert/chouduomi_weibo.jpg",
+                                "name": "Domi多米娱乐",
+                                "avatar_title": "微博",
+                                "link": "https://weibo.com/n/Domi%E5%A4%9A%E7%B1%B3%E5%A8%B1%E4%B9%90"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/concert/chouduomi_weibo.jpg",
+                                "name": "Domi多米娱乐",
+                                "avatar_title": "抖音",
+                                "link": "https://www.douyin.com/user/MS4wLjABAAAAmRf-ycjMUFUyZRxBVVSCwh_Gqnov_bFejtDgavHsUG4?from_tab_name=main"
                             }
                         ]
                     }

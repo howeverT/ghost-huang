@@ -1,0 +1,43 @@
+[
+    {
+      "date": "2021合集",
+      "title": "天赐的声音2",
+      "description": "",
+      "places": "",
+      "links": [
+        {
+          "subtitle": "EP10",
+          "links": [
+            {
+              "link_title": "《余年》",
+              "link": "https://weibo.com/6961164430/4616605251934118",
+              "icon": "video"
+            },
+            {
+                "link_title": "《跳舞的梵谷》",
+                "link": "https://weibo.com/6961164430/4616615491273498",
+                "icon": "video"
+              }
+          ]
+        },
+        {
+            "subtitle": "EP12",
+            "links": [
+              {
+                "link_title": "《听到我》",
+                "link": "https://weibo.com/6961164430/4621818071090698",
+                "icon": "video"
+              },
+              {
+                "link_title": "《不鼓自鸣》",
+                "link": "https://weibo.com/6961164430/4621818214482870",
+                "icon": "video"
+              }
+            ]
+          }
+      ],
+      "image": ["/src/assets/variety/oursong/testtest.jpg"],
+      "display": "left"
+    }
+  ]
+  

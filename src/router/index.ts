@@ -58,8 +58,18 @@ const router = createRouter({
       component: () => import('../views/RelatedView.vue'),
     },
     {
-      path: '/test/haoshengyin',
-      name: 'test-haoshengyin',
+      path: '/collection/haoshengyin',
+      name: 'collection-haoshengyin',
+      component: () => import('../views/TestOurSongView.vue'),
+    },
+    {
+      path: '/collection/tianci',
+      name: 'collection-tianci',
+      component: () => import('../views/TestOurSongView.vue'),
+    },
+    {
+      path: '/collection/liutang',
+      name: 'collection-liutang',
       component: () => import('../views/TestOurSongView.vue'),
     },
   ],

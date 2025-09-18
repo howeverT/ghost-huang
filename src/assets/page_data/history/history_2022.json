@@ -48,6 +48,11 @@
                 "link": "https://weibo.com/6961164430/4779822662287968"
             },
             {
+              "link_title": "好声音-合集",
+              "date": "2022-08-26",
+              "link": "/collection/haoshengyin"
+            },
+            {
               "link_title": "闪电咖啡馆",
               "date": "2022-09-04",
               "link": "https://weibo.com/6961164430/4810026076342885"
@@ -59,12 +64,12 @@
             },
             {
                 "link_title": "我们的歌-合集",
-                "date": "2024-10-09",
+                "date": "2022-10-09",
                 "link": "/about/oursong"
             },
             {
                 "link_title": "汽车之家-合集",
-                "date": "2024-12-21",
+                "date": "2022-12-21",
                 "link": "/about/qiche"
             }
           ],

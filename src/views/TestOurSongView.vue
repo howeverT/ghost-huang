@@ -22,18 +22,24 @@
           <p class="description">{{ currentData?.description }}</p>
 
           <div class="links-section">
-            <h3>相关链接：</h3>
-            <div class="links-list">
-              <a
-                v-for="(link, index) in currentData?.links"
-                :key="index"
-                :href="link.link"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="link-item"
-              >
-                {{ link.link_title }}
-              </a>
+            <div
+              v-for="(linkGroup, groupIndex) in currentData?.links"
+              :key="groupIndex"
+              class="link-group"
+            >
+              <h3 class="subtitle">{{ linkGroup.subtitle }}</h3>
+              <div class="links-list">
+                <a
+                  v-for="(link, index) in linkGroup.links"
+                  :key="index"
+                  :href="link.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="link-item"
+                >
+                  {{ link.link_title }}
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -92,6 +98,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 
 // 定义数据类型
 interface TimelineItem {
@@ -107,6 +114,9 @@ interface TimelineItem {
   }[]
   image: string[]
 }
+
+// 路由
+const route = useRoute()
 
 // 响应式数据
 const loading = ref(true)
@@ -127,7 +137,18 @@ const loadData = async () => {
     loading.value = true
     error.value = ''
 
-    const response = await fetch('/src/assets/page_data/collection/haoshengyin.json')
+    // 根据路由决定加载哪个JSON文件
+    let jsonPath = '/src/assets/page_data/collection/haoshengyin.json' // 默认路径
+
+    if (route.path === '/collection/haoshengyin') {
+      jsonPath = '/src/assets/page_data/collection/haoshengyin.json'
+    } else if (route.path === '/collection/tianci') {
+      jsonPath = '/src/assets/page_data/collection/tianci.json'
+    } else if (route.path === '/collection/liutang') {
+      jsonPath = '/src/assets/page_data/collection/liutang.json'
+    }
+
+    const response = await fetch(jsonPath)
     if (!response.ok) {
       throw new Error('Failed to fetch data')
     }
@@ -245,7 +266,7 @@ onMounted(() => {
 .right-section {
   flex: 1;
   background-color: white;
-  padding: 3rem 6rem 3rem 3rem;
+  padding: 3rem 4rem 3rem 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -255,7 +276,7 @@ onMounted(() => {
 
 .content-wrapper {
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
   color: #333;
   opacity: 0;
   transform: translateY(20px);
@@ -268,22 +289,33 @@ onMounted(() => {
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: #333;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   line-height: 1.2;
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #333;
 }
 
 .date {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #666;
   margin-bottom: 2rem;
   font-weight: 500;
 }
 
 .description {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   line-height: 1.6;
   color: #555;
   margin-bottom: 2.5rem;
@@ -294,8 +326,12 @@ onMounted(() => {
   margin-bottom: 2.5rem;
 }
 
-.links-section h3 {
-  font-size: 1.3rem;
+.link-group {
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
   color: #333;
   margin-bottom: 1rem;
   font-weight: 600;
@@ -303,23 +339,21 @@ onMounted(() => {
 
 .links-list {
   display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
 .link-item {
-  color: #667eea;
+  color: #333;
   text-decoration: none;
   font-size: 1rem;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #e9ecef;
   transition: all 0.3s ease;
 }
 
 .link-item:hover {
-  color: #5a6fd8;
-  padding-left: 0.5rem;
-  border-bottom-color: #667eea;
+  color: #666;
+  text-decoration: underline;
 }
 
 /* 导航箭头 */
@@ -388,9 +422,13 @@ onMounted(() => {
 
   .right-section {
     height: 60vh;
-    padding: 2rem 5rem 2rem 2rem;
+    padding: 2rem 3rem 2rem 2rem;
     clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
     justify-content: center;
+  }
+
+  .content-wrapper {
+    max-width: 100%;
   }
 
   .arrow-navigation {
@@ -398,21 +436,29 @@ onMounted(() => {
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .description {
-    font-size: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .links-list {
+    gap: 1rem;
+  }
+
+  .link-item {
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
   .right-section {
-    padding: 1.5rem 4rem 1.5rem 1.5rem;
+    padding: 1.5rem 2.5rem 1.5rem 1.5rem;
   }
 
   .title {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
 
   .arrow-navigation {
