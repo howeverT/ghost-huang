@@ -28,44 +28,14 @@
           "background_image": "/src/assets/background/History2024.jpg",
           "links": [
             {
-              "link_title": "音乐公开课",
-              "date": "2022-05-04",
-              "link": "https://weibo.com/6961164430/4765500581873294"
-            },
-            {
-              "link_title": "闪亮的名字",
-              "date": "2022-05-10",
-              "link": "https://weibo.com/6961164430/4767688658782041"
-            },
-            {
               "link_title": "天赐的声音-合集",
-              "date": "2022-05-20",
-              "link": "/about/tianci"
+              "date": "2021-03-19",
+              "link": "/collection/tianci"
             },
             {
-                "link_title": "嗨唱吧少年",
-                "date": "2022-06-12",
-                "link": "https://weibo.com/6961164430/4779822662287968"
-            },
-            {
-              "link_title": "闪电咖啡馆",
-              "date": "2022-09-04",
-              "link": "https://weibo.com/6961164430/4810026076342885"
-            },
-            {
-                "link_title": "东榜饭局-正片",
-                "date": "2022-09-18",
-                "link": "https://weibo.com/6961164430/4815201767001485"
-            },
-            {
-                "link_title": "我们的歌-合集",
-                "date": "2024-10-09",
-                "link": "/about/oursong"
-            },
-            {
-                "link_title": "汽车之家-合集",
-                "date": "2024-12-21",
-                "link": "/about/qiche"
+              "link_title": "流淌的声音-合集",
+              "date": "2021-07-09",
+              "link": "/collection/liutang"
             }
           ],
           "index": 3
@@ -99,42 +69,6 @@
                   "date": "表演日期：2021-02-16，表演曲目：Neverland",
                   "url": "https://weibo.com/5043186742/4608974026184415",
                   "image": "/src/assets/party/2021/2021-02-16.jpg"
-                },
-                {
-                    "title": "空军2022迎新春网络团拜",
-                    "date": "表演日期：2022-01-28，表演曲目：伟大梦想",
-                    "url": "https://weibo.com/6961164430/4731428867146467",
-                    "image": "/src/assets/party/2022/2022-01-28.jpg"
-                },
-                {
-                    "title": "生龙活虎迎春来",
-                    "date": "表演日期：2022-01-30，表演曲目：星辰大海",
-                    "url": "https://weibo.com/6961164430/4731428867146467",
-                    "image": "/src/assets/party/2022/2022-01-30.jpg"
-                },
-                {
-                    "title": "广东卫视春晚",
-                    "date": "表演日期：2022-02-01，表演曲目：无名之辈",
-                    "url": "https://weibo.com/6961164430/4732179232328604",
-                    "image": "/src/assets/party/2022/2022-02-01.jpg"
-                },
-                {
-                    "title": "smg主持人歌会-part1",
-                    "date": "表演日期：2022-02-02，表演曲目：不为谁而作的歌",
-                    "url": "https://weibo.com/6961164430/4732920373974669",
-                    "image": "/src/assets/party/2022/2022-02-02_1.jpg"
-                },
-                {
-                    "title": "smg主持人歌会-part2",
-                    "date": "表演日期：2022-02-02，表演曲目：星辰大海",
-                    "url": "https://weibo.com/6961164430/4732544664734862",
-                    "image": "/src/assets/party/2022/2022-02-02_2.jpg"
-                },
-                {
-                  "title": "浙江卫视招商会",
-                  "date": "表演日期：2022-03-04，表演曲目：星辰大海",
-                  "url": "https://weibo.com/6961164430/4743313779590456",
-                  "image": "/src/assets/party/2022/2022-03-04.jpg"
                 }
               ]
             },

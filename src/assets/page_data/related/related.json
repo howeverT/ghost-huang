@@ -358,6 +358,36 @@
                     }
                 ],
                 "index": 4
+            },
+            {
+                "type": "AvatarSection",
+                "title": "叉烧包安利坊",
+                "content": [
+                    {
+                        "subtitle": "B站",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/anli/chashao_bili.webp",
+                                "name": "叉烧包安利坊",
+                                "avatar_title": "B站",
+                                "link": "https://space.bilibili.com/3546952654392162"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/concert/aichi_weibo.jpg",
+                                "name": "爱吃小面包--",
+                                "avatar_title": "微博",
+                                "link": "https://weibo.com/7412659586?refer_flag=1001030103_"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/concert/aichi_weibo.jpg",
+                                "name": "Keep_koo",
+                                "avatar_title": "微博",
+                                "link": "https://weibo.com/n/Keep_koo"
+                            }
+                        ]
+                    }
+                ],
+                "index": 5
             }
         ]
     }

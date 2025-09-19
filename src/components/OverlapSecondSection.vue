@@ -69,7 +69,7 @@ const props = defineProps<Props>()
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: calc(15% + 250px + 2rem);
+  margin-left: calc(15% + 250px - 100px);
 }
 
 .bar-title {
@@ -159,7 +159,7 @@ const props = defineProps<Props>()
 /* 响应式设计 */
 @media (min-width: 1400px) {
   .bar-content {
-    margin-left: calc(15% + 250px + 2rem);
+    margin-left: calc(15% + 250px - 100px);
   }
 
   .bar-title {
@@ -187,7 +187,7 @@ const props = defineProps<Props>()
 
 @media (min-width: 1200px) and (max-width: 1399px) {
   .bar-content {
-    margin-left: calc(15% + 250px + 2rem);
+    margin-left: calc(15% + 250px - 100px);
   }
 }
 
@@ -197,7 +197,7 @@ const props = defineProps<Props>()
   }
 
   .bar-content {
-    margin-left: calc(20% + 200px + 2rem);
+    margin-left: calc(20% + 200px - 80px);
   }
 
   .image-overlay {

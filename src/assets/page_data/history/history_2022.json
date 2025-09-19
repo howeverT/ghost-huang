@@ -65,13 +65,23 @@
             {
                 "link_title": "我们的歌-合集",
                 "date": "2022-10-09",
-                "link": "/about/oursong"
+                "link": "/collection/oursong"
             },
             {
-                "link_title": "汽车之家-合集",
-                "date": "2022-12-21",
-                "link": "/about/qiche"
-            }
+              "link_title": "汽车之家-01期",
+              "date": "2022-12-21",
+              "link": "https://weibo.com/6961164430/4849210752772055"
+          },
+          {
+            "link_title": "汽车之家-02期",
+            "date": "2022-12-27",
+            "link": "https://weibo.com/6961164430/4851341048943480"
+          },
+          {
+            "link_title": "汽车之家-夜话",
+            "date": "2022-12-30",
+            "link": "https://weibo.com/6961164430/4852484004383004"
+          }
           ],
           "index": 3
         },

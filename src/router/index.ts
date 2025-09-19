@@ -72,6 +72,11 @@ const router = createRouter({
       name: 'collection-liutang',
       component: () => import('../views/TestOurSongView.vue'),
     },
+    {
+      path: '/collection/oursong',
+      name: 'collection-oursong',
+      component: () => import('../views/TestOurSongView.vue'),
+    },
   ],
 })
 

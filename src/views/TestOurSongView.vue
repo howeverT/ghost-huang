@@ -146,6 +146,8 @@ const loadData = async () => {
       jsonPath = '/src/assets/page_data/collection/tianci.json'
     } else if (route.path === '/collection/liutang') {
       jsonPath = '/src/assets/page_data/collection/liutang.json'
+    } else if (route.path === '/collection/oursong') {
+      jsonPath = '/src/assets/page_data/collection/oursong.json'
     }
 
     const response = await fetch(jsonPath)
