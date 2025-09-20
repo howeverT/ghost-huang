@@ -77,6 +77,26 @@ const router = createRouter({
       name: 'collection-oursong',
       component: () => import('../views/TestOurSongView.vue'),
     },
+    {
+      path: '/collection/singer',
+      name: 'collection-singer',
+      component: () => import('../views/TestOurSongView.vue'),
+    },
+    {
+      path: '/collection/hit',
+      name: 'collection-hit',
+      component: () => import('../views/TestOurSongView.vue'),
+    },
+    {
+      path: '/collection/fresh',
+      name: 'collection-fresh',
+      component: () => import('../views/TestOurSongView.vue'),
+    },
+    {
+      path: '/collection/mask',
+      name: 'collection-mask',
+      component: () => import('../views/TestOurSongView.vue'),
+    },
   ],
 })
 

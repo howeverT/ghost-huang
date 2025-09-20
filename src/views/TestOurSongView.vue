@@ -148,6 +148,14 @@ const loadData = async () => {
       jsonPath = '/src/assets/page_data/collection/liutang.json'
     } else if (route.path === '/collection/oursong') {
       jsonPath = '/src/assets/page_data/collection/oursong.json'
+    } else if (route.path === '/collection/singer') {
+      jsonPath = '/src/assets/page_data/collection/singer.json'
+    } else if (route.path === '/collection/hit') {
+      jsonPath = '/src/assets/page_data/collection/hit.json'
+    } else if (route.path === '/collection/fresh') {
+      jsonPath = '/src/assets/page_data/collection/fresh.json'
+    } else if (route.path === '/collection/mask') {
+      jsonPath = '/src/assets/page_data/collection/mask.json'
     }
 
     const response = await fetch(jsonPath)

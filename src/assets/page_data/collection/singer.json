@@ -1,0 +1,88 @@
+[
+    {
+      "date": "2020合集",
+      "title": "歌手·当打之年",
+      "description": "",
+      "places": "",
+      "links": [
+        {
+          "subtitle": "EP01 & EP02 & EP03 & EP04 ",
+          "links": [
+            {
+              "link_title": "EP01节目CUT",
+              "link": "https://weibo.com/2347708314/L0upkn1CL",
+              "icon": "video"
+            },
+            {
+                "link_title": "EP02节目CUT",
+                "link": "https://weibo.com/2347708314/KplLZeuRJ",
+                "icon": "video"
+            },
+            {
+              "link_title": "EP03节目CUT",
+              "link": "https://weibo.com/2347708314/K2cmGluiv",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP04节目CUT",
+              "link": "https://weibo.com/2347708314/K2yli7JGy",
+              "icon": "video"
+            }
+          ]
+        },
+        {
+          "subtitle": "EP05 & EP06 & EP11",
+          "links": [
+            {
+              "link_title": "EP05节目CUT",
+              "link": "https://weibo.com/2347708314/K2E2jykcQ",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP06节目CUT",
+              "link": "https://weibo.com/2347708314/K2NANzxgr",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP11节目CUT",
+              "link": "https://weibo.com/2347708314/K30YH2bGR",
+              "icon": "video"
+            }
+          ]
+        }
+      ],
+      "image": ["/src/assets/variety/singer/singer_20-04-25.jpg"],
+      "display": "left"
+    },
+    {
+      "date": "2024合集",
+      "title": "歌手2024",
+      "description": "",
+      "places": "",
+      "links": [
+        {
+          "subtitle": "EP07",
+          "links": [
+            {
+              "link_title": "《星辰大海mix人鱼之歌》",
+              "link": "https://www.bilibili.com/video/BV1hz421z7nB/?spm_id_from=333.1387.search.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+              "icon": "video"
+            },
+            {
+              "link_title": "彩排现场",
+              "link": "https://www.bilibili.com/video/BV1oM4m1m7iF/?spm_id_from=333.1387.search.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+              "icon": "video"
+            },
+            {
+              "link_title": "后台花絮",
+              "link": "https://www.bilibili.com/video/BV1tZ421M7p7/?spm_id_from=333.1387.search.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+              "icon": "video"
+            }
+          ]
+        }
+      ],
+      "image": ["/src/assets/variety/singer/singer_24-06-21.jpg"],
+      "display": "left"
+    }
+  ]
+  

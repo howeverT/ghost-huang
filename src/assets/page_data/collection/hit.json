@@ -1,0 +1,58 @@
+[
+    {
+      "date": "2020合集",
+      "title": "爆款来了2",
+      "description": "",
+      "places": "",
+      "links": [
+        {
+          "subtitle": "EP01 & EP02 & EP03 & EP04 ",
+          "links": [
+            {
+              "link_title": "EP01节目CUT",
+              "link": "https://weibo.com/2347708314/KBivlxo7C",
+              "icon": "video"
+            },
+            {
+                "link_title": "EP02节目CUT",
+                "link": "https://weibo.com/2347708314/KBsFF2VTo",
+                "icon": "video"
+            },
+            {
+              "link_title": "EP03节目CUT",
+              "link": "https://weibo.com/2347708314/KBC2ifbs1",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP04节目CUT",
+              "link": "https://weibo.com/2347708314/KBNgezrYj",
+              "icon": "video"
+            }
+          ]
+        },
+        {
+          "subtitle": "EP05 & EP06 & EP07",
+          "links": [
+            {
+              "link_title": "EP05节目CUT",
+              "link": "https://weibo.com/2347708314/KBX42CaTx",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP06节目CUT",
+              "link": "https://weibo.com/2347708314/KC7DdkngK",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP07节目CUT",
+              "link": "https://weibo.com/2347708314/KCiRsjYl6",
+              "icon": "video"
+            }
+          ]
+        }
+      ],
+      "image": ["/src/assets/variety/hit/hit_20-05-21.jpg"],
+      "display": "left"
+    }
+  ]
+  

@@ -1,4 +1,44 @@
 [
+  {
+    "date": "2020合集",
+    "title": "天赐的声音",
+    "description": "",
+    "places": "",
+    "links": [
+      {
+        "subtitle": "EP07",
+        "links": [
+          {
+            "link_title": "EP07节目CUT",
+            "link": "https://weibo.com/2347708314/K4lKSodus",
+            "icon": "video"
+          },
+          {
+            "link_title": "《贝加尔湖畔》",
+            "link": "https://www.bilibili.com/video/BV1rB4y1P7n9",
+            "icon": "video"
+          },
+          {
+              "link_title": "《保留》",
+              "link": "https://www.bilibili.com/video/BV11D4y1S7ib",
+              "icon": "video"
+          },
+          {
+            "link_title": "《念想》",
+            "link": "https://www.bilibili.com/video/BV1SB4y1A7qJ",
+            "icon": "video"
+          },
+          {
+            "link_title": "《隐形的翅膀》",
+            "link": "https://www.bilibili.com/video/BV1594y1h74r",
+            "icon": "video"
+          }
+        ]
+      }
+    ],
+    "image": ["/src/assets/variety/tianci/tianci_20-04-12.jpg"],
+    "display": "left"
+  },
     {
       "date": "2021合集",
       "title": "天赐的声音2",
