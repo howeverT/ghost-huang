@@ -1,23 +1,22 @@
 [
     {
       "title": "考古区",
-      "year": "2021",
+      "year": "2020",
       "content": [
         {
           "type": "HeroSection",
           "title": "二零年",
-          "title_align": "center",
+          "title_align": "right",
           "title_margin": "0",
-          "background_image": "/src/assets/background/History2024.jpg",
+          "background_image": "/src/assets/background/History2020.jpg",
           "index": 1
         },
         {
           "type": "ContentSection",
           "title": "登上《歌手·当打之年》舞台",
           "paragraphs": [
-            "受邀参加林志炫演唱会嘉宾。",
-            "首次登上春晚舞台。",
-            "第一次国外演出。"
+            "放弃保研机会参加《歌手》，留下4个经典舞台。",
+            "常驻各大综艺节目。"
           ],
           "index": 2
         },
@@ -25,7 +24,7 @@
           "type": "OverlapSecondSection",
           "title": "综艺合集",
           "content": "",
-          "background_image": "/src/assets/background/History2024.jpg",
+          "background_image": "/src/assets/variety/background/Variety2020.jpg",
           "links": [
             {
               "link_title": "新生请指教-合集",

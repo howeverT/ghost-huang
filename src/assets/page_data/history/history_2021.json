@@ -6,18 +6,17 @@
         {
           "type": "HeroSection",
           "title": "二一年",
-          "title_align": "center",
+          "title_align": "left",
           "title_margin": "0",
-          "background_image": "/src/assets/background/History2024.jpg",
+          "background_image": "/src/assets/background/History2021.jpg",
           "index": 1
         },
         {
           "type": "ContentSection",
-          "title": "中山纪念堂《打开》个人演唱会",
+          "title": "重返《好声音》当导师助教",
           "paragraphs": [
-            "受邀参加林志炫演唱会嘉宾。",
-            "首次登上春晚舞台。",
-            "第一次国外演出。"
+            "感谢汪峰老师的赏识，和《好声音》的舞台，让阿鬼让更多人认识。",
+            "各大晚会舞台邀约。"
           ],
           "index": 2
         },
@@ -25,7 +24,7 @@
           "type": "OverlapSecondSection",
           "title": "综艺合集",
           "content": "",
-          "background_image": "/src/assets/background/History2024.jpg",
+          "background_image": "/src/assets/variety/background/Variety2021.jpg",
           "links": [
             {
               "link_title": "天赐的声音-合集",
@@ -33,7 +32,7 @@
               "link": "/collection/tianci"
             },
             {
-              "link_title": "流淌的声音-合集",
+              "link_title": "流淌的歌声-合集",
               "date": "2021-07-09",
               "link": "/collection/liutang"
             }

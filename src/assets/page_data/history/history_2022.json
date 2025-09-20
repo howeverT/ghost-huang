@@ -6,7 +6,7 @@
         {
           "type": "HeroSection",
           "title": "二二年",
-          "title_align": "left",
+          "title_align": "right",
           "title_margin": "0",
           "background_image": "/src/assets/background/History2022.jpg",
           "index": 1
@@ -39,7 +39,7 @@
             {
               "link_title": "天赐的声音-合集",
               "date": "2022-05-20",
-              "link": "/about/tianci"
+              "link": "/collection/tianci"
             },
             {
                 "link_title": "嗨唱吧少年",
