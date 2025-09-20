@@ -150,7 +150,7 @@ const loadYearData = async (year: string) => {
     // 根据年份加载对应的JSON文件
     let data
     if (year === '2024') {
-      data = await import('@/assets/page_data/history/tabbed_content.json')
+      data = await import('@/assets/page_data/history/history_2024.json')
     } else {
       // 尝试加载其他年份的数据
       try {

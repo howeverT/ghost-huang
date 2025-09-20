@@ -77,14 +77,14 @@ const loadHistoryData = async () => {
     error.value = ''
 
     // 加载JSON文件
-    const response = await fetch('/src/assets/page_data/history/tabbed_content.json')
+    const response = await fetch('/src/assets/page_data/history/history_2024.json')
     if (!response.ok) {
       throw new Error('Failed to fetch history data')
     }
 
     const data = await response.json()
 
-    // 直接使用数据，因为tabbed_content.json已经是正确的结构
+    // 直接使用数据，因为history_2024.json已经是正确的结构
     historyData.value = data
   } catch (err) {
     error.value = err instanceof Error ? err.message : '加载数据失败'

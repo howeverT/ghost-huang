@@ -3,7 +3,7 @@
     <div class="background-image" :style="{ backgroundImage: `url(${backgroundImage})` }"></div>
     <div class="overlay-mask"></div>
     <div class="content-container">
-      <div class="main-title" :style="{ textAlign: titleAlign, marginRight: titleMargin }">
+      <div class="main-title" :class="`title-${titleAlign}`" :style="{ marginRight: titleMargin }">
         {{ title }}
       </div>
     </div>
@@ -69,6 +69,9 @@ withDefaults(defineProps<Props>(), {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+  box-sizing: border-box;
 }
 
 .main-title {
@@ -85,7 +88,28 @@ withDefaults(defineProps<Props>(), {
   z-index: 10;
   display: block;
   width: 100%;
+}
+
+/* 标题对齐样式 */
+.title-left {
+  text-align: left;
+  align-self: flex-start;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.title-center {
   text-align: center;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-right {
+  text-align: right;
+  align-self: flex-end;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 @keyframes fadeInUp {
