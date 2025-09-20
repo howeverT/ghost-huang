@@ -278,10 +278,10 @@ onMounted(() => {
   background-color: white;
   padding: 3rem 4rem 3rem 3rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   overflow-y: auto;
-  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+  /* clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%); */
 }
 
 .content-wrapper {
@@ -291,6 +291,8 @@ onMounted(() => {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s ease-in-out;
+  padding-top: 4rem;
+  margin-top: 2rem;
 }
 
 .content-wrapper.visible {
@@ -433,12 +435,15 @@ onMounted(() => {
   .right-section {
     height: 60vh;
     padding: 2rem 3rem 2rem 2rem;
-    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+    /* clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%); */
     justify-content: center;
+    /* align-items: center; */
   }
 
   .content-wrapper {
     max-width: 100%;
+    /* padding-top: 4rem; */
+    /* margin-top: 2rem; */
   }
 
   .arrow-navigation {
@@ -465,7 +470,13 @@ onMounted(() => {
 @media (max-width: 480px) {
   .right-section {
     padding: 1.5rem 2.5rem 1.5rem 1.5rem;
+    /* clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%); */
   }
+
+  /* .content-wrapper {
+    padding-top: 3rem;
+    margin-top: 1.5rem;
+  } */
 
   .title {
     font-size: 2.2rem;
