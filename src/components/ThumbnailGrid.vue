@@ -8,7 +8,7 @@
       <!-- 项目容器 -->
       <div class="items-container">
         <div
-          v-for="(item, index) in items"
+          v-for="(item, index) in currentPageItems"
           :key="index"
           class="frame-item"
           @click="handleItemClick(item)"
@@ -28,12 +28,42 @@
           </div>
         </div>
       </div>
+      <!-- 分页按钮 -->
+      <div v-if="totalPages > 1" class="pagination-container">
+        <button class="pagination-btn prev-btn" :disabled="currentPage === 0" @click="previousPage">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M15 18L9 12L15 6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <span class="page-info">{{ currentPage + 1 }} / {{ totalPages }}</span>
+        <button
+          class="pagination-btn next-btn"
+          :disabled="currentPage === totalPages - 1"
+          @click="nextPage"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M9 18L15 12L9 6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue'
+import { computed, ref } from 'vue'
 
 interface ThumbnailItem {
   image: string
@@ -43,7 +73,7 @@ interface ThumbnailItem {
 
 interface Props {
   items?: ThumbnailItem[]
-  itemsPerView?: number
+  itemsPerPage?: number
   title?: string
 }
 
@@ -56,97 +86,35 @@ const props = withDefaults(defineProps<Props>(), {
     { image: '/src/assets/background/History2024.jpg', title: '历史回顾' },
     { image: '/src/assets/background/background.jpg', title: '精彩瞬间' },
   ],
-  itemsPerView: 3,
+  itemsPerPage: 4,
   title: '',
 })
 
-const currentIndex = ref(0)
-const slideWidth = ref(0)
-const containerWidth = ref(0)
+const currentPage = ref(0)
 
-// 计算最大索引 - 允许滑动到最后
-// 计算最大索引 - 基于实际滑动距离动态计算
-const maxIndex = computed(() => {
-  const itemWidth = 512 // 32rem ≈ 512px
-  const gapWidth = 32
-  const displayWidth = containerWidth.value || 1200
-
-  // 计算所有items的总宽度
-  const totalWidth = props.items.length * itemWidth + (props.items.length - 1) * gapWidth
-
-  // 计算最后一个位置
-  const lastPosition = totalWidth - displayWidth
-
-  // 计算需要点击几次才能到达最后位置
-  const clicksNeeded = Math.ceil(lastPosition / (itemWidth + gapWidth))
-
-  console.log(
-    `Total width: ${totalWidth}px, Last position: ${lastPosition}px, Clicks needed: ${clicksNeeded}`,
-  )
-
-  return clicksNeeded
+// 计算总页数
+const totalPages = computed(() => {
+  return Math.ceil(props.items.length / props.itemsPerPage)
 })
 
-// 计算滑动距离 - 每次滑动一个item的完整宽度
-const slideWidthComputed = computed(() => {
-  return 400 + 32 // item宽度 + gap
+// 计算当前页显示的项目
+const currentPageItems = computed(() => {
+  const start = currentPage.value * props.itemsPerPage
+  const end = start + props.itemsPerPage
+  return props.items.slice(start, end)
 })
 
-// 计算精确的滑动位置
-const getSlidePosition = (index: number) => {
-  const itemWidth = 512 // 32rem ≈ 512px
-  const gapWidth = 32
-
-  // 动态获取实际显示区域宽度
-  const displayWidth = containerWidth.value || 1200
-
-  // 动态计算所有items的总宽度
-  const totalWidth = props.items.length * itemWidth + (props.items.length - 1) * gapWidth
-
-  // 计算最后一个位置
-  const lastPosition = totalWidth - displayWidth
-
-  // 计算需要点击几次才能到达最后位置
-  const clicksNeeded = Math.ceil(lastPosition / (itemWidth + gapWidth))
-
-  let position
-  if (index === clicksNeeded) {
-    // 最后位置：让最后一个item贴住右边
-    position = lastPosition
-  } else {
-    // 其他位置：按比例计算，确保最后能到达lastPosition
-    position = (index / clicksNeeded) * lastPosition
-  }
-
-  console.log(
-    `Slide to index ${index}, position: ${position}px, lastPosition: ${lastPosition}px, clicksNeeded: ${clicksNeeded}`,
-  )
-  return position
-}
-
-// 更新尺寸
-const updateDimensions = () => {
-  const container = document.querySelector('.frames-container')
-  if (container) {
-    containerWidth.value = container.clientWidth
-    slideWidth.value = slideWidthComputed.value
+// 下一页
+const nextPage = () => {
+  if (currentPage.value < totalPages.value - 1) {
+    currentPage.value++
   }
 }
 
-// 下一张
-const nextSlide = () => {
-  if (currentIndex.value < maxIndex.value) {
-    currentIndex.value++
-  } else {
-    // 如果已经到最后，可以循环回到开始，或者保持到最后
-    // currentIndex.value = 0  // 取消注释这行如果你想循环
-  }
-}
-
-// 上一张
-const previousSlide = () => {
-  if (currentIndex.value > 0) {
-    currentIndex.value--
+// 上一页
+const previousPage = () => {
+  if (currentPage.value > 0) {
+    currentPage.value--
   }
 }
 
@@ -156,38 +124,6 @@ const handleItemClick = (item: ThumbnailItem) => {
     window.open(item.link, '_blank')
   }
 }
-
-// 自动播放 - 暂时禁用，避免干扰手动操作
-let autoPlayInterval: number | null = null
-
-const startAutoPlay = () => {
-  // 暂时禁用自动播放
-  // autoPlayInterval = window.setInterval(() => {
-  //   if (currentIndex.value >= maxIndex.value) {
-  //     currentIndex.value = 0
-  //   } else {
-  //     currentIndex.value++
-  //   }
-  // }, 5000)
-}
-
-const stopAutoPlay = () => {
-  if (autoPlayInterval) {
-    clearInterval(autoPlayInterval)
-    autoPlayInterval = null
-  }
-}
-
-onMounted(() => {
-  updateDimensions()
-  window.addEventListener('resize', updateDimensions)
-  // startAutoPlay() // 暂时禁用
-})
-
-onUnmounted(() => {
-  window.removeEventListener('resize', updateDimensions)
-  stopAutoPlay()
-})
 </script>
 
 <style scoped>
@@ -415,6 +351,67 @@ onUnmounted(() => {
   .frame-title {
     font-size: 1rem;
     padding: 1rem 0.8rem 0.8rem;
+  }
+}
+
+/* 分页按钮样式 */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid #333;
+  background-color: white;
+  color: #333;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #333;
+  color: white;
+  transform: scale(1.1);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.page-info {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  min-width: 80px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .pagination-container {
+    margin-top: 1.5rem;
+    gap: 0.8rem;
+  }
+
+  .pagination-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .page-info {
+    font-size: 1rem;
+    min-width: 60px;
   }
 }
 </style>

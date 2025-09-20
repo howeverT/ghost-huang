@@ -1,0 +1,187 @@
+[
+    {
+      "title": "考古区",
+      "year": "2025",
+      "content": [
+        {
+          "type": "HeroSection",
+          "title": "二五年",
+          "title_align": "center",
+          "title_margin": "0",
+          "background_image": "/src/assets/background/History2024.jpg",
+          "index": 1
+        },
+        {
+          "type": "ContentSection",
+          "title": "《宇宙无敌号》个人巡回演唱会",
+          "paragraphs": [
+            "面包摇出圈。",
+            "各大音乐节拼盘演出邀约。",
+            "多首OST歌曲录制。"
+          ],
+          "index": 2
+        },
+        {
+          "type": "ThumbnailGrid",
+          "title": "音乐节合集",
+          "items": [
+            {
+              "image": "/src/assets/festival/2025/2025-02-08.jpg",
+              "link": "https://www.bilibili.com/video/BV1fENLeCErz/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+              "title": "25.02.08 CrazyCity丰城音乐节"
+            },
+            {
+                "image": "/src/assets/festival/2025/2025-03-15.jpg",
+                "link": "https://www.bilibili.com/video/BV1AyQSYmEwp/?vd_source=47f96c172cbb3b3f428698faafd995bc",
+                "title": "25.03.15 林志炫ONEtake2.0世界巡回演唱会"
+            },
+            {
+                "image": "/src/assets/festival/2025/2025-04-19.jpg",
+                "link": "https://www.bilibili.com/video/BV1uG5ZzhEYW/",
+                "title": "25.04.19 声动九江群星演唱会"
+            },
+            {
+                "image": "/src/assets/festival/2025/2025-05-03.jpg",
+                "link": "https://www.bilibili.com/video/BV1vzGRztE8y",
+                "title": "25.05.03 王者荣耀电竞音乐派对"
+            },
+            {
+                "image": "/src/assets/festival/2025/2025-05-04.jpg",
+                "link": "https://www.bilibili.com/video/BV1EYVKzwExV/",
+                "title": "25.05.04 恐龙欢乐世界音乐嘉年华"
+            },
+            {
+                "image": "/src/assets/festival/2025/2025-05-20.jpg",
+                "link": "https://www.bilibili.com/video/BV12jJezMEoJ/",
+                "title": "25.05.20 飞天之夜黄小西音乐盛典"
+            },
+            {
+                "image": "/src/assets/festival/2025/2025-06-01.jpg",
+                "link": "https://www.bilibili.com/video/BV1Sr76ztEdF/",
+                "title": "25.06.01 永劫无间春季总决赛"
+            },
+            {
+                "image": "/src/assets/festival/2025/2025-06-28.jpg",
+                "link": "https://www.bilibili.com/video/BV1JYgdzeEkQ/",
+                "title": "25.06.28 大旋时光经典星歌汇"
+            },
+            {
+                "image": "/src/assets/festival/2025/2025-07-13.jpg",
+                "link": "https://www.bilibili.com/video/BV1GsuAzKEyL/",
+                "title": "25.07.13 沃思中国水 青春超燃明星演唱会"
+            },
+            {
+                "image": "/src/assets/festival/2025/2025-08-09.jpg",
+                "link": "https://www.bilibili.com/video/BV14JtYzdEFp/",
+                "title": "25.08.09 歌者 音乐超现场 澳门站"
+            }
+          ],
+          "index": 4
+        },
+        {
+          "type": "ConcertItemSection",
+          "index": 5,
+          "title": "2025年晚会/盛典汇总",
+          "tabs": [
+            {
+              "id": "part1",
+              "label": "1-4月",
+              "backgroundImage": "/src/assets/background/History2024.jpg",
+              "imageTitle": "2023年1-4月晚会",
+              "imageCaption": "新年晚会、春晚等精彩回顾",
+              "items": [
+                {
+                  "title": "粤港澳大湾区春节晚会-part1",
+                  "date": "表演日期：2025-01-27，表演曲目：OKK",
+                  "url": "https://www.bilibili.com/video/BV1JQfSYtEKD/?vd_source=47f96c172cbb3b3f428698faafd995bc",
+                  "image": "/src/assets/party/2025/2025-01-27_2.jpg"
+                },
+                {
+                    "title": "粤港澳大湾区春节晚会-part2",
+                    "date": "表演日期：2025-01-27，表演曲目：玫瑰星云",
+                    "url": "https://www.bilibili.com/video/BV1BRfSYxEg5/?vd_source=47f96c172cbb3b3f428698faafd995bc",
+                    "image": "/src/assets/party/2025/2025-01-27_1.jpg"
+                },
+                {
+                    "title": "欢欢喜喜过大年",
+                    "date": "表演日期：2025-01-27，表演曲目：小云",
+                    "url": "https://www.bilibili.com/video/BV1skFWeaEPx/?vd_source=47f96c172cbb3b3f428698faafd995bc",
+                    "image": "/src/assets/party/2025/2025-01-27_3.jpg"
+                },
+                {
+                    "title": "中国文艺艺术界春节大联欢",
+                    "date": "表演日期：2025-01-29，表演曲目：海的尽头是草原",
+                    "url": "https://www.bilibili.com/video/BV1RbF8evEGm/?vd_source=47f96c172cbb3b3f428698faafd995bc",
+                    "image": "/src/assets/party/2025/2025-01-29.jpg"
+                },
+                {
+                    "title": "全民国家安全教育日主题晚会",
+                    "date": "表演日期：2025-04-15，表演曲目：星辰大海",
+                    "url": "https://www.bilibili.com/video/BV1CUdZYDEkH/?vd_source=47f96c172cbb3b3f428698faafd995bc",
+                    "image": "/src/assets/party/2025/2025-04-15.jpg"
+                }
+              ]
+            },
+            {
+              "id": "part2",
+              "label": "5-8月",
+              "backgroundImage": "/src/assets/background/History2024.jpg",
+              "imageTitle": "2023年5-8月晚会",
+              "imageCaption": "毕业歌会、诗画中国等精彩回顾",
+              "items": [
+                {
+                    "title": "一年好景 立夏 青春正风华",
+                    "date": "表演日期：2025-05-05，表演曲目：弦上生花",
+                    "url": "https://www.bilibili.com/video/BV1S4Vzz5EdL/",
+                    "image": "/src/assets/party/2025/2025-05-05.jpg"
+                },
+                {
+                    "title": "央视端午晚会",
+                    "date": "表演日期：2025-05-31，表演曲目：画中来",
+                    "url": "https://www.bilibili.com/video/BV1wZ7KzSELT/",
+                    "image": "/src/assets/party/2025/2025-05-31.jpg"
+                },
+                {
+                    "title": "电影频道传媒关注单元闭幕仪式",
+                    "date": "表演日期：2025-06-24，表演曲目：想见你想见你想见你",
+                    "url": "https://www.bilibili.com/video/BV1aEKGznEW8/",
+                    "image": "/src/assets/party/2025/2025-05-31.jpg"
+                },
+                {
+                    "title": "悦享自成 享界用户星享之夜",
+                    "date": "表演日期：2025-07-08，表演曲目：星辰大海，我们的爱",
+                    "url": "https://www.bilibili.com/video/BV1dRGHzMEy8/",
+                    "image": "/src/assets/party/2025/2025-07-08.jpg"
+                },
+                {
+                    "title": "青岛国际啤酒节开幕式",
+                    "date": "表演日期：2025-07-18，表演曲目：星辰大海，回音如果，梦返",
+                    "url": "https://www.bilibili.com/video/BV1u8uUz8E2N/",
+                    "image": "/src/assets/party/2025/2025-07-18.jpg"
+                },
+                {
+                    "title": "微博文化之夜-part1",
+                    "date": "表演日期：2025-08-25，颁奖环节",
+                    "url": "https://www.bilibili.com/video/BV1kEeozKEy7/",
+                    "image": "/src/assets/party/2025/2025-08-25_1.jpg"
+                },
+                {
+                    "title": "微博文化之夜-part2",
+                    "date": "表演日期：2025-08-25，表演曲目：画中来",
+                    "url": "https://www.bilibili.com/video/BV1u8uUz8E2N/",
+                    "image": "/src/assets/party/2025/2025-08-25_2.jpg"
+                },
+                {
+                    "title": "神州数码成立25周年庆典",
+                    "date": "表演日期：2025-08-30，表演曲目：星辰大海，梦返，淬炼，烟火里的尘埃",
+                    "url": "https://www.bilibili.com/video/BV117hBzVEF9/",
+                    "image": "/src/assets/party/2025/2025-08-30.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
