@@ -481,4 +481,21 @@ onMounted(() => {
     height: 45px;
   }
 }
+
+/* 覆盖菜单文字颜色，让CollectionView页面的菜单文字变成黑色 */
+:global(.menu-text) {
+  color: #333 !important;
+}
+
+:global(.menu-wrapper:hover .menu-text) {
+  color: #666 !important;
+}
+
+:global(.header-primary-nav-hamburger span) {
+  background-color: #333 !important;
+}
+
+:global(.menu-wrapper:hover .header-primary-nav-hamburger span) {
+  background-color: #666 !important;
+}
 </style>
