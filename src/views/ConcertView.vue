@@ -96,6 +96,7 @@ import TabbedContentSection from '@/components/TabbedContentSection.vue'
 // 路由参数
 const route = useRoute()
 const city = route.params.city as string
+const pathType = route.path.includes('/open/') ? 'open' : 'universe'
 
 // 类型定义
 interface TabItem {
@@ -174,19 +175,27 @@ const loadConcertData = async () => {
     loading.value = true
     error.value = ''
 
-    // 根据城市参数决定加载哪个JSON文件
-    let jsonPath = '/src/assets/page_data/concert/universe/concert_new.json' // 默认路径
+    // 根据路径类型和城市参数决定加载哪个JSON文件
+    const basePath = `/src/assets/page_data/concert/${pathType}`
+    let jsonPath = `${basePath}/concert_new.json` // 默认路径
 
-    if (city === 'beijing' || city === 'beijing2024') {
-      jsonPath = '/src/assets/page_data/concert/universe/concert_beijing2024.json'
-    } else if (city === 'guangzhou' || city === 'guangzhou2025') {
-      jsonPath = '/src/assets/page_data/concert/universe/concert_guangzhou2025.json'
-    } else if (city === 'chengdu' || city === 'chengdu2025') {
-      jsonPath = '/src/assets/page_data/concert/universe/concert_chengdu2025.json'
-    } else if (city === 'shanghai' || city === 'shanghai2025') {
-      jsonPath = '/src/assets/page_data/concert/universe/concert_shanghai2025.json'
-    } else if (city === 'ningbo' || city === 'ningbo2025') {
-      jsonPath = '/src/assets/page_data/concert/universe/concert_ningbo2025.json'
+    if (pathType === 'universe') {
+      if (city === 'beijing' || city === 'beijing2024') {
+        jsonPath = `${basePath}/concert_beijing2024.json`
+      } else if (city === 'guangzhou' || city === 'guangzhou2025') {
+        jsonPath = `${basePath}/concert_guangzhou2025.json`
+      } else if (city === 'chengdu' || city === 'chengdu2025') {
+        jsonPath = `${basePath}/concert_chengdu2025.json`
+      } else if (city === 'shanghai' || city === 'shanghai2025') {
+        jsonPath = `${basePath}/concert_shanghai2025.json`
+      } else if (city === 'ningbo' || city === 'ningbo2025') {
+        jsonPath = `${basePath}/concert_ningbo2025.json`
+      }
+    } else if (pathType === 'open') {
+      if (city === 'guangzhou' || city === 'guangzhou2023') {
+        jsonPath = `${basePath}/concert_guangzhou2023.json`
+      }
+      // 可以在这里添加更多 open 类型的城市
     }
 
     const response = await fetch(jsonPath)

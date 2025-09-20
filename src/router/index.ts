@@ -53,6 +53,11 @@ const router = createRouter({
       component: () => import('../views/ConcertView.vue'),
     },
     {
+      path: '/concert/open/:city',
+      name: 'concert-open',
+      component: () => import('../views/ConcertView.vue'),
+    },
+    {
       path: '/related',
       name: 'related',
       component: () => import('../views/RelatedView.vue'),
