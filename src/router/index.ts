@@ -48,7 +48,7 @@ const router = createRouter({
     //   component: () => import('../views/ChengduView.vue'),
     // },
     {
-      path: '/concert/:city',
+      path: '/concert/universe/:city',
       name: 'concert',
       component: () => import('../views/ConcertView.vue'),
     },

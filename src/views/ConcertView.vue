@@ -174,22 +174,39 @@ const loadConcertData = async () => {
     loading.value = true
     error.value = ''
 
-    // 加载JSON文件
-    const response = await fetch('/src/assets/page_data/concert/concert_new.json')
+    // 根据城市参数决定加载哪个JSON文件
+    let jsonPath = '/src/assets/page_data/concert/universe/concert_new.json' // 默认路径
+
+    if (city === 'beijing' || city === 'beijing2024') {
+      jsonPath = '/src/assets/page_data/concert/universe/concert_beijing2024.json'
+    } else if (city === 'guangzhou' || city === 'guangzhou2025') {
+      jsonPath = '/src/assets/page_data/concert/universe/concert_guangzhou2025.json'
+    } else if (city === 'chengdu' || city === 'chengdu2025') {
+      jsonPath = '/src/assets/page_data/concert/universe/concert_chengdu2025.json'
+    } else if (city === 'shanghai' || city === 'shanghai2025') {
+      jsonPath = '/src/assets/page_data/concert/universe/concert_shanghai2025.json'
+    } else if (city === 'ningbo' || city === 'ningbo2025') {
+      jsonPath = '/src/assets/page_data/concert/universe/concert_ningbo2025.json'
+    }
+
+    const response = await fetch(jsonPath)
     if (!response.ok) {
-      throw new Error('Failed to fetch concert data')
+      throw new Error(`Failed to fetch concert data: ${response.status} ${response.statusText}`)
     }
 
     const data = await response.json()
 
-    // 根据城市查找对应的数据
-    const cityData = data.find((item: ConcertData) => item.title === city)
-
-    if (!cityData) {
-      throw new Error(`未找到城市 ${city} 的音乐会数据`)
+    // 如果加载的是数组（concert_new.json），需要找到对应的城市
+    if (Array.isArray(data)) {
+      const cityData = data.find((item: ConcertData) => item.title === city)
+      if (!cityData) {
+        throw new Error(`未找到城市 ${city} 的音乐会数据`)
+      }
+      concertData.value = cityData
+    } else {
+      // 如果加载的是单个城市文件，直接使用
+      concertData.value = data
     }
-
-    concertData.value = cityData
   } catch (err) {
     error.value = err instanceof Error ? err.message : '加载数据失败'
     console.error('加载音乐会数据失败:', err)

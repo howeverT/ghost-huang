@@ -1,0 +1,127 @@
+{
+    "date": "2025/07/26",
+    "title": "universe/shanghai",
+    "places": "上海梅赛德斯-奔驰文化中心",
+    "content": [
+      {
+        "type": "HeroSection",
+        "title": "上海站",
+        "title_align": "left",
+        "title_margin": "0",
+        "background_image": "/src/assets/background/background.jpg",
+        "index": 1
+      },
+      {
+        "type": "ContentSection",
+        "title": "十年了，我觉得不是终点，是我们一起给时光盖的第一个邮戳，我用歌声和努力奔向你们，你们用热爱和陪伴奔向我。",
+        "paragraphs": [
+          "感觉十年像一条长长的溪流，又短的好像昨天。我还在琴房衣柜那个小小的空间里面高歌至沙哑，心里想象万人演唱会的模样。",
+          "还记得2015年的夏天，16岁的我第一次站在中国好声音的舞台上，那是我人生中的第一次被这么多人看见。琴房的闪光灯照进了现实，后来我考上了央音，努力让更多人看见。",
+          "今天我们一起攒出了这一属于自己的星辰大海，我爱你们，爱每一个来听我现场的，爱每一个线上线下支持我的人，爱每一个在十年里面从未缺席的你，也爱刚刚认识的你，谢谢你们陪我走过这十年的春夏秋冬。"
+        ],
+        "index": 2
+      },
+      {
+        "type": "OverlapSection",
+        "title": "[视听盛宴] 黄霄雲 演唱会大电影",
+        "content": "2025.07.26 宇宙无敌号上海站 十二机位 全程4K超清饭拍",
+        "button_link": "https://www.bilibili.com/video/BV1L48qzsESK/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "image_url": "/src/assets/concert/shanghai/shanghai_dianying.jpg",
+        "index": 3
+      },
+      {
+        "type": "TitleSection",
+        "title_text": "上海站歌单",
+        "subtitle": "上海梅赛德斯-奔驰文化中心",
+        "picture": "/src/assets/concert/shanghai/gedan2.jpg",
+        "picture_title": "2025/07/26",
+        "content": [
+          {
+            "tab": "Part1",
+            "song": [
+              "Oracle（原唱）",
+              "淬炼（原唱）",
+              "打开（原创）",
+              "蝴蝶夫人（原唱）",
+              "四季与你（原唱）",
+              "你的答案（翻唱）"
+            ]
+          },
+          {
+            "tab": "Part2",
+            "song": [
+              "请带我去很远地方（原唱） ",
+              "Into the light跃入星光（原唱）",
+              "小云（原创）",
+              "没语季节（原创）",
+              "烟火里的尘埃（翻唱）",
+              "好日子（翻唱）"
+            ]
+          },
+          {
+            "tab": "Part3",
+            "song": [
+              "当爱（原唱）",
+              "别叹（原唱）",
+              "天下（翻唱）",
+              "画中来（原唱）",
+              "要不然我们就这样一万年（原唱）",
+              "沈园外（刘宇合唱）",
+              "怎叹（刘宇独唱）"
+            ]
+          },
+          {
+            "tab": "Part4",
+            "song": [
+              "人鱼之歌（翻唱）",
+              "梦返（原唱）",
+              "[点歌]说谎动物（原创）",
+              "[点歌]连名带姓（翻唱）",
+              "[点歌]Sad Sometimes（原唱）",
+              "盲选（原创）"
+            ]
+          },
+          {
+            "tab": "Part5",
+            "song": [
+              "渐渐被你吸引（翻唱）",
+              "不潮不用花钱（翻唱）",
+              "上海滩（翻唱）",
+              "平行线（原唱）",
+              "觉醒时代（原创）",
+              "星辰大海（原唱）",
+              "光之黎明返场（原创）"
+            ]
+          }
+        ],
+        "index": 4
+      },
+      {
+        "type": "ThumbnailGrid",
+        "title": "演唱会合集",
+        "items": [
+          {
+            "image": "/src/assets/concert/shanghai/mangxuan_guanshe.jpg",
+            "link": "https://www.bilibili.com/video/BV1UtYmzLEwv/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "上海站《盲选》官摄"
+          },
+          {
+            "image": "/src/assets/concert/shanghai/shanghai_vlog1.jpg",
+            "link": "https://www.bilibili.com/video/BV1wTeNzXE9M/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "黄霄雲上海站演唱会纪录片"
+          },
+          {
+            "image": "/src/assets/concert/shanghai/shanghai_vlog2.jpg",
+            "link": "https://www.bilibili.com/video/BV1amePziEhd/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "宇宙无敌号上海站演唱会Vlog"
+          },
+          {
+            "image": "/src/assets/concert/shanghai/with_liuyu.jpg",
+            "link": "https://www.bilibili.com/video/BV1UZtHzcEvK/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "黄霄雲&刘宇《沈园外》官摄"
+          }
+        ],
+        "index": 5
+      }
+    ]
+  }
