@@ -327,22 +327,7 @@ const handleItemClick = (item: ConcertItem) => {
     margin-left: auto !important;
     margin-right: auto !important;
   }
-}
 
-.left-column {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  transform: translateY(5rem);
-}
-
-.right-column {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-@media (max-width: 1200px) {
   .left-column {
     transform: translateY(0);
     width: 100%;
@@ -357,6 +342,23 @@ const handleItemClick = (item: ConcertItem) => {
     flex-direction: column;
     align-items: center;
   }
+
+  .item-content {
+    max-width: 600px;
+  }
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  transform: translateY(5rem);
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
@@ -383,7 +385,7 @@ const handleItemClick = (item: ConcertItem) => {
   }
 
   .right-column {
-    transform: translateY(-15rem);
+    transform: translateY(-2rem);
   }
 
   .item-image {
@@ -403,8 +405,7 @@ const handleItemClick = (item: ConcertItem) => {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
-  max-width: 500px;
+  width: 500px;
   position: relative;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -412,11 +413,6 @@ const handleItemClick = (item: ConcertItem) => {
   transform: translateY(0);
 }
 
-@media (max-width: 1200px) {
-  .item-content {
-    max-width: 600px;
-  }
-}
 
 .item-content:hover {
   transform: translateY(-5px);
