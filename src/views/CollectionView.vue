@@ -1,5 +1,5 @@
 <template>
-  <div class="test-page">
+  <div class="collection-page">
     <div v-if="loading" class="loading">加载中...</div>
     <div v-else-if="error" class="error">{{ error }}</div>
     <div v-else-if="timelineData.length > 0" class="content-container">
@@ -211,7 +211,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.test-page {
+.collection-page {
   width: 100vw;
   height: 100vh;
   display: flex;

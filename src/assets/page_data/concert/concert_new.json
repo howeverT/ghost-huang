@@ -7,7 +7,7 @@
       {
         "type": "HeroSection",
         "title": "北京站",
-        "title_align": "center",
+        "title_align": "right",
         "title_margin": "0",
         "background_image": "/src/assets/background/Beijing-day1.jpg",
         "index": 1
@@ -101,7 +101,7 @@
         "title": "[视听盛宴] 黄霄雲 双机位全程饭拍",
         "content": "2024.11.2 双机位剪辑版 顶级画质+至臻音质 魔星纯享",
         "button_link": "https://www.bilibili.com/video/BV1twDsYjEKD/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
-        "image_url": "/src/assets/concert/beijing/beijing-day2_duojiwei.jpg",
+        "image_url": "/src/assets/concert/beijing/beijing-day2_duojiwei2.jpg",
         "index": 6
       },
       {
@@ -192,7 +192,7 @@
       {
         "type": "HeroSection",
         "title": "广州站",
-        "title_align": "center",
+        "title_align": "left",
         "title_margin": "0",
         "background_image": "/src/assets/background/Guangzhou.jpg",
         "index": 1
@@ -315,7 +315,7 @@
       {
         "type": "HeroSection",
         "title": "成都站",
-        "title_align": "center",
+        "title_align": "right",
         "title_margin": "0",
         "background_image": "/src/assets/background/Chengdu.jpg",
         "index": 1
@@ -440,7 +440,7 @@
       {
         "type": "HeroSection",
         "title": "上海站",
-        "title_align": "center",
+        "title_align": "left",
         "title_margin": "0",
         "background_image": "/src/assets/background/background.jpg",
         "index": 1
@@ -567,7 +567,7 @@
       {
         "type": "HeroSection",
         "title": "宁波站",
-        "title_align": "center",
+        "title_align": "right",
         "title_margin": "0",
         "background_image": "/src/assets/background/Ningbo.jpg",
         "index": 1
@@ -665,6 +665,11 @@
         "items": [
           {
             "image": "/src/assets/concert/ningbo/ningbo_vlog1.jpg",
+            "link": "https://www.bilibili.com/video/BV1kFpQz9EWc/?spm_id_from=333.337.search-card.all.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "黄霄雲宁波站演唱会纪录片"
+          },
+          {
+            "image": "/src/assets/concert/ningbo/ningbo_vlog2.jpg",
             "link": "https://www.bilibili.com/video/BV1hLpVzFEVS/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
             "title": "宇宙无敌号宁波站演唱会Vlog"
           },

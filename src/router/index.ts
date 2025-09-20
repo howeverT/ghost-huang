@@ -60,42 +60,42 @@ const router = createRouter({
     {
       path: '/collection/haoshengyin',
       name: 'collection-haoshengyin',
-      component: () => import('../views/TestOurSongView.vue'),
+      component: () => import('../views/CollectionView.vue'),
     },
     {
       path: '/collection/tianci',
       name: 'collection-tianci',
-      component: () => import('../views/TestOurSongView.vue'),
+      component: () => import('../views/CollectionView.vue'),
     },
     {
       path: '/collection/liutang',
       name: 'collection-liutang',
-      component: () => import('../views/TestOurSongView.vue'),
+      component: () => import('../views/CollectionView.vue'),
     },
     {
       path: '/collection/oursong',
       name: 'collection-oursong',
-      component: () => import('../views/TestOurSongView.vue'),
+      component: () => import('../views/CollectionView.vue'),
     },
     {
       path: '/collection/singer',
       name: 'collection-singer',
-      component: () => import('../views/TestOurSongView.vue'),
+      component: () => import('../views/CollectionView.vue'),
     },
     {
       path: '/collection/hit',
       name: 'collection-hit',
-      component: () => import('../views/TestOurSongView.vue'),
+      component: () => import('../views/CollectionView.vue'),
     },
     {
       path: '/collection/fresh',
       name: 'collection-fresh',
-      component: () => import('../views/TestOurSongView.vue'),
+      component: () => import('../views/CollectionView.vue'),
     },
     {
       path: '/collection/mask',
       name: 'collection-mask',
-      component: () => import('../views/TestOurSongView.vue'),
+      component: () => import('../views/CollectionView.vue'),
     },
   ],
 })
