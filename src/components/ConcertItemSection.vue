@@ -212,9 +212,13 @@ const handleItemClick = (item: ConcertItem) => {
 }
 
 .section-title {
-  text-align: left;
+  text-align: center;
   margin-bottom: 2rem;
-  margin-left: calc(50% - 500px - 2rem);
+  width: 100%;
+  max-width: calc(100vw - 3rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
 }
 
 .section-title h2 {
@@ -236,13 +240,18 @@ const handleItemClick = (item: ConcertItem) => {
 /* Tabs样式 */
 .tabs-section {
   margin-bottom: 3rem;
-  margin-left: calc(50% - 500px - 2rem);
+  width: 100%;
+  max-width: calc(100vw - 3rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
 }
 
 .tabs-list {
   display: flex;
   gap: 0;
   position: relative;
+  justify-content: center;
 }
 
 .tab-item {
@@ -292,12 +301,32 @@ const handleItemClick = (item: ConcertItem) => {
 }
 
 .items-container {
-  max-width: 100%;
+  max-width: calc(100vw - 3rem);
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  gap: 4rem;
+  gap: 2rem;
   transition: all 0.5s ease;
+}
+
+@media (max-width: 1200px) {
+  .items-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .section-title {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .tabs-section {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
 
 .left-column {
@@ -313,16 +342,80 @@ const handleItemClick = (item: ConcertItem) => {
   gap: 2rem;
 }
 
+@media (max-width: 1200px) {
+  .left-column {
+    transform: translateY(0);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .right-column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .items-container {
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .left-column,
+  .right-column {
+    width: calc(50% - 0.5rem);
+    min-width: 300px;
+  }
+
+  .item-content {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .left-column {
+    transform: translateY(0.5rem);
+  }
+
+  .right-column {
+    transform: translateY(-15rem);
+  }
+
+  .item-image {
+    height: 400px;
+  }
+
+  .item-title {
+    font-size: 1.2rem;
+  }
+
+  .item-date {
+    font-size: 0.9rem;
+  }
+}
+
 .item-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   position: relative;
   cursor: pointer;
   transition: all 0.5s ease;
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 1200px) {
+  .item-content {
+    max-width: 600px;
+  }
 }
 
 .item-content:hover {
@@ -411,7 +504,7 @@ const handleItemClick = (item: ConcertItem) => {
 
   .left-column {
     gap: 1.5rem;
-    transform: translateY(3.5rem);
+    transform: translateY(0);
   }
 
   .right-column {
@@ -419,7 +512,8 @@ const handleItemClick = (item: ConcertItem) => {
   }
 
   .item-content {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
   }
 
   .item-image {
@@ -480,7 +574,7 @@ const handleItemClick = (item: ConcertItem) => {
 
   .left-column {
     gap: 1rem;
-    transform: translateY(2.5rem);
+    transform: translateY(0);
   }
 
   .right-column {
@@ -488,7 +582,8 @@ const handleItemClick = (item: ConcertItem) => {
   }
 
   .item-content {
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
   }
 
   .item-image {

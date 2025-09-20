@@ -92,7 +92,7 @@ const props = defineProps<Props>()
 .links-container {
   margin-top: 1rem;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 2.5rem; /* 增加链接之间的间隔 */
   align-items: flex-start;
 }
@@ -102,11 +102,12 @@ const props = defineProps<Props>()
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* 左对齐 */
-  flex-shrink: 0;
+  flex-shrink: 1;
   max-width: 200px;
+  min-width: 120px;
 }
 
-/* 纯文字链接 - 不换行 */
+/* 纯文字链接 - 可以换行 */
 .link-text {
   color: white;
   text-decoration: none;
@@ -114,11 +115,13 @@ const props = defineProps<Props>()
   font-weight: 800; /* 调整字体粗细 */
   transition: all 0.3s ease;
   font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
-  white-space: nowrap; /* 不换行 */
+  white-space: normal; /* 可以换行 */
   text-align: left; /* 左对齐 */
   line-height: 1.2;
   padding: 0; /* 去掉padding */
   margin: 0; /* 去掉margin */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* 链接日期 - 小字左对齐 */
@@ -157,68 +160,29 @@ const props = defineProps<Props>()
 }
 
 /* 响应式设计 */
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   .bar-content {
-    margin-left: calc(15% + 250px - 100px);
-  }
-
-  .bar-title {
-    font-size: 2.2rem;
-  }
-
-  .link-text {
-    font-size: 1.1rem;
-    font-weight: 800;
-  }
-
-  .link-date {
-    font-size: 0.85rem;
-    font-weight: 500;
-  }
-
-  .links-container {
-    gap: 1.8rem;
-  }
-
-  .link-item {
-    max-width: 160px;
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1399px) {
-  .bar-content {
-    margin-left: calc(15% + 250px - 100px);
-  }
-}
-
-@media (max-width: 1200px) {
-  .horizontal-bar {
-    height: 450px;
-  }
-
-  .bar-content {
-    margin-left: calc(20% + 200px - 80px);
+    margin-left: calc(15% + 250px + 20px);
+    max-width: calc(100% - 15% - 250px - 40px);
   }
 
   .image-overlay {
-    left: 20%;
+    left: 15%;
   }
 
   .overlay-image {
-    width: 400px;
-    height: 400px; /* 增加高度 */
+    width: 500px;
+    height: 500px;
   }
 
   .bar-title {
-    font-size: 2.5rem;
-  }
-
-  .bar-description {
-    font-size: 1.1rem;
+    font-size: 2rem;
+    line-height: 1.2;
   }
 
   .links-container {
     gap: 2rem;
+    flex-wrap: wrap;
   }
 
   .link-item {
@@ -226,130 +190,160 @@ const props = defineProps<Props>()
   }
 
   .link-text {
-    font-size: 1.3rem;
-    font-weight: 900;
+    font-size: 1rem;
   }
 
   .link-date {
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-
-  .link-item {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
 
-@media (max-width: 768px) {
-  .horizontal-bar {
-    height: 500px;
+@media (max-width: 1200px) {
+  .overlap-second-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    align-items: center;
   }
 
-  .bar-content {
-    margin-left: 0;
-    text-align: center;
+  .horizontal-bar {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    order: 2;
+    margin-top: -50px;
+    z-index: 1;
   }
 
   .image-overlay {
-    left: 50%;
-    top: 60%;
+    width: 100%;
+    max-width: 400px;
+    order: 1;
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
   }
 
   .overlay-image {
-    width: 300px;
-    height: 300px; /* 增加高度 */
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .bar-content {
+    padding: 3rem 2rem 2rem 2rem;
+    text-align: center;
+    align-items: center;
+    margin-left: 0;
+    max-width: 400px;
+    width: 100%;
   }
 
   .bar-title {
     font-size: 2rem;
   }
 
-  .bar-description {
-    font-size: 1rem;
-  }
-
   .links-container {
-    gap: 1.8rem;
-  }
-
-  .link-item {
-    max-width: 160px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
   }
 
   .link-text {
-    font-size: 1.2rem;
-    font-weight: 900;
+    font-size: 1rem;
   }
 
   .link-date {
-    font-size: 0.85rem;
-    font-weight: 600;
-  }
-
-  .link-item {
-    padding: 0.5rem 1rem;
     font-size: 0.8rem;
-  }
-
-  .links-title {
-    font-size: 1.3rem;
   }
 }
 
-@media (max-width: 480px) {
-  .horizontal-bar {
-    height: 550px;
+@media (max-width: 768px) {
+  .overlap-second-section {
+    align-items: center;
   }
 
-  .bar-content {
-    margin-left: 0;
-    text-align: center;
+  .horizontal-bar {
+    min-height: 250px;
+    margin-top: -40px;
   }
 
   .image-overlay {
-    left: 50%;
-    top: 65%;
+    max-width: 350px;
   }
 
   .overlay-image {
-    width: 250px;
-    height: 250px; /* 增加高度 */
+    height: 250px;
+  }
+
+  .bar-content {
+    padding: 2.5rem 2rem 2rem 2rem;
+    margin-left: 0;
+    max-width: 350px;
+    width: 100%;
   }
 
   .bar-title {
     font-size: 1.8rem;
   }
 
-  .bar-description {
-    font-size: 0.9rem;
-  }
-
   .links-container {
-    gap: 1.5rem;
-  }
-
-  .link-item {
-    max-width: 140px;
+    gap: 1rem;
   }
 
   .link-text {
-    font-size: 1.1rem;
-    font-weight: 900;
+    font-size: 0.9rem;
   }
 
   .link-date {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlap-second-section {
+    align-items: center;
+  }
+
+  .horizontal-bar {
+    min-height: 200px;
+    margin-top: -30px;
+  }
+
+  .image-overlay {
+    max-width: 300px;
+  }
+
+  .overlay-image {
+    height: 200px;
+  }
+
+  .bar-content {
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    margin-left: 0;
+    max-width: 300px;
+    width: 100%;
+  }
+
+  .bar-title {
+    font-size: 1.6rem;
+  }
+
+  .links-container {
+    gap: 0.8rem;
+  }
+
+  .link-text {
     font-size: 0.8rem;
-    font-weight: 600;
   }
 
-  .link-item {
-    padding: 0.4rem 0.8rem;
+  .link-date {
     font-size: 0.7rem;
-  }
-
-  .links-title {
-    font-size: 1.2rem;
   }
 }
 </style>

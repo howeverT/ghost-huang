@@ -124,16 +124,24 @@ withDefaults(defineProps<Props>(), {
 }
 
 /* 响应式设计 */
-@media (max-width: 768px) {
+@media (max-width: 1540px) {
   .main-title {
-    font-size: 12rem;
+    font-size: 10rem;
     margin-right: 3%;
   }
 }
 
-@media (max-width: 480px) {
+/* 响应式设计 */
+@media (max-width: 768px) {
   .main-title {
-    font-size: 8rem;
+    font-size: 10rem;
+    margin-right: 3%;
+  }
+}
+
+@media (max-width: 580px) {
+  .main-title {
+    font-size: 5rem;
     margin-right: 2%;
   }
 }

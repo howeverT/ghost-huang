@@ -55,11 +55,11 @@ const handleButtonClick = () => {
 
 .overlap-section {
   position: relative;
-  width: 100%;
-  height: 50vh;
+  width: 100vw;
+  margin: 11vh 0 0 0;
   background-color: transparent;
   overflow: visible;
-  margin-top: 11vh;
+  height: 50vh;
 }
 
 .right-rectangle {
@@ -83,7 +83,7 @@ const handleButtonClick = () => {
 }
 
 .black-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   color: #fff;
   font-weight: 600;
@@ -146,33 +146,67 @@ const handleButtonClick = () => {
 }
 
 /* 响应式设计 */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .overlap-section {
-    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: auto;
+    width: 100%;
+    max-width: calc(100vw - 3rem);
+    margin: 11vh auto 0;
+  }
+
+  .left-rectangle {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 500px;
+    height: 40vh;
+    margin: 0 auto;
+    order: 1;
+  }
+
+  .right-rectangle {
+    position: relative;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    min-height: 40vh;
+    order: 2;
   }
 
   .black-content {
+    max-width: 90%;
     padding: 2rem;
   }
 
   .black-title {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
 
   .black-text {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 1.2rem;
   }
 
-  .left-rectangle {
-    left: -5%;
-    top: -20%;
-    width: 35%;
+  .action-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 800px) {
+  .left-rectangle {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 768px) {
   .overlap-section {
-    height: 40vh;
+    margin-top: 5vh;
   }
 
   .black-content {
@@ -180,7 +214,7 @@ const handleButtonClick = () => {
   }
 
   .black-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   .black-text {
@@ -188,9 +222,56 @@ const handleButtonClick = () => {
   }
 
   .left-rectangle {
-    left: -3%;
-    top: -15%;
-    width: 32%;
+    height: 35vh;
+    max-width: 400px;
+  }
+
+  .action-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlap-section {
+    margin-top: 3vh;
+  }
+
+  .black-content {
+    padding: 1rem;
+    max-width: 95%;
+  }
+
+  .black-title {
+    font-size: 1.5rem;
+  }
+
+  .black-text {
+    font-size: 0.85rem;
+  }
+
+  .left-rectangle {
+    height: 30vh;
+  }
+
+  .action-button {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .black-title {
+    font-size: 1.3rem;
+  }
+
+  .black-text {
+    font-size: 0.8rem;
+  }
+
+  .action-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
   }
 }
 </style>

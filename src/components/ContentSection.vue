@@ -79,19 +79,21 @@ withDefaults(defineProps<Props>(), {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 580px) {
   .content-section {
-    padding: 2.5rem 0;
+    padding: 2rem 0;
     margin: 1rem 0;
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.7rem;
   }
 
   .section-text {
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-indent: 0;
+    margin-bottom: 0.7rem;
   }
 
   .content-wrapper {
