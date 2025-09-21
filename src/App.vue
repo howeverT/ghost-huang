@@ -706,7 +706,7 @@ const toggleSubmenu = (submenuRef: any) => {
 
 /* 主页背景样式 - 固定在视口上 */
 .home-background {
-  background-image: url('/src/assets/background/background.jpg');
+  background-image: url('/ghost-huang/src/assets/background/background.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

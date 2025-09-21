@@ -1,6 +1,9 @@
 <template>
   <div class="hero-section">
-    <div class="background-image" :style="{ backgroundImage: `url(${backgroundImage})` }"></div>
+    <div
+      class="background-image"
+      :style="{ backgroundImage: `url(${getImagePath(backgroundImage)})` }"
+    ></div>
     <div class="overlay-mask"></div>
     <div class="content-container">
       <div class="main-title" :class="`title-${titleAlign}`" :style="{ marginRight: titleMargin }">
@@ -11,6 +14,8 @@
 </template>
 
 <script setup lang="ts">
+import { getImagePath } from '@/utils/pathUtils'
+
 interface Props {
   backgroundImage?: string
   title?: string

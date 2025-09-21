@@ -79,6 +79,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, nextTick } from 'vue'
+import { getImagePath } from '@/utils/pathUtils'
 
 interface TabItem {
   id: string
@@ -143,7 +144,9 @@ const currentTabData = computed(() => {
 })
 
 const currentBackgroundImage = computed(() => {
-  return currentTabData.value?.backgroundImage || '/src/assets/background/background.jpg'
+  return getImagePath(
+    currentTabData.value?.backgroundImage || '/src/assets/background/background.jpg',
+  )
 })
 
 const sortedItems = (items: any[]) => {

@@ -1,0 +1,1 @@
+function t(s){return`/ghost-huang/${s.startsWith("/")?s.slice(1):s}`}function r(s){return t(`src/assets/page_data/${s}`)}function a(s){return s.startsWith("http")||s.startsWith("data:")?s:s.startsWith("/src/assets/")||s.startsWith("/assets/")?t(s):t(`src/assets/${s}`)}export{a,r as g};

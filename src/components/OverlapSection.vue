@@ -14,13 +14,18 @@
 
       <!-- 左侧图片长方形 -->
       <div class="left-rectangle">
-        <div class="image-content" :style="{ backgroundImage: `url(${imageUrl})` }"></div>
+        <div
+          class="image-content"
+          :style="{ backgroundImage: `url(${getImagePath(imageUrl)})` }"
+        ></div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { getImagePath } from '@/utils/pathUtils'
+
 interface Props {
   title?: string
   content?: string

@@ -2,7 +2,7 @@
 import { onMounted, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { VideoPlay, Headset } from '@element-plus/icons-vue'
-import { getPageDataPath } from '@/utils/pathUtils'
+import { getPageDataPath, getImagePath } from '@/utils/pathUtils'
 
 const route = useRoute()
 const pageLoaded = ref(false)
@@ -134,7 +134,7 @@ onMounted(() => {
       <div
         class="background-image"
         :style="{
-          backgroundImage: `url(${currentData?.image[0] || '/src/assets/background/background.jpg'})`,
+          backgroundImage: `url(${getImagePath(currentData?.image[0] || '/src/assets/background/background.jpg')})`,
         }"
       ></div>
 

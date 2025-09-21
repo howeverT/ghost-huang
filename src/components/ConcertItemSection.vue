@@ -31,7 +31,7 @@
             <div
               class="image-bg"
               :style="{
-                backgroundImage: `url(${item.image || '/src/assets/background/History2024.jpg'})`,
+                backgroundImage: `url(${getImagePath(item.image || '/src/assets/background/History2024.jpg')})`,
               }"
             ></div>
           </div>
@@ -52,7 +52,7 @@
             <div
               class="image-bg"
               :style="{
-                backgroundImage: `url(${item.image || '/src/assets/background/History2024.jpg'})`,
+                backgroundImage: `url(${getImagePath(item.image || '/src/assets/background/History2024.jpg')})`,
               }"
             ></div>
           </div>
@@ -87,6 +87,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { getImagePath } from '@/utils/pathUtils'
 interface ConcertItem {
   title: string
   date: string

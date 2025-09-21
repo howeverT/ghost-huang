@@ -6,7 +6,10 @@
         <!-- 左侧拍立得区域 -->
         <div class="polaroid-section">
           <div class="polaroid-frame">
-            <div class="polaroid-image" :style="{ backgroundImage: `url(${picture})` }"></div>
+            <div
+              class="polaroid-image"
+              :style="{ backgroundImage: `url(${getImagePath(picture)})` }"
+            ></div>
             <div class="polaroid-caption">{{ pictureTitle }}</div>
           </div>
         </div>
@@ -39,6 +42,8 @@
 </template>
 
 <script setup lang="ts">
+import { getImagePath } from '@/utils/pathUtils'
+
 interface PlaylistPart {
   tab: string
   song: string[]

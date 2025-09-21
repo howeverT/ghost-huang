@@ -7,7 +7,7 @@
       <div class="left-section">
         <div class="image-container" :class="{ visible: contentVisible }">
           <img
-            :src="currentData?.image[0] || '/src/assets/background/background.jpg'"
+            :src="getImagePath(currentData?.image[0] || '/src/assets/background/background.jpg')"
             :alt="currentData?.title"
             class="main-image"
           />
@@ -99,7 +99,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { getPageDataPath } from '@/utils/pathUtils'
+import { getPageDataPath, getImagePath } from '@/utils/pathUtils'
 
 // 定义数据类型
 interface TimelineItem {

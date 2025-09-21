@@ -68,6 +68,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { getImagePath } from '@/utils/pathUtils'
 
 interface ThumbnailItem {
   image?: string
@@ -83,12 +84,12 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   items: () => [
-    { image: '/src/assets/background/Beijing-day1.jpg', title: '北京一日游' },
-    { image: '/src/assets/background/Beijing-day2.jpg', title: '北京二日游' },
-    { image: '/src/assets/background/Guangzhou.jpg', title: '广州之旅' },
-    { image: '/src/assets/background/Chengdu.jpg', title: '成都印象' },
-    { image: '/src/assets/background/History2024.jpg', title: '历史回顾' },
-    { image: '/src/assets/background/background.jpg', title: '精彩瞬间' },
+    { image: getImagePath('/src/assets/background/Beijing-day1.jpg'), title: '北京一日游' },
+    { image: getImagePath('/src/assets/background/Beijing-day2.jpg'), title: '北京二日游' },
+    { image: getImagePath('/src/assets/background/Guangzhou.jpg'), title: '广州之旅' },
+    { image: getImagePath('/src/assets/background/Chengdu.jpg'), title: '成都印象' },
+    { image: getImagePath('/src/assets/background/History2024.jpg'), title: '历史回顾' },
+    { image: getImagePath('/src/assets/background/background.jpg'), title: '精彩瞬间' },
   ],
   itemsPerPage: 4,
   title: '',
