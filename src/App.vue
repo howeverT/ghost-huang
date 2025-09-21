@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
 import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+const router = useRouter()
 const pageTransitioning = ref(false)
 const pageVisible = ref(true)
 
@@ -107,16 +108,13 @@ const menuItems = [
 // 监听路由变化，添加页面切换动画
 watch(
   () => route.path,
-  () => {
-    // 页面渐隐
-    pageVisible.value = false
-    pageTransitioning.value = true
-
-    setTimeout(() => {
-      // 页面渐显
+  (newPath, oldPath) => {
+    // 只有在路径真正改变时才执行动画
+    if (newPath !== oldPath) {
+      // 立即显示新页面，不执行渐隐动画
       pageVisible.value = true
       pageTransitioning.value = false
-    }, 300)
+    }
   },
 )
 
@@ -146,11 +144,25 @@ const closeMobileMenu = () => {
 }
 
 // 处理菜单点击
-const handleMenuClick = (path: string) => {
-  // 跳转路由
-  window.location.href = path
-  // 关闭菜单
-  closeMobileMenu()
+const handleMenuClick = (path: string, event?: Event) => {
+  // 阻止默认行为
+  if (event) {
+    event.preventDefault()
+    event.stopPropagation()
+  }
+
+  // 立即进行路由导航
+  router
+    .push(path)
+    .then(() => {
+      // 路由导航成功后再关闭菜单
+      closeMobileMenu()
+    })
+    .catch((error) => {
+      console.error('路由导航失败:', error)
+      // 即使路由失败也要关闭菜单
+      closeMobileMenu()
+    })
 }
 
 // 切换子菜单
@@ -199,7 +211,7 @@ const toggleSubmenu = (submenuRef: any) => {
             <div v-if="item.submenuOpen?.value" class="submenu">
               <div v-for="subItem in item.submenuItems" :key="subItem.path" class="submenu-item">
                 <a
-                  @click="handleMenuClick(subItem.path)"
+                  @click="handleMenuClick(subItem.path, $event)"
                   class="submenu-link"
                   style="cursor: pointer"
                 >
@@ -211,7 +223,11 @@ const toggleSubmenu = (submenuRef: any) => {
 
           <!-- 没有子菜单的项目 -->
           <div v-else class="menu-item-simple">
-            <a @click="handleMenuClick(item.path || '')" class="menu-link" style="cursor: pointer">
+            <a
+              @click="handleMenuClick(item.path || '', $event)"
+              class="menu-link"
+              style="cursor: pointer"
+            >
               {{ item.name }}
             </a>
           </div>

@@ -1,9 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import { ROUTER_BASE } from '@/config/constants'
 
 const router = createRouter({
-  history: createWebHistory(ROUTER_BASE),
+  history: createWebHistory('/ghost-huang/'),
   routes: [
     {
       path: '/',

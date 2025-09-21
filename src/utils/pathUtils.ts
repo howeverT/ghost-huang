@@ -1,12 +1,6 @@
-// 获取正确的资源路径，考虑GitHub Pages的base路径
+// 获取正确的资源路径，开发环境和生产环境都使用相同的base路径
 export function getAssetPath(path: string): string {
-  // 在开发环境中，直接返回原路径
-  if (import.meta.env.DEV) {
-    return path
-  }
-
-  // 在生产环境中，添加base路径
-  const base = import.meta.env.BASE_URL
+  const base = '/ghost-huang/'
   return `${base}${path.startsWith('/') ? path.slice(1) : path}`
 }
 

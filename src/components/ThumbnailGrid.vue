@@ -18,7 +18,7 @@
               <div
                 class="frame-image"
                 :style="{
-                  backgroundImage: `url(${item.image})`,
+                  backgroundImage: `url(${getImagePath(item.image || '')})`,
                 }"
               ></div>
               <div class="frame-title">

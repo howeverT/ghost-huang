@@ -47,20 +47,15 @@ function copyStaticAssets() {
 }
 
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => {
-  // 根据环境设置base路径
-  const base = mode === 'development' ? '/' : '/ghost-huang/'
-
-  return {
-    plugins: [vue(), vueDevTools(), copyStaticAssets()],
-    build: {
-      outDir: 'docs',
+export default defineConfig({
+  plugins: [vue(), vueDevTools(), copyStaticAssets()],
+  build: {
+    outDir: 'docs',
+  },
+  base: '/ghost-huang/',
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
-    base,
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url)),
-      },
-    },
-  }
+  },
 })

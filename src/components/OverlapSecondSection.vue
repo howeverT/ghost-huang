@@ -19,12 +19,14 @@
 
     <!-- 图片div - 横的，显示在左边 -->
     <div class="image-overlay">
-      <img :src="backgroundImage" :alt="title" class="overlay-image" />
+      <img :src="getImagePath(backgroundImage)" :alt="title" class="overlay-image" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { getImagePath } from '@/utils/pathUtils'
+
 interface LinkItem {
   link_title: string
   date: string
