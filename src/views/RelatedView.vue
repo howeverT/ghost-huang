@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { getPageDataPath } from '@/utils/pathUtils'
 import HeroSection from '../components/HeroSection.vue'
 import ContentSection from '../components/ContentSection.vue'
 import OverlapSection from '../components/OverlapSection.vue'
@@ -35,7 +36,7 @@ const pageData = ref<PageData | null>(null)
 const loadPageData = async () => {
   try {
     console.log('开始加载相关页面数据...')
-    const response = await fetch('/src/assets/page_data/related/related.json')
+    const response = await fetch(getPageDataPath('related/related.json'))
     console.log('响应状态:', response.status)
 
     if (!response.ok) {

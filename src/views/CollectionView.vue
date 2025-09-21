@@ -99,6 +99,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { getPageDataPath } from '@/utils/pathUtils'
 
 // 定义数据类型
 interface TimelineItem {
@@ -142,24 +143,24 @@ const loadData = async () => {
     error.value = ''
 
     // 根据路由决定加载哪个JSON文件
-    let jsonPath = '/src/assets/page_data/collection/haoshengyin.json' // 默认路径
+    let jsonPath = getPageDataPath('collection/haoshengyin.json') // 默认路径
 
     if (route.path === '/collection/haoshengyin') {
-      jsonPath = '/src/assets/page_data/collection/haoshengyin.json'
+      jsonPath = getPageDataPath('collection/haoshengyin.json')
     } else if (route.path === '/collection/tianci') {
-      jsonPath = '/src/assets/page_data/collection/tianci.json'
+      jsonPath = getPageDataPath('collection/tianci.json')
     } else if (route.path === '/collection/liutang') {
-      jsonPath = '/src/assets/page_data/collection/liutang.json'
+      jsonPath = getPageDataPath('collection/liutang.json')
     } else if (route.path === '/collection/oursong') {
-      jsonPath = '/src/assets/page_data/collection/oursong.json'
+      jsonPath = getPageDataPath('collection/oursong.json')
     } else if (route.path === '/collection/singer') {
-      jsonPath = '/src/assets/page_data/collection/singer.json'
+      jsonPath = getPageDataPath('collection/singer.json')
     } else if (route.path === '/collection/hit') {
-      jsonPath = '/src/assets/page_data/collection/hit.json'
+      jsonPath = getPageDataPath('collection/hit.json')
     } else if (route.path === '/collection/fresh') {
-      jsonPath = '/src/assets/page_data/collection/fresh.json'
+      jsonPath = getPageDataPath('collection/fresh.json')
     } else if (route.path === '/collection/mask') {
-      jsonPath = '/src/assets/page_data/collection/mask.json'
+      jsonPath = getPageDataPath('collection/mask.json')
     }
 
     const response = await fetch(jsonPath)

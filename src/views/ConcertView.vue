@@ -84,6 +84,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { getPageDataPath } from '@/utils/pathUtils'
 import HeroSection from '@/components/HeroSection.vue'
 import ContentSection from '@/components/ContentSection.vue'
 import OverlapSection from '@/components/OverlapSection.vue'
@@ -176,24 +177,24 @@ const loadConcertData = async () => {
     error.value = ''
 
     // 根据路径类型和城市参数决定加载哪个JSON文件
-    const basePath = `/src/assets/page_data/concert/${pathType}`
-    let jsonPath = `${basePath}/concert_new.json` // 默认路径
+    const basePath = `concert/${pathType}`
+    let jsonPath = getPageDataPath(`${basePath}/concert_new.json`) // 默认路径
 
     if (pathType === 'universe') {
       if (city === 'beijing' || city === 'beijing2024') {
-        jsonPath = `${basePath}/concert_beijing2024.json`
+        jsonPath = getPageDataPath(`${basePath}/concert_beijing2024.json`)
       } else if (city === 'guangzhou' || city === 'guangzhou2025') {
-        jsonPath = `${basePath}/concert_guangzhou2025.json`
+        jsonPath = getPageDataPath(`${basePath}/concert_guangzhou2025.json`)
       } else if (city === 'chengdu' || city === 'chengdu2025') {
-        jsonPath = `${basePath}/concert_chengdu2025.json`
+        jsonPath = getPageDataPath(`${basePath}/concert_chengdu2025.json`)
       } else if (city === 'shanghai' || city === 'shanghai2025') {
-        jsonPath = `${basePath}/concert_shanghai2025.json`
+        jsonPath = getPageDataPath(`${basePath}/concert_shanghai2025.json`)
       } else if (city === 'ningbo' || city === 'ningbo2025') {
-        jsonPath = `${basePath}/concert_ningbo2025.json`
+        jsonPath = getPageDataPath(`${basePath}/concert_ningbo2025.json`)
       }
     } else if (pathType === 'open') {
       if (city === 'guangzhou' || city === 'guangzhou2023') {
-        jsonPath = `${basePath}/concert_guangzhou2023.json`
+        jsonPath = getPageDataPath(`${basePath}/concert_guangzhou2023.json`)
       }
       // 可以在这里添加更多 open 类型的城市
     }

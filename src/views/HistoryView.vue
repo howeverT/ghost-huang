@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { getPageDataPath } from '@/utils/pathUtils'
 import HeroSection from '@/components/HeroSection.vue'
 import TabbedContentSection from '@/components/TabbedContentSection.vue'
 import ConcertItemSection from '@/components/ConcertItemSection.vue'
@@ -77,7 +78,7 @@ const loadHistoryData = async () => {
     error.value = ''
 
     // 加载JSON文件
-    const response = await fetch('/src/assets/page_data/history/history_2024.json')
+    const response = await fetch(getPageDataPath('history/history_2024.json'))
     if (!response.ok) {
       throw new Error('Failed to fetch history data')
     }

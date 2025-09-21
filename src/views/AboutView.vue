@@ -2,6 +2,7 @@
 import { onMounted, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { VideoPlay, Headset } from '@element-plus/icons-vue'
+import { getPageDataPath } from '@/utils/pathUtils'
 
 const route = useRoute()
 const pageLoaded = ref(false)
@@ -30,14 +31,14 @@ const timelineData = ref<TimelineItem[]>([])
 const loadTimelineData = async () => {
   try {
     // 根据路由决定加载哪个JSON文件
-    let jsonPath = '/src/assets/page_data/concert/concert.json' // 默认路径
+    let jsonPath = getPageDataPath('concert/concert.json') // 默认路径
 
     if (route.path === '/about/oursong') {
-      jsonPath = '/src/assets/page_data/collection/our_song.json'
+      jsonPath = getPageDataPath('collection/our_song.json')
     } else if (route.path === '/about/tianci') {
-      jsonPath = '/src/assets/page_data/collection/tian_ci.json'
+      jsonPath = getPageDataPath('collection/tian_ci.json')
     } else if (route.path === '/about/qiche') {
-      jsonPath = '/src/assets/page_data/collection/qi_che.json'
+      jsonPath = getPageDataPath('collection/qi_che.json')
     }
 
     const response = await fetch(jsonPath)

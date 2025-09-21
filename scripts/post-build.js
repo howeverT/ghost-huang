@@ -1,13 +1,16 @@
-<!doctype html>
-<html lang="">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/ghost-huang/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ghost Huang</title>
-    <script type="module" crossorigin src="/ghost-huang/assets/index-DYTuZmH2.js"></script>
-    <link rel="stylesheet" crossorigin href="/ghost-huang/assets/index-Cmv7PIWs.css" />
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+// 读取构建后的index.html
+const indexPath = path.join(__dirname, '../docs/index.html')
+let indexContent = fs.readFileSync(indexPath, 'utf8')
+
+// 添加SPA路由处理脚本
+const spaScript = `
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
       // MIT License
@@ -31,9 +34,19 @@
           window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash)
         }
       })(window.location)
-    </script>
-  </head>
-  <body>
-    <div id="app"></div>
-  </body>
-</html>
+    </script>`
+
+// 检查是否已经包含SPA脚本
+if (!indexContent.includes('Single Page Apps for GitHub Pages')) {
+  // 在</head>标签前插入SPA脚本
+  indexContent = indexContent.replace('</head>', `${spaScript}\n  </head>`)
+
+  // 更新标题
+  indexContent = indexContent.replace('<title>Vite App</title>', '<title>Ghost Huang</title>')
+
+  // 写入文件
+  fs.writeFileSync(indexPath, indexContent)
+  console.log('✅ 已添加SPA路由处理脚本到index.html')
+} else {
+  console.log('ℹ️  index.html已包含SPA路由处理脚本')
+}
