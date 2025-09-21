@@ -8,7 +8,22 @@
         <!-- 链接直接显示，去掉div包装，所有链接在同一行 -->
         <div class="links-container">
           <div v-for="(link, index) in links" :key="index" class="link-item">
-            <a :href="link.link" target="_blank" rel="noopener noreferrer" class="link-text">
+            <!-- 内部链接使用 Vue Router -->
+            <a 
+              v-if="isInternalLink(link.link)"
+              @click="handleInternalLink(link.link, $event)"
+              class="link-text"
+            >
+              {{ link.link_title }}
+            </a>
+            <!-- 外部链接直接跳转 -->
+            <a 
+              v-else
+              :href="link.link" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="link-text"
+            >
               {{ link.link_title }}
             </a>
             <div class="link-date">{{ link.date }}</div>
@@ -26,6 +41,7 @@
 
 <script setup lang="ts">
 import { getImagePath } from '@/utils/pathUtils'
+import { useRouter } from 'vue-router'
 
 interface LinkItem {
   link_title: string
@@ -41,6 +57,18 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const router = useRouter()
+
+// 判断是否为内部链接
+const isInternalLink = (link: string): boolean => {
+  return link.startsWith('/') && !link.startsWith('http')
+}
+
+// 处理内部链接点击
+const handleInternalLink = (link: string, event: Event) => {
+  event.preventDefault()
+  router.push(link)
+}
 </script>
 
 <style scoped>
