@@ -12,8 +12,8 @@ const showButton = ref(false)
 const componentFading = ref(false)
 let typeTimer: any = null
 let pauseTimer: any = null
-let resetTime: any = 60000
-let typeTime: any = 10
+const resetTime: any = 60000
+const typeTime: any = 10
 
 const typeWriter = () => {
   if (currentIndex.value < fullText.length) {
@@ -46,8 +46,23 @@ const handleButtonClick = () => {
 
   // 整个组件渐渐消失后跳转
   setTimeout(() => {
-    router.push('/about')
+    router.push('/concert/universe/ningbo')
   }, 1000)
+}
+
+// 滚动到视频区域
+// 滚动到视频区域
+const scrollToVideo = () => {
+  // 触发父组件的滚动事件
+  window.dispatchEvent(new CustomEvent('scrollToVideo'))
+}
+
+// 滚动到文字区域
+const scrollToText = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
 }
 
 onMounted(() => {
@@ -61,8 +76,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="welcome-container" :class="{ 'fading': componentFading }">
-    <!-- 居中显示打字机效果 -->
+  <div class="welcome-content" :class="{ fading: componentFading }">
     <div class="center-section">
       <div class="typewriter-text">
         {{ displayText }}<span v-if="!isTypingComplete" class="cursor">|</span>
@@ -70,32 +84,39 @@ onUnmounted(() => {
 
       <!-- 按钮区域 - 始终占位 -->
       <div class="button-container">
-        <button
-          v-if="showButton"
-          class="magic-button"
-          @click="handleButtonClick"
-        >
+        <button v-if="showButton" class="magic-button" @click="handleButtonClick">
           坠入我的星辰大海
         </button>
       </div>
+    </div>
+
+    <!-- 底部箭头 -->
+    <div class="bottom-chevron" @click="scrollToVideo">
+      <svg viewBox="0 0 20 25" xmlns="http://www.w3.org/2000/svg" class="chevron-icon">
+        <path
+          d="M7.3 0L0 7.1l5.5 5.4L0 17.9 7.3 25 20 12.5 7.3 0zm-5 17.9l5.5-5.4-5.5-5.4 5-4.9 10.4 10.3L7.3 22.8l-5-4.9z"
+        />
+      </svg>
     </div>
   </div>
 </template>
 
 <style scoped>
-.welcome-container {
+.welcome-content {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  width: 100%;
-  opacity: 1;
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  z-index: 2;
 }
 
-.welcome-container.fading {
+.welcome-content.fading {
   opacity: 0;
   transform: scale(0.95) translateY(-20px);
+  transition: all 1s ease-in-out;
 }
 
 .center-section {
@@ -104,7 +125,76 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 3rem;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .center-section {
+    gap: 2rem;
+  }
+
+  .bottom-chevron {
+    bottom: 1.5rem;
+  }
+
+  .chevron-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .video-section {
+    padding: 1.5rem;
+  }
+
+  .bilibili-iframe {
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .center-section {
+    gap: 0.5rem;
+  }
+
+  .bottom-chevron {
+    bottom: 1rem;
+  }
+
+  .chevron-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .video-section {
+    padding: 1rem;
+  }
+
+  .bilibili-iframe {
+    height: 300px;
+  }
+}
+
+@media (max-width: 360px) {
+  .center-section {
+    gap: 0.5rem;
+  }
+
+  .bottom-chevron {
+    bottom: 0.8rem;
+  }
+
+  .chevron-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .video-section {
+    padding: 0.8rem;
+  }
+
+  .bilibili-iframe {
+    height: 250px;
+  }
 }
 
 .typewriter-text {
@@ -123,8 +213,14 @@ onUnmounted(() => {
 }
 
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 /* 按钮样式 */
@@ -177,7 +273,96 @@ onUnmounted(() => {
   }
 }
 
+/* 箭头样式 */
+.bottom-chevron,
+.top-chevron {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.bottom-chevron {
+  bottom: 2rem;
+}
+
+.top-chevron {
+  top: 2rem;
+}
+
+.bottom-chevron:hover,
+.top-chevron:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
+.chevron-icon {
+  width: 40px;
+  height: 40px;
+  fill: white;
+  transform: rotate(90deg);
+  animation: bounce 2s infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.chevron-up {
+  transform: rotate(-90deg);
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: rotate(90deg) translateX(0);
+  }
+  40% {
+    transform: rotate(90deg) translateX(-10px);
+  }
+  60% {
+    transform: rotate(90deg) translateX(-5px);
+  }
+}
+
+.video-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  z-index: 3;
+}
+
+.bilibili-iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
 /* 响应式设计 */
+@media (max-width: 1200px) {
+  .typewriter-text {
+    font-size: 2.8rem;
+    max-width: 700px;
+  }
+
+  .magic-button {
+    padding: 1.3rem 2.8rem;
+    font-size: 1.4rem;
+    min-width: 280px;
+    height: 55px;
+  }
+
+  .bilibili-iframe {
+    height: 500px;
+  }
+}
+
 @media (max-width: 1024px) {
   .typewriter-text {
     font-size: 2.5rem;
@@ -187,6 +372,12 @@ onUnmounted(() => {
   .magic-button {
     padding: 1.2rem 2.5rem;
     font-size: 1.3rem;
+    min-width: 260px;
+    height: 50px;
+  }
+
+  .bilibili-iframe {
+    height: 450px;
   }
 }
 
@@ -199,6 +390,38 @@ onUnmounted(() => {
   .magic-button {
     padding: 1rem 2rem;
     font-size: 1.1rem;
+    min-width: 240px;
+    height: 45px;
+  }
+
+  .bilibili-iframe {
+    height: 400px;
+  }
+
+  .video-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .typewriter-text {
+    font-size: 1.8rem;
+    max-width: 450px;
+  }
+
+  .magic-button {
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+    min-width: 220px;
+    height: 42px;
+  }
+
+  .bilibili-iframe {
+    height: 300px;
+  }
+
+  .video-container {
+    padding: 1rem;
   }
 }
 
@@ -210,7 +433,39 @@ onUnmounted(() => {
 
   .magic-button {
     padding: 0.8rem 1.5rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    min-width: 200px;
+    height: 40px;
+  }
+
+  .bilibili-iframe {
+    height: 250px;
+  }
+
+  .video-container {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .typewriter-text {
+    font-size: 1.3rem;
+    max-width: 350px;
+  }
+
+  .magic-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+    min-width: 180px;
+    height: 38px;
+  }
+
+  .bilibili-iframe {
+    height: 200px;
+  }
+
+  .video-container {
+    padding: 0.5rem;
   }
 }
 </style>

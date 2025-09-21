@@ -47,6 +47,11 @@ watch(showMobileMenu, (newValue) => {
 
 // 菜单数据
 const menuItems = [
+ {
+    name: '主页',
+    path: '/',
+    hasSubmenu: false,
+  },
   {
     name: '宇宙无敌号',
     hasSubmenu: true,
@@ -93,7 +98,7 @@ const menuItems = [
     ],
   },
   {
-    name: '相关账号',
+    name: '账号',
     path: '/related',
     hasSubmenu: false,
   },
@@ -215,7 +220,7 @@ const toggleSubmenu = (submenuRef: any) => {
     </div>
   </header>
 
-  <main class="main-content">
+  <main class="main-content" :class="{ 'home-background': route.path === '/' }">
     <div
       class="content-wrapper"
       :class="{
@@ -362,7 +367,7 @@ const toggleSubmenu = (submenuRef: any) => {
   padding: 2rem 0 2rem 0;
   cursor: pointer;
   transition: all 0.3s ease;
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 .menu-link-text {
@@ -403,7 +408,7 @@ const toggleSubmenu = (submenuRef: any) => {
 
 .submenu-link {
   display: block;
-  padding: 1rem 0 1rem 2rem;
+  padding: 1rem 0 1rem 0;
   color: white;
   text-decoration: none;
   font-size: clamp(1rem, 3vw, 1.4rem);
@@ -602,7 +607,7 @@ const toggleSubmenu = (submenuRef: any) => {
   }
 
   .submenu-link {
-    padding: 0.8rem 0 0.8rem 1.5rem;
+    padding: 0.8rem 0 0.8rem 0;
     font-size: clamp(1.2rem, 4vw, 1.6rem);
   }
 
@@ -697,5 +702,28 @@ const toggleSubmenu = (submenuRef: any) => {
     max-width: 100vw;
     padding: 0;
   }
+}
+
+/* 主页背景样式 - 固定在视口上 */
+.home-background {
+  background-image: url('/src/assets/background/background.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+/* 主页背景蒙版 */
+.home-background::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+  pointer-events: none;
 }
 </style>
