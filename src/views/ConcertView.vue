@@ -82,7 +82,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { getPageDataPath } from '@/utils/pathUtils'
 import HeroSection from '@/components/HeroSection.vue'
@@ -96,8 +96,8 @@ import TabbedContentSection from '@/components/TabbedContentSection.vue'
 
 // 路由参数
 const route = useRoute()
-const city = route.params.city as string
-const pathType = route.path.includes('/open/') ? 'open' : 'universe'
+const city = computed(() => route.params.city as string)
+const pathType = computed(() => (route.path.includes('/open/') ? 'open' : 'universe'))
 
 // 类型定义
 interface TabItem {
@@ -177,23 +177,25 @@ const loadConcertData = async () => {
     error.value = ''
 
     // 根据路径类型和城市参数决定加载哪个JSON文件
-    const basePath = `concert/${pathType}`
+    const currentPathType = pathType.value
+    const currentCity = city.value
+    const basePath = `concert/${currentPathType}`
     let jsonPath = getPageDataPath(`${basePath}/concert_new.json`) // 默认路径
 
-    if (pathType === 'universe') {
-      if (city === 'beijing' || city === 'beijing2024') {
+    if (currentPathType === 'universe') {
+      if (currentCity === 'beijing' || currentCity === 'beijing2024') {
         jsonPath = getPageDataPath(`${basePath}/concert_beijing2024.json`)
-      } else if (city === 'guangzhou' || city === 'guangzhou2025') {
+      } else if (currentCity === 'guangzhou' || currentCity === 'guangzhou2025') {
         jsonPath = getPageDataPath(`${basePath}/concert_guangzhou2025.json`)
-      } else if (city === 'chengdu' || city === 'chengdu2025') {
+      } else if (currentCity === 'chengdu' || currentCity === 'chengdu2025') {
         jsonPath = getPageDataPath(`${basePath}/concert_chengdu2025.json`)
-      } else if (city === 'shanghai' || city === 'shanghai2025') {
+      } else if (currentCity === 'shanghai' || currentCity === 'shanghai2025') {
         jsonPath = getPageDataPath(`${basePath}/concert_shanghai2025.json`)
-      } else if (city === 'ningbo' || city === 'ningbo2025') {
+      } else if (currentCity === 'ningbo' || currentCity === 'ningbo2025') {
         jsonPath = getPageDataPath(`${basePath}/concert_ningbo2025.json`)
       }
-    } else if (pathType === 'open') {
-      if (city === 'guangzhou' || city === 'guangzhou2023') {
+    } else if (currentPathType === 'open') {
+      if (currentCity === 'guangzhou' || currentCity === 'guangzhou2023') {
         jsonPath = getPageDataPath(`${basePath}/concert_guangzhou2023.json`)
       }
       // 可以在这里添加更多 open 类型的城市
@@ -208,9 +210,9 @@ const loadConcertData = async () => {
 
     // 如果加载的是数组（concert_new.json），需要找到对应的城市
     if (Array.isArray(data)) {
-      const cityData = data.find((item: ConcertData) => item.title === city)
+      const cityData = data.find((item: ConcertData) => item.title === currentCity)
       if (!cityData) {
-        throw new Error(`未找到城市 ${city} 的音乐会数据`)
+        throw new Error(`未找到城市 ${currentCity} 的音乐会数据`)
       }
       concertData.value = cityData
     } else {
@@ -229,6 +231,14 @@ const loadConcertData = async () => {
 onMounted(() => {
   loadConcertData()
 })
+
+// 监听路由参数变化，重新加载数据
+watch(
+  () => [route.params.city, route.path],
+  () => {
+    loadConcertData()
+  },
+)
 </script>
 
 <style scoped>

@@ -105,13 +105,12 @@ const menuItems = [
   },
 ]
 
-// 监听路由变化，添加页面切换动画
+// 监听路由变化，确保页面正确显示
 watch(
   () => route.path,
   (newPath, oldPath) => {
-    // 只有在路径真正改变时才执行动画
+    // 路径改变时确保页面立即显示
     if (newPath !== oldPath) {
-      // 立即显示新页面，不执行渐隐动画
       pageVisible.value = true
       pageTransitioning.value = false
     }
@@ -151,18 +150,11 @@ const handleMenuClick = (path: string, event?: Event) => {
     event.stopPropagation()
   }
 
+  // 先关闭菜单
+  closeMobileMenu()
+
   // 立即进行路由导航
-  router
-    .push(path)
-    .then(() => {
-      // 路由导航成功后再关闭菜单
-      closeMobileMenu()
-    })
-    .catch((error) => {
-      console.error('路由导航失败:', error)
-      // 即使路由失败也要关闭菜单
-      closeMobileMenu()
-    })
+  router.push(path)
 }
 
 // 切换子菜单

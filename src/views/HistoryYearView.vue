@@ -77,7 +77,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import HeroSection from '@/components/HeroSection.vue'
 import TabbedContentSection from '@/components/TabbedContentSection.vue'
@@ -195,6 +195,16 @@ onMounted(() => {
     loading.value = false
   }
 })
+
+// 监听路由参数变化，重新加载数据
+watch(
+  () => route.params.year,
+  (newYear) => {
+    if (newYear) {
+      loadYearData(newYear as string)
+    }
+  },
+)
 </script>
 
 <style scoped>
