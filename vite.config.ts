@@ -8,9 +8,9 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   plugins: [vue(), vueDevTools()],
   build: {
-    outDir: 'root',
+    outDir: 'docs',
   },
-  base: '/ghost-huang/',
+  base: './',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
