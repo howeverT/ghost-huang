@@ -48,7 +48,7 @@
         <div class="arrow-navigation">
           <button
             @click="prevItem"
-            :disabled="currentIndex === 0"
+            :disabled="currentIndex === 0 || isTransitioning"
             class="arrow-btn up-arrow"
             title="上一项"
           >
@@ -70,7 +70,7 @@
           </button>
           <button
             @click="nextItem"
-            :disabled="currentIndex === timelineData.length - 1"
+            :disabled="currentIndex === timelineData.length - 1 || isTransitioning"
             class="arrow-btn down-arrow"
             title="下一项"
           >
@@ -124,6 +124,7 @@ const error = ref('')
 const timelineData = ref<TimelineItem[]>([])
 const currentIndex = ref(0)
 const contentVisible = ref(true)
+const isTransitioning = ref(false)
 
 // 计算当前显示的数据
 const currentData = computed(() => {
@@ -176,33 +177,43 @@ const loadData = async () => {
 
 // 导航函数
 const nextItem = () => {
-  if (currentIndex.value < timelineData.value.length - 1) {
-    // 先渐隐当前内容
-    contentVisible.value = false
-
-    setTimeout(() => {
-      currentIndex.value++
-      // 延迟一点让新内容渐显
-      setTimeout(() => {
-        contentVisible.value = true
-      }, 100)
-    }, 300)
+  // 防止快速点击和越界
+  if (isTransitioning.value || currentIndex.value >= timelineData.value.length - 1) {
+    return
   }
+
+  isTransitioning.value = true
+  // 先渐隐当前内容
+  contentVisible.value = false
+
+  setTimeout(() => {
+    currentIndex.value++
+    // 延迟一点让新内容渐显
+    setTimeout(() => {
+      contentVisible.value = true
+      isTransitioning.value = false
+    }, 100)
+  }, 300)
 }
 
 const prevItem = () => {
-  if (currentIndex.value > 0) {
-    // 先渐隐当前内容
-    contentVisible.value = false
-
-    setTimeout(() => {
-      currentIndex.value--
-      // 延迟一点让新内容渐显
-      setTimeout(() => {
-        contentVisible.value = true
-      }, 100)
-    }, 300)
+  // 防止快速点击和越界
+  if (isTransitioning.value || currentIndex.value <= 0) {
+    return
   }
+
+  isTransitioning.value = true
+  // 先渐隐当前内容
+  contentVisible.value = false
+
+  setTimeout(() => {
+    currentIndex.value--
+    // 延迟一点让新内容渐显
+    setTimeout(() => {
+      contentVisible.value = true
+      isTransitioning.value = false
+    }, 100)
+  }, 300)
 }
 
 onMounted(() => {

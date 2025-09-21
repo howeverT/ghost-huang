@@ -29,8 +29,12 @@
         </div>
       </div>
       <!-- 分页按钮 -->
-      <div v-if="totalPages > 1" class="pagination-container">
-        <button class="pagination-btn prev-btn" :disabled="currentPage === 0" @click="previousPage">
+      <div class="pagination-container">
+        <button
+          class="pagination-btn prev-btn"
+          :disabled="currentPage === 0 || isTransitioning"
+          @click="previousPage"
+        >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path
               d="M15 18L9 12L15 6"
@@ -44,7 +48,7 @@
         <span class="page-info">{{ currentPage + 1 }} / {{ totalPages }}</span>
         <button
           class="pagination-btn next-btn"
-          :disabled="currentPage === totalPages - 1"
+          :disabled="currentPage === totalPages - 1 || isTransitioning"
           @click="nextPage"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -91,6 +95,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const currentPage = ref(0)
+const isTransitioning = ref(false)
 
 // 计算总页数
 const totalPages = computed(() => {
@@ -106,15 +111,53 @@ const currentPageItems = computed(() => {
 
 // 下一页
 const nextPage = () => {
-  if (currentPage.value < totalPages.value - 1) {
-    currentPage.value++
+  if (isTransitioning.value || currentPage.value >= totalPages.value - 1) {
+    return
   }
+  fadeOutAndChange(() => {
+    currentPage.value++
+  })
 }
 
 // 上一页
 const previousPage = () => {
-  if (currentPage.value > 0) {
+  if (isTransitioning.value || currentPage.value <= 0) {
+    return
+  }
+  fadeOutAndChange(() => {
     currentPage.value--
+  })
+}
+
+// 渐隐渐显切换函数
+const fadeOutAndChange = (changeCallback: () => void) => {
+  const itemsContainer = document.querySelector('.thumbnail-section .items-container')
+
+  isTransitioning.value = true
+
+  if (itemsContainer) {
+    // 渐隐
+    itemsContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease'
+    itemsContainer.style.opacity = '0'
+    itemsContainer.style.transform = 'translateY(20px)'
+
+    // 延迟执行切换
+    setTimeout(() => {
+      changeCallback()
+
+      // 渐显
+      setTimeout(() => {
+        if (itemsContainer) {
+          itemsContainer.style.opacity = '1'
+          itemsContainer.style.transform = 'translateY(0)'
+        }
+        isTransitioning.value = false
+      }, 50)
+    }, 300)
+  } else {
+    // 如果没有找到容器，直接执行切换
+    changeCallback()
+    isTransitioning.value = false
   }
 }
 
@@ -179,6 +222,9 @@ const handleItemClick = (item: ThumbnailItem) => {
   justify-content: center;
   width: 100%;
   max-width: calc(100vw - 3rem);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .frame-item {

@@ -66,13 +66,17 @@
 
     <!-- 分页控制 -->
     <div class="pagination-controls">
-      <button class="pagination-btn prev-btn" :disabled="currentPage === 0" @click="prevPage">
+      <button
+        class="pagination-btn prev-btn"
+        :disabled="currentPage === 0 || isTransitioning"
+        @click="prevPage"
+      >
         <img src="/src/assets/svg/chevron-icon.svg" alt="上一页" class="chevron-icon prev-icon" />
       </button>
       <span class="page-info">{{ currentPage + 1 }} / {{ totalPages }}</span>
       <button
         class="pagination-btn next-btn"
-        :disabled="currentPage === totalPages - 1"
+        :disabled="currentPage === totalPages - 1 || isTransitioning"
         @click="nextPage"
       >
         <img src="/src/assets/svg/chevron-icon.svg" alt="下一页" class="chevron-icon next-icon" />
@@ -113,6 +117,7 @@ const activeTab = ref(props.tabs && props.tabs.length > 0 ? props.tabs[0].id : '
 // 分页相关
 const currentPage = ref(0)
 const itemsPerPage = 6
+const isTransitioning = ref(false)
 
 // 获取当前显示的items（优先使用tabs，否则使用items）
 const currentItems = computed(() => {
@@ -148,10 +153,11 @@ const currentRightItems = computed(() => {
 const setActiveTab = (tabId: string) => {
   if (activeTab.value !== tabId) {
     // 笔刷和内容同时淡出
-    const itemsContainer = document.querySelector('.items-container')
-    const activeTabElement = document.querySelector('.tab-item.active')
+    const itemsContainer = document.querySelector('.concert-item-section .items-container')
+    const activeTabElement = document.querySelector('.concert-item-section .tab-item.active')
 
     if (itemsContainer) {
+      itemsContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease'
       itemsContainer.style.opacity = '0'
       itemsContainer.style.transform = 'translateY(20px)'
     }
@@ -168,7 +174,7 @@ const setActiveTab = (tabId: string) => {
 
       // 延迟一点让新tab的笔刷出现
       setTimeout(() => {
-        const newActiveTabElement = document.querySelector('.tab-item.active')
+        const newActiveTabElement = document.querySelector('.concert-item-section .tab-item.active')
         if (newActiveTabElement) {
           newActiveTabElement.style.setProperty('--brush-opacity', '1')
         }
@@ -179,20 +185,58 @@ const setActiveTab = (tabId: string) => {
           itemsContainer.style.transform = 'translateY(0)'
         }
       }, 100)
-    }, 200)
+    }, 300)
   }
 }
 
 // 分页控制函数
 const prevPage = () => {
-  if (currentPage.value > 0) {
-    currentPage.value--
+  if (isTransitioning.value || currentPage.value <= 0) {
+    return
   }
+  fadeOutAndChange(() => {
+    currentPage.value--
+  })
 }
 
 const nextPage = () => {
-  if (currentPage.value < totalPages.value - 1) {
+  if (isTransitioning.value || currentPage.value >= totalPages.value - 1) {
+    return
+  }
+  fadeOutAndChange(() => {
     currentPage.value++
+  })
+}
+
+// 渐隐渐显切换函数
+const fadeOutAndChange = (changeCallback: () => void) => {
+  const itemsContainer = document.querySelector('.concert-item-section .items-container')
+
+  isTransitioning.value = true
+
+  if (itemsContainer) {
+    // 渐隐
+    itemsContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease'
+    itemsContainer.style.opacity = '0'
+    itemsContainer.style.transform = 'translateY(20px)'
+
+    // 延迟执行切换
+    setTimeout(() => {
+      changeCallback()
+
+      // 渐显
+      setTimeout(() => {
+        if (itemsContainer) {
+          itemsContainer.style.opacity = '1'
+          itemsContainer.style.transform = 'translateY(0)'
+        }
+        isTransitioning.value = false
+      }, 50)
+    }, 300)
+  } else {
+    // 如果没有找到容器，直接执行切换
+    changeCallback()
+    isTransitioning.value = false
   }
 }
 
@@ -306,7 +350,9 @@ const handleItemClick = (item: ConcertItem) => {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  transition: all 0.5s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 @media (max-width: 1200px) {
@@ -412,7 +458,6 @@ const handleItemClick = (item: ConcertItem) => {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 .item-content:hover {
   transform: translateY(-5px);
