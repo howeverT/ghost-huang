@@ -17,7 +17,10 @@ interface Props {
 
 withDefaults(defineProps<Props>(), {
   title: '欢迎标题',
-  paragraphs: ['这是第一段介绍文字，您可以自定义内容。', '这是第二段介绍文字，您可以自定义内容。'],
+  paragraphs: () => [
+    '这是第一段介绍文字，您可以自定义内容。',
+    '这是第二段介绍文字，您可以自定义内容。',
+  ],
 })
 </script>
 

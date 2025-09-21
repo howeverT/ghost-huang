@@ -153,8 +153,12 @@ const currentRightItems = computed(() => {
 const setActiveTab = (tabId: string) => {
   if (activeTab.value !== tabId) {
     // 笔刷和内容同时淡出
-    const itemsContainer = document.querySelector('.concert-item-section .items-container')
-    const activeTabElement = document.querySelector('.concert-item-section .tab-item.active')
+    const itemsContainer = document.querySelector(
+      '.concert-item-section .items-container',
+    ) as HTMLElement
+    const activeTabElement = document.querySelector(
+      '.concert-item-section .tab-item.active',
+    ) as HTMLElement
 
     if (itemsContainer) {
       itemsContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease'
@@ -174,7 +178,9 @@ const setActiveTab = (tabId: string) => {
 
       // 延迟一点让新tab的笔刷出现
       setTimeout(() => {
-        const newActiveTabElement = document.querySelector('.concert-item-section .tab-item.active')
+        const newActiveTabElement = document.querySelector(
+          '.concert-item-section .tab-item.active',
+        ) as HTMLElement
         if (newActiveTabElement) {
           newActiveTabElement.style.setProperty('--brush-opacity', '1')
         }
@@ -210,7 +216,9 @@ const nextPage = () => {
 
 // 渐隐渐显切换函数
 const fadeOutAndChange = (changeCallback: () => void) => {
-  const itemsContainer = document.querySelector('.concert-item-section .items-container')
+  const itemsContainer = document.querySelector(
+    '.concert-item-section .items-container',
+  ) as HTMLElement
 
   isTransitioning.value = true
 

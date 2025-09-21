@@ -47,7 +47,7 @@ watch(showMobileMenu, (newValue) => {
 
 // 菜单数据
 const menuItems = [
- {
+  {
     name: '主页',
     path: '/',
     hasSubmenu: false,
@@ -184,7 +184,7 @@ const toggleSubmenu = (submenuRef: any) => {
               <span class="menu-link-text">{{ item.name }}</span>
               <svg
                 class="chevron-icon"
-                :class="{ rotated: item.submenuOpen.value }"
+                :class="{ rotated: item.submenuOpen?.value }"
                 viewBox="0 0 8 6"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -196,7 +196,7 @@ const toggleSubmenu = (submenuRef: any) => {
             </div>
 
             <!-- 子菜单 -->
-            <div v-if="item.submenuOpen.value" class="submenu">
+            <div v-if="item.submenuOpen?.value" class="submenu">
               <div v-for="subItem in item.submenuItems" :key="subItem.path" class="submenu-item">
                 <a
                   @click="handleMenuClick(subItem.path)"
@@ -211,7 +211,7 @@ const toggleSubmenu = (submenuRef: any) => {
 
           <!-- 没有子菜单的项目 -->
           <div v-else class="menu-item-simple">
-            <a @click="handleMenuClick(item.path)" class="menu-link" style="cursor: pointer">
+            <a @click="handleMenuClick(item.path || '')" class="menu-link" style="cursor: pointer">
               {{ item.name }}
             </a>
           </div>

@@ -41,7 +41,13 @@
         <!-- ThumbnailGrid -->
         <ThumbnailGrid
           v-else-if="item.type === 'ThumbnailGrid'"
-          :items="item.items || []"
+          :items="
+            (item.items || []).map((item) => ({
+              image: item.image || '',
+              title: item.title,
+              link: item.url,
+            }))
+          "
           :title="item.title || ''"
         />
 

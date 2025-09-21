@@ -70,7 +70,7 @@
 import { computed, ref } from 'vue'
 
 interface ThumbnailItem {
-  image: string
+  image?: string
   title: string
   link?: string
 }
@@ -131,7 +131,9 @@ const previousPage = () => {
 
 // 渐隐渐显切换函数
 const fadeOutAndChange = (changeCallback: () => void) => {
-  const itemsContainer = document.querySelector('.thumbnail-section .items-container')
+  const itemsContainer = document.querySelector(
+    '.thumbnail-section .items-container',
+  ) as HTMLElement
 
   isTransitioning.value = true
 

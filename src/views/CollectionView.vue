@@ -108,9 +108,12 @@ interface TimelineItem {
   places: string
   display?: 'left' | 'right'
   links: {
-    link_title: string
-    link: string
-    icon: string
+    subtitle: string
+    links: {
+      link_title: string
+      link: string
+      icon: string
+    }[]
   }[]
   image: string[]
 }

@@ -97,10 +97,10 @@ onMounted(() => {
         <!-- OverlapSecondSection -->
         <OverlapSecondSection
           v-else-if="item.type === 'OverlapSecondSection'"
-          :title="item.title"
+          :title="item.title || ''"
           :content="item.content"
-          :image_url="item.image_url || ''"
-          :button_link="item.button_link || ''"
+          :backgroundImage="item.image_url || ''"
+          :links="[]"
         />
 
         <!-- ThumbnailGrid -->
@@ -113,8 +113,8 @@ onMounted(() => {
         <!-- TabbedContentSection -->
         <TabbedContentSection
           v-else-if="item.type === 'TabbedContentSection'"
-          :title="item.title"
-          :content="item.content"
+          :title="item.title || ''"
+          :tabs="[]"
         />
 
         <!-- AvatarSection -->
