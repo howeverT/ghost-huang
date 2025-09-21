@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getImagePath } from '@/utils/pathUtils'
+
 interface AvatarItem {
   avatar: string
   name: string
@@ -53,7 +55,7 @@ const props = withDefaults(defineProps<Props>(), {
               class="avatar-item"
             >
               <div class="avatar-container">
-                <img :src="avatar.avatar" :alt="avatar.name" class="avatar-image" />
+                <img :src="getImagePath(avatar.avatar)" :alt="avatar.name" class="avatar-image" />
               </div>
               <div class="avatar-name">{{ avatar.name }}</div>
               <div class="avatar-title">{{ avatar.avatar_title }}</div>
