@@ -73,9 +73,9 @@ onMounted(() => {
         <HeroSection
           v-if="item.type === 'HeroSection'"
           :title="item.title"
-          :title_align="item.title_align"
-          :title_margin="item.title_margin"
-          :background_image="item.background_image"
+          :titleAlign="item.title_align as 'left' | 'center' | 'right'"
+          :titleMargin="item.title_margin"
+          :backgroundImage="item.background_image"
         />
 
         <!-- ContentSection -->
@@ -90,8 +90,8 @@ onMounted(() => {
           v-else-if="item.type === 'OverlapSection'"
           :title="item.title"
           :content="item.content"
-          :imageUrl="item.image_url"
-          :buttonLink="item.button_link"
+          :imageUrl="item.image_url || ''"
+          :buttonLink="item.button_link || ''"
         />
 
         <!-- OverlapSecondSection -->
@@ -99,8 +99,8 @@ onMounted(() => {
           v-else-if="item.type === 'OverlapSecondSection'"
           :title="item.title"
           :content="item.content"
-          :image_url="item.image_url"
-          :button_link="item.button_link"
+          :image_url="item.image_url || ''"
+          :button_link="item.button_link || ''"
         />
 
         <!-- ThumbnailGrid -->

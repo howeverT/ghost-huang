@@ -448,6 +448,16 @@ onMounted(() => {
 
   .arrow-navigation {
     right: 1rem;
+    bottom: 1rem;
+    top: auto;
+    transform: none;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .arrow-btn {
+    width: 40px;
+    height: 40px;
   }
 
   .title {
@@ -483,30 +493,17 @@ onMounted(() => {
   }
 
   .arrow-navigation {
+    right: 0.5rem;
+    bottom: 0.5rem;
+    top: auto;
+    transform: none;
     flex-direction: row;
-    justify-content: center;
+    gap: 0.3rem;
   }
 
   .arrow-btn {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
   }
-}
-
-/* 覆盖菜单文字颜色，让CollectionView页面的菜单文字变成黑色 */
-:global(.menu-text) {
-  color: #333 !important;
-}
-
-:global(.menu-wrapper:hover .menu-text) {
-  color: #666 !important;
-}
-
-:global(.header-primary-nav-hamburger span) {
-  background-color: #333 !important;
-}
-
-:global(.menu-wrapper:hover .header-primary-nav-hamburger span) {
-  background-color: #666 !important;
 }
 </style>

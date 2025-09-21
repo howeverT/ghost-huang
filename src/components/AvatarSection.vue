@@ -69,7 +69,7 @@ const props = withDefaults(defineProps<Props>(), {
 .avatar-section {
   width: 100%;
   padding: 4rem 0;
-  background-color: #f8f9fa;
+  background-color: transparent;
 }
 
 .container {

@@ -93,7 +93,7 @@ const menuItems = [
     ],
   },
   {
-    name: '资料区',
+    name: '相关账号',
     path: '/related',
     hasSubmenu: false,
   },
@@ -160,12 +160,12 @@ const toggleSubmenu = (submenuRef: any) => {
   <header class="top-navbar" :class="{ hidden: isScrolled && !showMobileMenu }">
     <div class="nav-container">
       <div class="menu-wrapper" @click="toggleMobileMenu">
-        <span class="menu-text">{{ showMobileMenu ? 'Close' : 'Menu' }}</span>
         <div class="header-primary-nav-hamburger js-header-primary-nav-hamburger">
           <span></span>
           <span></span>
           <span></span>
         </div>
+        <span class="menu-text">{{ showMobileMenu ? 'Close' : 'Menu' }}</span>
       </div>
     </div>
 
@@ -239,7 +239,7 @@ const toggleSubmenu = (submenuRef: any) => {
   z-index: 1003;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   transition: transform 0.3s ease;
 }
 
@@ -256,8 +256,8 @@ const toggleSubmenu = (submenuRef: any) => {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding: 0 25vw 0 5vw;
+  justify-content: flex-start;
+  padding: 0 5vw 0 5vw;
 }
 
 .menu-wrapper {
@@ -333,8 +333,8 @@ const toggleSubmenu = (submenuRef: any) => {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-end;
-  padding-right: 25vw;
+  align-items: flex-start;
+  padding-left: 5vw;
   z-index: 1001;
 }
 
@@ -357,11 +357,12 @@ const toggleSubmenu = (submenuRef: any) => {
 .menu-link-container {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 1rem;
-  padding: 2rem 0 2rem 3rem;
+  padding: 2rem 0 2rem 0;
   cursor: pointer;
   transition: all 0.3s ease;
+  flex-direction: row-reverse;
 }
 
 .menu-link-text {
@@ -409,7 +410,7 @@ const toggleSubmenu = (submenuRef: any) => {
   font-weight: 500;
   font-family: 'Halcom-Medium', Arial, sans-serif;
   transition: all 0.3s ease;
-  text-align: right;
+  text-align: left;
   background: none;
   border: none;
   outline: none;
@@ -445,14 +446,14 @@ const toggleSubmenu = (submenuRef: any) => {
 
 .menu-link {
   display: block;
-  padding: 2rem 0 2rem 3rem;
+  padding: 2rem 0 2rem 0;
   color: white;
   text-decoration: none;
   font-size: clamp(2.2rem, 6vw, 3.5rem);
   font-weight: 700;
   font-family: 'Halcom-Medium', Arial, sans-serif;
   transition: all 0.3s ease;
-  text-align: right;
+  text-align: left;
   background: none;
   border: none;
   outline: none;
@@ -573,7 +574,7 @@ const toggleSubmenu = (submenuRef: any) => {
   }
 
   .mobile-menu {
-    padding-right: 15vw;
+    padding-left: 5vw;
   }
 
   .menu-item {
@@ -593,7 +594,7 @@ const toggleSubmenu = (submenuRef: any) => {
   }
 
   .menu-link-container {
-    padding: 1.8rem 0 1.8rem 2rem;
+    padding: 1.8rem 0 1.8rem 0;
   }
 
   .menu-link-text {
@@ -606,9 +607,9 @@ const toggleSubmenu = (submenuRef: any) => {
   }
 
   .menu-link {
-    padding: 1.8rem 0 1.8rem 2rem;
+    padding: 1.8rem 0 1.8rem 0;
     font-size: clamp(2.4rem, 7vw, 3.5rem);
-    text-align: right;
+    text-align: left;
   }
 
   .main-content {
@@ -649,7 +650,7 @@ const toggleSubmenu = (submenuRef: any) => {
   }
 
   .mobile-menu {
-    padding-right: 10vw;
+    padding-left: 5vw;
   }
 
   .menu-item {
@@ -669,7 +670,7 @@ const toggleSubmenu = (submenuRef: any) => {
   }
 
   .menu-link-container {
-    padding: 1.5rem 0 1.5rem 1.5rem;
+    padding: 1.5rem 0 1.5rem 0;
   }
 
   .menu-link-text {
@@ -682,9 +683,9 @@ const toggleSubmenu = (submenuRef: any) => {
   }
 
   .menu-link {
-    padding: 1.5rem 0 1.5rem 1.5rem;
+    padding: 1.5rem 0 1.5rem 0;
     font-size: clamp(2.6rem, 8vw, 3.8rem);
-    text-align: right;
+    text-align: left;
   }
 
   .main-content {
