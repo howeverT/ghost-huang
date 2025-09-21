@@ -50,3 +50,8 @@ if (!indexContent.includes('Single Page Apps for GitHub Pages')) {
 } else {
   console.log('ℹ️  index.html已包含SPA路由处理脚本')
 }
+
+// 复制index.html为404.html（更简洁的方法）
+const fourOhFourPath = path.join(__dirname, '../docs/404.html')
+fs.copyFileSync(indexPath, fourOhFourPath)
+console.log('✅ 已复制index.html为404.html')
