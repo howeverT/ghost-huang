@@ -1,0 +1,125 @@
+{
+    "date": "2025/05/24",
+    "title": "universe/chengdu",
+    "places": "成都东安湖体育公园多功能体育馆",
+    "content": [
+      {
+        "type": "HeroSection",
+        "title": "成都站",
+        "title_align": "right",
+        "title_margin": "0",
+        "background_image": "/src/assets/background/Chengdu.jpg",
+        "index": 1
+      },
+      {
+        "type": "ContentSection",
+        "title": "累就对了其实。因为我们都在走上坡路",
+        "paragraphs": [
+          "其实我是因为魔星保护了我的梦才走到这里。我时常在夜里会把我的枕头哭湿。你们为了我一次又一次地承受这些伤害，我不知道我要怎么做，才能让你们更快乐，不委屈。",
+          "我一直老说，我一定要变强，我才能保护你们，但是我觉得我没有保护好。而是你们一直冲在前面为我遮挡这些伤害。",
+          "累不累啊。不可能不累的。"
+        ],
+        "index": 2
+      },
+      {
+        "type": "OverlapSection",
+        "title": "[视听盛宴] 黄霄雲 十六机位饭拍",
+        "content": "2025.05.24 宇宙无敌号成都站演唱会大电影 全程4K超清饭拍",
+        "button_link": "https://www.bilibili.com/video/BV1dUjkzqEUj/?spm_id_from=333.337.search-card.all.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "image_url": "/src/assets/concert/chengdu/chengdu_duojiwei2.jpg",
+        "index": 3
+      },
+      {
+        "type": "TitleSection",
+        "title_text": "成都站歌单",
+        "subtitle": "成都东安湖体育公园多功能体育馆",
+        "picture": "/src/assets/concert/chengdu/chengdu_gedan.jpg",
+        "picture_title": "2025/05/24",
+        "content": [
+          {
+            "tab": "Part1",
+            "song": [
+              "Oracle（原唱）",
+              "打开（原创）",
+              "蝴蝶夫人（原唱）",
+              "没了我你依然拥有太阳mix没语季节（原创）",
+              "烟火里的尘埃（翻唱，原唱华晨宇）",
+              "回音如果（原创）"
+            ]
+          },
+          {
+            "tab": "Part2",
+            "song": [
+              "请带我去很远地方（原唱） ",
+              "Into the light跃入星光（原唱）",
+              "小云（原创）",
+              "弦上生花（原创）",
+              "喜帖街（翻唱）"
+            ]
+          },
+          {
+            "tab": "Part3",
+            "song": [
+              "要不然我们就这样一万年（原唱）",
+              "画中来（原唱）",
+              "美丽的神话（孙楠合唱）",
+              "拯救（孙楠独唱）"
+            ]
+          },
+          {
+            "tab": "Part4",
+            "song": [
+              "人鱼之歌-共创之夜版（翻唱）",
+              "唯一（翻唱，邓紫棋改编版）",
+              "[点歌]光之黎明（原创）",
+              "[点歌]小云（原创）",
+              "[点歌]落凡尘（原唱）",
+              "[点歌]四季与你（原唱）",
+              "梦返（原唱）",
+              "盲选（原创）"
+            ]
+          },
+          {
+            "tab": "Part5",
+            "song": [
+              "渐渐被你吸引（翻唱）",
+              "不潮不用花钱（翻唱）",
+              "平行线 wish you were here（原唱）",
+              "觉醒时代（原创）",
+              "玫瑰星云（原创）",
+              "星辰大海（原唱）",
+              "光之黎明返场（原创）"
+            ]
+          }
+        ],
+        "index": 4
+      },
+      {
+        "type": "ThumbnailGrid",
+        "title": "演唱会合集",
+        "items": [
+          {
+            "image": "/src/assets/concert/chengdu/vlog_54.jpg",
+            "link": "https://www.bilibili.com/video/BV1suMvzkETk/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "宇宙无敌号成都演唱会Vlog"
+          },
+          {
+            "image": "/src/assets/concert/chengdu/guangzhiliming_guanshe.jpg",
+            "link": "https://www.bilibili.com/video/BV1NpgczXEJw/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "《光之黎明》官摄"
+          },
+          {
+            "image": "/src/assets/concert/chengdu/vlog_tenyear.jpg",
+            "link": "https://www.bilibili.com/video/BV1VwMXz3E2i/?spm_id_from=333.1387.homepage.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "黄霄雲成都站演唱会幕后"
+          },
+          {
+            "image": "/src/assets/concert/chengdu/with_sunnan.jpg",
+            "link": "https://www.bilibili.com/video/BV1yk3LzFEvh/?spm_id_from=333.1387.homepage.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "黄霄雲&孙楠《美丽的神话》"
+          }
+        ],
+        "index": 5
+      }
+    ]
+  }

@@ -1,0 +1,132 @@
+[
+  {
+    "date": "2024/11/01",
+    "title": "北京站 Day1",
+    "description": "探索宇宙的奥秘，发现更多美好的事物。让我们一起在星辰大海中遨游，寻找属于我们的梦想。",
+    "places": "北京·华熙LIVE·五棵松·场馆",
+    "links": [
+      {
+        "link_title": "【8K】黄霄雲 - 宇宙无敌号2024北京演唱会全程（11月1日）",
+        "link": "https://www.bilibili.com/video/BV1KHDcYLEyX/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      },
+      {
+        "link_title": "【面包的vlog第47集】谁懂演唱会之后的戒断反应对黄霄雲的冲击有多大！！！舍不得舍不得～",
+        "link": "https://www.bilibili.com/video/BV1xYUSY5Ek6/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      }
+    ],
+    "image": ["/src/assets/background/Beijing-day1.jpg"],
+    "display": "right"
+  },
+  {
+    "date": "2024/11/02",
+    "title": "北京站 Day2",
+    "description": "开始追逐梦想，踏上星辰大海的征程。每一个梦想都值得我们去追逐，每一次努力都会让我们更接近目标。",
+    "places": "北京·华熙LIVE·五棵松·场馆",
+    "links": [
+      {
+        "link_title": "【8K】黄霄雲 - 宇宙无敌号2024北京演唱会全程（11月2日）航视频",
+        "link": "https://www.bilibili.com/video/BV1ZcS6YMEtw/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      },
+      {
+        "link_title": "【面包的vlog第47集】谁懂演唱会之后的戒断反应对黄霄雲的冲击有多大！！！舍不得舍不得～",
+        "link": "https://www.bilibili.com/video/BV1xYUSY5Ek6/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      }
+    ],
+    "image": ["/src/assets/background//Beijing-day2.jpg"],
+    "display": "right"
+  },
+  {
+    "date": "2025/03/22",
+    "title": "广州站",
+    "description": "心中种下星辰大海的种子，等待发芽。最初的梦想总是最珍贵的，让我们不忘初心，继续前行。",
+    "places": "宝能广州国际体育演艺中心",
+    "links": [
+      {
+        "link_title": "【视听盛宴】 黄霄雲 十机位饭拍 2025.03.22 宇宙无敌号 广州巡回演唱会 全程4K高清多机位直拍",
+        "link": "https://www.bilibili.com/video/BV1g2oiYqEiM/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      },
+      {
+        "link_title": "【8K】黄霄雲 - 20250322宇宙无敌号巡演广州站全程",
+        "link": "https://www.bilibili.com/video/BV1CcoUYdE2e/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      },
+      {
+        "link_title": "黄霄雲广州巡演的背后细节是我能看的吗！！！纪录片混剪发出来了！！",
+        "link": "https://www.bilibili.com/video/BV1FCoHYVEar/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      },
+      {
+        "link_title": "黄霄雲《打开》又有官摄了！！！当年在歌手舞台唱的首支原创单曲《打开》七周年快乐！！",
+        "link": "https://www.bilibili.com/video/BV1jgVxzUEFV/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      }
+    ],
+    "image": ["/src/assets/background/Guangzhou.jpg"],
+    "display": "left"
+  },
+  {
+    "date": "2025/05/24",
+    "title": "成都站",
+    "description": "———其实我是因为魔星保护了我的梦才走到这里。我时常在夜里会把我的枕头哭湿。你们为了我一次又一次地承受这些伤害，我不知道我要怎么做，才能让你们更快乐，不委屈。我一直老说，我一定要变强，我才能保护你们，但是我觉得我没有保护好。而是你们一直冲在前面为我遮挡这些伤害。让我安心地做音乐，累不累啊。不可能不累的，累就对了其实，因为我们都在走上坡路。",
+    "places": "成都东安湖体育公园多功能体育馆",
+    "links": [
+      {
+        "link_title": "十六机位饭拍 2025.05.24 宇宙无敌号成都站演唱会大电影 全程4K超清饭拍",
+        "link": "https://www.bilibili.com/video/BV1dUjkzqEUj/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      },
+      {
+        "link_title": "[4K/Hifi]黄霄雲成都演唱会全程，画质音质巅峰",
+        "link": "https://www.bilibili.com/video/BV1JZjrzkEaJ/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      },
+      {
+        "link_title": "黄霄雲成都站演唱会幕后与十年前的自己对话，所想的画面未来都已成真！",
+        "link": "https://www.bilibili.com/video/BV1VwMXz3E2i/?spm_id_from=333.1387.homepage.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      },
+      {
+        "link_title": "黄霄雲&孙楠《美丽的神话》有官摄了！！！一开口又是多少人的青春？",
+        "link": "https://www.bilibili.com/video/BV1yk3LzFEvh/?spm_id_from=333.1387.homepage.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      },
+      {
+        "link_title": "紫霄雲 - 官方妆造图",
+        "link": "https://weibo.com/5043186742/PumFZEeYx?pagetype=viewer",
+        "icon": "picture"
+      }
+    ],
+    "image": ["/src/assets/background/Chengdu.jpg"],
+    "display": "right"
+  },
+  {
+    "date": "2025/07/26",
+    "title": "上海站",
+    "description": "———其实我是因为魔星保护了我的梦才走到这里。我时常在夜里会把我的枕头哭湿。你们为了我一次又一次地承受这些伤害，我不知道我要怎么做，才能让你们更快乐，不委屈。我一直老说，我一定要变强，我才能保护你们，但是我觉得我没有保护好。而是你们一直冲在前面为我遮挡这些伤害。让我安心地做音乐，累不累啊。不可能不累的，累就对了其实，因为我们都在走上坡路。",
+    "places": "上海梅赛德斯-奔驰文化中心",
+    "links": [
+      {
+        "link_title": "【视听盛宴】 黄霄雲演唱会大电影 2025.07.26 宇宙无敌号上海站 十二机位 全程4K超清饭拍",
+        "link": "https://www.bilibili.com/video/BV1L48qzsESK/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      },
+      {
+        "link_title": "【8K】黄霄雲 - 20250726宇宙无敌号巡演上海站",
+        "link": "https://www.bilibili.com/video/BV1jE8Yz5E6z/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      },
+      {
+        "link_title": "黄霄雲&刘宇《沈园外》官摄给我干哪来了，配合好！！剪影也很美！！",
+        "link": "https://www.bilibili.com/video/BV1UZtHzcEvK/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "icon": "video"
+      }
+    ],
+    "image": ["/src/assets/background/background.jpg"],
+    "display": "left"
+  }
+]

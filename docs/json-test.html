@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>JSON文件测试</title>
+  </head>
+  <body>
+    <h1>JSON文件访问测试</h1>
+    <div id="results"></div>
+
+    <script>
+      async function testJsonFiles() {
+        const results = document.getElementById('results')
+        const baseUrl =
+          window.location.origin + window.location.pathname.replace('json-test.html', '')
+
+        const testFiles = [
+          'src/assets/page_data/related/related.json',
+          'src/assets/page_data/concert/universe/concert_beijing2024.json',
+          'src/assets/page_data/history/history_2024.json',
+        ]
+
+        for (const file of testFiles) {
+          const url = baseUrl + file
+          try {
+            const response = await fetch(url)
+            if (response.ok) {
+              const data = await response.json()
+              results.innerHTML += `<p>✅ ${file} - 成功加载 (${Object.keys(data).length} 个属性)</p>`
+            } else {
+              results.innerHTML += `<p>❌ ${file} - 失败 (${response.status})</p>`
+            }
+          } catch (error) {
+            results.innerHTML += `<p>❌ ${file} - 错误: ${error.message}</p>`
+          }
+        }
+      }
+
+      testJsonFiles()
+    </script>
+  </body>
+</html>

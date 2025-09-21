@@ -1,0 +1,47 @@
+[
+    {
+      "date": "2020合集",
+      "title": "蒙面唱将猜猜猜5",
+      "description": "",
+      "places": "",
+      "links": [
+        {
+          "subtitle": "EP02",
+          "links": [
+            {
+                "link_title": "EP02节目CUT",
+                "link": "https://weibo.com/6961164430/K2aT9az2A",
+                "icon": "video"
+            },
+            {
+              "link_title": "《为你而战》",
+              "link": "https://v.youku.com/v_show/id_XNDk2NDQyNTkxMg==.html",
+              "icon": "video"
+            }
+          ]
+        },
+        {
+          "subtitle": "EP03",
+          "links": [
+            {
+                "link_title": "《我们》",
+                "link": "https://www.bilibili.com/video/BV1yt4y1a7hA",
+                "icon": "video"
+            },
+            {
+              "link_title": "《她》",
+              "link": "https://www.bilibili.com/video/BV1v5411V7iP",
+              "icon": "video"
+            },
+            {
+              "link_title": "《Neverland》",
+              "link": "https://weibo.com/6961164430/4571660995010551",
+              "icon": "video"
+            }
+          ]
+        }
+      ],
+      "image": ["/src/assets/variety/mask/mask_20-11-15.jpg"],
+      "display": "left"
+    }
+  ]

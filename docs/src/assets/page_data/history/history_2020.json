@@ -1,0 +1,117 @@
+[
+    {
+      "title": "考古区",
+      "year": "2020",
+      "content": [
+        {
+          "type": "HeroSection",
+          "title": "二零年",
+          "title_align": "right",
+          "title_margin": "0",
+          "background_image": "/src/assets/background/History2020.jpg",
+          "index": 1
+        },
+        {
+          "type": "ContentSection",
+          "title": "登上《歌手·当打之年》舞台",
+          "paragraphs": [
+            "放弃保研机会参加《歌手》，留下4个经典舞台。",
+            "常驻各大综艺节目。"
+          ],
+          "index": 2
+        },
+        {
+          "type": "OverlapSecondSection",
+          "title": "综艺合集",
+          "content": "",
+          "background_image": "/src/assets/variety/background/Variety2020.jpg",
+          "links": [
+            {
+              "link_title": "新生请指教-合集",
+              "date": "2020-01-19",
+              "link": "/collection/fresh"
+            },
+            {
+              "link_title": "歌手·当打之年-合集",
+              "date": "2020-02-07",
+              "link": "/collection/singer"
+            },
+            {
+              "link_title": "天赐的声音-合集",
+              "date": "2020-04-11",
+              "link": "/collection/tianci"
+            },
+            {
+              "link_title": "爆款来了-合集",
+              "date": "2020-05-20",
+              "link": "/collection/hit"
+            },
+            {
+              "link_title": "闺蜜好美",
+              "date": "2020-06-14",
+              "link": "https://weibo.com/2347708314/L0BywdECv"
+            },
+            {
+              "link_title": "蒙面唱将-合集",
+              "date": "2020-11-08",
+              "link": "/collection/mask"
+            }
+          ],
+          "index": 3
+        },
+        {
+          "type": "ConcertItemSection",
+          "index": 4,
+          "title": "2020年晚会/盛典汇总",
+          "tabs": [
+            {
+              "id": "part1",
+              "label": "1-12月",
+              "backgroundImage": "/src/assets/background/History2024.jpg",
+              "imageTitle": "2020年1-2月晚会",
+              "imageCaption": "新年晚会、春晚等精彩回顾",
+              "items": [
+                {
+                    "title": "大学生在行动云晚会",
+                    "date": "表演日期：2020-04-30，表演曲目：人间天使",
+                    "url": "https://weibo.com/6961164430/IFKUuqEfr",
+                    "image": "/src/assets/party/2020/2020-04-30.jpg"
+                },
+                {
+                  "title": "相信未来在线义演",
+                  "date": "表演日期：2020-05-10，表演曲目：Beauty（打开）",
+                  "url": "https://weibo.com/6961164430/IFKUuqEfr",
+                  "image": "/src/assets/party/2020/2020-05-10.jpg"
+                },
+                {
+                  "title": "芒果音乐会",
+                  "date": "表演日期：2020-06-26，表演曲目：Sad Sometimes，打开，还可以爱吗，四季与你，你的答案",
+                  "url": "https://www.bilibili.com/video/BV17f4y117Xi/?vd_source=47f96c172cbb3b3f428698faafd995bc",
+                  "image": "/src/assets/party/2020/2020-06-26.jpg"
+                },
+                {
+                  "title": "央视云端音乐季-part1",
+                  "date": "表演日期：2020-09-17， 前采",
+                  "url": "https://weibo.com/2347708314/Kewi95IoM",
+                  "image": "/src/assets/party/2020/2020-09-17_1.jpg"
+                },
+                {
+                  "title": "央视云端音乐季-part2",
+                  "date": "表演日期：2020-09-17， 后采",
+                  "url": "https://weibo.com/2347708314/Jl5MudEBF",
+                  "image": "/src/assets/party/2020/2020-09-17_2.jpg"
+                },
+                {
+                  "title": "北京卫视跨年冰雪盛典",
+                  "date": "表演日期：2020-12-31， 表演曲目：爱的主打歌，不怕不怕，Ladia，魅力无限",
+                  "url": "https://www.bilibili.com/video/BV1rT4y1T7kh",
+                  "image": "/src/assets/party/2020/2020-12-30.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  

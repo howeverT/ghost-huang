@@ -1,0 +1,393 @@
+[
+    {
+        "title": "账号区",
+        "content": [
+            {
+                "type": "HeroSection",
+                "title": "账号区",
+                "title_align": "left",
+                "title_margin": "0",
+                "background_image": "/src/assets/background/Account.jpg",
+                "index": 1
+            },
+            {
+                "type": "AvatarSection",
+                "title": "黄霄雲个人",
+                "content": [
+                    {
+                        "subtitle": "微博",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/ghost/huangxiaoyun_weibo.jpg",
+                                "name": "黄霄雲",
+                                "avatar_title": "微博大号",
+                                "link": "https://weibo.com/u/5043186742"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/ghost/haoxiangchi_weibo.jpg",
+                                "name": "好想吃面包蛋糕芝士",
+                                "avatar_title": "微博小号",
+                                "link": "https://weibo.com/u/5638314984"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/ghost/huangxiaoyun_bili.webp",
+                                "name": "黄霄雲",
+                                "avatar_title": "B站",
+                                "link": "https://space.bilibili.com/501005668?spm_id_from=333.337.0.0"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/ghost/huangxiaoyun_weibo.jpg",
+                                "name": "黄霄雲",
+                                "avatar_title": "小红书",
+                                "link": "https://www.xiaohongshu.com/user/profile/5e6cc87f0000000001003f24?xsec_token=YBZwRm76oIowvBwMZDijXj4qe7d7FLeo3rsDRc2x6npqg%3D&xsec_source=app_share&xhsshare=&appuid=5f89a56b000000000101f7b7&apptime=1757242269&share_id=458cbc093e074ea88c760344e4ff660f&share_channel=copy_link"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/ghost/huangxiaoyun_weibo.jpg",
+                                "name": "黄霄雲",
+                                "avatar_title": "抖音",
+                                "link": "https://www.douyin.com/user/MS4wLjABAAAAjW0gMk6HfnozLjpBmla_Ad2igcU4EkqV6WwnkK0ZuNM?from_tab_name=main"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/ghost/haoxiangchi_weibo.jpg",
+                                "name": "好想吃面包蛋糕芝士",
+                                "avatar_title": "抖音",
+                                "link": "https://www.douyin.com/user/MS4wLjABAAAAkQtgDTZYCFE82g4_g5Ndt8y_TZ5MuAxOvTkBNR8OUx3jCoV1AKmU07GJ-Tv9FdAl?from_tab_name=main"
+                            }
+                        ]
+                    }
+                ],
+                "index": 2
+            },
+            {
+                "type": "AvatarSection",
+                "title": "黄霄雲工作室",
+                "content": [
+                    {
+                        "subtitle": "微博",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/workshop/gongzuoshi_weibo.jpg",
+                                "name": "黄霄雲的雲上面包坊",
+                                "avatar_title": "工作室",
+                                "link": "https://weibo.com/u/7798421503"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/workshop/bianbian_weibo.jpg",
+                                "name": "面包的边边",
+                                "avatar_title": "助理",
+                                "link": "https://weibo.com/u/7942582311"
+                            }
+                        ]
+                    }
+                ],
+                "index": 3
+            },
+            {
+                "type": "AvatarSection",
+                "title": "站姐团",
+                "content": [
+                    {
+                        "subtitle": "微博",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/zhan/jiangui_weibo.jpg",
+                                "name": "见鬼SEEGHOST·黄霄雲",
+                                "avatar_title": "上下班&线下直拍图片",
+                                "link": "https://weibo.com/u/7425692430"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/zhan/huiyin_weibo.jpg",
+                                "name": "宇宙回音·黄霄雲",
+                                "avatar_title": "上下班&线下直拍视频/图片",
+                                "link": "https://weibo.com/u/7869551031"
+                            }
+                        ]
+                    }
+                ],
+                "index": 3
+            },
+            {
+                "type": "AvatarSection",
+                "title": "黄霄雲后援会",
+                "content": [
+                    {
+                        "subtitle": "微博",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/club/menghuandao_weibo.jpg",
+                                "name": "黄霄雲·魔星梦幻岛",
+                                "avatar_title": "后援会",
+                                "link": "https://weibo.com/u/7186769076"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/club/huweijian_weibo.jpg",
+                                "name": "黄霄雲·魔星护卫舰",
+                                "avatar_title": "反黑组",
+                                "link": "https://weibo.com/u/6143856130"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/club/zhinandui_weibo.jpg",
+                                "name": "黄霄雲·魔星奔赴指南队·",
+                                "avatar_title": "数据组",
+                                "link": "https://weibo.com/u/6423643793"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/club/bowuguan_weibo.jpg",
+                                "name": "黄霄雲·魔星博物馆",
+                                "avatar_title": "考古区",
+                                "link": "https://weibo.com/u/6961164430"
+                            }
+                        ]
+                    }
+                ],
+                "index": 4
+            },
+            {
+                "type": "AvatarSection",
+                "title": "演唱会主办方",
+                "content": [
+                    {
+                        "subtitle": "微博",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/concert/chouduomi_weibo.jpg",
+                                "name": "Domi多米娱乐",
+                                "avatar_title": "微博",
+                                "link": "https://weibo.com/n/Domi%E5%A4%9A%E7%B1%B3%E5%A8%B1%E4%B9%90"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/concert/chouduomi_weibo.jpg",
+                                "name": "Domi多米娱乐",
+                                "avatar_title": "抖音",
+                                "link": "https://www.douyin.com/user/MS4wLjABAAAAmRf-ycjMUFUyZRxBVVSCwh_Gqnov_bFejtDgavHsUG4?from_tab_name=main"
+                            }
+                        ]
+                    }
+                ],
+                "index": 4
+            },
+            {
+                "type": "AvatarSection",
+                "title": "OKK天团",
+                "content": [
+                    {
+                        "subtitle": "B站",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/okk/8kge_bili.webp",
+                                "name": "ObscureW-魔星8K版",
+                                "avatar_title": "摄影/录音",
+                                "link": "https://space.bilibili.com/4772279"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/6kge_bili.webp",
+                                "name": "暮光之南-魔星6K版",
+                                "avatar_title": "摄影/录音/剪辑",
+                                "link": "https://space.bilibili.com/504063975"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/keep_bili.webp",
+                                "name": "Keep_koo",
+                                "avatar_title": "摄影/美术",
+                                "link": "https://space.bilibili.com/274443907"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/aba_bili.webp",
+                                "name": "阿巴阿巴-魔星8K版",
+                                "avatar_title": "摄影",
+                                "link": "https://space.bilibili.com/22847880"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/koeni_bili.webp",
+                                "name": "Koeni-魔星4K版",
+                                "avatar_title": "摄影",
+                                "link": "https://space.bilibili.com/12626808"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/xingkong_bili.webp",
+                                "name": "星空CCA_魔星7K航拍版",
+                                "avatar_title": "摄影/录音",
+                                "link": "https://space.bilibili.com/103394219"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/jianguo_bili.webp",
+                                "name": "偏执的坚果",
+                                "avatar_title": "摄影",
+                                "link": "https://space.bilibili.com/384352128"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/mumu_bili.webp",
+                                "name": "木木本mu-魔星4K版",
+                                "avatar_title": "摄影",
+                                "link": "https://space.bilibili.com/13813314"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/xyz_bili.webp",
+                                "name": "hzdxyz-魔星8K版",
+                                "avatar_title": "摄影",
+                                "link": "https://space.bilibili.com/1869168285"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/reach_bili.webp",
+                                "name": "reach01",
+                                "avatar_title": "摄影/录音",
+                                "link": "https://space.bilibili.com/27982067"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/gao_bili.webp",
+                                "name": "GaoK丶",
+                                "avatar_title": "摄影/录音",
+                                "link": "https://space.bilibili.com/74730028"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/yinyuehe_bili.webp",
+                                "name": "一只音乐盒er",
+                                "avatar_title": "摄影",
+                                "link": "https://space.bilibili.com/24900360"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/8tge_bili.webp",
+                                "name": "黄霄雲live",
+                                "avatar_title": "摄影/录音",
+                                "link": "https://space.bilibili.com/320851664"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/fpv_bili.webp",
+                                "name": "M_FPV-魔星4K版",
+                                "avatar_title": "摄影",
+                                "link": "https://space.bilibili.com/25340393"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/xingfu_bili.webp",
+                                "name": "幸福如你面包面包",
+                                "avatar_title": "摄影/录音",
+                                "link": "https://space.bilibili.com/169200690"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/mengyi_bili.webp",
+                                "name": "Ghost梦逸-7K",
+                                "avatar_title": "摄影",
+                                "link": "https://space.bilibili.com/430979770"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/12344_bili.webp",
+                                "name": "唯恨天涯远-4K",
+                                "avatar_title": "摄影/录音",
+                                "link": "https://space.bilibili.com/30393176"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/lanpingguo_bili.webp",
+                                "name": "六颗烂苹果",
+                                "avatar_title": "摄影",
+                                "link": "https://space.bilibili.com/179080569"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/xiyou_bili.webp",
+                                "name": "胖西柚-魔星Edit版",
+                                "avatar_title": "片头制作",
+                                "link": "https://space.bilibili.com/206702364"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/tuoguan_bili.webp",
+                                "name": "不怕冻的皮托管",
+                                "avatar_title": "字幕/美术",
+                                "link": "https://space.bilibili.com/399827001"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/181_bili.webp",
+                                "name": "猪竹力181",
+                                "avatar_title": "字幕",
+                                "link": "https://space.bilibili.com/37117164"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/kaogu_bili.webp",
+                                "name": "CJ1120_疯狂考古面包版",
+                                "avatar_title": "字幕",
+                                "link": "https://space.bilibili.com/5096014"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/meiren_bili.webp",
+                                "name": "没人给我个好ID啊",
+                                "avatar_title": "字幕",
+                                "link": "https://space.bilibili.com/295257700"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/dongdu_bili.webp",
+                                "name": "东渡西归",
+                                "avatar_title": "字幕",
+                                "link": "https://space.bilibili.com/21202445"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/tutu_bili.webp",
+                                "name": "东渡叉兔酱_面包味小兔西归",
+                                "avatar_title": "美术",
+                                "link": "https://space.bilibili.com/19996684"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/henduokang_bili.webp",
+                                "name": "面包糠糠糠糠糠糠",
+                                "avatar_title": "特效",
+                                "link": "https://space.bilibili.com/702134273"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/haozi_bili.webp",
+                                "name": "皓子不困",
+                                "avatar_title": "美术",
+                                "link": "https://space.bilibili.com/438616101"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/bupang_bili.webp",
+                                "name": "干吃不胖黄霄圆",
+                                "avatar_title": "字幕",
+                                "link": "https://space.bilibili.com/319978136"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/chunri_bili.webp",
+                                "name": "春日港Chunri-Port",
+                                "avatar_title": "美术",
+                                "link": "https://space.bilibili.com/1553358146"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/okk/banzhuren_bili.webp",
+                                "name": "脏包面包_班主任版",
+                                "avatar_title": "美术",
+                                "link": "https://space.bilibili.com/482519336"
+                            }
+                        ]
+                    }
+                ],
+                "index": 4
+            },
+            {
+                "type": "AvatarSection",
+                "title": "叉烧包安利坊",
+                "content": [
+                    {
+                        "subtitle": "B站",
+                        "avatars": [
+                            {
+                                "avatar": "/src/assets/avatar/anli/chashao_bili.webp",
+                                "name": "叉烧包安利坊",
+                                "avatar_title": "B站",
+                                "link": "https://space.bilibili.com/3546952654392162"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/anli/aichi_weibo.jpg",
+                                "name": "爱吃小面包--",
+                                "avatar_title": "微博",
+                                "link": "https://weibo.com/7412659586?refer_flag=1001030103_"
+                            },
+                            {
+                                "avatar": "/src/assets/avatar/anli/keep_weibo.jpg",
+                                "name": "Keep_koo",
+                                "avatar_title": "微博",
+                                "link": "https://weibo.com/n/Keep_koo"
+                            }
+                        ]
+                    }
+                ],
+                "index": 5
+            }
+        ]
+    }
+]

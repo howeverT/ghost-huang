@@ -1,0 +1,185 @@
+{
+    "date": "2024/11/01",
+    "title": "universe/beijing",
+    "places": "北京·华熙LIVE·五棵松·场馆",
+    "content": [
+      {
+        "type": "HeroSection",
+        "title": "北京站",
+        "title_align": "right",
+        "title_margin": "0",
+        "background_image": "/src/assets/background/Beijing-day1.jpg",
+        "index": 1
+      },
+      {
+        "type": "ContentSection",
+        "title": "再次谢谢你们，让我实现了梦想",
+        "paragraphs": [
+          "有没有去年广州也来的呀，你们好棒啊。今年我们再做一个约定，明年如果我们开巡演，你们会来吗。那今天的演唱会就要接近尾声了，非常开心跟你们度过这个难忘的，重要的，美好的夜晚。",
+          "谢谢你们为我做的一切，虽然我们的每一步都走的很难，很漫长，但是很踏实。我也会继续加油，带来更多很好的作品来给你们听。",
+          "今天的我很幸福，我见到了你们，其实一直到现在我的感觉不太真实，所以下一首歌我会请我的工作人员记录下来，我和你们，然后发微博。同时我也希望我的宇宙无敌号能开到更多更远的地方。"
+        ],
+        "index": 2
+      },
+      {
+        "type": "OverlapSection",
+        "title": "[视听盛宴] 黄霄雲 五机位全程饭拍",
+        "content": "2024.11.01 宇宙无敌号 北京演唱会 11.1 五机位全程剪辑版",
+        "button_link": "https://www.bilibili.com/video/BV1RmDvYsEWL/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "image_url": "/src/assets/concert/beijing/beijing_duojiwei.jpg",
+        "index": 3
+      },
+      {
+        "type": "TitleSection",
+        "title_text": "北京站Day1歌单",
+        "subtitle": "北京·华熙LIVE·五棵松·场馆",
+        "picture": "/src/assets/concert/beijing/beijing_gedan1.jpg",
+        "picture_title": "2024/11/01",
+        "content": [
+          {
+            "tab": "Part1",
+            "song": [
+              "挑战（原唱）",
+              "蝴蝶夫人（原唱）",
+              "平行线 wish you were here（原唱）",
+              "没语季节（原创）"
+            ]
+          },
+          {
+            "tab": "Part2",
+            "song": [
+              "请带我去很远地方（原唱） ",
+              "Into the light跃入星光（原唱）",
+              "小云（原创）",
+              "月牙湾（翻唱）",
+              "人鱼之歌（翻唱）",
+              "要不然我们就这样一万年（原唱）",
+              "十一（队长合唱）",
+              "予你（队长独唱）"
+            ]
+          },
+          {
+            "tab": "Part3",
+            "song": [
+              "没了我你依然拥有太阳（原创）",
+              "[点歌]光之黎明（原创）",
+              "[点歌]羽众不同（原唱）",
+              "[点歌]弦上生花（原创）",
+              "盲选（原创）",
+              "然后呢，最后呢（原创）"
+            ]
+          },
+          {
+            "tab": "Part4",
+            "song": [
+              "渐渐被你吸引（翻唱）",
+              "以我之躯（原唱）",
+              "回音如果（原创）",
+              "All by myself（翻唱）",
+              "不潮不用花钱（翻唱）",
+              "觉醒时代（原创）",
+              "打开（原创）",
+              "星辰大海（原唱）"
+            ]
+          }
+        ],
+        "index": 4
+      },
+      {
+        "type": "ContentSection",
+        "title": "其实我觉得，创作的意义，就是能够在陪伴你们，在不同的阶段，让我度过了不同的人生。能够在彼此的人生中留下一点点印记。就像今天，就像昨天。",
+        "paragraphs": [
+          "我也有在网上看到很多人给我做一些魔性的视频，一直在向别人安利我，很努力的想让很多很多的人更多的人听到我的歌。你们做的所有所有的一些我都看得到。",
+          "谢谢你们一路以来的支持，如果没有你们，今天的演唱会，真的只是一个非常冒险的，一场梦。",
+          "这场演唱会，是我们共同的作品。今天的你们比我要耀眼非常非常非常的多，你们是我见过最闪耀的魔星。"
+        ],
+        "index": 5
+      },
+      {
+        "type": "OverlapSection",
+        "title": "[视听盛宴] 黄霄雲 双机位全程饭拍",
+        "content": "2024.11.2 双机位剪辑版 顶级画质+至臻音质 魔星纯享",
+        "button_link": "https://www.bilibili.com/video/BV1twDsYjEKD/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+        "image_url": "/src/assets/concert/beijing/beijing-day2_duojiwei2.jpg",
+        "index": 6
+      },
+      {
+        "type": "TitleSection",
+        "title_text": "北京站Day2歌单",
+        "subtitle": "北京·华熙LIVE·五棵松·场馆",
+        "picture": "/src/assets/concert/beijing/beijing_gedan2.jpg",
+        "picture_title": "2024/11/02",
+        "content": [
+          {
+            "tab": "Part1",
+            "song": [
+              "挑战（原唱）",
+              "蝴蝶夫人（原唱）",
+              "平行线 wish you were here（原唱）",
+              "没语季节（原创）",
+              "说谎动物（原创）"
+            ]
+          },
+          {
+            "tab": "Part2",
+            "song": [
+              "请带我去很远地方（原唱） ",
+              "Into the light跃入星光（原唱）",
+              "小云（原创）",
+              "那些你很冒险的梦（翻唱）",
+              "人鱼之歌（翻唱）",
+              "要不然我们就这样一万年（原唱）",
+              "手心的蔷薇（林志炫合唱）",
+              "输了你赢了世界又如何（林志炫独唱）"
+            ]
+          },
+          {
+            "tab": "Part3",
+            "song": [
+              "没了我你依然拥有太阳（原创）",
+              "[点歌]梦返（原唱）",
+              "[点歌]窗外大雨（原唱）",
+              "[点歌]幻想（原唱）",
+              "盲选（原创）"
+            ]
+          },
+          {
+            "tab": "Part4",
+            "song": [
+              "渐渐被你吸引（翻唱）",
+              "Oracle（原唱）",
+              "回音如果（原创）",
+              "左手指月（翻唱）",
+              "不潮不用花钱（翻唱）",
+              "觉醒时代（原创）",
+              "打开（原创）",
+              "星辰大海（原唱）"
+            ]
+          }
+        ],
+        "index": 7
+      },
+      {
+        "type": "ThumbnailGrid",
+        "title": "演唱会合集",
+        "items": [
+          {
+            "image": "/src/assets/concert/beijing/beijing_vlog.jpg",
+            "link": "https://www.bilibili.com/video/BV1xYUSY5Ek6/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "宇宙无敌号北京站演唱会Vlog"
+          },
+          {
+            "image": "/src/assets/concert/beijing/with_duizhang.jpg",
+            "link": "https://www.bilibili.com/video/BV1V4SzYaEsX/?spm_id_from=333.337.search-card.all.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "黄霄雲&队长《十一》"
+          },
+          {
+            "image": "/src/assets/concert/beijing/with_linzhixuan.jpg",
+            "link": "https://www.bilibili.com/video/BV15cBRYLER3/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+            "title": "黄霄雲&林志炫《手心的蔷薇》"
+          }
+        ],
+        "index": 8
+      }
+    ]
+  }

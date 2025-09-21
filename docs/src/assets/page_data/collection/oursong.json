@@ -1,0 +1,188 @@
+[
+    {
+      "date": "2022合集",
+      "title": "我们的歌第4季",
+      "description": "",
+      "places": "",
+      "links": [
+        {
+          "subtitle": "EP03 & EP04",
+          "links": [
+            {
+              "link_title": "EP03节目CUT",
+              "link": "https://weibo.com/6961164430/M9zAU7puS",
+              "icon": "video"
+            },
+            {
+                "link_title": "EP03节目加更",
+                "link": "https://weibo.com/6961164430/M9NFPfT96",
+                "icon": "video"
+            },
+            {
+              "link_title": "EP04节目CUT",
+              "link": "https://weibo.com/6961164430/MakOdCLaL",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP04节目加更",
+              "link": "https://weibo.com/6961164430/MayNLuEQc",
+              "icon": "video"
+            }
+          ]
+        },
+        {
+          "subtitle": "EP06 & EP08",
+          "links": [
+            {
+              "link_title": "EP06节目CUT",
+              "link": "https://weibo.com/6961164430/McLZkmCLs",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP06节目加更",
+              "link": "https://weibo.com/6961164430/Md0h4F9qn",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP08节目CUT",
+              "link": "https://weibo.com/6961164430/MeT9458M7",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP08节目加更",
+              "link": "https://weibo.com/6961164430/Mf7EjpQWh",
+              "icon": "video"
+            }
+          ]
+        },
+        {
+          "subtitle": "EP10",
+          "links": [
+            {
+              "link_title": "EP10节目CUT",
+              "link": "https://weibo.com/6961164430/Mh1rNCqou",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP10节目加更",
+              "link": "https://weibo.com/6961164430/MhfWbyInd",
+              "icon": "video"
+            },
+            {
+              "link_title": "百问B答",
+              "link": "https://weibo.com/6961164430/MgZI12deQ",
+              "icon": "video"
+            }
+          ]
+        },
+        {
+          "subtitle": "EP11",
+          "links": [
+            {
+              "link_title": "EP11节目CUT",
+              "link": "https://weibo.com/6961164430/4845631167005058",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP11节目加更",
+              "link": "https://weibo.com/6961164430/4846366659185360",
+              "icon": "video"
+            },
+            {
+              "link_title": "《离人》",
+              "link": "https://weibo.com/6961164430/4845610781647958",
+              "icon": "video"
+            }
+          ]
+        },
+        {
+          "subtitle": "EP12",
+          "links": [
+            {
+              "link_title": "EP12节目CUT",
+              "link": "https://weibo.com/6961164430/4848173237935031",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP12节目加更",
+              "link": "https://weibo.com/6961164430/4848721235285957",
+              "icon": "video"
+            },
+            {
+              "link_title": "《光阴的故事》",
+              "link": "https://weibo.com/6961164430/4848163293233639",
+              "icon": "video"
+            },
+            {
+              "link_title": "《Time To Say Goodbye》",
+              "link": "https://weibo.com/6961164430/4848148357323767",
+              "icon": "video"
+            }
+          ]
+        }
+      ],
+      "image": ["/src/assets/variety/oursong/oursong_11-27.jpg"],
+      "display": "left"
+    },
+    {
+      "date": "2024合集",
+      "title": "我们的歌第6季",
+      "description": "",
+      "places": "",
+      "links": [
+        {
+          "subtitle": "EP05",
+          "links": [
+            {
+              "link_title": "EP05节目CUT",
+              "link": "https://weibo.com/6961164430/5068888679647400",
+              "icon": "video"
+            },
+            {
+                "link_title": "EP05节目加更",
+                "link": "https://weibo.com/6961164430/5069942048691415",
+                "icon": "video"
+            }
+          ]
+        },
+        {
+          "subtitle": "EP06",
+          "links": [
+            {
+              "link_title": "EP06节目CUT",
+              "link": "https://weibo.com/6961164430/5071443178553846",
+              "icon": "video"
+            },
+            {
+              "link_title": "EP06节目加更",
+              "link": "https://weibo.com/6961164430/5072399735200984",
+              "icon": "video"
+            },
+            {
+              "link_title": "探班直播面包",
+              "link": "https://weibo.com/6961164430/5071323086456569",
+              "icon": "video"
+            }
+          ]
+        },
+        {
+          "subtitle": "巅峰夜",
+          "links": [
+            {
+              "link_title": "《袖手旁观》",
+              "link": "https://weibo.com/6961164430/5084044087793499",
+              "icon": "video"
+            },
+            {
+              "link_title": "《许愿》",
+              "link": "https://weibo.com/6961164430/5084051784079366",
+              "icon": "video"
+            }
+          ]
+        }
+      ],
+      "image": ["/src/assets/variety/oursong/oursong_09-29.jpg"],
+      "display": "left"
+    }
+  ]
+  

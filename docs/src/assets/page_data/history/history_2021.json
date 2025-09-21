@@ -1,0 +1,163 @@
+[
+    {
+      "title": "考古区",
+      "year": "2021",
+      "content": [
+        {
+          "type": "HeroSection",
+          "title": "二一年",
+          "title_align": "left",
+          "title_margin": "0",
+          "background_image": "/src/assets/background/History2021.jpg",
+          "index": 1
+        },
+        {
+          "type": "ContentSection",
+          "title": "重返《好声音》当导师助教",
+          "paragraphs": [
+            "感谢汪峰老师的赏识，和《好声音》的舞台，让阿鬼让更多人认识。",
+            "各大晚会舞台邀约。"
+          ],
+          "index": 2
+        },
+        {
+          "type": "OverlapSecondSection",
+          "title": "综艺合集",
+          "content": "",
+          "background_image": "/src/assets/variety/background/Variety2021.jpg",
+          "links": [
+            {
+              "link_title": "天赐的声音-合集",
+              "date": "2021-03-19",
+              "link": "/collection/tianci"
+            },
+            {
+              "link_title": "流淌的歌声-合集",
+              "date": "2021-07-09",
+              "link": "/collection/liutang"
+            }
+          ],
+          "index": 3
+        },
+        {
+          "type": "ConcertItemSection",
+          "index": 4,
+          "title": "2021年晚会/盛典汇总",
+          "tabs": [
+            {
+              "id": "part1",
+              "label": "1-4月",
+              "backgroundImage": "/src/assets/background/History2024.jpg",
+              "imageTitle": "2022年1-4月晚会",
+              "imageCaption": "新年晚会、春晚等精彩回顾",
+              "items": [
+                {
+                    "title": "江苏卫视春晚",
+                    "date": "表演日期：2021-02-12，表演曲目：跟着感觉走",
+                    "url": "https://weibo.com/5043186742/4604159448586811",
+                    "image": "/src/assets/party/2021/2021-02-12_1.jpg"
+                },
+                {
+                  "title": "牛剑春晚",
+                  "date": "表演日期：2021-02-12，表演曲目：还可以爱吗",
+                  "url": "https://weibo.com/6961164430/4603881173295618",
+                  "image": "/src/assets/party/2021/2021-02-12_2.jpg"
+                },
+                {
+                  "title": "江苏卫视元宵晚会",
+                  "date": "表演日期：2021-02-16，表演曲目：Neverland",
+                  "url": "https://weibo.com/5043186742/4608974026184415",
+                  "image": "/src/assets/party/2021/2021-02-16.jpg"
+                }
+              ]
+            },
+            {
+              "id": "part2",
+              "label": "5-8月",
+              "backgroundImage": "/src/assets/background/History2024.jpg",
+              "imageTitle": "2021年5-8月晚会",
+              "imageCaption": "毕业歌会、诗画中国等精彩回顾",
+              "items": [
+                {
+                  "title": "五四晚会-part1",
+                  "date": "表演日期：2021-05-04，表演曲目：曾经的模样",
+                  "url": "https://weibo.com/6961164430/4709527045803765",
+                  "image": "/src/assets/party/2021/2021-05-04_1.jpg"
+                },
+                {
+                  "title": "五四晚会-part2",
+                  "date": "表演日期：2021-05-04，采访",
+                  "url": "https://weibo.com/6961164430/4681277682747619",
+                  "image": "/src/assets/party/2021/2021-05-04_2.jpg"
+                },
+                {
+                    "title": "钻石世家",
+                    "date": "表演日期：2021-05-09，表演曲目：Neverland，四季与你，星辰大海，逆世界",
+                    "url": "https://weibo.com/6961164430/4635591389745428",
+                    "image": "/src/assets/party/2021/2021-05-09.jpg"
+                },
+                {
+                  "title": "央视七夕晚会",
+                  "date": "表演日期：2021-08-14，表演曲目：星辰大海",
+                  "url": "https://weibo.com/6961164430/4670202954649325",
+                  "image": "/src/assets/party/2021/2021-08-14.jpg"
+                }
+              ]
+            },
+            {
+              "id": "part3",
+              "label": "9-12月",
+              "backgroundImage": "/src/assets/background/History2024.jpg",
+              "imageTitle": "2021年9-12月晚会",
+              "imageCaption": "中秋晚会、跨年晚会等精彩回顾",
+              "items": [
+                {
+                  "title": "湖南卫视中秋之夜",
+                  "date": "表演日期：2021-09-21，表演曲目：灯火里的中国",
+                  "url": "https://weibo.com/6961164430/4683987215714760",
+                  "image": "/src/assets/party/2021/2021-09-21.jpg"
+                },
+                {
+                  "title": "深圳时装周",
+                  "date": "表演日期：2021-10-31，表演曲目：星辰大海",
+                  "url": "https://weibo.com/6961164430/4699380135233772",
+                  "image": "/src/assets/party/2021/2021-10-31.jpg"
+                },
+                {
+                  "title": "奥迪之星总决赛颁奖典礼",
+                  "date": "表演日期：2021-11-18，表演曲目：星辰大海",
+                  "url": "https://weibo.com/6961164430/4704999127647950",
+                  "image": "/src/assets/party/2021/2021-11-18.jpg"
+                },
+                {
+                  "title": "平安行晚会",
+                  "date": "表演日期：2021-12-02，表演曲目：一路繁花",
+                  "url": "https://weibo.com/6961164430/4710057985706647",
+                  "image": "/src/assets/party/2021/2021-12-02.jpg"
+                },
+                {
+                  "title": "贵州足球之夜",
+                  "date": "表演日期：2021-12-11，表演曲目：星辰大海，羽众不同",
+                  "url": "https://www.bilibili.com/video/BV1ui4y1d7wq/?spm_id_from=333.337.search-card.all.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+                  "image": "/src/assets/party/2021/2021-12-11.jpg"
+                },
+                {
+                  "title": "bilibili 最美的夜",
+                  "date": "表演日期：2021-12-31，表演曲目：重生",
+                  "url": "https://www.bilibili.com/video/BV1V44y1E7wr/?spm_id_from=333.337.search-card.all.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
+                  "image": "/src/assets/party/2021/2021-12-31_1.jpg"
+                },
+                {
+                  "title": " 浙江卫视跨年晚会",
+                  "date": "表演日期：2021-12-31，台播互动",
+                  "url": "https://weibo.com/6961164430/4720582740151406",
+                  "image": "/src/assets/party/2021/2021-12-31_2.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  

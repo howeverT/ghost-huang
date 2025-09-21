@@ -1,0 +1,43 @@
+[
+    {
+      "date": "2021合集",
+      "title": "流淌的歌声3",
+      "description": "",
+      "places": "",
+      "links": [
+        {
+          "subtitle": "EP03",
+          "links": [
+            {
+              "link_title": "《你的答案》",
+              "link": "https://weibo.com/6961164430/4657245033333684",
+              "icon": "video"
+            },
+            {
+                "link_title": "《天下无双》",
+                "link": "https://weibo.com/6961164430/4657244598174118",
+                "icon": "video"
+            },
+            {
+                "link_title": "《珊瑚颂》",
+                "link": "https://weibo.com/6961164430/4657190457578369",
+                "icon": "video"
+            },
+            {
+                "link_title": "《星辰大海》",
+                "link": "https://weibo.com/6961164430/4657190022154566",
+                "icon": "video"
+            },
+            {
+                "link_title": "《我们的生活充满阳光》",
+                "link": "https://weibo.com/6961164430/4657189400084786",
+                "icon": "video"
+            }
+          ]
+        }
+      ],
+      "image": ["/src/assets/variety/liutang/liutang_21-07-09.jpg"],
+      "display": "left"
+    }
+  ]
+  

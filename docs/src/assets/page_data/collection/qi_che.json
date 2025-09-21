@@ -1,0 +1,27 @@
+[
+    {
+        "date": "2022/12/21",
+        "title": "光年之外•柯迪亚克 陪你去经历",
+        "description": "会不会我们的爱，像星辰守护大海，不曾离开，我向你奔赴而来，你就是星辰大海。",
+        "places": "",
+        "links": [
+          {
+            "link_title": "12.21 第一期《雪山之上：凝固的光年》",
+            "link": "https://weibo.com/6961164430/4849210752772055",
+            "icon": "video"
+          },
+          {
+            "link_title": "12.27 第二期《在尘世中：寻访山间世外桃源》",
+            "link": "https://weibo.com/6961164430/4851341048943480",
+            "icon": "video"
+          },
+          {
+            "link_title": "12.30 围炉夜话直播 CUT",
+            "link": "https://weibo.com/6961164430/4852484004383004",
+            "icon": "video"
+          }
+        ],
+        "image": ["/src/assets/variety/qiche/qiche_12-21.jpg"],
+        "display": "left"
+    }
+]
