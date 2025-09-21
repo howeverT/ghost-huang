@@ -90,7 +90,7 @@ const menuItems = [
     submenuItems: [
       { name: '好声音', path: '/collection/haoshengyin' },
       { name: '天赐的声音', path: '/collection/tianci' },
-      { name: '流觞', path: '/collection/liutang' },
+      { name: '流淌的歌声', path: '/collection/liutang' },
       { name: '我们的歌', path: '/collection/oursong' },
       { name: '歌手', path: '/collection/singer' },
       { name: '热门', path: '/collection/hit' },
