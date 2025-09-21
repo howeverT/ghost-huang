@@ -10,7 +10,7 @@ export default defineConfig({
   build: {
     outDir: 'docs',
   },
-  base: './',
+  base: '/ghost-huang/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
