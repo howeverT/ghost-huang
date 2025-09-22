@@ -99,7 +99,7 @@ const menuItems = [
     ],
   },
   {
-    name: '账号',
+    name: '账号区',
     path: '/related',
     hasSubmenu: false,
   },
