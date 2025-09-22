@@ -389,6 +389,7 @@ onMounted(() => {
   font-size: 1rem;
   padding: 0.5rem 0;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .link-item:hover {
