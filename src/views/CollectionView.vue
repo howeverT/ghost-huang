@@ -97,7 +97,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { getPageDataPath, getImagePath } from '@/utils/pathUtils'
 
@@ -220,6 +220,21 @@ const prevItem = () => {
   }, 300)
 }
 
+// 监听路由变化，重新加载数据
+watch(
+  () => route.path,
+  (newPath, oldPath) => {
+    if (newPath !== oldPath) {
+      // 重置状态
+      currentIndex.value = 0
+      contentVisible.value = true
+      isTransitioning.value = false
+      // 重新加载数据
+      loadData()
+    }
+  },
+)
+
 onMounted(() => {
   loadData()
 })
@@ -293,7 +308,7 @@ onMounted(() => {
   background-color: white;
   padding: 3rem 4rem 3rem 3rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   overflow-y: auto;
   /* clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%); */
@@ -306,8 +321,6 @@ onMounted(() => {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s ease-in-out;
-  padding-top: 4rem;
-  margin-top: 2rem;
 }
 
 .content-wrapper.visible {
@@ -452,13 +465,12 @@ onMounted(() => {
     padding: 2rem 3rem 2rem 2rem;
     /* clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%); */
     justify-content: center;
-    /* align-items: center; */
+    align-items: flex-start;
   }
 
   .content-wrapper {
     max-width: 100%;
-    /* padding-top: 4rem; */
-    /* margin-top: 2rem; */
+    padding-top: 2rem;
   }
 
   .arrow-navigation {
@@ -498,10 +510,9 @@ onMounted(() => {
     /* clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%); */
   }
 
-  /* .content-wrapper {
-    padding-top: 3rem;
-    margin-top: 1.5rem;
-  } */
+  .content-wrapper {
+    padding-top: 1.5rem;
+  }
 
   .title {
     font-size: 2.2rem;

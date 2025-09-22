@@ -93,9 +93,9 @@ const menuItems = [
       { name: '流淌的歌声', path: '/collection/liutang' },
       { name: '我们的歌', path: '/collection/oursong' },
       { name: '歌手', path: '/collection/singer' },
-      { name: '热门', path: '/collection/hit' },
-      { name: '新鲜', path: '/collection/fresh' },
-      { name: '蒙面', path: '/collection/mask' },
+      { name: '爆款来了', path: '/collection/hit' },
+      { name: '新生请指教', path: '/collection/fresh' },
+      { name: '蒙面唱将猜猜猜', path: '/collection/mask' },
     ],
   },
   {
