@@ -11,7 +11,7 @@ function copyStaticAssets() {
     name: 'copy-static-assets',
     writeBundle() {
       const srcDir = 'src/assets'
-      const destDir = 'docs/src/assets'
+      const destDir = 'dist/src/assets'
 
       // 递归复制目录
       function copyDir(src: string, dest: string) {
@@ -50,9 +50,9 @@ function copyStaticAssets() {
 export default defineConfig({
   plugins: [vue(), vueDevTools(), copyStaticAssets()],
   build: {
-    outDir: 'docs',
+    outDir: 'dist',
   },
-  base: '/ghost-huang/',
+  base: '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

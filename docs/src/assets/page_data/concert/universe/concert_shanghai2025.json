@@ -6,9 +6,9 @@
       {
         "type": "HeroSection",
         "title": "上海站",
-        "title_align": "left",
+        "title_align": "right",
         "title_margin": "0",
-        "background_image": "/src/assets/background/background.jpg",
+        "background_image": "/src/assets/background/Shanghai.jpg",
         "index": 1
       },
       {

@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 // 读取构建后的index.html
-const indexPath = path.join(__dirname, '../docs/index.html')
+const indexPath = path.join(__dirname, '../dist/index.html')
 let indexContent = fs.readFileSync(indexPath, 'utf8')
 
 // 添加SPA路由处理脚本
@@ -52,6 +52,6 @@ if (!indexContent.includes('Single Page Apps for GitHub Pages')) {
 }
 
 // 复制index.html为404.html（更简洁的方法）
-const fourOhFourPath = path.join(__dirname, '../docs/404.html')
+const fourOhFourPath = path.join(__dirname, '../dist/404.html')
 fs.copyFileSync(indexPath, fourOhFourPath)
 console.log('✅ 已复制index.html为404.html')

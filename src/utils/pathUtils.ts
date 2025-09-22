@@ -1,6 +1,6 @@
 // 获取正确的资源路径，开发环境和生产环境都使用相同的base路径
 export function getAssetPath(path: string): string {
-  const base = '/ghost-huang/'
+  const base = '/'
   return `${base}${path.startsWith('/') ? path.slice(1) : path}`
 }
 
