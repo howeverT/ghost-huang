@@ -43,13 +43,13 @@ import ParallaxCard from './MiniCard/ParallaxCard.vue'
 
 // 卡片数据，包含不同的高度
 const cards = ref([
-  { id: 1, number: 1, image: 'public/Home/视差滚动/20250408_PmkAV3B93_1.jpg', height: 400 },
-  { id: 2, number: 2, image: 'public/Home/视差滚动/20231110_NrWWmqmLa_4.jpg', height: 320 },
-  { id: 3, number: 3, image: 'public/Home/视差滚动/20231231_NzH5RtVA6_5.jpg', height: 500 },
-  { id: 4, number: 4, image: 'public/Home/视差滚动/20231228_Nzehu3u23_8.jpg', height: 360 },
-  { id: 5, number: 5, image: 'public/Home/视差滚动/20200314_IytEIpKMe_8.jpg', height: 600 },
-  { id: 6, number: 6, image: 'public/Home/视差滚动/20200521_J2XHYxApv_1.jpg', height: 380 },
-  { id: 8, number: 8, image: 'public/Home/视差滚动/20231110_NrWWmqmLa_4.jpg', height: 460 },
+  { id: 1, number: 1, image: '/Home/视差滚动/20250408_PmkAV3B93_1.jpg', height: 400 },
+  { id: 2, number: 2, image: '/Home/视差滚动/20231110_NrWWmqmLa_4.jpg', height: 320 },
+  { id: 3, number: 3, image: '/Home/视差滚动/20231231_NzH5RtVA6_5.jpg', height: 500 },
+  { id: 4, number: 4, image: '/Home/视差滚动/20231228_Nzehu3u23_8.jpg', height: 360 },
+  { id: 5, number: 5, image: '/Home/视差滚动/20200314_IytEIpKMe_8.jpg', height: 600 },
+  { id: 6, number: 6, image: '/Home/视差滚动/20200521_J2XHYxApv_1.jpg', height: 380 },
+  { id: 8, number: 8, image: '/Home/视差滚动/20231110_NrWWmqmLa_4.jpg', height: 460 },
 ])
 
 const containerRef = ref<HTMLDivElement>()
