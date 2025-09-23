@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TheWelcome from '../components/TheWelcome.vue'
 import { onMounted, ref } from 'vue'
-import DevView from '@/components/Card/DevView.vue'
+import DevView from '@/components/Card/Waterfall.vue'
 
 const pageLoaded = ref(false)
 const videoScreen = ref<HTMLElement | null>(null)

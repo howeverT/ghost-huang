@@ -2,7 +2,7 @@
 import { RouterView, useRouter } from 'vue-router'
 import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
-import DevView from '@/components/Card/DevView.vue'
+import DevView from '@/components/Card/Waterfall.vue'
 
 const route = useRoute()
 const router = useRouter()
