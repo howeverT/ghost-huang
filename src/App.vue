@@ -160,7 +160,7 @@ const handleMenuClick = (path: string, event?: Event) => {
 }
 
 // 切换子菜单
-const toggleSubmenu = (submenuRef: never) => {
+const toggleSubmenu = (submenuRef: any) => {
   submenuRef.value = !submenuRef.value
 }
 </script>

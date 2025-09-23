@@ -61,11 +61,13 @@
             />
           </svg>
         </button>
-      </div>
 
+      </div>
       <HorizontalScrollComponent :images="imageList" />
+
     </div>
   </div>
+
 </template>
 
 <script setup lang="ts">
