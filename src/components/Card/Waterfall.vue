@@ -155,14 +155,15 @@ const getCardStyle = (cardId: number) => {
   if (!position) return {}
 
   return {
-    position: 'absolute',
+    position: 'absolute' as const,  // ← 关键，使用字面量类型
     left: `${position.x}px`,
     top: `${position.y}px`,
     width: `${config.value.cardWidth}px`,
-    transform: 'translateZ(0)', // 开启GPU加速
-    transition: 'all 0.3s ease'
+    transform: 'translateZ(0)' as const,
+    transition: 'all 0.3s ease' as const
   }
 }
+
 
 // 重新布局
 const relayout = async () => {
@@ -171,18 +172,18 @@ const relayout = async () => {
   calculateCardPositions()
 }
 
-// 防抖函数
 const debounce = (func: Function, wait: number) => {
-  let timeout: NodeJS.Timeout
+  let timeout: number
   return function executedFunction(...args: any[]) {
     const later = () => {
       clearTimeout(timeout)
       func(...args)
     }
     clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
+    timeout = window.setTimeout(later, wait)  // ← window.setTimeout 返回 number
   }
 }
+
 
 const debouncedRelayout = debounce(relayout, 200)
 
