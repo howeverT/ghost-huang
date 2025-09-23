@@ -1,4 +1,7 @@
 <template>
+  <HorizontalScroll :images="images" :card-width="300" :card-height="200" :spacing="16" />
+
+
   <div class="waterfall-container" ref="containerRef">
     <div
       v-for="card in cards"
@@ -14,15 +17,27 @@
         class="gallery-card"
         rounded
       >
-        <div class="card-caption content-transparent">
 
-        </div>
       </ParallaxCard>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import HorizontalScroll from '@/components/Card/HorizontalScroll.vue'
+
+const images = [
+  '/Home/横向/20230721_NaV8U9iNh_2.jpg',
+  '/Home/横向/20230721_NaV8U9iNh_4.jpg',
+  '/Home/横向/20230723_Nb6INd1a5_1.jpg',
+  '/Home/横向/20230723_NbeqC49zg_4.jpg',
+  '/Home/横向/20231007_NmNS8tja9_1.jpg',
+  '/Home/横向/20240127_NDPRqmjQ6_4.jpg',
+  '/Home/横向/20240210_NFRZWj6Fg_6.jpg',
+  '/Home/横向/20240210_NFRZWj6Fg_8.jpg'
+]
+
+
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import ParallaxCard from './MiniCard/ParallaxCard.vue'
 

@@ -2,6 +2,7 @@
 import TheWelcome from '../components/TheWelcome.vue'
 import { onMounted, ref } from 'vue'
 import DevView from '@/components/Card/Waterfall.vue'
+import BackGPage from '@/components/Card/BackGPage.vue'
 
 const pageLoaded = ref(false)
 const videoScreen = ref<HTMLElement | null>(null)
@@ -36,6 +37,7 @@ const scrollToText = () => {
 </script>
 
 <template>
+
   <main :class="{ loaded: pageLoaded }">
     <!-- 第一个屏幕 - 文字和按钮 -->
     <div class="screen-section text-screen">
@@ -75,8 +77,6 @@ const scrollToText = () => {
 <!--        </div>-->
       </div>
     </div>
-
-
   </main>
 
   <DevView />
