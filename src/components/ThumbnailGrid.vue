@@ -64,7 +64,7 @@
 
       </div>
       <HorizontalScrollComponent :images="imageList" />
-
+      <HorizontalScrollSlot/>
     </div>
   </div>
 
@@ -74,6 +74,7 @@
 import { computed, ref } from 'vue'
 import { getImagePath } from '@/utils/pathUtils'
 import HorizontalScrollComponent from '@/components/Card/HorizontalScrollCover.vue'
+import HorizontalScrollSlot from '@/components/Card/HorizontalScrollSlot.vue'
 
 interface ThumbnailItem {
   image?: string
