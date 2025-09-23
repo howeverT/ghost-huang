@@ -1,49 +1,36 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 
 // Props
-const props = defineProps({
+const props = defineProps<{
   // 背景图片地址
-  backgroundImage: {
-    type: String,
-    required: true
-  },
+  backgroundImage: string
   // 图片宽度（用于比例计算）
-  imgWidth: {
-    type: Number,
-    default: 720
-  },
+  imgWidth?: number
   // 图片高度
-  imgHeight: {
-    type: Number,
-    default: 1080
-  },
+  imgHeight?: number
   // 卡片默认高度
-  defaultHeight: {
-    type: Number,
-    default: 720
-  },
+  defaultHeight?: number
   // 是否启用圆角
-  rounded: {
-    type: Boolean,
-    default: true
-  },
+  rounded?: boolean
   // 自定义类名
-  customClass: {
-    type: String,
-    default: ''
-  }
-})
+  customClass?: string
+  // 显示的数字
+  number?: number
+}>()
 
-// Slots
-defineSlots()
+// 默认值
+const imgWidth = props.imgWidth || 720
+const imgHeight = props.imgHeight || 1080
+const defaultHeight = props.defaultHeight || 720
+const rounded = props.rounded ?? true
+const customClass = props.customClass || ''
+const number = props.number ?? 0
 
 // refs
 const containerRef = ref<HTMLDivElement | null>(null)
 const bgOffset = ref(0)
-
-// 卡片高度（根据窗口宽度自动调整）
-const cardHeight = ref(props.defaultHeight)
+const cardHeight = ref(defaultHeight)
 
 // IntersectionObserver
 let observer: IntersectionObserver | null = null
@@ -72,18 +59,16 @@ function updateParallax() {
   const rect = el.getBoundingClientRect()
   const windowHeight = window.innerHeight
 
-  // 卡片顶部占整个视图的百分比 (0~1)
   const topPercent = Math.min(Math.max((windowHeight - rect.top) / (windowHeight + rect.height), 0), 1)
 
-  // 根据百分比计算背景偏移
-  const scrollableRange = props.imgHeight - cardHeight.value
+  const scrollableRange = imgHeight - cardHeight.value
   bgOffset.value = -scrollableRange * topPercent
 }
 
-// 根据窗口宽度更新卡片高度
+// 更新卡片高度
 function updateCardSize() {
   const windowWidth = window.innerWidth
-  cardHeight.value = Math.min(props.defaultHeight, windowWidth * (props.imgHeight / props.imgWidth))
+  cardHeight.value = Math.min(defaultHeight, windowWidth * (imgHeight / imgWidth))
   if (containerRef.value) {
     containerRef.value.style.height = `${cardHeight.value}px`
   }
@@ -96,7 +81,7 @@ onMounted(() => {
   updateCardSize()
   updateParallax()
 
-  // 进入视口时监听滚动，离开视口时固定顶部/底部
+  // 进入视口时监听滚动
   observer = onEnterViewport(el, (entry) => {
     if (entry.isIntersecting) {
       window.addEventListener('scroll', updateParallax)
@@ -105,11 +90,9 @@ onMounted(() => {
       window.removeEventListener('scroll', updateParallax)
       const rect = el.getBoundingClientRect()
       if (rect.top > window.innerHeight) {
-        // 离开顶部
         bgOffset.value = 0
       } else if (rect.bottom < 0) {
-        // 离开底部
-        bgOffset.value = -(props.imgHeight - cardHeight.value)
+        bgOffset.value = -(imgHeight - cardHeight.value)
       }
     }
   }) as IntersectionObserver
@@ -159,6 +142,7 @@ onUnmounted(() => {
   background-color: rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
+  box-sizing: border-box; /* 包含 padding */
 }
 
 .parallax-card.rounded {
@@ -188,7 +172,18 @@ onUnmounted(() => {
   height: 100%;
   padding: 1.5em;
   z-index: 1;
-  gap: 1em;
+  max-height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* 数字显示 */
+.number-display {
+  font-size: 3em;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1em;
 }
 
 /* 深色内容样式 */
