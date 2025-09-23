@@ -62,6 +62,8 @@
           </svg>
         </button>
       </div>
+
+      <HorizontalScrollComponent :images="imageList" />
     </div>
   </div>
 </template>
@@ -69,6 +71,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { getImagePath } from '@/utils/pathUtils'
+import HorizontalScrollComponent from '@/components/Card/HorizontalScroll.vue'
 
 interface ThumbnailItem {
   image?: string
@@ -81,7 +84,13 @@ interface Props {
   itemsPerPage?: number
   title?: string
 }
-
+const imageList = [
+  'https://picsum.photos/1920/1080?random=1',
+  'https://picsum.photos/1920/1080?random=2',
+  'https://picsum.photos/1920/1080?random=3',
+  'https://picsum.photos/1920/1080?random=4',
+  'https://picsum.photos/1920/1080?random=5',
+]
 const props = withDefaults(defineProps<Props>(), {
   items: () => [
     { image: getImagePath('/src/assets/background/Beijing-day1.jpg'), title: '北京一日游' },

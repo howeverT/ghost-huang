@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { RouterLink, RouterView, useRouter } from 'vue-router'
-import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import { RouterView, useRouter } from 'vue-router'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
+import DevView from '@/views/DevView.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -103,6 +104,7 @@ const menuItems = [
     path: '/related',
     hasSubmenu: false,
   },
+
 ]
 
 // 监听路由变化，确保页面正确显示
@@ -158,15 +160,17 @@ const handleMenuClick = (path: string, event?: Event) => {
 }
 
 // 切换子菜单
-const toggleSubmenu = (submenuRef: any) => {
+const toggleSubmenu = (submenuRef: never) => {
   submenuRef.value = !submenuRef.value
 }
 </script>
 
 <template>
   <!-- <BackgroundSlideshow /> -->
-
-  <header class="top-navbar" :class="{ hidden: isScrolled && !showMobileMenu }">
+  <header class="top-navbar" :class="{
+    hidden: isScrolled && !showMobileMenu,
+    expanded: showMobileMenu
+  }">
     <div class="nav-container">
       <div class="menu-wrapper" @click="toggleMobileMenu">
         <div class="header-primary-nav-hamburger js-header-primary-nav-hamburger">
@@ -237,8 +241,10 @@ const toggleSubmenu = (submenuRef: any) => {
       }"
     >
       <RouterView />
+      <DevView/>
     </div>
   </main>
+
 </template>
 
 <style scoped>
@@ -247,13 +253,18 @@ const toggleSubmenu = (submenuRef: any) => {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 6vh;
+  height: 4vh; /* 减小了默认高度从 6vh 到 4vh */
   background: transparent;
   z-index: 1003;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, height 0.3s ease; /* 添加高度过渡动画 */
+}
+
+/* 菜单展开时的样式 */
+.top-navbar.expanded {
+  height: 6vh; /* 展开时恢复到原来的高度 */
 }
 
 .top-navbar:not(.hidden) {
@@ -276,7 +287,7 @@ const toggleSubmenu = (submenuRef: any) => {
 .menu-wrapper {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.2rem; /* 稍微减小间距 */
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -290,7 +301,7 @@ const toggleSubmenu = (submenuRef: any) => {
 .menu-text {
   font-family: 'Halcom-Medium', Arial, sans-serif;
   color: white;
-  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  font-size: clamp(0.9rem, 2.2vw, 1.2rem); /* 稍微减小字体 */
   font-weight: 700;
   transition: color 0.3s ease;
 }
@@ -303,14 +314,14 @@ const toggleSubmenu = (submenuRef: any) => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 32px;
-  height: 24px;
+  width: 28px; /* 稍微减小汉堡包图标 */
+  height: 20px;
   transition: all 0.3s ease;
 }
 
 .header-primary-nav-hamburger span {
   display: block;
-  height: 3px;
+  height: 2.5px; /* 稍微减小线条高度 */
   width: 100%;
   background-color: white;
   transition: all 0.3s ease;
@@ -340,7 +351,7 @@ const toggleSubmenu = (submenuRef: any) => {
   width: 100vw;
   height: 100vh;
   background: #05051e;
-  padding: 8vh 0 0 0;
+  padding: 6vh 0 0 0; /* 调整顶部内边距适应新的菜单栏高度 */
   overflow-y: auto;
   animation: slideInFromTop 0.3s ease;
   display: flex;
@@ -372,7 +383,7 @@ const toggleSubmenu = (submenuRef: any) => {
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
-  padding: 2rem 0 2rem 0;
+  padding: 1.6rem 0;
   cursor: pointer;
   transition: all 0.3s ease;
   flex-direction: row;
@@ -380,7 +391,7 @@ const toggleSubmenu = (submenuRef: any) => {
 
 .menu-link-text {
   color: white;
-  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
   font-weight: 700;
   font-family: 'Halcom-Medium', Arial, sans-serif;
   transition: all 0.3s ease;
@@ -416,10 +427,10 @@ const toggleSubmenu = (submenuRef: any) => {
 
 .submenu-link {
   display: block;
-  padding: 1rem 0 1rem 0;
+  padding: 0.8rem 0;
   color: white;
   text-decoration: none;
-  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
   font-weight: 500;
   font-family: 'Halcom-Medium', Arial, sans-serif;
   transition: all 0.3s ease;
@@ -459,10 +470,10 @@ const toggleSubmenu = (submenuRef: any) => {
 
 .menu-link {
   display: block;
-  padding: 2rem 0 2rem 0;
+  padding: 1.6rem 0;
   color: white;
   text-decoration: none;
-  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
   font-weight: 700;
   font-family: 'Halcom-Medium', Arial, sans-serif;
   transition: all 0.3s ease;
@@ -542,9 +553,7 @@ const toggleSubmenu = (submenuRef: any) => {
   align-items: center;
   justify-content: flex-start;
   padding: 0;
-  transition:
-    opacity 0.6s ease-in-out,
-    transform 0.6s ease-in-out;
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
   opacity: 1;
   transform: translateY(0);
 }
@@ -562,7 +571,11 @@ const toggleSubmenu = (submenuRef: any) => {
 /* 响应式设计 */
 @media (max-width: 768px) {
   .top-navbar {
-    height: 8vh;
+    height: 5vh; /* 移动端默认高度调整 */
+  }
+
+  .top-navbar.expanded {
+    height: 7vh; /* 移动端展开高度 */
   }
 
   .nav-container {
@@ -570,24 +583,24 @@ const toggleSubmenu = (submenuRef: any) => {
   }
 
   .menu-wrapper {
-    gap: 1.2rem;
+    gap: 1rem;
   }
 
   .menu-text {
-    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-size: clamp(1rem, 2.8vw, 1.4rem);
   }
 
   .header-primary-nav-hamburger {
-    width: 36px;
-    height: 28px;
+    width: 32px;
+    height: 24px;
   }
 
   .header-primary-nav-hamburger span {
-    height: 4px;
+    height: 3px;
   }
 
   .mobile-menu {
-    padding-left: 5vw;
+    padding: 7vh 0 0 5vw; /* 调整移动端顶部间距 */
   }
 
   .menu-item {
@@ -607,21 +620,21 @@ const toggleSubmenu = (submenuRef: any) => {
   }
 
   .menu-link-container {
-    padding: 1.8rem 0 1.8rem 0;
+    padding: 1.5rem 0;
   }
 
   .menu-link-text {
-    font-size: clamp(2.4rem, 7vw, 3.5rem);
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
   }
 
   .submenu-link {
-    padding: 0.8rem 0 0.8rem 0;
-    font-size: clamp(1.2rem, 4vw, 1.6rem);
+    padding: 0.6rem 0;
+    font-size: clamp(1rem, 3vw, 1.3rem);
   }
 
   .menu-link {
-    padding: 1.8rem 0 1.8rem 0;
-    font-size: clamp(2.4rem, 7vw, 3.5rem);
+    padding: 1.5rem 0;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
     text-align: left;
   }
 
@@ -638,7 +651,11 @@ const toggleSubmenu = (submenuRef: any) => {
 
 @media (max-width: 480px) {
   .top-navbar {
-    height: 10vh;
+    height: 6vh; /* 小屏幕设备默认高度 */
+  }
+
+  .top-navbar.expanded {
+    height: 8vh; /* 小屏幕设备展开高度 */
   }
 
   .nav-container {
@@ -646,24 +663,24 @@ const toggleSubmenu = (submenuRef: any) => {
   }
 
   .menu-wrapper {
-    gap: 1rem;
+    gap: 0.8rem;
   }
 
   .menu-text {
-    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    font-size: clamp(1.1rem, 3.5vw, 1.6rem);
   }
 
   .header-primary-nav-hamburger {
-    width: 40px;
-    height: 30px;
+    width: 36px;
+    height: 26px;
   }
 
   .header-primary-nav-hamburger span {
-    height: 4px;
+    height: 3.5px;
   }
 
   .mobile-menu {
-    padding-left: 5vw;
+    padding: 8vh 0 0 5vw; /* 调整小屏幕顶部间距 */
   }
 
   .menu-item {
@@ -683,21 +700,21 @@ const toggleSubmenu = (submenuRef: any) => {
   }
 
   .menu-link-container {
-    padding: 1.5rem 0 1.5rem 0;
+    padding: 1.3rem 0;
   }
 
   .menu-link-text {
-    font-size: clamp(2.6rem, 8vw, 3.8rem);
+    font-size: clamp(2rem, 6vw, 2.6rem);
   }
 
   .submenu-link {
-    padding: 0.7rem 0 0.7rem 1.2rem;
-    font-size: clamp(1.4rem, 5vw, 1.8rem);
+    padding: 0.5rem 0 0.5rem 1rem;
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
   }
 
   .menu-link {
-    padding: 1.5rem 0 1.5rem 0;
-    font-size: clamp(2.6rem, 8vw, 3.8rem);
+    padding: 1.3rem 0;
+    font-size: clamp(2rem, 6vw, 2.6rem);
     text-align: left;
   }
 
