@@ -15,8 +15,7 @@
         rounded
       >
         <div class="card-caption content-transparent">
-          <h3>Card {{ card.number }}</h3>
-          <p>这是第 {{ card.number }} 张卡片的描述内容</p>
+
         </div>
       </ParallaxCard>
     </div>
