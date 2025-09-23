@@ -22,7 +22,6 @@ const totalWidth = computed(() => {
   return props.images.length * cardWidth + (props.images.length - 1) * spacing
 })
 
-// 监听滚动
 function updateHorizontalScroll() {
   const el = containerRef.value
   if (!el) return
@@ -35,11 +34,17 @@ function updateHorizontalScroll() {
   const end = windowHeight / 2 + rect.height / 2
 
   if (rect.top < end && rect.bottom > start) {
-    // 卡片进入中间区域
+    // 计算进度：0 -> 卡片顶部到达中间，1 -> 卡片底部离开中间
     const progress = Math.min(Math.max((windowHeight / 2 - rect.top) / rect.height, 0), 1)
-    scrollX.value = -(totalWidth.value - cardWidth) * progress
+
+    // 横向偏移量 = 总宽度 - 可视宽度
+    const visibleWidth = el.clientWidth
+    const scrollableWidth = totalWidth.value - visibleWidth
+
+    scrollX.value = -scrollableWidth * progress
   }
 }
+
 
 onMounted(() => {
   window.addEventListener('scroll', updateHorizontalScroll)

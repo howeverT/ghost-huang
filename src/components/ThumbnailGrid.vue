@@ -71,7 +71,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { getImagePath } from '@/utils/pathUtils'
-import HorizontalScrollComponent from '@/components/Card/HorizontalScroll.vue'
+import HorizontalScrollComponent from '@/components/Card/HorizontalScrollCover.vue'
 
 interface ThumbnailItem {
   image?: string
@@ -90,6 +90,7 @@ const imageList = [
   'https://picsum.photos/1920/1080?random=3',
   'https://picsum.photos/1920/1080?random=4',
   'https://picsum.photos/1920/1080?random=5',
+  'https://picsum.photos/1920/1080?random=6',
 ]
 const props = withDefaults(defineProps<Props>(), {
   items: () => [
