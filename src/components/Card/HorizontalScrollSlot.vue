@@ -5,40 +5,50 @@
     :style="{ height: `${cardHeight}px` }"
   >
     <div class="horizontal-scroll-inner" :style="{ width: `${totalWidth}px` }">
-      <slot name="card" v-for="index in cardCount" :index="index - 1">
-        <div
-          class="scroll-card"
-          :style="{ width: `${cardWidth}px`, height: `${cardHeight}px`, marginRight: index < cardCount ? `${spacing}px` : '0' }"
-        >
-          卡片 {{ index }}
-        </div>
-      </slot>
+      <div
+        v-for="(item, index) in items"
+        :key="index"
+        class="scroll-card-wrapper"
+        :style="{ marginRight: index < items.length - 1 ? `${spacing}px` : '0' }"
+      >
+        <slot name="card" :item="item" :index="index">
+          <!-- 默认内容 -->
+          <div
+            class="scroll-card"
+            :style="{ width: `${cardWidth}px`, height: `${cardHeight}px` }"
+          >
+            {{ item }}
+          </div>
+        </slot>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed, defineProps } from 'vue'
 
-// 默认卡片数量
-const cardCount = 10
-
-const cardWidth = 300
-const cardHeight = 200
-const spacing = 16
+const props = defineProps<{
+  items: any[]
+  cardWidth?: number
+  cardHeight?: number
+  spacing?: number
+}>()
 
 const containerRef = ref<HTMLDivElement | null>(null)
 
-// 计算总宽度
+const cardWidth = props.cardWidth ?? 300
+const cardHeight = props.cardHeight ?? 200
+const spacing = props.spacing ?? 16
+
 const totalWidth = computed(() => {
-  return cardCount * cardWidth + (cardCount - 1) * spacing
+  return props.items.length * cardWidth + (props.items.length - 1) * spacing
 })
 
 let velocity = 0
 let isLocked = false
 let rafId: number | null = null
 
-// 判断容器是否在视口中间
 function updateLockState() {
   const el = containerRef.value
   if (!el) return
@@ -49,20 +59,22 @@ function updateLockState() {
   isLocked = rect.top < end && rect.bottom > start
 }
 
-// 处理滚轮事件
 function onWheel(e: WheelEvent) {
   const el = containerRef.value
   if (!el) return
   updateLockState()
   const maxScroll = el.scrollWidth - el.clientWidth
 
-  if (isLocked && ((e.deltaY > 0 && el.scrollLeft < maxScroll) || (e.deltaY < 0 && el.scrollLeft > 0))) {
+  if (
+    isLocked &&
+    ((e.deltaY > 0 && el.scrollLeft < maxScroll) ||
+      (e.deltaY < 0 && el.scrollLeft > 0))
+  ) {
     velocity += e.deltaY * 0.5
     e.preventDefault()
   }
 }
 
-// 平滑滚动动画
 function animate() {
   const el = containerRef.value
   if (!el) return
@@ -86,32 +98,43 @@ function animate() {
 }
 
 onMounted(() => {
-  window.addEventListener('wheel', onWheel, { passive: false })
+  // PC 端：wheel + inertia
+  if (!('ontouchstart' in window)) {
+    window.addEventListener('wheel', onWheel, { passive: false })
+    animate()
+  }
+  // 通用事件
   window.addEventListener('scroll', updateLockState)
   window.addEventListener('resize', updateLockState)
-
-  animate()
 })
 
 onUnmounted(() => {
-  window.removeEventListener('wheel', onWheel)
+  if (!('ontouchstart' in window)) {
+    window.removeEventListener('wheel', onWheel)
+    if (rafId) cancelAnimationFrame(rafId)
+  }
   window.removeEventListener('scroll', updateLockState)
   window.removeEventListener('resize', updateLockState)
-
-  if (rafId) cancelAnimationFrame(rafId)
 })
 </script>
 
 <style scoped>
 .horizontal-scroll-container {
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto; /* 手机端可拖动 */
+  overflow-y: hidden;
   margin: 2em 0;
+  -webkit-overflow-scrolling: touch; /* iOS 惯性滚动 */
+  scroll-behavior: smooth; /* 平滑滚动 */
 }
 
 .horizontal-scroll-inner {
   display: flex;
   will-change: scroll-position;
+}
+
+.scroll-card-wrapper {
+  flex-shrink: 0;
 }
 
 .scroll-card {

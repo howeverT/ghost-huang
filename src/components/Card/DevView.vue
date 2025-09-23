@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ParallaxCard from '@/components/Card/ParallaxCard.vue' // 引入组件
+import ParallaxCard from '@/components/Card/MiniCard/ParallaxCard.vue' // 引入组件
 </script>
 
 <template>

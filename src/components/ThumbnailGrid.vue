@@ -5,66 +5,34 @@
       <div v-if="title" class="title-container">
         <h2>{{ title }}</h2>
       </div>
-      <!-- 项目容器 -->
-      <div class="items-container">
-        <div
-          v-for="(item, index) in currentPageItems"
-          :key="index"
-          class="frame-item"
-          @click="handleItemClick(item)"
-        >
-          <div class="frame-border">
-            <div class="frame-content">
-              <div
-                class="frame-image"
-                :style="{
-                  backgroundImage: `url(${getImagePath(item.image || '')})`,
-                }"
-              ></div>
-              <div class="frame-title">
-                {{ item.title }}
+      <HorizontalScrollSlot
+        :items="currentPageItems"
+        :cardWidth="350"
+        :cardHeight="600"
+        :spacing="30"
+      >
+        <template #card="{ item, index }">
+          <div
+            class="frame-item"
+            @click="handleItemClick(item)"
+          >
+            <div class="frame-border">
+              <div class="frame-content">
+                <div
+                  class="frame-image"
+                  :style="{
+                backgroundImage: `url(${getImagePath(item.image || '')})`,
+              }"
+                ></div>
+                <div class="frame-title">
+                  {{ item.title }}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- 分页按钮 -->
-      <div class="pagination-container">
-        <button
-          class="pagination-btn prev-btn"
-          :disabled="currentPage === 0 || isTransitioning"
-          @click="previousPage"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M15 18L9 12L15 6"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-        <span class="page-info">{{ currentPage + 1 }} / {{ totalPages }}</span>
-        <button
-          class="pagination-btn next-btn"
-          :disabled="currentPage === totalPages - 1 || isTransitioning"
-          @click="nextPage"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M9 18L15 12L9 6"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
+        </template>
+      </HorizontalScrollSlot>
 
-      </div>
-      <HorizontalScrollComponent :images="imageList" />
-      <HorizontalScrollSlot/>
     </div>
   </div>
 
@@ -73,7 +41,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { getImagePath } from '@/utils/pathUtils'
-import HorizontalScrollComponent from '@/components/Card/HorizontalScrollCover.vue'
 import HorizontalScrollSlot from '@/components/Card/HorizontalScrollSlot.vue'
 
 interface ThumbnailItem {
@@ -87,14 +54,7 @@ interface Props {
   itemsPerPage?: number
   title?: string
 }
-const imageList = [
-  'https://picsum.photos/1920/1080?random=1',
-  'https://picsum.photos/1920/1080?random=2',
-  'https://picsum.photos/1920/1080?random=3',
-  'https://picsum.photos/1920/1080?random=4',
-  'https://picsum.photos/1920/1080?random=5',
-  'https://picsum.photos/1920/1080?random=6',
-]
+
 const props = withDefaults(defineProps<Props>(), {
   items: () => [
     { image: getImagePath('/src/assets/background/Beijing-day1.jpg'), title: '北京一日游' },
@@ -109,12 +69,6 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const currentPage = ref(0)
-const isTransitioning = ref(false)
-
-// 计算总页数
-const totalPages = computed(() => {
-  return Math.ceil(props.items.length / props.itemsPerPage)
-})
 
 // 计算当前页显示的项目
 const currentPageItems = computed(() => {
@@ -123,59 +77,8 @@ const currentPageItems = computed(() => {
   return props.items.slice(start, end)
 })
 
-// 下一页
-const nextPage = () => {
-  if (isTransitioning.value || currentPage.value >= totalPages.value - 1) {
-    return
-  }
-  fadeOutAndChange(() => {
-    currentPage.value++
-  })
-}
 
-// 上一页
-const previousPage = () => {
-  if (isTransitioning.value || currentPage.value <= 0) {
-    return
-  }
-  fadeOutAndChange(() => {
-    currentPage.value--
-  })
-}
 
-// 渐隐渐显切换函数
-const fadeOutAndChange = (changeCallback: () => void) => {
-  const itemsContainer = document.querySelector(
-    '.thumbnail-section .items-container',
-  ) as HTMLElement
-
-  isTransitioning.value = true
-
-  if (itemsContainer) {
-    // 渐隐
-    itemsContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease'
-    itemsContainer.style.opacity = '0'
-    itemsContainer.style.transform = 'translateY(20px)'
-
-    // 延迟执行切换
-    setTimeout(() => {
-      changeCallback()
-
-      // 渐显
-      setTimeout(() => {
-        if (itemsContainer) {
-          itemsContainer.style.opacity = '1'
-          itemsContainer.style.transform = 'translateY(0)'
-        }
-        isTransitioning.value = false
-      }, 50)
-    }, 300)
-  } else {
-    // 如果没有找到容器，直接执行切换
-    changeCallback()
-    isTransitioning.value = false
-  }
-}
 
 // 处理缩略图点击
 const handleItemClick = (item: ThumbnailItem) => {

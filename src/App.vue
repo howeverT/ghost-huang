@@ -2,7 +2,7 @@
 import { RouterView, useRouter } from 'vue-router'
 import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
-import DevView from '@/views/DevView.vue'
+import DevView from '@/components/Card/DevView.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -241,7 +241,6 @@ const toggleSubmenu = (submenuRef: any) => {
       }"
     >
       <RouterView />
-      <DevView/>
     </div>
   </main>
 
