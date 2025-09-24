@@ -85,9 +85,9 @@
           "tabs": [
             {
               "id": "part1",
-              "label": "1-4月",
+              "label": "1-12月",
               "backgroundImage": "/src/assets/background/History2024.jpg",
-              "imageTitle": "2023年1-4月晚会",
+              "imageTitle": "2025年1-12月晚会",
               "imageCaption": "新年晚会、春晚等精彩回顾",
               "items": [
                 {
@@ -119,64 +119,55 @@
                     "date": "表演日期：2025-04-15，表演曲目：星辰大海",
                     "url": "https://www.bilibili.com/video/BV1CUdZYDEkH/?vd_source=47f96c172cbb3b3f428698faafd995bc",
                     "image": "/src/assets/party/2025/2025-04-15.jpg"
-                }
-              ]
-            },
-            {
-              "id": "part2",
-              "label": "5-8月",
-              "backgroundImage": "/src/assets/background/History2024.jpg",
-              "imageTitle": "2023年5-8月晚会",
-              "imageCaption": "毕业歌会、诗画中国等精彩回顾",
-              "items": [
-                {
-                    "title": "一年好景 立夏 青春正风华",
-                    "date": "表演日期：2025-05-05，表演曲目：弦上生花",
-                    "url": "https://www.bilibili.com/video/BV1S4Vzz5EdL/",
-                    "image": "/src/assets/party/2025/2025-05-05.jpg"
                 },
                 {
-                    "title": "央视端午晚会",
-                    "date": "表演日期：2025-05-31，表演曲目：画中来",
-                    "url": "https://www.bilibili.com/video/BV1wZ7KzSELT/",
-                    "image": "/src/assets/party/2025/2025-05-31.jpg"
-                },
-                {
-                    "title": "电影频道传媒关注单元闭幕仪式",
-                    "date": "表演日期：2025-06-24，表演曲目：想见你想见你想见你",
-                    "url": "https://www.bilibili.com/video/BV1aEKGznEW8/",
-                    "image": "/src/assets/party/2025/2025-05-31.jpg"
-                },
-                {
-                    "title": "悦享自成 享界用户星享之夜",
-                    "date": "表演日期：2025-07-08，表演曲目：星辰大海，我们的爱",
-                    "url": "https://www.bilibili.com/video/BV1dRGHzMEy8/",
-                    "image": "/src/assets/party/2025/2025-07-08.jpg"
-                },
-                {
-                    "title": "青岛国际啤酒节开幕式",
-                    "date": "表演日期：2025-07-18，表演曲目：星辰大海，回音如果，梦返",
-                    "url": "https://www.bilibili.com/video/BV1u8uUz8E2N/",
-                    "image": "/src/assets/party/2025/2025-07-18.jpg"
-                },
-                {
-                    "title": "微博文化之夜-part1",
-                    "date": "表演日期：2025-08-25，颁奖环节",
-                    "url": "https://www.bilibili.com/video/BV1kEeozKEy7/",
-                    "image": "/src/assets/party/2025/2025-08-25_1.jpg"
-                },
-                {
-                    "title": "微博文化之夜-part2",
-                    "date": "表演日期：2025-08-25，表演曲目：画中来",
-                    "url": "https://www.bilibili.com/video/BV1u8uUz8E2N/",
-                    "image": "/src/assets/party/2025/2025-08-25_2.jpg"
-                },
-                {
-                    "title": "神州数码成立25周年庆典",
-                    "date": "表演日期：2025-08-30，表演曲目：星辰大海，梦返，淬炼，烟火里的尘埃",
-                    "url": "https://www.bilibili.com/video/BV117hBzVEF9/",
-                    "image": "/src/assets/party/2025/2025-08-30.jpg"
-                }
+                  "title": "一年好景 立夏 青春正风华",
+                  "date": "表演日期：2025-05-05，表演曲目：弦上生花",
+                  "url": "https://www.bilibili.com/video/BV1S4Vzz5EdL/",
+                  "image": "/src/assets/party/2025/2025-05-05.jpg"
+              },
+              {
+                  "title": "央视端午晚会",
+                  "date": "表演日期：2025-05-31，表演曲目：画中来",
+                  "url": "https://www.bilibili.com/video/BV1wZ7KzSELT/",
+                  "image": "/src/assets/party/2025/2025-05-31.jpg"
+              },
+              {
+                  "title": "电影频道传媒关注单元闭幕仪式",
+                  "date": "表演日期：2025-06-24，表演曲目：想见你想见你想见你",
+                  "url": "https://www.bilibili.com/video/BV1aEKGznEW8/",
+                  "image": "/src/assets/party/2025/2025-06-24.jpg"
+              },
+              {
+                  "title": "悦享自成 享界用户星享之夜",
+                  "date": "表演日期：2025-07-08，表演曲目：星辰大海，我们的爱",
+                  "url": "https://www.bilibili.com/video/BV1dRGHzMEy8/",
+                  "image": "/src/assets/party/2025/2025-07-08.jpg"
+              },
+              {
+                  "title": "青岛国际啤酒节开幕式",
+                  "date": "表演日期：2025-07-18，表演曲目：星辰大海，回音如果，梦返",
+                  "url": "https://www.bilibili.com/video/BV1u8uUz8E2N/",
+                  "image": "/src/assets/party/2025/2025-07-18.jpg"
+              },
+              {
+                  "title": "微博文化之夜-part1",
+                  "date": "表演日期：2025-08-25，颁奖环节",
+                  "url": "https://www.bilibili.com/video/BV1kEeozKEy7/",
+                  "image": "/src/assets/party/2025/2025-08-25_1.jpg"
+              },
+              {
+                  "title": "微博文化之夜-part2",
+                  "date": "表演日期：2025-08-25，表演曲目：画中来",
+                  "url": "https://www.bilibili.com/video/BV1u8uUz8E2N/",
+                  "image": "/src/assets/party/2025/2025-08-25_2.jpg"
+              },
+              {
+                  "title": "神州数码成立25周年庆典",
+                  "date": "表演日期：2025-08-30，表演曲目：星辰大海，梦返，淬炼，烟火里的尘埃",
+                  "url": "https://www.bilibili.com/video/BV117hBzVEF9/",
+                  "image": "/src/assets/party/2025/2025-08-30.jpg"
+              }
               ]
             }
           ]

@@ -79,7 +79,7 @@ const scrollToText = () => {
     </div>
   </main>
 
-  <DevView />
+  <!-- <DevView /> -->
 </template>
 
 <style scoped>
