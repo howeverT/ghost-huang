@@ -27,31 +27,31 @@
 import HorizontalScroll from '@/components/Card/HorizontalScroll.vue'
 
 const images = [
-  '/Home/横向/20230721_NaV8U9iNh_2.jpg',
-  '/Home/横向/20230721_NaV8U9iNh_4.jpg',
-  '/Home/横向/20230723_Nb6INd1a5_1.jpg',
-  '/Home/横向/20230723_NbeqC49zg_4.jpg',
-  '/Home/横向/20231007_NmNS8tja9_1.jpg',
-  '/Home/横向/20240127_NDPRqmjQ6_4.jpg',
-  '/Home/横向/20240210_NFRZWj6Fg_6.jpg',
-  '/Home/横向/20240210_NFRZWj6Fg_8.jpg'
-]
 
+  '/Home/横向/20230721_NaV8U9iNh_2.webp',
+  '/Home/横向/20230721_NaV8U9iNh_4.webp',
+  '/Home/横向/20230723_Nb6INd1a5_1.webp',
+  '/Home/横向/20230723_NbeqC49zg_4.webp',
+  '/Home/横向/20231007_NmNS8tja9_1.webp',
+  '/Home/横向/20240127_NDPRqmjQ6_4.webp',
+  '/Home/横向/20240210_NFRZWj6Fg_6.webp',
+
+]
 
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import ParallaxCard from './MiniCard/ParallaxCard.vue'
 
-// 卡片数据，包含不同的高度
 const cards = ref([
-  { id: 1, number: 1, image: '/Home/视差滚动/20250408_PmkAV3B93_1.jpg', height: 400 },
-  { id: 2, number: 2, image: '/Home/视差滚动/20231110_NrWWmqmLa_4.jpg', height: 320 },
-  { id: 3, number: 3, image: '/Home/视差滚动/20231231_NzH5RtVA6_5.jpg', height: 500 },
-  { id: 4, number: 4, image: '/Home/视差滚动/20231228_Nzehu3u23_8.jpg', height: 360 },
-  { id: 5, number: 5, image: '/Home/视差滚动/20200314_IytEIpKMe_8.jpg', height: 600 },
-  { id: 6, number: 6, image: '/Home/视差滚动/20200521_J2XHYxApv_1.jpg', height: 380 },
-  { id: 8, number: 8, image: '/Home/视差滚动/20231110_NrWWmqmLa_4.jpg', height: 460 },
-])
+  { id: 1, number: 1, image: '/Home/视差滚动/20250408_PmkAV3B93_1.webp', height: 400 },
+  { id: 2, number: 2, image: '/Home/视差滚动/20231110_NrWWmqmLa_4.webp', height: 320 },
+  { id: 3, number: 3, image: '/Home/视差滚动/20231231_NzH5RtVA6_5.webp', height: 500 },
+  { id: 4, number: 4, image: '/Home/视差滚动/20231228_Nzehu3u23_8.webp', height: 360 },
+  { id: 5, number: 5, image: '/Home/视差滚动/20200314_IytEIpKMe_8.webp', height: 600 },
+  { id: 6, number: 6, image: '/Home/视差滚动/20200521_J2XHYxApv_1.webp', height: 380 },
+  { id: 8, number: 8, image: '/Home/视差滚动/20231110_NrWWmqmLa_4.webp', height: 460 },
+  { id: 9, number: 9, image: '  /Home/横向/20240210_NFRZWj6Fg_8.webp', height: 460 },
 
+])
 const containerRef = ref<HTMLDivElement>()
 const cardRefs = ref<{ [key: number]: HTMLElement }>({})
 
