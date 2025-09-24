@@ -167,7 +167,25 @@
                   "date": "表演日期：2025-08-30，表演曲目：星辰大海，梦返，淬炼，烟火里的尘埃",
                   "url": "https://www.bilibili.com/video/BV117hBzVEF9/",
                   "image": "/src/assets/party/2025/2025-08-30.jpg"
-              }
+              },
+              {
+                "title": "WMA微博音乐盛典-part1",
+                "date": "表演日期：2025-09-24，红毯环节",
+                "url": "https://weibo.com/6961164430/Q63Hni6Gf",
+                "image": "/src/assets/party/2025/2025-09-24_1.jpg"
+              },
+              {
+              "title": "WMA微博音乐盛典-part2",
+              "date": "表演日期：2025-09-24，采访环节",
+              "url": "https://weibo.com/6961164430/Q64x6m8F9",
+              "image": "/src/assets/party/2025/2025-09-24_2.png"
+              },
+              {
+                "title": "WMA微博音乐盛典-part3",
+                "date": "表演日期：2025-09-24，领奖环节",
+                "url": "https://weibo.com/6961164430/Q65K4EI5P",
+                "image": "/src/assets/party/2025/2025-09-24_3.jpg"
+                }
               ]
             }
           ]
