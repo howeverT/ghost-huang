@@ -74,6 +74,11 @@ const router = createRouter({
       name: 'collection-mask',
       component: () => import('../views/CollectionView.vue'),
     },
+    {
+      path: '/dev',
+      name: 'dev',
+      component: () => import('../components/Card/BackGPage.vue'),
+    },
   ],
 })
 
