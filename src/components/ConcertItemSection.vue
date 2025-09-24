@@ -2,7 +2,7 @@
   <div class="concert-item-section">
     <div v-if="title" class="section-title">
       <h2>{{ title }}</h2>
-      <p class="section-description">首页仅显示6个视频链接，可下拉点击下面的箭头来切换页数</p>
+      <p class="section-description">梦想是不会发光的，会发光的是追梦的你</p>
     </div>
 
     <!-- Tabs区域 -->
