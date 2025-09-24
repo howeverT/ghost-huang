@@ -8,16 +8,16 @@
           "title": "二五年",
           "title_align": "left",
           "title_margin": "0",
-          "background_image": "/src/assets/background/History2025.jpg",
+          "background_image": "/src/assets/background/History2025_2.png",
           "index": 1
         },
         {
           "type": "ContentSection",
-          "title": "《宇宙无敌号》个人巡回演唱会",
+          "title": "旅途的终点，一切都还原，团圆",
           "paragraphs": [
-            "宇宙无敌号降落在广州， 成都，上海，宁波，再度启航。",
-            "各大OST，音乐节，拼盘演唱会邀约。",
-            "未完待续ing"
+            "你要相信我会回来，即使我们的距离还在光年外",
+            "曲折坎总会蜿蜒，沿天际的轨线，背负一切都值得，当风唤，那份诺言会兑现，我们会手牵着手望星辰大海",
+            "炽热将寒夜驱赶，黎明重返"
           ],
           "index": 2
         },
