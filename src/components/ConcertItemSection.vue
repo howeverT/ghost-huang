@@ -2,7 +2,7 @@
   <div class="concert-item-section">
     <div v-if="title" class="section-title">
       <h2>{{ title }}</h2>
-      <p class="section-description">首页仅显示6个视频链接，可下拉点击下面的箭头来切换页数</p>
+      <p class="section-description">梦想是不会发光的，会发光的是追梦的你</p>
     </div>
 
     <!-- Tabs区域 -->
@@ -19,68 +19,26 @@
         </div>
       </div>
     </div>
-    <div class="items-container">
-      <div class="left-column">
-        <div
-          v-for="(item, index) in currentLeftItems"
-          :key="index"
-          class="item-content"
-          @click="handleItemClick(item)"
-        >
-          <div class="item-image">
-            <div
-              class="image-bg"
-              :style="{
-                backgroundImage: `url(${getImagePath(item.image || '/src/assets/background/History2024.jpg')})`,
-              }"
-            ></div>
-          </div>
-          <div class="item-text">
-            <h3 class="item-title">{{ item.title }}</h3>
-            <p class="item-date">{{ item.date }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="right-column">
-        <div
-          v-for="(item, index) in currentRightItems"
-          :key="index"
-          class="item-content"
-          @click="handleItemClick(item)"
-        >
-          <div class="item-image">
-            <div
-              class="image-bg"
-              :style="{
-                backgroundImage: `url(${getImagePath(item.image || '/src/assets/background/History2024.jpg')})`,
-              }"
-            ></div>
-          </div>
-          <div class="item-text">
-            <h3 class="item-title">{{ item.title }}</h3>
-            <p class="item-date">{{ item.date }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 分页控制 -->
-    <div class="pagination-controls">
-      <button
-        class="pagination-btn prev-btn"
-        :disabled="currentPage === 0 || isTransitioning"
-        @click="prevPage"
+    <div class="waterfall-container">
+      <div
+        v-for="(item, index) in currentItems"
+        :key="index"
+        class="parallax-item"
+        @click="handleItemClick(item)"
       >
-        <img src="/src/assets/svg/chevron-icon.svg" alt="上一页" class="chevron-icon prev-icon" />
-      </button>
-      <span class="page-info">{{ currentPage + 1 }} / {{ totalPages }}</span>
-      <button
-        class="pagination-btn next-btn"
-        :disabled="currentPage === totalPages - 1 || isTransitioning"
-        @click="nextPage"
-      >
-        <img src="/src/assets/svg/chevron-icon.svg" alt="下一页" class="chevron-icon next-icon" />
-      </button>
+        <ParallaxCard
+          :backgroundImage="getImagePath(item.image || '/src/assets/background/History2024.jpg')"
+          :number="index + 1"
+          :defaultHeight="600 + Math.random() * 300"
+          class="gallery-card"
+          rounded
+        >
+          <div class="card-caption">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.date }}</p>
+          </div>
+        </ParallaxCard>
+      </div>
     </div>
   </div>
 </template>
@@ -88,6 +46,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { getImagePath } from '@/utils/pathUtils'
+import ParallaxCard from '@/components/Card/MiniCard/ParallaxCard.vue'
 interface ConcertItem {
   title: string
   date: string
@@ -115,11 +74,6 @@ const props = defineProps<Props>()
 // Tabs相关
 const activeTab = ref(props.tabs && props.tabs.length > 0 ? props.tabs[0].id : '')
 
-// 分页相关
-const currentPage = ref(0)
-const itemsPerPage = 6
-const isTransitioning = ref(false)
-
 // 获取当前显示的items（优先使用tabs，否则使用items）
 const currentItems = computed(() => {
   if (props.tabs && props.tabs.length > 0) {
@@ -127,27 +81,6 @@ const currentItems = computed(() => {
     return activeTabData ? activeTabData.items : []
   }
   return props.items
-})
-
-// 计算总页数
-const totalPages = computed(() => {
-  return Math.ceil(currentItems.value.length / itemsPerPage)
-})
-
-// 获取当前页的items
-const currentPageItems = computed(() => {
-  const start = currentPage.value * itemsPerPage
-  const end = start + itemsPerPage
-  return currentItems.value.slice(start, end)
-})
-
-// 将当前页的items分配到左右两列
-const currentLeftItems = computed(() => {
-  return currentPageItems.value.filter((_, index) => index % 2 === 0)
-})
-
-const currentRightItems = computed(() => {
-  return currentPageItems.value.filter((_, index) => index % 2 === 1)
 })
 
 // Tab切换函数
@@ -175,7 +108,6 @@ const setActiveTab = (tabId: string) => {
     // 延迟切换内容
     setTimeout(() => {
       activeTab.value = tabId
-      currentPage.value = 0 // 切换tab时重置到第一页
 
       // 延迟一点让新tab的笔刷出现
       setTimeout(() => {
@@ -193,59 +125,6 @@ const setActiveTab = (tabId: string) => {
         }
       }, 100)
     }, 300)
-  }
-}
-
-// 分页控制函数
-const prevPage = () => {
-  if (isTransitioning.value || currentPage.value <= 0) {
-    return
-  }
-  fadeOutAndChange(() => {
-    currentPage.value--
-  })
-}
-
-const nextPage = () => {
-  if (isTransitioning.value || currentPage.value >= totalPages.value - 1) {
-    return
-  }
-  fadeOutAndChange(() => {
-    currentPage.value++
-  })
-}
-
-// 渐隐渐显切换函数
-const fadeOutAndChange = (changeCallback: () => void) => {
-  const itemsContainer = document.querySelector(
-    '.concert-item-section .items-container',
-  ) as HTMLElement
-
-  isTransitioning.value = true
-
-  if (itemsContainer) {
-    // 渐隐
-    itemsContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease'
-    itemsContainer.style.opacity = '0'
-    itemsContainer.style.transform = 'translateY(20px)'
-
-    // 延迟执行切换
-    setTimeout(() => {
-      changeCallback()
-
-      // 渐显
-      setTimeout(() => {
-        if (itemsContainer) {
-          itemsContainer.style.opacity = '1'
-          itemsContainer.style.transform = 'translateY(0)'
-        }
-        isTransitioning.value = false
-      }, 50)
-    }, 300)
-  } else {
-    // 如果没有找到容器，直接执行切换
-    changeCallback()
-    isTransitioning.value = false
   }
 }
 
@@ -353,22 +232,20 @@ const handleItemClick = (item: ConcertItem) => {
     transform 0.3s ease;
 }
 
-.items-container {
+.waterfall-container {
   max-width: calc(100vw - 3rem);
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+  column-count: 3;
+  column-gap: 2rem;
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
 }
 
 @media (max-width: 1200px) {
-  .items-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
+  .waterfall-container {
+    column-count: 2;
+    column-gap: 1.5rem;
   }
 
   .section-title {
@@ -382,133 +259,88 @@ const handleItemClick = (item: ConcertItem) => {
     margin-left: auto !important;
     margin-right: auto !important;
   }
-
-  .left-column {
-    transform: translateY(0);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .right-column {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .item-content {
-    max-width: 600px;
-  }
-}
-
-.left-column {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  transform: translateY(5rem);
-}
-
-.right-column {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
-  .items-container {
-    flex-direction: row;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  .waterfall-container {
+    column-count: 2;
+    column-gap: 1rem;
   }
 
-  .left-column,
-  .right-column {
-    width: calc(50% - 0.5rem);
-    min-width: 300px;
-  }
-
-  .item-content {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .left-column {
-    transform: translateY(0.5rem);
-  }
-
-  .right-column {
-    transform: translateY(-2rem);
-  }
-
-  .item-image {
-    height: 400px;
-  }
-
-  .item-title {
+  .card-caption h3 {
     font-size: 1.2rem;
   }
 
-  .item-date {
+  .card-caption p {
     font-size: 0.9rem;
   }
 }
 
-.item-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 500px;
+.parallax-item {
+  display: inline-block;
+  width: 100%;
   position: relative;
   cursor: pointer;
   transition: all 0.5s ease;
   opacity: 1;
   transform: translateY(0);
+  margin-bottom: 2rem;
+  break-inside: avoid;
 }
 
-.item-content:hover {
+.parallax-item:hover {
   transform: translateY(-5px);
 }
 
-.item-image {
+.gallery-card {
   width: 100%;
-  height: 600px;
-  position: relative;
-  margin-bottom: 1rem;
+  margin: 0 !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.image-bg {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.gallery-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-.item-text {
-  padding: 0.5rem 0;
-  text-align: left;
-  width: 100%;
+.card-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.3) 80%,
+    transparent 100%
+  );
 }
 
-.item-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #333;
+.card-caption h3 {
   margin: 0 0 0.5rem 0;
-  line-height: 1.4;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  color: white;
   font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
 }
 
-.item-date {
-  font-size: 1rem;
-  color: #666;
+.card-caption p {
   margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
   line-height: 1.5;
+  color: white;
   font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -548,37 +380,25 @@ const handleItemClick = (item: ConcertItem) => {
     font-size: 1rem;
   }
 
-  .items-container {
-    gap: 2rem;
+  .waterfall-container {
+    column-count: 1;
+    column-gap: 1.5rem;
   }
 
-  .left-column {
-    gap: 1.5rem;
-    transform: translateY(0);
-  }
-
-  .right-column {
-    gap: 1.5rem;
-  }
-
-  .item-content {
+  .parallax-item {
     width: 100%;
     max-width: 400px;
   }
 
-  .item-image {
-    height: 500px;
+  .card-caption {
+    padding: 1rem;
   }
 
-  .item-text {
-    padding: 0.3rem 0;
-  }
-
-  .item-title {
+  .card-caption h3 {
     font-size: 1.9rem;
   }
 
-  .item-date {
+  .card-caption p {
     font-size: 0.9rem;
   }
 }
@@ -618,37 +438,25 @@ const handleItemClick = (item: ConcertItem) => {
     font-size: 0.9rem;
   }
 
-  .items-container {
-    gap: 1.5rem;
+  .waterfall-container {
+    column-count: 1;
+    column-gap: 1rem;
   }
 
-  .left-column {
-    gap: 1rem;
-    transform: translateY(0);
-  }
-
-  .right-column {
-    gap: 1rem;
-  }
-
-  .item-content {
+  .parallax-item {
     width: 100%;
     max-width: 350px;
   }
 
-  .item-image {
-    height: 450px;
+  .card-caption {
+    padding: 0.8rem;
   }
 
-  .item-text {
-    padding: 0.2rem 0;
-  }
-
-  .item-title {
+  .card-caption h3 {
     font-size: 1.7rem;
   }
 
-  .item-date {
+  .card-caption p {
     font-size: 0.85rem;
   }
 }

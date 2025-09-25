@@ -5,70 +5,34 @@
       <div v-if="title" class="title-container">
         <h2>{{ title }}</h2>
       </div>
-      <!-- 项目容器 -->
-      <div class="items-container">
+      <!-- 瀑布流容器 -->
+      <div class="waterfall-container">
         <div
-          v-for="(item, index) in currentPageItems"
+          v-for="(item, index) in props.items"
           :key="index"
-          class="frame-item"
+          class="parallax-item"
           @click="handleItemClick(item)"
         >
-          <div class="frame-border">
-            <div class="frame-content">
-              <div
-                class="frame-image"
-                :style="{
-                  backgroundImage: `url(${getImagePath(item.image || '')})`,
-                }"
-              ></div>
-              <div class="frame-title">
-                {{ item.title }}
-              </div>
+          <ParallaxCard
+            :backgroundImage="getImagePath(item.image || '/src/assets/background/History2024.jpg')"
+            :number="index + 1"
+            :defaultHeight="600 + Math.random() * 300"
+            class="gallery-card"
+            rounded
+          >
+            <div class="card-caption">
+              <h3>{{ item.title }}</h3>
             </div>
-          </div>
+          </ParallaxCard>
         </div>
-      </div>
-      <!-- 分页按钮 -->
-      <div class="pagination-container">
-        <button
-          class="pagination-btn prev-btn"
-          :disabled="currentPage === 0 || isTransitioning"
-          @click="previousPage"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M15 18L9 12L15 6"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-        <span class="page-info">{{ currentPage + 1 }} / {{ totalPages }}</span>
-        <button
-          class="pagination-btn next-btn"
-          :disabled="currentPage === totalPages - 1 || isTransitioning"
-          @click="nextPage"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M9 18L15 12L9 6"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 import { getImagePath } from '@/utils/pathUtils'
+import ParallaxCard from '@/components/Card/MiniCard/ParallaxCard.vue'
 
 interface ThumbnailItem {
   image?: string
@@ -78,7 +42,6 @@ interface ThumbnailItem {
 
 interface Props {
   items?: ThumbnailItem[]
-  itemsPerPage?: number
   title?: string
 }
 
@@ -91,78 +54,8 @@ const props = withDefaults(defineProps<Props>(), {
     { image: getImagePath('/src/assets/background/History2024.jpg'), title: '历史回顾' },
     { image: getImagePath('/src/assets/background/background.jpg'), title: '精彩瞬间' },
   ],
-  itemsPerPage: 4,
   title: '',
 })
-
-const currentPage = ref(0)
-const isTransitioning = ref(false)
-
-// 计算总页数
-const totalPages = computed(() => {
-  return Math.ceil(props.items.length / props.itemsPerPage)
-})
-
-// 计算当前页显示的项目
-const currentPageItems = computed(() => {
-  const start = currentPage.value * props.itemsPerPage
-  const end = start + props.itemsPerPage
-  return props.items.slice(start, end)
-})
-
-// 下一页
-const nextPage = () => {
-  if (isTransitioning.value || currentPage.value >= totalPages.value - 1) {
-    return
-  }
-  fadeOutAndChange(() => {
-    currentPage.value++
-  })
-}
-
-// 上一页
-const previousPage = () => {
-  if (isTransitioning.value || currentPage.value <= 0) {
-    return
-  }
-  fadeOutAndChange(() => {
-    currentPage.value--
-  })
-}
-
-// 渐隐渐显切换函数
-const fadeOutAndChange = (changeCallback: () => void) => {
-  const itemsContainer = document.querySelector(
-    '.thumbnail-section .items-container',
-  ) as HTMLElement
-
-  isTransitioning.value = true
-
-  if (itemsContainer) {
-    // 渐隐
-    itemsContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease'
-    itemsContainer.style.opacity = '0'
-    itemsContainer.style.transform = 'translateY(20px)'
-
-    // 延迟执行切换
-    setTimeout(() => {
-      changeCallback()
-
-      // 渐显
-      setTimeout(() => {
-        if (itemsContainer) {
-          itemsContainer.style.opacity = '1'
-          itemsContainer.style.transform = 'translateY(0)'
-        }
-        isTransitioning.value = false
-      }, 50)
-    }, 300)
-  } else {
-    // 如果没有找到容器，直接执行切换
-    changeCallback()
-    isTransitioning.value = false
-  }
-}
 
 // 处理缩略图点击
 const handleItemClick = (item: ThumbnailItem) => {
@@ -218,126 +111,100 @@ const handleItemClick = (item: ThumbnailItem) => {
   font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
 }
 
-.items-container {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
+.waterfall-container {
   max-width: calc(100vw - 3rem);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
 }
 
-.frame-item {
-  flex-shrink: 0;
+.parallax-item {
+  flex: 0 0 calc(25% - 1.125rem);
+  min-width: 500px;
+  max-width: 600px;
+  position: relative;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
+  margin-bottom: 2rem;
 }
 
-.frame-item:hover {
-  transform: scale(1.05);
+.parallax-item:hover {
+  transform: translateY(-5px);
 }
 
-.frame-border {
-  width: calc(25% - 1.125rem);
-  min-width: 22rem;
-  height: 32rem;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.frame-content {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
+.gallery-card {
+  width: 100% !important;
+  margin: 0 !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
   overflow: hidden;
-  position: relative;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.frame-image {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* 覆盖ParallaxCard的默认样式，确保卡片占满列宽 */
+.gallery-card :deep(.parallax-card) {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
 }
 
-.frame-title {
+.card-caption {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1.5rem 1rem 1rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: white;
   text-align: center;
+  padding: 1.5rem;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.8) 0%,
     rgba(0, 0, 0, 0.6) 40%,
-    rgba(0, 0, 0, 0.2) 80%,
+    rgba(0, 0, 0, 0.3) 80%,
     transparent 100%
   );
+}
+
+.card-caption h3 {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* 响应式布局 */
 @media (min-width: 1800px) {
   .title-container,
-  .items-container {
+  .waterfall-container {
     max-width: calc(100vw - 4rem);
-  }
-
-  .frame-border {
-    width: calc(25% - 1.875rem);
-    min-width: 28rem;
-    height: 38rem;
-  }
-
-  .items-container {
-    gap: 2.5rem;
   }
 }
 
 @media (min-width: 1600px) and (max-width: 1799px) {
   .title-container,
-  .items-container {
+  .waterfall-container {
     max-width: calc(100vw - 4rem);
-  }
-
-  .frame-border {
-    width: calc(25% - 1.5rem);
-    min-width: 26rem;
-    height: 36rem;
-  }
-
-  .items-container {
-    gap: 2rem;
   }
 }
 
 @media (max-width: 1400px) {
   .title-container,
-  .items-container {
+  .waterfall-container {
     max-width: calc(100vw - 3rem);
-  }
-
-  .frame-border {
-    width: calc(25% - 1.35rem);
-    min-width: 24rem;
-    height: 34rem;
-  }
-
-  .items-container {
-    gap: 1.8rem;
   }
 }
 
 @media (max-width: 1200px) {
   .title-container,
-  .items-container {
+  .waterfall-container {
     max-width: calc(100vw - 2rem);
   }
 
@@ -345,20 +212,16 @@ const handleItemClick = (item: ThumbnailItem) => {
     font-size: 2.2rem;
   }
 
-  .frame-border {
-    width: calc(25% - 1.125rem);
-    min-width: 22rem;
-    height: 32rem;
-  }
-
-  .items-container {
-    gap: 1.5rem;
+  .parallax-item {
+    flex: 0 0 calc(33.333% - 1rem);
+    min-width: 450px;
+    max-width: 550px;
   }
 }
 
 @media (max-width: 768px) {
   .title-container,
-  .items-container {
+  .waterfall-container {
     max-width: calc(100vw - 1.5rem);
   }
 
@@ -366,20 +229,16 @@ const handleItemClick = (item: ThumbnailItem) => {
     font-size: 2rem;
   }
 
-  .frame-border {
-    width: calc(50% - 0.6rem);
-    min-width: 18rem;
-    height: 28rem;
-  }
-
-  .items-container {
-    gap: 1.2rem;
+  .parallax-item {
+    flex: 0 0 calc(50% - 0.75rem);
+    min-width: 400px;
+    max-width: 500px;
   }
 }
 
 @media (max-width: 480px) {
   .title-container,
-  .items-container {
+  .waterfall-container {
     max-width: 100%;
   }
 
@@ -387,80 +246,14 @@ const handleItemClick = (item: ThumbnailItem) => {
     font-size: 1.8rem;
   }
 
-  .frame-border {
-    width: calc(50% - 0.6rem);
-    min-width: 160px;
-    height: 22rem;
+  .parallax-item {
+    flex: 0 0 100%;
+    min-width: 300px;
+    max-width: none;
   }
 
-  .items-container {
-    gap: 1.2rem;
-  }
-
-  .frame-title {
+  .card-caption h3 {
     font-size: 1rem;
-    padding: 1rem 0.8rem 0.8rem;
-  }
-}
-
-/* 分页按钮样式 */
-.pagination-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.pagination-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border: 2px solid #333;
-  background-color: white;
-  color: #333;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0;
-}
-
-.pagination-btn:hover:not(:disabled) {
-  background-color: #333;
-  color: white;
-  transform: scale(1.1);
-}
-
-.pagination-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.page-info {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #333;
-  min-width: 80px;
-  text-align: center;
-}
-
-@media (max-width: 768px) {
-  .pagination-container {
-    margin-top: 1.5rem;
-    gap: 0.8rem;
-  }
-
-  .pagination-btn {
-    width: 40px;
-    height: 40px;
-  }
-
-  .page-info {
-    font-size: 1rem;
-    min-width: 60px;
   }
 }
 </style>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import TheWelcome from '../components/TheWelcome.vue'
 import { onMounted, ref } from 'vue'
+import DevView from '@/components/Card/Waterfall.vue'
+import BackGPage from '@/components/Card/BackGPage.vue'
 
 const pageLoaded = ref(false)
 const videoScreen = ref<HTMLElement | null>(null)
@@ -35,6 +37,7 @@ const scrollToText = () => {
 </script>
 
 <template>
+
   <main :class="{ loaded: pageLoaded }">
     <!-- 第一个屏幕 - 文字和按钮 -->
     <div class="screen-section text-screen">
@@ -65,16 +68,18 @@ const scrollToText = () => {
         </div>
 
         <!-- 返回箭头 -->
-        <!-- <div class="bottom-chevron" @click="scrollToText">
-          <svg viewBox="0 0 20 25" xmlns="http://www.w3.org/2000/svg" class="chevron-icon">
-            <path
-              d="M7.3 0L0 7.1l5.5 5.4L0 17.9 7.3 25 20 12.5 7.3 0zm-5 17.9l5.5-5.4-5.5-5.4 5-4.9 10.4 10.3L7.3 22.8l-5-4.9z"
-            />
-          </svg>
-        </div> -->
+<!--         <div class="bottom-chevron" @click="scrollToText">-->
+<!--          <svg viewBox="0 0 20 25" xmlns="http://www.w3.org/2000/svg" class="chevron-icon">-->
+<!--            <path-->
+<!--              d="M7.3 0L0 7.1l5.5 5.4L0 17.9 7.3 25 20 12.5 7.3 0zm-5 17.9l5.5-5.4-5.5-5.4 5-4.9 10.4 10.3L7.3 22.8l-5-4.9z"-->
+<!--            />-->
+<!--          </svg>-->
+<!--        </div>-->
       </div>
     </div>
   </main>
+
+  <!-- <DevView /> -->
 </template>
 
 <style scoped>

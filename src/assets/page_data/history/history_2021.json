@@ -13,10 +13,11 @@
         },
         {
           "type": "ContentSection",
-          "title": "重返《好声音》当导师助教",
+          "title": "漫漫长夜不曾离开，我向你奔赴而来，趁现在还有期待",
           "paragraphs": [
-            "感谢汪峰老师的赏识，和《好声音》的舞台，让阿鬼让更多人认识。",
-            "各大晚会舞台邀约。"
+            "会不会我们的爱会被风吹向大海，不再回来，每当你向我走来告诉我星辰大海",
+            "会不会我们的爱像星辰守护大海，不曾离开，我向你奔赴而来，你就是星辰大海",
+            "我愿变成一颗流星，照亮着你我的心，穿过人海别停下来"
           ],
           "index": 2
         },
@@ -46,9 +47,9 @@
           "tabs": [
             {
               "id": "part1",
-              "label": "1-4月",
+              "label": "1-12月",
               "backgroundImage": "/src/assets/background/History2024.jpg",
-              "imageTitle": "2022年1-4月晚会",
+              "imageTitle": "2021年1-12月晚会",
               "imageCaption": "新年晚会、春晚等精彩回顾",
               "items": [
                 {
@@ -68,16 +69,7 @@
                   "date": "表演日期：2021-02-16，表演曲目：Neverland",
                   "url": "https://weibo.com/5043186742/4608974026184415",
                   "image": "/src/assets/party/2021/2021-02-16.jpg"
-                }
-              ]
-            },
-            {
-              "id": "part2",
-              "label": "5-8月",
-              "backgroundImage": "/src/assets/background/History2024.jpg",
-              "imageTitle": "2021年5-8月晚会",
-              "imageCaption": "毕业歌会、诗画中国等精彩回顾",
-              "items": [
+                },
                 {
                   "title": "五四晚会-part1",
                   "date": "表演日期：2021-05-04，表演曲目：曾经的模样",
@@ -101,16 +93,7 @@
                   "date": "表演日期：2021-08-14，表演曲目：星辰大海",
                   "url": "https://weibo.com/6961164430/4670202954649325",
                   "image": "/src/assets/party/2021/2021-08-14.jpg"
-                }
-              ]
-            },
-            {
-              "id": "part3",
-              "label": "9-12月",
-              "backgroundImage": "/src/assets/background/History2024.jpg",
-              "imageTitle": "2021年9-12月晚会",
-              "imageCaption": "中秋晚会、跨年晚会等精彩回顾",
-              "items": [
+                },
                 {
                   "title": "湖南卫视中秋之夜",
                   "date": "表演日期：2021-09-21，表演曲目：灯火里的中国",
