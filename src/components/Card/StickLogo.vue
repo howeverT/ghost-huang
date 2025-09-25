@@ -96,7 +96,7 @@ onUnmounted(() => {
 .star-container {
   position: sticky;
   top: -10vh;
-  left: 200%;
+  left: 400%;
   transform: translateX(-25%);
   width: 400px;
   height: 200px;

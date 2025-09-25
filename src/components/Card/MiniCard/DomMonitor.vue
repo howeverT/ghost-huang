@@ -543,36 +543,100 @@ onBeforeUnmount(() => {
 .dom-monitor-wrapper {
   position: relative;
   font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
 }
 
 .floating-panel {
-  width: 380px;
-  max-height: 600px;
+  width: 420px;
+  max-height: 650px;
   overflow-y: auto;
   transition: all 0.1s ease;
   position: fixed;
   right: 20px;
   bottom: 20px;
   z-index: 9999;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', monospace;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Droid Sans Mono', 'Source Code Pro', monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  background: #1f2937 !important;
+  border: 1px solid #374151;
+}
+
+.floating-panel * {
+  color: #f9fafb !important;
+}
+
+.floating-panel .text-gray-400 {
+  color: #9ca3af !important;
+  font-weight: 500;
+}
+
+.floating-panel .text-blue-300,
+.floating-panel .text-green-300,
+.floating-panel .text-yellow-300,
+.floating-panel .text-purple-300,
+.floating-panel .text-cyan-300,
+.floating-panel .text-indigo-300,
+.floating-panel .text-pink-300,
+.floating-panel .text-orange-300 {
+  color: #154270 !important;
+  font-weight: 600;
+}
+
+.floating-panel .text-gray-300 {
+  background-color: rgba(55, 65, 81, 0.7) !important;
+}
+
+.floating-panel .bg-gray-800 {
+  background-color: #111827 !important;
+  border: 1px solid #374151;
+}
+
+.floating-panel .divide-gray-700 > * + * {
+  border-top: 1px solid #4b5563 !important;
 }
 
 .floating-panel::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 .floating-panel::-webkit-scrollbar-track {
   background: #374151;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 .floating-panel::-webkit-scrollbar-thumb {
   background: #6b7280;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 .floating-panel::-webkit-scrollbar-thumb:hover {
-  background: #bc0b39;
+  background: #9ca3af;
+}
+
+/* 数据值样式 */
+.floating-panel .grid > div {
+  padding: 2px 0;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.floating-panel .grid > div:nth-child(odd) {
+  background-color: rgba(55, 65, 81, 0.3);
+  border-radius: 3px;
+  padding-left: 4px;
+}
+
+/* 按钮样式 */
+.floating-panel button {
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.floating-panel button:hover {
+  background-color: rgba(55, 65, 81, 0.7) !important;
+  border-radius: 4px;
 }
 
 .grid {
@@ -605,5 +669,26 @@ onBeforeUnmount(() => {
 
 button:disabled {
   cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* 主控制区样式优化 */
+.dom-monitor-wrapper input {
+  font-size: 14px;
+}
+
+.dom-monitor-wrapper button {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.dom-monitor-wrapper select {
+  font-size: 14px;
+}
+
+/* 色块样式 */
+.floating-panel .inline-block[style*="background"] {
+  border: 1px solid #9ca3af !important;
+  margin: 0 4px;
 }
 </style>
