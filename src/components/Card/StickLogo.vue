@@ -3,9 +3,9 @@
   <div class="scroll-container">
     <div class="spacer" /> <!-- 顶部空白，保持滚动 -->
 
-    <!-- Ghost Star文字绘制 -->
     <div class="star-container" ref="starContainer">
       <svg viewBox="0 0 400 200">
+        <!-- Ghost Star文字 -->
         <text
           ref="star"
           x="200"
@@ -15,16 +15,25 @@
           font-family="Arial, sans-serif"
           font-size="40"
           font-weight="bold"
-          stroke="#17f700"
-          fill="none"
-          stroke-width="2"
-          stroke-dasharray="1000"
-          stroke-dashoffset="1000"
+          stroke="#ff69b4"
+        fill="none"
+        stroke-width="2"
+        stroke-dasharray="1000"
+        stroke-dashoffset="1000"
         >
-          Ghost Star
+        Ghost Star
         </text>
+
+        <!-- 星星点缀 -->
+        <circle cx="50" cy="30" r="2" fill="#ff69b4" />
+        <circle cx="120" cy="70" r="3" fill="#ff69b4" />
+        <circle cx="300" cy="50" r="2.5" fill="#ff69b4" />
+        <circle cx="250" cy="150" r="2" fill="#ff69b4" />
+        <circle cx="100" cy="130" r="1.5" fill="#ff69b4" />
+        <circle cx="350" cy="120" r="2.5" fill="#ff69b4" />
       </svg>
     </div>
+
 
     <!-- 正文内容 -->
     <div class="content">
@@ -81,7 +90,7 @@ onUnmounted(() => {
 .scroll-container {
   width: 100%;
   background-color: #171717;
-  color: #17f700;
+  color: #e782ee;
   font-family: sans-serif;
   font-size: 2vmin;
   display: flex;
@@ -94,10 +103,11 @@ onUnmounted(() => {
 }
 
 .star-container {
+  top: 0vh;
+  left: 200%;
   position: sticky;
-  top: -10vh;
-  left: 400%;
-  transform: translateX(-25%);
+
+  transform: translateX(10%); /* 减少向左的偏移（抵消更少） */
   width: 400px;
   height: 200px;
   margin-bottom: 5rem;
