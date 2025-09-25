@@ -1,0 +1,178 @@
+[
+    {
+      "title": "考古区",
+      "year": "2019",
+      "content": [
+        {
+          "type": "HeroSection",
+          "title": "一九年",
+          "title_align": "left",
+          "title_margin": "0",
+          "background_image": "/src/assets/background/History2019.jpg",
+          "index": 1
+        },
+        {
+          "type": "ContentSection",
+          "title": "假装，有一点倔强",
+          "paragraphs": [
+            "试着伪装，想偷偷的隐藏，可是我的脸庞，却不会说谎",
+            "摇摇晃晃，恍然那些喜悦与忧伤，回首，想不起模样，跌跌撞撞，扛过那些失落与惊慌 "
+          ],
+          "index": 2
+        },
+        {
+          "type": "OverlapSecondSection",
+          "title": "综艺合集",
+          "content": "",
+          "background_image": "/src/assets/variety/background/Variety2019.jpg",
+          "links": [
+            {
+              "link_title": "音你成名-懂事",
+              "date": "2019-09-20",
+              "link": "https://www.bilibili.com/video/BV14E411Y73s/?vd_source=47f96c172cbb3b3f428698faafd995bc"
+            },
+            {
+              "link_title": "音你成名-Sad Sometimes",
+              "date": "2019-09-20",
+              "link": "https://www.bilibili.com/video/BV1Ca411F7yF/"
+            },
+            {
+              "link_title": "嗨唱转起来-倒数",
+              "date": "2019-11-22",
+              "link": "https://weibo.com/6961164430/4666099033445836"
+            },
+            {
+              "link_title": "嗨唱转起来-爱不单行",
+              "date": "2019-11-22",
+              "link": "https://weibo.com/6961164430/4666099139087599"
+            },
+            {
+              "link_title": "嗨唱转起来-也许明天",
+              "date": "2019-11-22",
+              "link": "https://weibo.com/6961164430/4666099805458136"
+            }
+          ],
+          "index": 3
+        },
+        {
+          "type": "ConcertItemSection",
+          "index": 4,
+          "title": "2019年晚会/盛典汇总",
+          "tabs": [
+            {
+              "id": "part1",
+              "label": "1-12月",
+              "backgroundImage": "/src/assets/background/History2024.jpg",
+              "imageTitle": "2019年1-12月晚会",
+              "imageCaption": "新年晚会、春晚等精彩回顾",
+              "items": [
+                {
+                    "title": "幸福进万家文艺演出",
+                    "date": "表演日期：2019-02-07，表演曲目：光年之外",
+                    "url": "https://www.bilibili.com/video/BV1wv411W7Ct/?vd_source=47f96c172cbb3b3f428698faafd995bc",
+                    "image": "/src/assets/party/2019/2019-02-07.jpg"
+                },
+                {
+                  "title": "遵义春晚",
+                  "date": "表演日期：2019-02-14，表演曲目：打开",
+                  "url": "https://www.bilibili.com/video/BV1zA411x7Zj/",
+                  "image": "/src/assets/party/2019/2019-02-14.jpg"
+                },
+                {
+                  "title": "罗甸县2019年罗甸籍歌手春节大联欢",
+                  "date": "表演日期：2019-02-15，表演曲目：起风了，天下无双，左手指月，光年之外，我相信",
+                  "url": "https://www.bilibili.com/video/BV1hx411R7pS/",
+                  "image": "/src/assets/party/2019/2019-02-15.jpg"
+                },
+                {
+                  "title": "五四晚会",
+                  "date": "表演日期：2019-05-04， 表演曲目：不忘初心",
+                  "url": "https://www.bilibili.com/video/BV13z4y1r7hv",
+                  "image": "/src/assets/party/2019/2019-05-04.jpg"
+                },
+                {
+                  "title": "北大十佳歌手决赛",
+                  "date": "表演日期：2019-05-19， 表演曲目：左手指月",
+                  "url": "https://www.bilibili.com/video/BV1bL4y1h7iT",
+                  "image": "/src/assets/party/2019/2019-05-19.jpg"
+                },
+                {
+                  "title": "中央音乐学院英语金曲之夜",
+                  "date": "表演日期：2019-05-26， 表演曲目：If I were a boy，Hello",
+                  "url": "https://www.bilibili.com/video/BV1MK4y1f7xx",
+                  "image": "/src/assets/party/2019/2019-05-26.jpg"
+                },
+                {
+                  "title": "青春为祖国歌唱高校拉歌活动",
+                  "date": "表演日期：2019-06-06， 表演曲目：我和我的祖国，在灿烂阳光下",
+                  "url": "https://www.bilibili.com/video/BV1bg4y117Nf",
+                  "image": "/src/assets/party/2019/2019-06-06.jpg"
+                },
+                {
+                  "title": "清华毕业晚会",
+                  "date": "表演日期：2019-06-16， 表演曲目：不能说的秘密",
+                  "url": "https://www.bilibili.com/video/BV1bz4y1k7MZ",
+                  "image": "/src/assets/party/2019/2019-06-16.jpg"
+                },
+                {
+                  "title": "镜子说音乐会",
+                  "date": "表演日期：2019-06-29， 表演曲目：人间四月",
+                  "url": "https://www.bilibili.com/video/BV1xL411b76Y/",
+                  "image": "/src/assets/party/2019/2019-06-29.jpg"
+                },
+                {
+                  "title": "鹿女湖国际音乐节",
+                  "date": "表演日期：2019-08-18， 表演曲目：我们的爱，来自天堂的魔鬼，搁浅，不能说的秘密，左手指月",
+                  "url": "https://www.bilibili.com/video/BV1BV41187tL",
+                  "image": "/src/assets/party/2019/2019-08-18.jpg"
+                },
+                {
+                  "title": "全球中文音乐榜上榜",
+                  "date": "表演日期：2019-09-08， 表演曲目：天下无双",
+                  "url": "https://tv.cctv.cn/2019/09/08/VIDEWoMwa1WwmFZtchotZVpG190908.shtml",
+                  "image": "/src/assets/party/2019/2019-09-08.jpg"
+                },
+                {
+                  "title": "浙江大学青春歌会",
+                  "date": "表演日期：2019-09-15， 表演曲目：认真的青春",
+                  "url": "https://www.bilibili.com/video/BV1nE411Q7we/?vd_source=47f96c172cbb3b3f428698faafd995bc",
+                  "image": "/src/assets/party/2019/2019-09-15.jpg"
+                },
+                {
+                  "title": "中央音乐学院附中声乐学科恢复建制30周年音乐会",
+                  "date": "表演日期：2019-10-13， 表演曲目：美丽可爱的光",
+                  "url": "https://www.bilibili.com/video/BV1sU4y1t77p/",
+                  "image": "/src/assets/party/2019/2019-10-13.jpg"
+                },
+                {
+                  "title": "北京青年音乐节醇音计划启动仪式-part1",
+                  "date": "表演日期：2019-10-17， 表演曲目：爱无痕",
+                  "url": "https://www.bilibili.com/video/BV1KE411y7dZ/",
+                  "image": "/src/assets/party/2019/2019-10-17_1.jpg"
+                },
+                {
+                  "title": "北京青年音乐节醇音计划启动仪式-part2",
+                  "date": "表演日期：2019-10-17， 表演曲目：假装",
+                  "url": "https://www.bilibili.com/video/BV1TE411y7Mo/",
+                  "image": "/src/assets/party/2019/2019-10-17_2.jpg"
+                },
+                {
+                  "title": "全球中文音乐榜上榜-part1",
+                  "date": "表演日期：2019-10-19， 表演曲目：最美的太阳",
+                  "url": "https://www.bilibili.com/video/BV1pb4y1Q7zf",
+                  "image": "/src/assets/party/2019/2019-10-19_1.jpg"
+                },
+                {
+                  "title": "全球中文音乐榜上榜-part2",
+                  "date": "表演日期：2019-10-19， 表演曲目：我的未来不是梦",
+                  "url": "https://www.bilibili.com/video/BV1b64y1D7Cb",
+                  "image": "/src/assets/party/2019/2019-10-19_2.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
