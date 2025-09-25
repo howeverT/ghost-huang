@@ -1,4 +1,5 @@
 <template>
+  <dom-monitor />
   <div class="scroll-container">
     <div class="spacer" /> <!-- 顶部空白，保持滚动 -->
 
@@ -36,17 +37,21 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue"
+import DomMonitor from '@/components/Card/MiniCard/DomMonitor.vue'
 
 const star = ref<SVGTextElement | null>(null)
 const starContainer = ref<HTMLDivElement | null>(null)
 
 let distanceTrigger = 0
 let distanceEdge = 0
+// 控制绘制速率的系数，值越小绘制越慢
+const drawSpeedFactor = 0.2  // 原来的速率是1，现在减慢到一半
 
 const updateDistances = () => {
   if (!starContainer.value) return
   distanceTrigger = starContainer.value.offsetTop
-  distanceEdge = starContainer.value.offsetHeight + window.innerHeight
+  // 增加需要滚动的距离来减慢绘制
+  distanceEdge = (starContainer.value.offsetHeight + window.innerHeight) / drawSpeedFactor
 }
 
 const onScroll = () => {
@@ -90,11 +95,10 @@ onUnmounted(() => {
 
 .star-container {
   position: sticky;
-  top: 20vh;
-  /* 向右移动50%的视口宽度 */
-  left: 110%;
-  transform: translateX(-25%); /* 调整位置，使中心点更合理 */
-  width: 400px;  /* 增加宽度以适应文字 */
+  top: -10vh;
+  left: 200%;
+  transform: translateX(-25%);
+  width: 400px;
   height: 200px;
   margin-bottom: 5rem;
 }
