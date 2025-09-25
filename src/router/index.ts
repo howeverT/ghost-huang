@@ -77,7 +77,7 @@ const router = createRouter({
     {
       path: '/dev',
       name: 'dev',
-      component: () => import('../components/Card/BackGPage.vue'),
+      component: () => import('../components/Card/SingStage.vue'),
     },
   ],
 })
