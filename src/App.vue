@@ -75,6 +75,7 @@ const customMenuItems = [
       { name: '2021', path: '/history/2021' },
       { name: '2020', path: '/history/2020' },
       { name: '2019', path: '/history/2019' },
+      { name: '2018', path: '/history/2018' }
     ],
   },
   {

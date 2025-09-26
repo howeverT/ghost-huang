@@ -75,6 +75,11 @@ const router = createRouter({
       component: () => import('../views/CollectionView.vue'),
     },
     {
+      path: '/collection/dream',
+      name: 'collection-dream',
+      component: () => import('../views/CollectionView.vue'),
+    },
+    {
       path: '/dev',
       name: 'dev',
       component: () => import('../components/Card/BackGPage.vue'),

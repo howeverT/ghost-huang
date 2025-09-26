@@ -1,0 +1,135 @@
+[
+    {
+      "title": "考古区",
+      "year": "2018",
+      "content": [
+        {
+          "type": "HeroSection",
+          "title": "一八年",
+          "title_align": "left",
+          "title_margin": "0",
+          "background_image": "/src/assets/background/History2018.jpg",
+          "index": 1
+        },
+        {
+          "type": "ContentSection",
+          "title": "要你打开，茫茫星海以一个姿态",
+          "paragraphs": [
+            "我要你打开，当悲伤不断重复眼前向你索要一点点坦白，要你打开，在用尽最后一分努力后笑了",
+            "我想你在此刻应该做的，害怕结果还是害怕错过问自己，一句我在怕什么，如果没有明天给我浪费或沉默",
+            "我要你打开，把一颗谦卑的心放回到尘埃"
+          ],
+          "index": 2
+        },
+        {
+          "type": "OverlapSecondSection",
+          "title": "综艺合集",
+          "content": "",
+          "background_image": "/src/assets/variety/background/Variety2018.jpg",
+          "links": [
+            {
+              "link_title": "梦想的声音-合集",
+              "date": "2018-12-21",
+              "link": "/collection/dream"
+            }
+          ],
+          "index": 3
+        },
+        {
+          "type": "ConcertItemSection",
+          "index": 4,
+          "title": "2018年晚会/盛典汇总",
+          "tabs": [
+            {
+              "id": "part1",
+              "label": "1-12月",
+              "backgroundImage": "/src/assets/background/History2024.jpg",
+              "imageTitle": "2019年1-12月晚会",
+              "imageCaption": "新年晚会、春晚等精彩回顾",
+              "items": [
+                {
+                    "title": "相亲相爱2018共迎新年",
+                    "date": "表演日期：2018-01-01，表演曲目：You raise me up，大鱼，征战",
+                    "url": "https://www.bilibili.com/video/BV1Ez4y1k76T/",
+                    "image": "/src/assets/party/2018/2018-01-01.jpg"
+                },
+                {
+                  "title": "央音寄不出的情书",
+                  "date": "表演日期：2018-01-02，表演曲目：还可以爱吗，征战",
+                  "url": "https://www.bilibili.com/video/BV1iy4y1q77z/",
+                  "image": "/src/assets/party/2018/2018-01-02.jpg"
+                },
+                {
+                  "title": "2018罗甸晚会罗甸",
+                  "date": "表演日期：2018-02-10，表演曲目：征战，凉凉",
+                  "url": "https://www.bilibili.com/video/BV16v411t7CP/",
+                  "image": "/src/assets/party/2018/2018-02-10.jpg"
+                },
+                {
+                  "title": "9000岁的宋词音乐会",
+                  "date": "表演日期：2018-06-29，表演曲目：暗香",
+                  "url": "https://www.bilibili.com/video/BV1zr4y1c7kx/",
+                  "image": "/src/assets/party/2018/2018-06-29.jpg"
+                },
+                {
+                  "title": "多彩贵州歌唱大赛-part1",
+                  "date": "表演日期：2018-08-30，表演曲目：All by myself，心比天高",
+                  "url": "https://www.bilibili.com/video/BV1n54y167oN/",
+                  "image": "/src/assets/party/2018/2018-08-30_1.jpg"
+                },
+                {
+                  "title": "多彩贵州歌唱大赛-part2",
+                  "date": "表演日期：2018-08-30，表演曲目：美丽可爱的光",
+                  "url": "https://www.bilibili.com/video/BV15f4y1976H/",
+                  "image": "/src/assets/party/2018/2018-08-30_2.jpg"
+                },
+                {
+                  "title": "多彩贵州歌唱大赛-part3",
+                  "date": "表演日期：2018-08-30，表演曲目：绿色大爱",
+                  "url": "https://www.bilibili.com/video/BV1554y1S7wA/",
+                  "image": "/src/assets/party/2018/2018-08-30_3.jpg"
+                },
+                {
+                  "title": "多彩贵州歌唱大赛-part4",
+                  "date": "表演日期：2018-08-30，表演曲目：向往",
+                  "url": "https://www.bilibili.com/video/BV1n741127rH/",
+                  "image": "/src/assets/party/2018/2018-08-30_4.jpg"
+                },
+                {
+                  "title": "2018梦想+央音校园歌手大赛",
+                  "date": "表演日期：2018-10-14，表演曲目：那些你很冒险的梦，修炼爱情",
+                  "url": "https://www.bilibili.com/video/BV1VK4y177fm/",
+                  "image": "/src/assets/party/2018/2018-10-14.jpg"
+                },
+                {
+                  "title": "北京青年艺术节原创音乐会",
+                  "date": "表演日期：2018-10-16，表演曲目：人间四月，打开",
+                  "url": "https://www.bilibili.com/video/BV1h541157AK/",
+                  "image": "/src/assets/party/2018/2018-10-16.jpg"
+                },
+                {
+                  "title": "2018梦想+央音校园歌手大赛决赛",
+                  "date": "表演日期：2018-11-02，表演曲目：All by myself，打开",
+                  "url": "https://www.bilibili.com/video/BV1VK4y177fm?vd_source=47f96c172cbb3b3f428698faafd995bc&p=4&spm_id_from=333.788.videopod.episodes",
+                  "image": "/src/assets/party/2018/2018-11-02.jpg"
+                },
+                {
+                  "title": "2018百花争延首都高校歌手大赛",
+                  "date": "表演日期：2018-12-03，表演曲目：All by myself，打开",
+                  "url": "https://www.bilibili.com/video/BV19y4y1675q/",
+                  "image": "/src/assets/party/2018/2018-12-03.jpg"
+                },
+                {
+                  "title": "2018百花争延首都高校歌手大赛",
+                  "date": "表演日期：2018-12-24，表演曲目：All by myself，打开",
+                  "url": "https://www.bilibili.com/video/BV14p4y1r7nz/",
+                  "image": "/src/assets/party/2018/2018-12-24.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
