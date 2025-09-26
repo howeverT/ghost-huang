@@ -54,7 +54,7 @@ const starContainer = ref<HTMLDivElement | null>(null)
 let distanceTrigger = 0
 let distanceEdge = 0
 // 控制绘制速率的系数，值越小绘制越慢
-const drawSpeedFactor = 0.2  // 原来的速率是1，现在减慢到一半
+const drawSpeedFactor = 0.1  // 原来的速率是1，现在减慢到一半
 
 const updateDistances = () => {
   if (!starContainer.value) return

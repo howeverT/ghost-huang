@@ -345,7 +345,7 @@ const navigatorInfo = ref<NavigatorInfo>({
   onLine: navigator.onLine
 });
 
-let monitorTimer: NodeJS.Timeout | null = null;
+let monitorTimer: ReturnType<typeof setTimeout> | null = null;
 let highlightedElements = new Set<HTMLElement>();
 
 // 多级面板展开状态

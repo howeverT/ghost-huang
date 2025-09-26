@@ -2,7 +2,7 @@
   <div class="stage-container">
     <!-- 背景层 -->
     <section class="parallax layer background" ref="bgRef">
-      <img src="/Home/舞台/舞台.png" alt="舞台背景" />
+      <img :src="stageBg" alt="舞台背景" />
     </section>
 
     <!-- 人像层 -->
@@ -10,7 +10,7 @@
       v-for="(portrait, index) in portraits"
       :key="index"
       class="parallax layer portrait"
-      :ref="el => portraitRefs[index] = el"
+      :ref="el => portraitRefs[index] = el as HTMLElement | null"
       :style="getPortraitStyle(portrait)"
     >
       <img :src="portrait.src" :alt="'人像' + index" />
@@ -19,32 +19,38 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue"
+import { ref, onMounted, type CSSProperties } from "vue"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
+// 让 gsap 能用 scrollTrigger
 gsap.registerPlugin(ScrollTrigger)
 
+// ✅ 静态资源用 import，避免 vite 构建时报错
+import stageBg from "/Home/stage/stage.png"
+import portrait1 from "/Home/stage/genai.png"
+import portrait2 from "/Home/stage/genai2.png"
+
+// 背景层 ref
 const bgRef = ref<HTMLElement | null>(null)
-const portraitRefs: HTMLElement[] = [] // 用回调收集多个 DOM
 
+// 人像层 refs
+const portraitRefs: (HTMLElement | null)[] = []
+
+// 人像数据
 const portraits = [
-  { src: "/Home/舞台/生成主体图片.png", left: 100, top: 18 }, // 左边
-
-  { src: "/Home/舞台/生成1.png", left: 60, top: 16 },
-
-  // 右边
+  { src: portrait1, left: 100, top: 18 },
+  { src: portrait2, left: 60, top: 16 },
 ]
 
-const getPortraitStyle = (portrait: { left: number; top: number }) => {
-  return {
-    position: "absolute",
-    left: portrait.left + "%",
-    top: portrait.top + "%",
-    transform: "translate(-50%, -100%) scale(1)",
-    opacity: 0
-  }
-}
+// 样式生成函数，确保符合 Vue 的 CSSProperties 类型
+const getPortraitStyle = (portrait: { left: number; top: number }): CSSProperties => ({
+  position: "absolute",
+  left: portrait.left + "%",
+  top: portrait.top + "%",
+  transform: "translate(-50%, -100%) scale(1)",
+  opacity: 0,
+})
 
 onMounted(() => {
   if (!bgRef.value || portraitRefs.length === 0) return
@@ -63,6 +69,7 @@ onMounted(() => {
 
   // 每个人像独立动画
   portraitRefs.forEach((el) => {
+    if (!el) return
     gsap.set(el, { y: 0, opacity: 0 })
     const tl = gsap.timeline({
       scrollTrigger: {
