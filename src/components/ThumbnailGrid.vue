@@ -1,85 +1,82 @@
 <template>
-  <div class="thumbnail-section">
-    <div class="content-container">
-      <!-- 标题容器 -->
-      <div v-if="title" class="title-container">
-        <h2>{{ title }}</h2>
-      </div>
-      <!-- 项目容器 -->
-      <div class="items-container">
+  <div class="drawerContainer" ref="drawerContainerRef">
+    <!-- 左侧目录面板 -->
+    <div class="directoryPanel" :style="{ flex: isExpanded ? '0 0 30%' : '0 0 20%' }">
+      <div class="directoryItems">
         <div
           v-for="(item, index) in currentPageItems"
           :key="index"
-          class="frame-item"
-          @click="handleItemClick(item)"
+          class="directoryItem"
+          :class="{
+            active: activeIndex === index,
+            expanded: activeIndex === index && isExpanded
+          }"
+          @click="selectItem(index)"
         >
-          <div class="frame-border">
-            <div class="frame-content">
-              <div
-                class="frame-image"
-                :style="{
-                  backgroundImage: `url(${getImagePath(item.image || '')})`,
-                }"
-              ></div>
-              <div class="frame-title">
-                {{ item.title }}
-              </div>
-            </div>
+          <div class="itemHeader">
+            <span class="itemNumber">{{ index + 1 }}</span>
+            <span class="itemTitle">{{ item.title }}</span>
+          </div>
+          <div class="itemContent" v-if="activeIndex === index && isExpanded">
+            <div class="itemDescription">{{ item.description || '' }}</div>
           </div>
         </div>
       </div>
-      <!-- 分页按钮 -->
-      <div class="pagination-container">
-        <button
-          class="pagination-btn prev-btn"
-          :disabled="currentPage === 0 || isTransitioning"
-          @click="previousPage"
+    </div>
+
+    <!-- 分割线 -->
+    <div class="divider" @click="handleDividerClick">
+      <div class="dividerIcon">{{ isExpanded ? '❮' : '❯' }}</div>
+    </div>
+
+    <!-- 右侧内容面板 -->
+    <div class="contentPanel">
+      <div
+        class="contentScrollWrapper"
+        ref="contentScroll"
+        :class="{ 'scroll-disabled': activeIndex === -1 }"
+      >
+        <div
+          class="contentCard"
+          v-for="(item, index) in currentPageItems"
+          :key="index"
+          :data-index="index"
+          :class="{ active: activeIndex === index }"
+          ref="contentCards"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M15 18L9 12L15 6"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-        <span class="page-info">{{ currentPage + 1 }} / {{ totalPages }}</span>
-        <button
-          class="pagination-btn next-btn"
-          :disabled="currentPage === totalPages - 1 || isTransitioning"
-          @click="nextPage"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M9 18L15 12L9 6"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
+          <div
+            class="cardImage"
+            :style="{ backgroundImage: `url(${getImagePath(item.image || '')})` }"
+          >
+            <div class="cardOverlay">
+              <div class="cardHeader">
+                <div class="cardSubtitle">{{ item.subtitle || '' }}</div>
+                <div class="cardTitle">{{ item.title }}</div>
+              </div>
+              <div class="cardDescription">{{ item.description || '' }}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { getImagePath } from '@/utils/pathUtils'
 
 interface ThumbnailItem {
   image?: string
   title: string
+  description?: string
+  subtitle?: string
   link?: string
 }
 
 interface Props {
   items?: ThumbnailItem[]
   itemsPerPage?: number
-  title?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -91,376 +88,313 @@ const props = withDefaults(defineProps<Props>(), {
     { image: getImagePath('/src/assets/background/History2024.jpg'), title: '历史回顾' },
     { image: getImagePath('/src/assets/background/background.jpg'), title: '精彩瞬间' },
   ],
-  itemsPerPage: 4,
-  title: '',
+  itemsPerPage: 4
 })
 
 const currentPage = ref(0)
-const isTransitioning = ref(false)
-
-// 计算总页数
-const totalPages = computed(() => {
-  return Math.ceil(props.items.length / props.itemsPerPage)
-})
-
-// 计算当前页显示的项目
+const totalPages = computed(() => Math.ceil(props.items.length / props.itemsPerPage))
 const currentPageItems = computed(() => {
   const start = currentPage.value * props.itemsPerPage
   const end = start + props.itemsPerPage
   return props.items.slice(start, end)
 })
 
-// 下一页
-const nextPage = () => {
-  if (isTransitioning.value || currentPage.value >= totalPages.value - 1) {
-    return
+const activeIndex = ref(-1)
+const isExpanded = ref(false)
+let isScrolling = false
+
+const contentScroll = ref<HTMLElement | null>(null)
+const contentCards = ref<HTMLElement[]>([])
+const drawerContainerRef = ref<HTMLElement | null>(null)
+
+const handleDividerClick = () => {
+  isExpanded.value = !isExpanded.value
+  if (!isExpanded.value) {
+    activeIndex.value = -1
+  } else if (activeIndex.value === -1) {
+    activeIndex.value = 0
+    scrollToContent(0)
   }
-  fadeOutAndChange(() => {
-    currentPage.value++
+}
+
+const selectItem = (index: number) => {
+  isScrolling = true
+  activeIndex.value = index
+  isExpanded.value = true
+  scrollToContent(index).then(() => {
+    setTimeout(() => (isScrolling = false), 500)
   })
 }
 
-// 上一页
-const previousPage = () => {
-  if (isTransitioning.value || currentPage.value <= 0) {
-    return
-  }
-  fadeOutAndChange(() => {
-    currentPage.value--
+const scrollToContent = (index: number) => {
+  return new Promise<void>((resolve) => {
+    if (contentScroll.value && activeIndex.value !== -1) {
+      const card = contentCards.value[index]
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        setTimeout(resolve, 300)
+      } else resolve()
+    } else resolve()
   })
 }
 
-// 渐隐渐显切换函数
-const fadeOutAndChange = (changeCallback: () => void) => {
-  const itemsContainer = document.querySelector(
-    '.thumbnail-section .items-container',
-  ) as HTMLElement
+let contentObserver: IntersectionObserver | null = null
+let rootObserver: IntersectionObserver | null = null
 
-  isTransitioning.value = true
-
-  if (itemsContainer) {
-    // 渐隐
-    itemsContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease'
-    itemsContainer.style.opacity = '0'
-    itemsContainer.style.transform = 'translateY(20px)'
-
-    // 延迟执行切换
-    setTimeout(() => {
-      changeCallback()
-
-      // 渐显
-      setTimeout(() => {
-        if (itemsContainer) {
-          itemsContainer.style.opacity = '1'
-          itemsContainer.style.transform = 'translateY(0)'
-        }
-        isTransitioning.value = false
-      }, 50)
-    }, 300)
-  } else {
-    // 如果没有找到容器，直接执行切换
-    changeCallback()
-    isTransitioning.value = false
-  }
+const contentObserverCallback = (entries: IntersectionObserverEntry[]) => {
+  if (isScrolling) return
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const index = parseInt(entry.target.getAttribute('data-index') || '-1')
+      if (index !== -1 && activeIndex.value !== index) activeIndex.value = index
+    }
+  })
 }
 
-// 处理缩略图点击
-const handleItemClick = (item: ThumbnailItem) => {
-  if (item.link) {
-    window.open(item.link, '_blank')
-  }
+const rootObserverCallback = (entries: IntersectionObserverEntry[]) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting && isExpanded.value) handleDividerClick()
+  })
 }
+
+const initContentObserver = () => {
+  if (!contentScroll.value) return
+  contentObserver = new IntersectionObserver(contentObserverCallback, {
+    root: contentScroll.value,
+    rootMargin: '0px 0px -95% 0px',
+    threshold: 0
+  })
+  contentCards.value.forEach(card => contentObserver!.observe(card))
+}
+
+const initRootObserver = () => {
+  if (!drawerContainerRef.value) return
+  rootObserver = new IntersectionObserver(rootObserverCallback, {
+    root: null,
+    threshold: 0
+  })
+  rootObserver.observe(drawerContainerRef.value)
+}
+
+onMounted(() => {
+  contentCards.value = Array.from(document.querySelectorAll('.contentCard')) as HTMLElement[]
+  initContentObserver()
+  initRootObserver()
+})
+
+onUnmounted(() => {
+  contentObserver?.disconnect()
+  rootObserver?.disconnect()
+})
 </script>
 
 <style scoped>
-.el-carousel__item h3 {
-  color: #475669;
-  opacity: 0.75;
-  line-height: 200px;
-  margin: 0;
-  text-align: center;
-}
-
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
-}
-
-.thumbnail-section {
+.drawerContainer {
+  display: flex;
   width: 100%;
-  padding: 2rem 1rem;
-  flex-shrink: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #d32f2f 0%, #ffd700 100%);
+  overflow: hidden;
 }
 
-.content-container {
-  width: 100%;
+/* 目录面板 */
+.directoryPanel {
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.title-container {
-  margin-bottom: 2rem;
-  width: 100%;
-  max-width: calc(100vw - 3rem);
-  display: flex;
-  justify-content: center;
-}
-
-.title-container h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-  margin: 0;
-  font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
-}
-
-.items-container {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  max-width: calc(100vw - 3rem);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-}
-
-.frame-item {
-  flex-shrink: 0;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.frame-item:hover {
-  transform: scale(1.05);
-}
-
-.frame-border {
-  width: calc(25% - 1.125rem);
-  min-width: 22rem;
-  height: 32rem;
+  transition: flex 0.3s ease;
+  background-image: url('/Home/drawer/back1.jpg');
+  background-size: cover;
+  background-position: center;
   position: relative;
-  flex-shrink: 0;
 }
 
-.frame-content {
-  width: 100%;
-  height: 100%;
+.directoryPanel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+.directoryItems {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.directoryItem {
+  display: flex;
+  flex-direction: column;
+  min-height: 80px;
+  padding: 0 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
   border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.directoryItem:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.directoryItem.active {
+  background: rgba(255, 255, 255, 0.9);
+  color: #b71c1c;
+}
+
+.directoryItem.expanded {
+  min-height: 180px;
+}
+
+.itemHeader {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+.itemNumber {
+  font-size: 32px;
+  font-weight: bold;
+  margin-right: 15px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.directoryItem.active .itemNumber {
+  color: #d32f2f;
+}
+
+.itemTitle {
+  font-size: 22px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.directoryItem.active .itemTitle {
+  color: #b71c1c;
+}
+
+.itemContent {
+  padding: 10px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+.itemDescription {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+.directoryItem.active .itemDescription {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 分割线 */
+.divider {
+  width: 10px;
+  background: #C9171D;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.divider:hover {
+  background: rgba(211, 47, 47, 0.8);
+}
+
+.dividerIcon {
+  position: absolute;
+  color: white;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 内容面板 */
+.contentPanel {
+  flex: 1;
   overflow: hidden;
   position: relative;
 }
 
-.frame-image {
+.contentScrollWrapper {
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+.contentScrollWrapper.scroll-disabled {
+  overflow-y: hidden;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
+/* 内容卡片：图片占大部分 */
+.contentCard {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.cardImage {
   width: 100%;
   height: 100%;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-}
-
-.frame-title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1.5rem 1rem 1rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: white;
-  text-align: center;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.6) 40%,
-    rgba(0, 0, 0, 0.2) 80%,
-    transparent 100%
-  );
-}
-
-/* 响应式布局 */
-@media (min-width: 1800px) {
-  .title-container,
-  .items-container {
-    max-width: calc(100vw - 4rem);
-  }
-
-  .frame-border {
-    width: calc(25% - 1.875rem);
-    min-width: 28rem;
-    height: 38rem;
-  }
-
-  .items-container {
-    gap: 2.5rem;
-  }
-}
-
-@media (min-width: 1600px) and (max-width: 1799px) {
-  .title-container,
-  .items-container {
-    max-width: calc(100vw - 4rem);
-  }
-
-  .frame-border {
-    width: calc(25% - 1.5rem);
-    min-width: 26rem;
-    height: 36rem;
-  }
-
-  .items-container {
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 1400px) {
-  .title-container,
-  .items-container {
-    max-width: calc(100vw - 3rem);
-  }
-
-  .frame-border {
-    width: calc(25% - 1.35rem);
-    min-width: 24rem;
-    height: 34rem;
-  }
-
-  .items-container {
-    gap: 1.8rem;
-  }
-}
-
-@media (max-width: 1200px) {
-  .title-container,
-  .items-container {
-    max-width: calc(100vw - 2rem);
-  }
-
-  .title-container h2 {
-    font-size: 2.2rem;
-  }
-
-  .frame-border {
-    width: calc(25% - 1.125rem);
-    min-width: 22rem;
-    height: 32rem;
-  }
-
-  .items-container {
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .title-container,
-  .items-container {
-    max-width: calc(100vw - 1.5rem);
-  }
-
-  .title-container h2 {
-    font-size: 2rem;
-  }
-
-  .frame-border {
-    width: calc(50% - 0.6rem);
-    min-width: 18rem;
-    height: 28rem;
-  }
-
-  .items-container {
-    gap: 1.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .title-container,
-  .items-container {
-    max-width: 100%;
-  }
-
-  .title-container h2 {
-    font-size: 1.8rem;
-  }
-
-  .frame-border {
-    width: calc(50% - 0.6rem);
-    min-width: 160px;
-    height: 22rem;
-  }
-
-  .items-container {
-    gap: 1.2rem;
-  }
-
-  .frame-title {
-    font-size: 1rem;
-    padding: 1rem 0.8rem 0.8rem;
-  }
-}
-
-/* 分页按钮样式 */
-.pagination-container {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
+  align-items: flex-end;
+  justify-content: flex-start;
 }
 
-.pagination-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border: 2px solid #333;
-  background-color: white;
-  color: #333;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0;
+.cardOverlay {
+  width: 100%;
+  padding: 40px;
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  backdrop-filter: blur(4px);
 }
 
-.pagination-btn:hover:not(:disabled) {
-  background-color: #333;
-  color: white;
-  transform: scale(1.1);
+.cardHeader {
+  margin-bottom: 20px;
 }
 
-.pagination-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  transform: none;
+.cardSubtitle {
+  font-size: 18px;
+  opacity: 0.8;
 }
 
-.page-info {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #333;
-  min-width: 80px;
-  text-align: center;
+.cardTitle {
+  font-size: 42px;
+  font-weight: bold;
 }
 
-@media (max-width: 768px) {
-  .pagination-container {
-    margin-top: 1.5rem;
-    gap: 0.8rem;
-  }
-
-  .pagination-btn {
-    width: 40px;
-    height: 40px;
-  }
-
-  .page-info {
-    font-size: 1rem;
-    min-width: 60px;
-  }
+.cardDescription {
+  font-size: 18px;
+  line-height: 1.5;
 }
 </style>

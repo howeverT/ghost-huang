@@ -77,7 +77,7 @@ const router = createRouter({
     {
       path: '/dev',
       name: 'dev',
-      component: () => import('../components/Card/StickLogo.vue'),
+      component: () => import('../components/Card/Drawer.vue'),
     },
   ],
 })
