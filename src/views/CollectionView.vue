@@ -161,6 +161,8 @@ const loadData = async () => {
       jsonPath = getPageDataPath('collection/fresh.json')
     } else if (route.path === '/collection/mask') {
       jsonPath = getPageDataPath('collection/mask.json')
+    } else if (route.path === '/collection/dream') {
+      jsonPath = getPageDataPath('collection/dream.json')
     }
 
     const response = await fetch(jsonPath)

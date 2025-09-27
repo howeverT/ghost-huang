@@ -1,0 +1,73 @@
+[
+    {
+      "title": "考古区",
+      "year": "2017",
+      "content": [
+        {
+          "type": "HeroSection",
+          "title": "一七年",
+          "title_align": "left",
+          "title_margin": "0",
+          "background_image": "/src/assets/background/History2017.jpg",
+          "index": 1
+        },
+        {
+          "type": "ContentSection",
+          "title": "要你打开，茫茫星海以一个姿态",
+          "paragraphs": [
+            "我要你打开，当悲伤不断重复眼前向你索要一点点坦白，要你打开，在用尽最后一分努力后笑了",
+            "我想你在此刻应该做的，害怕结果还是害怕错过问自己，一句我在怕什么，如果没有明天给我浪费或沉默",
+            "我要你打开，把一颗谦卑的心放回到尘埃"
+          ],
+          "index": 2
+        },
+        {
+          "type": "ConcertItemSection",
+          "index": 3,
+          "title": "2017年晚会/盛典汇总",
+          "tabs": [
+            {
+              "id": "part1",
+              "label": "1-12月",
+              "backgroundImage": "/src/assets/background/History2024.jpg",
+              "imageTitle": "2017年1-12月晚会",
+              "imageCaption": "新年晚会、春晚等精彩回顾",
+              "items": [
+                {
+                    "title": "申式晚会",
+                    "date": "表演日期：2017-07-01，表演曲目：你，新的心跳",
+                    "url": "https://www.bilibili.com/video/BV1gy4y1S7KQ/",
+                    "image": "/src/assets/party/2017/2017-07-01.jpg"
+                },
+                {
+                  "title": "罗甸县艾力康电子商务商贸城项目推进会",
+                  "date": "表演日期：2017-08-14，表演曲目：All by myself，新的心跳",
+                  "url": "https://www.bilibili.com/video/BV1gy4y1S7KQ/",
+                  "image": "/src/assets/party/2017/2017-08-14.jpg"
+                },
+                {
+                  "title": "晚会饭拍",
+                  "date": "表演日期：2017-12-02，表演曲目：我要你",
+                  "url": "https://www.bilibili.com/video/BV1s54y147UX/",
+                  "image": "/src/assets/party/2017/2017-12-02.jpg"
+                },
+                {
+                  "title": "大一汇报",
+                  "date": "表演日期：2017-12-14，表演曲目：Pur dicesti",
+                  "url": "https://www.bilibili.com/video/BV1YG411P77S/",
+                  "image": "/src/assets/party/2017/2017-12-14.jpg"
+                },
+                {
+                  "title": "电影《爱无痕》新闻发布会",
+                  "date": "表演日期：2017-12-24，表演曲目：爱无痕",
+                  "url": "https://www.bilibili.com/video/BV1uE411q7Pg/",
+                  "image": "/src/assets/party/2017/2017-12-24.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  

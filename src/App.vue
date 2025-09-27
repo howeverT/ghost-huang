@@ -3,7 +3,7 @@
   <div class="app">
     <!-- 使用导航栏组件 -->
     <NavigationBar
-      :menu-items=customMenuItems
+      :menu-items="customMenuItems"
       :scroll-threshold="50"
       :hide-on-scroll="true"
       @menu-toggle="onMenuToggle"
@@ -74,6 +74,11 @@ const customMenuItems = [
       { name: '2022', path: '/history/2022' },
       { name: '2021', path: '/history/2021' },
       { name: '2020', path: '/history/2020' },
+      { name: '2019', path: '/history/2019' },
+      { name: '2018', path: '/history/2018' },
+      { name: '2017', path: '/history/2017' },
+      { name: '2016', path: '/history/2016' },
+      { name: '2015', path: '/history/2015' },
     ],
   },
   {
@@ -106,7 +111,7 @@ watch(
       pageVisible.value = true
       pageTransitioning.value = false
     }
-  }
+  },
 )
 
 // 导航栏事件处理器
@@ -153,7 +158,7 @@ const toggleMenu = () => {
 // 导出方法供其他组件使用
 defineExpose({
   closeMenu,
-  toggleMenu
+  toggleMenu,
 })
 </script>
 
@@ -185,7 +190,9 @@ defineExpose({
   align-items: center;
   justify-content: flex-start;
   padding: 0;
-  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  transition:
+    opacity 0.6s ease-in-out,
+    transform 0.6s ease-in-out;
   opacity: 1;
   transform: translateY(0);
 }

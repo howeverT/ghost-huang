@@ -1,0 +1,68 @@
+[
+    {
+      "date": "2018合集",
+      "title": "梦想的声音3",
+      "description": "",
+      "places": "",
+      "links": [
+        {
+          "subtitle": "EP09",
+          "links": [
+            {
+              "link_title": "EP09节目CUT",
+              "link": "https://weibo.com/2347708314/K1qRWqkjr",
+              "icon": "video"
+            },
+            {
+                "link_title": "《左手指月》",
+                "link": "https://www.bilibili.com/video/BV15f4y1m7gg/",
+                "icon": "video"
+            },
+            {
+              "link_title": "《那时的光》",
+              "link": "https://www.bilibili.com/video/BV1Zt4y1D7tE/",
+              "icon": "video"
+          }
+          ]
+        },
+        {
+          "subtitle": "EP10",
+          "links": [
+            {
+              "link_title": "EP10节目CUT",
+              "link": "https://weibo.com/2347708314/K1A94ETrr",
+              "icon": "video"
+            },
+            {
+                "link_title": "《天下无双》",
+                "link": "https://www.bilibili.com/video/BV1BA411Y7v2/",
+                "icon": "video"
+            }
+          ]
+        },
+        {
+          "subtitle": "EP12",
+          "links": [
+            {
+              "link_title": "EP12节目CUT",
+              "link": "https://weibo.com/2347708314/K1SBvEpYy",
+              "icon": "video"
+            },
+            {
+                "link_title": "《光阴的故事》",
+                "link": "https://www.bilibili.com/video/BV1sv4y1P74a/",
+                "icon": "video"
+            },
+            {
+              "link_title": "《一样的月光》",
+              "link": "https://www.bilibili.com/video/BV1J4411x7J2/",
+              "icon": "video"
+          }
+          ]
+        }
+      ],
+      "image": ["/src/assets/variety/dream/dream_18-12-21.jpg"],
+      "display": "left"
+    }
+  ]
+  

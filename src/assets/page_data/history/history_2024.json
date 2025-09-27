@@ -13,11 +13,11 @@
       },
       {
         "type": "ContentSection",
-        "title": "发行首张原创专辑《没语季节》",
+        "title": "我不害怕，不作罢，扭开门把",
         "paragraphs": [
-          "解约后成立个人工作室，开始独自发展。",
-          "再度登上歌手舞台。",
-          "北京《宇宙无敌号》个人演唱会，相约明年巡演。"
+          "会成为灯塔，或视为箭靶，确认的方法，先解下盔甲",
+          "笑就笑我傻，高歌至沙哑，盲眼选拔，与梦对打",
+          "看回转木马，兜圈能去哪，自由的筹码，是不准想家，要通过关卡"
         ],
         "index": 2
       },
@@ -89,9 +89,9 @@
         "tabs": [
           {
             "id": "part1",
-            "label": "1-4月",
+            "label": "1-12月",
             "backgroundImage": "/src/assets/background/History2024.jpg",
-            "imageTitle": "2024年1-4月晚会",
+            "imageTitle": "2024年1-12月晚会",
             "imageCaption": "新年晚会、春晚等精彩回顾",
             "items": [
               {
@@ -141,16 +141,7 @@
                 "date": "表演日期：2024-04-12，演唱曲目：红星闪闪亮",
                 "url": "https://weibo.com/6961164430/5022467907392331",
                 "image": "/src/assets/party/2024/2024-04-12_2.jpg"
-              }
-            ]
-          },
-          {
-            "id": "part2",
-            "label": "5-8月",
-            "backgroundImage": "/src/assets/background/History2024.jpg",
-            "imageTitle": "2024年5-8月晚会",
-            "imageCaption": "毕业歌会、诗画中国等精彩回顾",
-            "items": [
+              },
               {
                 "title": "央视五四晚会",
                 "date": "表演日期：2024-05-04，演唱曲目：青春遇见",
@@ -216,16 +207,7 @@
                 "date": "表演日期：2024-08-29, 采访",
                 "url": "https://weibo.com/6961164430/5072878756170338",
                 "image": "/src/assets/party/2024/2024-08-29.jpg"
-              }
-            ]
-          },
-          {
-            "id": "part3",
-            "label": "9-12月",
-            "backgroundImage": "/src/assets/background/History2024.jpg",
-            "imageTitle": "2024年9-12月晚会",
-            "imageCaption": "中秋晚会、跨年晚会等精彩回顾",
-            "items": [
+              },
               {
                 "title": "中央广播电视台中秋晚会-part2",
                 "date": "表演日期：2024-09-07，探班采访",
