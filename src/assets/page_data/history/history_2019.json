@@ -55,8 +55,20 @@
           "index": 3
         },
         {
+          "type": "ThumbnailGrid",
+          "title": "音乐节合集",
+          "items": [
+            {
+              "image": "/src/assets/festival/2019/2019-08-18.jpg",
+              "link": "https://www.bilibili.com/video/BV1BV41187tL",
+              "title": "19.08.18 鹿女湖国际音乐节"
+            }
+          ],
+          "index": 4
+        },
+        {
           "type": "ConcertItemSection",
-          "index": 4,
+          "index": 5,
           "title": "2019年晚会/盛典汇总",
           "tabs": [
             {
@@ -119,12 +131,6 @@
                   "date": "表演日期：2019-06-29， 表演曲目：人间四月",
                   "url": "https://www.bilibili.com/video/BV1xL411b76Y/",
                   "image": "/src/assets/party/2019/2019-06-29.jpg"
-                },
-                {
-                  "title": "鹿女湖国际音乐节",
-                  "date": "表演日期：2019-08-18， 表演曲目：我们的爱，来自天堂的魔鬼，搁浅，不能说的秘密，左手指月",
-                  "url": "https://www.bilibili.com/video/BV1BV41187tL",
-                  "image": "/src/assets/party/2019/2019-08-18.jpg"
                 },
                 {
                   "title": "全球中文音乐榜上榜",

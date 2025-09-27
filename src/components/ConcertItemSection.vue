@@ -19,7 +19,13 @@
         </div>
       </div>
     </div>
-    <div class="waterfall-container">
+    <div
+      class="items-container"
+      :class="{
+        'waterfall-layout': currentItems.length >= 5,
+        'grid-layout': currentItems.length < 5,
+      }"
+    >
       <div
         v-for="(item, index) in currentItems"
         :key="index"
@@ -232,20 +238,95 @@ const handleItemClick = (item: ConcertItem) => {
     transform 0.3s ease;
 }
 
-.waterfall-container {
+/* 容器基础样式 */
+.items-container {
   max-width: calc(100vw - 3rem);
   margin: 0 auto;
-  column-count: 3;
-  column-gap: 2rem;
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
 }
 
+/* 瀑布流布局 - 当项目数量 >= 5 时 */
+.waterfall-layout {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+/* 网格布局 - 当项目数量 < 5 时 */
+.grid-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* 根据项目数量调整网格布局 */
+.grid-layout .parallax-item {
+  margin-bottom: 0;
+}
+
+/* 1个项目 - 居中显示 */
+.grid-layout .parallax-item:only-child {
+  flex: 0 0 400px;
+  max-width: 400px;
+}
+
+/* 2个项目 - 并排显示，不占满宽度 */
+.grid-layout .parallax-item:first-child:nth-last-child(2),
+.grid-layout .parallax-item:last-child:nth-child(2) {
+  flex: 0 0 500px;
+  max-width: 500px;
+}
+
+/* 3个项目 - 三列显示 */
+.grid-layout .parallax-item:first-child:nth-last-child(3),
+.grid-layout .parallax-item:nth-child(2):nth-last-child(2),
+.grid-layout .parallax-item:last-child:nth-child(3) {
+  flex: 0 0 calc(33.333% - 1.33rem);
+  max-width: calc(33.333% - 1.33rem);
+}
+
+/* 4个项目 - 2x2网格 */
+.grid-layout .parallax-item:first-child:nth-last-child(4),
+.grid-layout .parallax-item:nth-child(2):nth-last-child(3),
+.grid-layout .parallax-item:nth-child(3):nth-last-child(2),
+.grid-layout .parallax-item:last-child:nth-child(4) {
+  flex: 0 0 calc(50% - 1rem);
+  max-width: calc(50% - 1rem);
+}
+
 @media (max-width: 1200px) {
-  .waterfall-container {
+  .waterfall-layout {
     column-count: 2;
     column-gap: 1.5rem;
+  }
+
+  /* 中等屏幕下的网格布局调整 */
+  .grid-layout .parallax-item:only-child {
+    flex: 0 0 350px;
+    max-width: 350px;
+  }
+
+  .grid-layout .parallax-item:first-child:nth-last-child(2),
+  .grid-layout .parallax-item:last-child:nth-child(2) {
+    flex: 0 0 420px;
+    max-width: 420px;
+  }
+
+  .grid-layout .parallax-item:first-child:nth-last-child(3),
+  .grid-layout .parallax-item:nth-child(2):nth-last-child(2),
+  .grid-layout .parallax-item:last-child:nth-child(3) {
+    flex: 0 0 calc(50% - 0.75rem);
+    max-width: calc(50% - 0.75rem);
+  }
+
+  .grid-layout .parallax-item:first-child:nth-last-child(4),
+  .grid-layout .parallax-item:nth-child(2):nth-last-child(3),
+  .grid-layout .parallax-item:nth-child(3):nth-last-child(2),
+  .grid-layout .parallax-item:last-child:nth-child(4) {
+    flex: 0 0 calc(50% - 0.75rem);
+    max-width: calc(50% - 0.75rem);
   }
 
   .section-title {
@@ -262,9 +343,36 @@ const handleItemClick = (item: ConcertItem) => {
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
-  .waterfall-container {
+  .waterfall-layout {
     column-count: 2;
     column-gap: 1rem;
+  }
+
+  /* 平板屏幕下的网格布局调整 */
+  .grid-layout .parallax-item:only-child {
+    flex: 0 0 300px;
+    max-width: 300px;
+  }
+
+  .grid-layout .parallax-item:first-child:nth-last-child(2),
+  .grid-layout .parallax-item:last-child:nth-child(2) {
+    flex: 0 0 350px;
+    max-width: 350px;
+  }
+
+  .grid-layout .parallax-item:first-child:nth-last-child(3),
+  .grid-layout .parallax-item:nth-child(2):nth-last-child(2),
+  .grid-layout .parallax-item:last-child:nth-child(3) {
+    flex: 0 0 calc(50% - 0.5rem);
+    max-width: calc(50% - 0.5rem);
+  }
+
+  .grid-layout .parallax-item:first-child:nth-last-child(4),
+  .grid-layout .parallax-item:nth-child(2):nth-last-child(3),
+  .grid-layout .parallax-item:nth-child(3):nth-last-child(2),
+  .grid-layout .parallax-item:last-child:nth-child(4) {
+    flex: 0 0 calc(50% - 0.5rem);
+    max-width: calc(50% - 0.5rem);
   }
 
   .card-caption h3 {
@@ -380,9 +488,15 @@ const handleItemClick = (item: ConcertItem) => {
     font-size: 1rem;
   }
 
-  .waterfall-container {
+  .waterfall-layout {
     column-count: 1;
     column-gap: 1.5rem;
+  }
+
+  /* 移动端网格布局 - 所有项目都单列显示 */
+  .grid-layout .parallax-item {
+    flex: 0 0 100%;
+    max-width: 400px;
   }
 
   .parallax-item {
@@ -438,9 +552,15 @@ const handleItemClick = (item: ConcertItem) => {
     font-size: 0.9rem;
   }
 
-  .waterfall-container {
+  .waterfall-layout {
     column-count: 1;
     column-gap: 1rem;
+  }
+
+  /* 小屏幕移动端网格布局 - 所有项目都单列显示 */
+  .grid-layout .parallax-item {
+    flex: 0 0 100%;
+    max-width: 350px;
   }
 
   .parallax-item {
