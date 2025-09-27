@@ -310,7 +310,7 @@ onUnmounted(() => {
   display: flex;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(135deg, #d32f2f 0%, #ffd700 100%);
+  background: linear-gradient(135deg, #0a2463 0%, #3e92cc 100%);
   overflow: hidden;
 }
 
@@ -344,7 +344,7 @@ onUnmounted(() => {
 .title-container h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
+  color: #ffb6c1;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -375,23 +375,23 @@ onUnmounted(() => {
 }
 
 .directoryItem:hover { background: rgba(255, 255, 255, 0.3); transform: scale(1.02); }
-.directoryItem.active { background: rgba(255, 255, 255, 0.9); color: #b71c1c; }
+.directoryItem.active { background: rgba(255, 255, 255, 0.9); color: #0a2463; }
 .directoryItem.expanded { min-height: 180px; }
 
 .itemHeader { display: flex; align-items: center; height: 80px; }
 .itemNumber { font-size: 32px; font-weight: bold; margin-right: 15px; color: rgba(255, 255, 255, 0.8); }
-.directoryItem.active .itemNumber { color: #d32f2f; }
+.directoryItem.active .itemNumber { color: #0a2463; }
 .itemTitle { font-size: 22px; font-weight: 600; color: rgba(255, 255, 255, 0.9); }
-.directoryItem.active .itemTitle { color: #b71c1c; }
+.directoryItem.active .itemTitle { color: #0a2463; }
 
 .pagination-container { display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 1rem; position: relative; z-index: 1; }
 .pagination-btn { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 2px solid rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.9); border-radius: 50%; cursor: pointer; transition: all 0.3s ease; font-size: 0; backdrop-filter: blur(10px); }
-.pagination-btn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.9); color: #d32f2f; transform: scale(1.1); }
+.pagination-btn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.9); color: #0a2463; transform: scale(1.1); }
 .pagination-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
 .page-info { font-size: 1rem; font-weight: 600; color: rgba(255, 255, 255, 0.9); min-width: 60px; text-align: center; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); }
 
-.divider { width: 10px; background: #C9171D; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; position: relative; }
-.divider:hover { background: rgba(211, 47, 47, 0.8); }
+.divider { width: 10px; background: #0a2463; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; position: relative; }
+.divider:hover { background: rgba(10, 36, 99, 0.8); }
 .dividerIcon { position: absolute; color: white; font-size: 16px; background: rgba(0, 0, 0, 0.3); border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; }
 
 .contentPanel { flex: 1; padding: 40px; background-image: url('/Home/drawer/back2.jpg'); background-size: cover; background-position: center; position: relative; overflow: hidden; }
@@ -400,13 +400,13 @@ onUnmounted(() => {
 .contentScrollWrapper { height: 100%; overflow-y: auto; scroll-behavior: smooth; scroll-snap-type: y mandatory; }
 .contentScrollWrapper.scroll-disabled { overflow-y: hidden; scroll-behavior: auto; scroll-snap-type: none; }
 
-.contentCard { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; scroll-snap-align: start; color: #1B3A2D; position: relative; z-index: 1; }
+.contentCard { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; scroll-snap-align: start; color: #0a2463; position: relative; z-index: 1; }
 .cardHeader { margin-bottom: 20px; text-align: center; }
-.cardTitle { font-size: 48px; font-weight: bold; background: linear-gradient(45deg, #1B3A2D, #4F7A66); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.cardTitle { font-size: 48px; font-weight: bold; background: linear-gradient(45deg, #0a2463, #3e92cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .cardImage { flex: 1; width: 100%; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.1); cursor: pointer; transition: transform 0.3s ease; overflow: hidden; }
 .cardImage:hover { transform: scale(1.02); }
 .imageDisplay { width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; display: flex; align-items: center; justify-content: center; }
-.imagePlaceholder { font-size: 24px; color: rgba(27, 58, 45, 0.8); font-weight: 300; }
+.imagePlaceholder { font-size: 24px; color: rgba(10, 36, 99, 0.8); font-weight: 300; }
 
 @media (max-width: 768px) {
   .drawerContainer { flex-direction: column; }
