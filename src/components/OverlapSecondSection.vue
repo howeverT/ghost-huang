@@ -9,7 +9,7 @@
         <div class="links-container">
           <div v-for="(link, index) in links" :key="index" class="link-item">
             <!-- 内部链接使用 Vue Router -->
-            <a 
+            <a
               v-if="isInternalLink(link.link)"
               @click="handleInternalLink(link.link, $event)"
               class="link-text"
@@ -17,13 +17,7 @@
               {{ link.link_title }}
             </a>
             <!-- 外部链接直接跳转 -->
-            <a 
-              v-else
-              :href="link.link" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="link-text"
-            >
+            <a v-else :href="link.link" target="_blank" rel="noopener noreferrer" class="link-text">
               {{ link.link_title }}
             </a>
             <div class="link-date">{{ link.date }}</div>
@@ -91,15 +85,16 @@ const handleInternalLink = (link: string, event: Event) => {
 }
 
 .bar-content {
-  text-align: left;
+  text-align: center;
   color: white;
   max-width: 1200px;
   padding: 0 2rem;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-left: calc(15% + 250px - 100px);
+  align-items: center;
+  margin-left: calc(15% + 250px + 20px);
+  margin-right: 15%;
 }
 
 .bar-title {
@@ -118,20 +113,21 @@ const handleInternalLink = (link: string, event: Event) => {
   font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* 链接容器 - 所有链接在同一行 */
+/* 链接容器 - 所有链接在同一行，居中显示 */
 .links-container {
   margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 2.5rem; /* 增加链接之间的间隔 */
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 链接项 - 包含标题和日期 */
 .link-item {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* 左对齐 */
+  align-items: center; /* 居中对齐 */
   flex-shrink: 1;
   max-width: 200px;
   min-width: 120px;
@@ -146,7 +142,7 @@ const handleInternalLink = (link: string, event: Event) => {
   transition: all 0.3s ease;
   font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
   white-space: normal; /* 可以换行 */
-  text-align: left; /* 左对齐 */
+  text-align: center; /* 居中对齐 */
   line-height: 1.2;
   padding: 0; /* 去掉padding */
   margin: 0; /* 去掉margin */
@@ -154,13 +150,13 @@ const handleInternalLink = (link: string, event: Event) => {
   overflow-wrap: break-word;
 }
 
-/* 链接日期 - 小字左对齐 */
+/* 链接日期 - 小字居中对齐 */
 .link-date {
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.8rem; /* 调整字体大小 */
   font-weight: 500; /* 调整字体粗细 */
   font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
-  text-align: left; /* 左对齐 */
+  text-align: center; /* 居中对齐 */
   margin-top: 0.3rem;
   line-height: 1.2;
   padding: 0; /* 去掉padding */
@@ -193,6 +189,7 @@ const handleInternalLink = (link: string, event: Event) => {
 @media (min-width: 1200px) {
   .bar-content {
     margin-left: calc(15% + 250px + 20px);
+    margin-right: 15%;
     max-width: calc(100% - 15% - 250px - 40px);
   }
 
@@ -213,6 +210,7 @@ const handleInternalLink = (link: string, event: Event) => {
   .links-container {
     gap: 2rem;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .link-item {
@@ -282,6 +280,7 @@ const handleInternalLink = (link: string, event: Event) => {
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5rem;
+    align-items: center;
   }
 
   .link-text {
@@ -324,6 +323,8 @@ const handleInternalLink = (link: string, event: Event) => {
 
   .links-container {
     gap: 1rem;
+    justify-content: center;
+    align-items: center;
   }
 
   .link-text {
@@ -366,6 +367,8 @@ const handleInternalLink = (link: string, event: Event) => {
 
   .links-container {
     gap: 0.8rem;
+    justify-content: center;
+    align-items: center;
   }
 
   .link-text {

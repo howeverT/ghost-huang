@@ -6,11 +6,16 @@
       "places": "",
       "links": [
         {
-          "subtitle": "EP01 & EP02 & EP03 & EP04 ",
+          "subtitle": "EP01 & EP02 & EP03 ",
           "links": [
             {
               "link_title": "EP01节目CUT",
               "link": "https://weibo.com/2347708314/L0upkn1CL",
+              "icon": "video"
+            },
+            {
+              "link_title": "《少年他的奇幻漂流》",
+              "link": "https://www.bilibili.com/video/BV1Sh411a7iE/",
               "icon": "video"
             },
             {
@@ -24,28 +29,58 @@
               "icon": "video"
             },
             {
-              "link_title": "EP04节目CUT",
-              "link": "https://weibo.com/2347708314/K2yli7JGy",
+              "link_title": "《你的答案》",
+              "link": "https://www.bilibili.com/video/BV1khTtznEyV/",
               "icon": "video"
             }
           ]
         },
         {
-          "subtitle": "EP05 & EP06 & EP11",
+          "subtitle": "EP04 & EP05",
           "links": [
+            {
+              "link_title": "EP04节目CUT",
+              "link": "https://weibo.com/2347708314/K2yli7JGy",
+              "icon": "video"
+            },
+            {
+              "link_title": "《打开》",
+              "link": "https://www.bilibili.com/video/BV11h411z753/",
+              "icon": "video"
+            },
             {
               "link_title": "EP05节目CUT",
               "link": "https://weibo.com/2347708314/K2E2jykcQ",
               "icon": "video"
             },
             {
+              "link_title": "《连名带姓》",
+              "link": "https://weibo.com/6961164430/KrJs9qUn7",
+              "icon": "video"
+            }
+          ]
+        },
+        {
+          "subtitle": "EP06 & EP11",
+          "links": [
+            {
               "link_title": "EP06节目CUT",
               "link": "https://weibo.com/2347708314/K2NANzxgr",
               "icon": "video"
             },
             {
+              "link_title": "《我用所有报答爱》",
+              "link": "https://www.bilibili.com/video/BV1e24y197uz/",
+              "icon": "video"
+            },
+            {
               "link_title": "EP11节目CUT",
               "link": "https://weibo.com/2347708314/K30YH2bGR",
+              "icon": "video"
+            },
+            {
+              "link_title": "《我们的爱》",
+              "link": "https://weibo.com/6961164430/KrJmhEF3M",
               "icon": "video"
             }
           ]
