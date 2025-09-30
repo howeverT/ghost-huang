@@ -17,7 +17,7 @@
         "paragraphs": [
           "其实我是因为魔星保护了我的梦才走到这里。我时常在夜里会把我的枕头哭湿。你们为了我一次又一次地承受这些伤害，我不知道我要怎么做，才能让你们更快乐，不委屈。",
           "我一直老说，我一定要变强，我才能保护你们，但是我觉得我没有保护好。而是你们一直冲在前面为我遮挡这些伤害。",
-          "累不累啊。不可能不累的。"
+          "累不累啊，不可能不累的。"
         ],
         "index": 2
       },
@@ -95,11 +95,17 @@
         "index": 4
       },
       {
+        "type": "ContentSection",
+        "title": "感谢你们一直在拯救我，陪伴我，安慰我，你们一直说我给你们力量，其实你们因为我受了更多的委屈和不公平的事情。你们为了这次的巡演，克服了很多的困难来到这里，我都知道，为我燃烧，为我心中炙热的星辰大海的梦想。",
+        "paragraphs": [],
+        "index": 5
+      },
+      {
         "type": "ThumbnailGrid",
         "title": "演唱会合集",
         "items": [
           {
-            "image": "/src/assets/concert/chengdu/vlog_54.jpg",
+            "image": "/src/assets/concert/chengdu/chengdu_vlog1.jpg",
             "link": "https://www.bilibili.com/video/BV1suMvzkETk/?spm_id_from=333.1387.upload.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
             "title": "宇宙无敌号成都演唱会Vlog"
           },
@@ -109,7 +115,7 @@
             "title": "《光之黎明》官摄"
           },
           {
-            "image": "/src/assets/concert/chengdu/vlog_tenyear.jpg",
+            "image": "/src/assets/concert/chengdu/chengdu_vlog2.jpg",
             "link": "https://www.bilibili.com/video/BV1VwMXz3E2i/?spm_id_from=333.1387.homepage.video_card.click&vd_source=47f96c172cbb3b3f428698faafd995bc",
             "title": "黄霄雲成都站演唱会幕后"
           },
@@ -119,7 +125,7 @@
             "title": "黄霄雲&孙楠《美丽的神话》"
           }
         ],
-        "index": 5
+        "index": 6
       }
     ]
   }
