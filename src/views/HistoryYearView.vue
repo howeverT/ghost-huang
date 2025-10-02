@@ -49,6 +49,7 @@
             }))
           "
           :title="item.title || ''"
+          :subtitle="item.subtitle || ''"
         />
 
         <!-- ContentSection -->
@@ -117,6 +118,7 @@ interface LinkItem {
 interface HistoryItem {
   type: string
   title?: string
+  subtitle?: string
   title_align?: string
   title_margin?: string
   background_image?: string

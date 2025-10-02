@@ -1,9 +1,10 @@
 <template>
   <div class="thumbnail-wrapper">
     <!-- 标题 -->
-    <!-- <div v-if="title" class="main-title">
+    <div v-if="title" class="main-title">
       <h2>{{ title }}</h2>
-    </div> -->
+      <p v-if="subtitle" class="subtitle">{{ subtitle }}</p>
+    </div>
 
     <div class="drawerContainer" ref="drawerContainerRef">
       <!-- 左侧目录面板 -->
@@ -124,6 +125,7 @@ interface Props {
   items?: ThumbnailItem[]
   itemsPerPage?: number
   title?: string
+  subtitle?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -155,6 +157,7 @@ const props = withDefaults(defineProps<Props>(), {
   ],
   itemsPerPage: 4,
   title: '',
+  subtitle: '',
 })
 
 const currentPage = ref(0)
@@ -364,13 +367,26 @@ onUnmounted(() => {
 .main-title {
   text-align: center;
   width: 100%;
+  margin-top: 6rem;
+  margin-bottom: 1.5rem;
 }
 
 .main-title h2 {
   font-size: 3rem;
   font-weight: 700;
   color: black;
+  margin: 0 0 1.5rem 0;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.6;
   margin: 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* 主标题响应式调整 */
@@ -378,11 +394,21 @@ onUnmounted(() => {
   .main-title h2 {
     font-size: 2.5rem;
   }
+  .subtitle {
+    font-size: 1.125rem;
+  }
 }
 
 @media (max-width: 768px) {
   .main-title h2 {
     font-size: 2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .main-title {
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
   }
 }
 

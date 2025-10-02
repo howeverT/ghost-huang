@@ -145,7 +145,7 @@ const handleItemClick = (item: ConcertItem) => {
 <style scoped>
 .concert-item-section {
   width: 100%;
-  padding: 3rem 2rem;
+  padding: 5rem 2rem 3rem 2rem;
   background-color: white;
 }
 
@@ -455,7 +455,7 @@ const handleItemClick = (item: ConcertItem) => {
 /* 响应式设计 */
 @media (max-width: 768px) {
   .concert-item-section {
-    padding: 2rem 1rem;
+    padding: 4rem 1rem 2rem 1rem;
   }
 
   .section-title {
@@ -519,7 +519,7 @@ const handleItemClick = (item: ConcertItem) => {
 
 @media (max-width: 480px) {
   .concert-item-section {
-    padding: 1.5rem 0.5rem;
+    padding: 3rem 0.5rem 1.5rem 0.5rem;
   }
 
   .section-title {
